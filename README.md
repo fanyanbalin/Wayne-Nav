@@ -4,9 +4,9 @@
 
 ## Webstack网址导航美化版
 
-### Demo
+<!-- ### Demo
 
-[➡️ WayneのNav](https://waynenav.netlify.app)
+[➡️ WayneのNav](https://waynenav.netlify.app) -->
 
 ### 原作者项目
 
@@ -26,6 +26,7 @@
 1️⃣ [韩小韩 WebAPI 接口站](https://api.vvhan.com/)     
 2️⃣ [今日诗词 API](https://www.jinrishici.com/)     
 3️⃣ [新逸Cary API](https://api.xinac.net/)    
+4️⃣ [图样跑酷](https://bing.img.run/api.html)    
 
 ![Alt](https://repobeats.axiom.co/api/embed/c2e76567810bef1e9530a1d532a6e83385658d6e.svg "Repobeats analytics image")
 
