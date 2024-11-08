@@ -524,7 +524,7 @@ $(document).ready(function () {
         $("#result").append("\n访客:" + loc);
         $("#result").append("\n" + sts);
         $("#result").append("\n加密:" + tls);
-        $("#result").append("\n节点 IP：" + sip);
+        $("#result").append("\nIP:" + sip);
     });
 });
 
@@ -553,10 +553,10 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：4.2.1
+版 本 号：4.2.2
 更新日期：2024-11-08
 
-WayneのNav: 
+WayneのNav: https://wnav.pages.dev
 Github:  https://github.com/Waynenet/Wayne-Nav
 `
 console.log(`%c${title1} %c${title2}

@@ -30,4 +30,4 @@
 
 ![Alt](https://repobeats.axiom.co/api/embed/c2e76567810bef1e9530a1d532a6e83385658d6e.svg "Repobeats analytics image")
 
-<a title="Copyright" target="_blank" href="https://kong.pub/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2024-Wayne-red"></a>
+<a title="Copyright" target="_blank" href="https://waynenet.pages.dev/"><img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2024-Wayne-red"></a>

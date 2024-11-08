@@ -549,6 +549,7 @@ footer.main-footer.fixed {
 }
 #time,
 #result {
+  float: right;
   background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
   -webkit-background-clip: text;
   color: transparent;
@@ -769,6 +770,12 @@ footer.main-footer.fixed {
   .sidebar-menu .main-menu {
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+  .footer-inner,
+  #time,
+  #result {
+    float: none;
+    text-align: center;
   }
 }
 #starfield{
