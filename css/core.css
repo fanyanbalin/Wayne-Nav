@@ -550,6 +550,7 @@ footer.main-footer.fixed {
 #time,
 #result {
   float: right;
+  padding: 0px 6px;
   background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
   -webkit-background-clip: text;
   color: transparent;
