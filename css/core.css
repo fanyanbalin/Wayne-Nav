@@ -547,6 +547,12 @@ footer.main-footer.fixed {
   margin-right: 0;
   margin-top: 10px !important;
 }
+#time,
+#result {
+  background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
+  -webkit-background-clip: text;
+  color: transparent;
+}
 /* 顶栏 */
 .user-info-navbar {
   background-color: #fff0;

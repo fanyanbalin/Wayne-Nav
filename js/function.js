@@ -472,8 +472,6 @@ function ps_destroy()
 					public_vars.$sidebarMenu.addClass('collapsed');
 					ps_destroy();
 				}
-
-				$(window).trigger('xenon.resize');
 			});
 		});
 
@@ -512,6 +510,24 @@ fetch('https://api.vvhan.com/api/weather')
     })
     .catch(console.error)
 
+//脚注
+$(document).ready(function () {
+    var t1 = performance.now();
+    if (typeof t1 != "undefined") { document.getElementById("time").innerHTML = " 页面加载耗时 " + Math.round(t1) + " 毫秒 "; }
+    $.get("/cdn-cgi/trace", function (data) {
+        sip = data.match(/(ip=?)(\S*)/)[2];
+        str = data.match(/(colo=?)(\S*)/)[2];
+        loc = data.match(/(loc=?)(\S*)/)[2];
+        sts = data.match(/(http==?)(\S*)/)[2];
+        tls = data.match(/(tls==?)(\S*)/)[2];
+        $("#result").append("节点:" + str);
+        $("#result").append("\n访客:" + loc);
+        $("#result").append("\n" + sts);
+        $("#result").append("\n加密:" + tls);
+        $("#result").append("</p >节点 IP：" + sip);
+    });
+});
+
 //控制台输出
 console.clear();
 let styleTitle1 = `
@@ -537,11 +553,11 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：4.1.4
-更新日期：2024-11-07
+版 本 号：4.2.0
+更新日期：2024-11-08
 
 WayneのNav: 
-Github:  https://github.com/Waynenet/Wayne-Navigation
+Github:  https://github.com/Waynenet/Wayne-Nav
 `
 console.log(`%c${title1} %c${title2}
 %c${content}`, styleTitle1, styleTitle2, styleContent)

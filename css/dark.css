@@ -77,6 +77,11 @@ body.night .footer-text a:focus {
     color: #ffffff;
 }
 
+body.night #time,
+body.night #result {
+    color: #a9a9a9;
+}
+
 body.night .panel {
     background: #464646a6;
 }

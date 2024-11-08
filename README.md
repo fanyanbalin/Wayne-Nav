@@ -4,9 +4,9 @@
 
 ## Webstack网址导航美化版
 
-<!-- ### Demo
+### Demo
 
-[➡️ WayneのNav](https://waynenav.netlify.app) -->
+[➡️ WayneのNav](https://wnav.pages.dev)
 
 ### 原作者项目
 
