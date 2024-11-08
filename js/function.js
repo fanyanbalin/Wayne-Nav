@@ -524,7 +524,7 @@ $(document).ready(function () {
         $("#result").append("\n访客:" + loc);
         $("#result").append("\n" + sts);
         $("#result").append("\n加密:" + tls);
-        $("#result").append("</p >节点 IP：" + sip);
+        $("#result").append("\n节点 IP：" + sip);
     });
 });
 
@@ -553,7 +553,7 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：4.2.0
+版 本 号：4.2.1
 更新日期：2024-11-08
 
 WayneのNav: 
