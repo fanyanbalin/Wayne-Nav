@@ -1122,20 +1122,7 @@ nav.navbar {
   background-color: #ffffff38 !important;
   backdrop-filter: blur(15px);
 }
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.699);
-}
-input:-moz-placeholder,
-textarea:-moz-placeholder {
-  color: rgba(0, 0, 0, 0.699);
-}
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-  color: rgba(0, 0, 0, 0.699);
-}
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+input::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.699);
 }
 .set-check {
