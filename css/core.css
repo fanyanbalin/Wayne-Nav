@@ -1,3 +1,9 @@
+/* 字体 */
+@font-face {
+  font-family: "LXGWWenKai-Regular";
+  src: url('https://gcore.jsdelivr.net/npm/wayne-img@latest/font/LXGWWenKai-Regular.ttf') format('truetype');
+}
+
 .sidebar-menu .main-menu a,
 .user-info-navbar .user-info-menu > li > a {
   -webkit-transition: all 220ms ease-in-out;
@@ -28,6 +34,7 @@ body {
   margin: 0;
   padding: 0;
   border: none;
+  font-family: "LXGWWenKai-Regular" !important;
 }
 body {
   background-image: url(https://bing.img.run/rand_uhd.php); /* 随机图片API */
@@ -821,7 +828,6 @@ ul {
 }
 .tag {
   color: #fff;
-  margin-right: 7px;
   text-shadow: 
   0 0 10px skyblue,
   0 0 20px skyblue,
@@ -834,6 +840,9 @@ ul {
   to {
     filter: hue-rotate(360deg);
   }
+}
+.tag i {
+  margin-right: 7px;
 }
 .weather,
 .myinfo p {
