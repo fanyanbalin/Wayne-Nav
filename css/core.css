@@ -181,6 +181,16 @@ a:focus {
 .sidebar-menu .main-menu ul li {
   position: relative;
 }
+@media screen and (min-width: 768px) {
+  .sidebar-menu .main-menu ul li.is-hidden {
+    left: -20px;
+    zoom: 1;
+    filter: alpha(opacity=0);
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+  }
+}
 .sidebar-menu .main-menu ul li.is-shown {
   left: 0;
   zoom: 1;
@@ -364,14 +374,6 @@ a:focus {
   }
 }
 @media screen and (min-width: 768px) {
-  .sidebar-menu .main-menu ul li.is-hidden {
-    left: -20px;
-    zoom: 1;
-    filter: alpha(opacity=0);
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    opacity: 0;
-  }
   .sidebar-menu.collapsed {
     width: 80px;
     z-index: 10;
@@ -782,15 +784,15 @@ footer.main-footer.fixed {
   .footer-text,
   #time,
   #result {
-    float: none;
-    text-align: center;
+    float: none !important;
+    text-align: center !important;
   }
 }
 #starfield{
   display: none;
 }
 ul {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 .box2 {
   height: 86px;
@@ -829,11 +831,11 @@ ul {
 .tag {
   color: #fff;
   text-shadow: 
-  0 0 10px skyblue,
-  0 0 20px skyblue,
-  0 0 40px skyblue,
-  0 0 80px skyblue,
-  0 0 160px skyblue;
+  0 0 0.5px skyblue,
+  0 0 1px skyblue,
+  0 0 2px skyblue,
+  0 0 4px skyblue,
+  0 0 8px skyblue;
   animation: mycolor 5s linear infinite;
 }
 @keyframes mycolor {
@@ -884,18 +886,17 @@ ul {
 }
 .w-widget {
   position: relative;
-}
-.w-widget.w-conversations {
-  position: relative;
-  background: #ffffffc7;
   margin-bottom: 0px;
   padding: 15px;
-  background: #ffffff38 !important;
-  backdrop-filter: blur(15px) !important;
+  background: #ffffff38;
+  backdrop-filter: blur(15px);
 }
-.w-widget.w-conversations.stationmaster {
-  background: #ffffff1f !important;
-  backdrop-filter: blur(0px) !important;
+.stationmaster {
+  position: relative;
+  margin-bottom: 0px;
+  padding: 15px;
+  background: #ffffff00;
+  border: 1px solid #078bff2f;
 }
 .overflowClip_1 {
   overflow: hidden;
@@ -903,7 +904,7 @@ ul {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .overflowClip_2 {
   overflow: hidden;
@@ -911,14 +912,14 @@ ul {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 .img-circle {
   padding: 7px 0;
   width: 40px;
 }
 .tooltip {
-  --bs-tooltip-font-size: 0.75rem !important;
+  --bs-tooltip-font-size: 0.9rem !important;
   --bs-tooltip-color: #000000 !important;
   --bs-tooltip-bg: #ffffff38 !important;
   backdrop-filter: blur(15px);
@@ -939,7 +940,7 @@ nav.navbar {
   background-color: #ff6264;
   color: #fff;
   border-radius: 20%;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 .pull-right {
   float: right !important;
