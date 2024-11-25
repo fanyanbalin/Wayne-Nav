@@ -28,7 +28,7 @@
 </head>
 <body class="page-body">
     <div class="page-container">
-        <div class="sidebar-menu fixed">
+        <div class="sidebar-menu toggle-others fixed">
             <div class="sidebar-menu-inner">
                 <header class="logo-env">
                     <!-- logo -->
@@ -40,7 +40,7 @@
                             <img src="images/wayne.png" width="40" alt="" />
                         </a>
                     </div>
-                    <div class="mobile-menu-toggle d-sm-none">
+                    <div class="mobile-menu-toggle d-md-none">
                         <a onclick="switchNightMode()"><i class="ti ti-yin-yang-filled"></i></a>
                         <a href="#" data-toggle="user-info-menu"><i class="ti ti-settings"></i></a>
                         <a href="#" data-toggle="mobile-menu"><i class="ti ti-menu-2"></i></a>
@@ -85,7 +85,7 @@
                             <li><a href="#字体资源" class="smooth"><span class="title">字体资源</span></a></li>
                             <li><a href="#其他资源" class="smooth"><span class="title">其他资源</span></a></li>
                             <li><a href="#设计灵感" class="smooth"><span class="title">设计灵感</span></a></li>
-                            <li><a href="#API资源" class="smooth"><span class="title">API资源</span><span class="label label-pink pull-right hidden-collapsed">NEW</span></a></a></li>
+                            <li><a href="#API资源" class="smooth"><span class="title">API资源</span></a></li>
                         </ul>
                     </li>
                     <li><a><i class="ti ti-database"></i> <span class="title">开发生产</span></a>
@@ -111,7 +111,7 @@
         </div>
         <div class="main-content">
             <nav class="navbar user-info-navbar" role="navigation" style="font-size: 14px">
-                <ul class="user-info-menu pull-left list-inline list-unstyled">
+                <ul class="user-info-menu list-inline list-unstyled">
                     <li class="d-none d-lg-block">
                         <a href="#" data-toggle="sidebar">
                             <i class="ti ti-menu-2"></i>
@@ -142,12 +142,12 @@
                 <div id="search-list" class="hide-type-list">
                     <div class="s-type">
                         <span></span>
-                        <div class="s-type-list animated fadeInUp" >
+                        <div class="s-type-list">
                         <label for="type-baidu">常用</label>
                         <label for="type-search">搜索</label>
                         <label for="type-br">工具</label>
                         <label for="type-zhihu">社区</label>
-                        <label for="type-taobao1">生活</label>
+                        <label for="type-taobao">生活</label>
                         <label for="type-zhaopin">求职</label>
                         </div>
                     </div>
@@ -160,9 +160,9 @@
                                     <span style="color:#2100E0" class="dark-text">百度</span>
                                 </label>
                             </li>
-                            <li><input hidden type="radio" name="type" id="type-bing1" 
+                            <li><input hidden type="radio" name="type" id="type-bing" 
                                 value="https://cn.bing.com/search?q=" data-placeholder="微软 Bing 搜索">
-                                <label for="type-bing1">
+                                <label for="type-bing">
                                     <span style="color:#007daa">Bing</span>
                                 </label>
                             </li>
@@ -177,15 +177,15 @@
                                     style="color:#F54231">e</span>
                                 </label>
                             </li>
-                            <li><input hidden type="radio" name="type" id="type-bili1"
+                            <li><input hidden type="radio" name="type" id="type-bili"
                                 value="https://search.bilibili.com/all?keyword=" data-placeholder="哔哩哔哩搜索">
-                                <label for="type-bili1">
+                                <label for="type-bili">
                                     <span style="color:#00a1d6">BiliBili</span>
                                 </label>
                             </li>
-                            <li><input hidden type="radio" name="type" id="type-git1"
+                            <li><input hidden type="radio" name="type" id="type-git"
                                 value="https://github.com/search?utf8=%E2%9C%93&q=" data-placeholder="搜索 Github 仓库">
-                                <label for="type-git1">
+                                <label for="type-git">
                                     <span style="color:#000000" class="dark-text">Github</span>
                                 </label>
                             </li>
@@ -200,21 +200,21 @@
                                     <span style="color:#2319dc" class="dark-text">百度</span>
                                 </label>
                             </li>
-                            <li><input hidden type="radio" name="type" id="type-bing" 
+                            <li><input hidden type="radio" name="type" id="type-bing1" 
                                 value="https://cn.bing.com/search?q=" data-placeholder="微软 Bing 搜索">
-                                <label for="type-bing">
+                                <label for="type-bing1">
                                     <span style="color:#007daa">Bing</span>
                                 </label>
                             </li>
                             <li><input hidden type="radio" name="type" id="type-google1" 
                                 value="https://www.google.com/search?q=" data-placeholder="谷歌搜索">
                                 <label for="type-google1">
-                                    <span style="color:#3B83FA">G</span>
-                                    <span style="color:#F3442C">o</span>
-                                    <span style="color:#FFC300">o</span>
-                                    <span style="color:#4696F8">g</span>
-                                    <span style="color:#2CAB4E">l</span>
-                                    <span style="color:#F54231">e</span>
+                                    <span style="color:#3B83FA">G</span><span 
+                                    style="color:#F3442C">o</span><span 
+                                    style="color:#FFC300">o</span><span 
+                                    style="color:#4696F8">g</span><span 
+                                    style="color:#2CAB4E">l</span><span 
+                                    style="color:#F54231">e</span>
                                 </label>
                             </li>
                             <li><input hidden type="radio" name="type" id="type-fsou" 
@@ -235,15 +235,15 @@
                                     <span style="color:#ff5943">搜狗</span>
                                 </label>
                             </li>
-                            <li><input hidden type="radio" name="type" id="type-bili" 
+                            <li><input hidden type="radio" name="type" id="type-bili1" 
                                 value="https://search.bilibili.com/all?keyword=" data-placeholder="哔哩哔哩搜索">
-                                <label for="type-bili">
+                                <label for="type-bili1">
                                     <span style="color:#00a1d6">BiliBili</span>
                                 </label>
                             </li>
-                            <li><input hidden type="radio" name="type" id="type-git"
+                            <li><input hidden type="radio" name="type" id="type-git1"
                                 value="https://github.com/search?utf8=%E2%9C%93&q=" data-placeholder="搜索 Github 仓库">
-                                <label for="type-git">
+                                <label for="type-git1">
                                     <span style="color:#000000" class="dark-text">Github</span>
                                 </label>
                             </li>
@@ -328,9 +328,9 @@
                     <div class="search-group group-e">
                         <span class="type-text">生活</span>
                         <ul class="search-type">
-                            <li><input hidden type="radio" name="type" id="type-taobao1" 
+                            <li><input hidden type="radio" name="type" id="type-taobao" 
                                 value="https://s.taobao.com/search?q=" data-placeholder="淘宝">
-                                <label for="type-taobao1">
+                                <label for="type-taobao">
                                     <span style="color:#f40">淘宝</span>
                                 </label>
                             </li>
@@ -407,7 +407,7 @@
                     <button type="submit"><i class="ti ti-search"></i></button>
                 </form>
                 <div class="set-check d-sm-block">
-                    <input type="checkbox" id="set-search-blank" class="bubble-3" autocomplete="off">
+                    <input type="checkbox" id="set-search-blank" autocomplete="off">
                 </div>
             </div>
             <!-- 实用搜索 end -->
@@ -417,7 +417,7 @@
                 <i class="ti ti-tag" id="热搜新闻"></i>热搜新闻
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.53bk.com/baokan/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.53bk.com/baokan/">
@@ -437,7 +437,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.guozhivip.com/rank/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.guozhivip.com/rank/">
@@ -465,7 +465,7 @@
                 <i class="ti ti-tag" id="常用推荐"></i>常用推荐
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.youtube.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.youtube.com/">
@@ -485,7 +485,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://bilibili.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://bilibili.com/">
@@ -505,7 +505,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://github.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://github.com/">
@@ -525,7 +525,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.douban.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.douban.com/">
@@ -545,7 +545,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.ithome.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.ithome.com/">
@@ -565,7 +565,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://chat.openai.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://chat.openai.com/">
@@ -591,7 +591,7 @@
             <!-- 文艺至死-->
             <h6 class="tag"><i class="ti ti-tag" id="文艺至死"></i>文艺至死</h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.gushiwen.cn/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.gushiwen.cn/">
@@ -611,7 +611,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.zgshige.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.zgshige.com/">
@@ -631,7 +631,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://xmsoushu.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://xmsoushu.com/">
@@ -651,7 +651,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://sobooks.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://sobooks.net/">
@@ -671,7 +671,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.banshujiang.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.banshujiang.cn/">
@@ -691,7 +691,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.jiumodiary.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.jiumodiary.com/">
@@ -711,7 +711,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://singlelogin.site/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://singlelogin.site/">
@@ -737,7 +737,7 @@
             <!-- 音乐天堂 -->
             <h6 class="tag"><i class="ti ti-tag" id="音乐天堂"></i>音乐天堂</h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://y.qq.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://y.qq.com/">
@@ -757,7 +757,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://music.163.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://music.163.com/">
@@ -777,7 +777,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.lalal.ai/zh-hans/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.lalal.ai/zh-hans/">
@@ -797,7 +797,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://unlock-music-ix.netlify.app/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://unlock-music-ix.netlify.app/">
@@ -817,7 +817,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://listen1.github.io/listen1/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://listen1.github.io/listen1/">
@@ -837,7 +837,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.aigei.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.aigei.com/">
@@ -863,7 +863,7 @@
             <!-- 直播聚合 -->
             <h6 class="tag"><i class="ti ti-tag" id="直播聚合"></i>直播聚合</h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.douyu.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.douyu.com/">
@@ -883,7 +883,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.huya.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.huya.com/">
@@ -903,7 +903,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://tv.cctv.com/live/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://tv.cctv.com/live/">
@@ -923,7 +923,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.aikantv.org/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.aikantv.org/">
@@ -943,7 +943,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.damuwucom/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.damuwu.com/">
@@ -963,7 +963,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://tv.haoqu99.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://tv.haoqu99.com/">
@@ -983,7 +983,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.zyz98.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.zyz98.com/">
@@ -1003,7 +1003,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.tvniu.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.tvniu.com/">
@@ -1023,7 +1023,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://cn.itver.cc/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://cn.itver.cc/">
@@ -1043,7 +1043,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://eja.tv/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://eja.tv/">
@@ -1071,7 +1071,7 @@
                 <i class="ti ti-tag" id="在线综合"></i>在线综合
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://dmdyy.cc/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://dmdyy.cc/">
@@ -1091,7 +1091,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://dsxys.pro/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://dsxys.pro/">
@@ -1111,7 +1111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://555lyn.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://555lyn.com/">
@@ -1131,7 +1131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://ddys.pro/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://ddys.pro/">
@@ -1151,7 +1151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.mkvdo.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.mkvdo.com/">
@@ -1171,7 +1171,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.novipnoad.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.novipnoad.com/">
@@ -1191,7 +1191,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://auete.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://auete.com/">
@@ -1211,7 +1211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.qkan8.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.qkan8.com/">
@@ -1231,7 +1231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://bangumi.online/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://bangumi.online/">
@@ -1251,7 +1251,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.nfyingshi.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.nfyingshi.com/">
@@ -1279,7 +1279,7 @@
                 <i class="ti ti-tag" id="影视搜索"></i>影视搜索
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://cupfox.app/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://cupfox.app/">
@@ -1299,7 +1299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://7080.wang/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://7080.wang/">
@@ -1319,7 +1319,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.dianyinggou.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.dianyinggou.com/">
@@ -1339,7 +1339,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.mvcat.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.mvcat.com/">
@@ -1359,7 +1359,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.wandou.pro/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.wandou.pro/">
@@ -1379,7 +1379,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.dianyingtaotao.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.dianyingtaotao.com/">
@@ -1407,7 +1407,7 @@
                 <i class="ti ti-tag" id="在线解析"></i>在线解析
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.m3u8play.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.m3u8play.com/">
@@ -1427,7 +1427,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://xbeibeix.com/api/bilibili/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://xbeibeix.com/api/bilibili/">
@@ -1455,7 +1455,7 @@
                 <i class="ti ti-tag" id="字幕仓库"></i>字幕仓库
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://zimuku.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://zimuku.org/">
@@ -1475,7 +1475,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://subhd.tv/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://subhd.tv/">
@@ -1495,7 +1495,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://r3sub.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://r3sub.com/">
@@ -1515,7 +1515,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.a4k.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.a4k.net/">
@@ -1543,7 +1543,7 @@
                 <i class="ti ti-tag" id="资源仓库"></i>资源仓库
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://zyplayer.fun/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://zyplayer.fun/">
@@ -1563,7 +1563,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://yyets.click/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://yyets.click/">
@@ -1583,7 +1583,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.1lou.cc/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.1lou.cc/">
@@ -1603,7 +1603,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://embywiki.911997.xyz/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://embywiki.911997.xyz/">
@@ -1623,7 +1623,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://mikanani.me/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://mikanani.me/">
@@ -1651,7 +1651,7 @@
                 <i class="ti ti-tag" id="休闲娱乐"></i>休闲娱乐
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://poki.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://poki.com/">
@@ -1671,7 +1671,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.autopiano.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.autopiano.cn/">
@@ -1691,7 +1691,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.epicgames.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.epicgames.com/">
@@ -1711,7 +1711,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://gamebanana.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://gamebanana.com/">
@@ -1731,7 +1731,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://game.chronodivide.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://game.chronodivide.com/">
@@ -1751,7 +1751,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.yikm.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.yikm.net/">
@@ -1771,7 +1771,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://nes.hocgin.top/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://nes.hocgin.top/">
@@ -1791,7 +1791,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://dos.zczc.cz/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://dos.zczc.cz/">
@@ -1811,7 +1811,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://flash.zczc.cz/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://flash.zczc.cz/">
@@ -1831,7 +1831,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.lexaloffle.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.lexaloffle.com/">
@@ -1851,7 +1851,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://slither.io/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://slither.io/">
@@ -1871,7 +1871,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://diep.io/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://diep.io/">
@@ -1891,7 +1891,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://lines.frvr.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://lines.frvr.com/">
@@ -1911,7 +1911,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://hex.frvr.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://hex.frvr.com/">
@@ -1931,7 +1931,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://dood.al/pinktrombone/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://dood.al/pinktrombone/">
@@ -1951,7 +1951,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://rainyscope.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://rainyscope.com/">
@@ -1971,7 +1971,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.autodraw.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.autodraw.com/">
@@ -1991,7 +1991,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://thispersondoesnotexist.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://thispersondoesnotexist.com/">
@@ -2011,7 +2011,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.mazegenerator.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.mazegenerator.net/">
@@ -2031,7 +2031,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://david.li/fluid/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://david.li/fluid/">
@@ -2051,7 +2051,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://pixelthoughts.co/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://pixelthoughts.co/">
@@ -2079,7 +2079,7 @@
             <i class="ti ti-tag" id="在线工具"></i>在线工具
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tool.browser.qq.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tool.browser.qq.com/">
@@ -2099,7 +2099,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.atoolbox.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.atoolbox.net/">
@@ -2119,7 +2119,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tiomg.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tiomg.org/">
@@ -2139,7 +2139,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.canva.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.canva.cn/">
@@ -2159,7 +2159,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tool.chinaz.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tool.chinaz.com/">
@@ -2179,7 +2179,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.itdog.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.itdog.cn/">
@@ -2199,7 +2199,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tool.lu/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tool.lu/">
@@ -2219,7 +2219,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.wntool.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.wntool.com/">
@@ -2239,7 +2239,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.toolfk.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.toolfk.com/">
@@ -2259,7 +2259,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://docstrong.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://docstrong.com/">
@@ -2287,7 +2287,7 @@
                 <i class="ti ti-tag" id="在线改图"></i>在线改图
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://compressjpeg.com/zh/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://compressjpeg.com/zh/">
@@ -2307,7 +2307,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tinypng.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tinypng.com/">
@@ -2327,7 +2327,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://waifu2x.udp.jp/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://waifu2x.udp.jp/">
@@ -2347,7 +2347,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://bigjpg.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://bigjpg.com/">
@@ -2367,7 +2367,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.gaitubao.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.gaitubao.com/">
@@ -2387,7 +2387,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.sojson.com/image/change.html","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.sojson.com/image/change.html">
@@ -2407,7 +2407,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.remove.bg/zh","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.remove.bg/zh">
@@ -2427,7 +2427,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.fococlipping.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.fococlipping.com/">
@@ -2447,7 +2447,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://koutu.gaoding.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://koutu.gaoding.com/">
@@ -2467,7 +2467,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.magiceraser.io/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.magiceraser.io/">
@@ -2487,7 +2487,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.gaituya.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.gaituya.com/">
@@ -2507,7 +2507,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.iloveimg.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.iloveimg.com/">
@@ -2527,7 +2527,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://magiconch.com/patina/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://magiconch.com/patina/">
@@ -2547,7 +2547,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.pichacks.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.pichacks.com/">
@@ -2575,7 +2575,7 @@
                 <i class="ti ti-tag" id="以图搜图"></i>以图搜图
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://yandex.com/images","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://yandex.com/images">
@@ -2595,7 +2595,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://trace.moe/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://trace.moe/">
@@ -2615,7 +2615,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.google.com.hk/imghp","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.google.com.hk/imghp">
@@ -2643,7 +2643,7 @@
                 <i class="ti ti-tag" id="在线转格"></i>在线转格
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.onlineocr.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.onlineocr.net/">
@@ -2663,7 +2663,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://web.baimiaoapp.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://web.baimiaoapp.com/">
@@ -2683,7 +2683,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.webdesignrankings.com/resources/bse64/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.webdesignrankings.com/resources/bse64/">
@@ -2703,7 +2703,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://app.xunjiepdf.com/voice2text/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://app.xunjiepdf.com/voice2text/">
@@ -2723,7 +2723,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.hipdf.cn/pdf-to-word","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.hipdf.cn/pdf-to-word">
@@ -2743,7 +2743,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://app.xunjiepdf.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://app.xunjiepdf.com/">
@@ -2763,7 +2763,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.alltoall.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.alltoall.net/">
@@ -2783,7 +2783,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://easypdf.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://easypdf.com/">
@@ -2803,7 +2803,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.aconvert.com/cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.aconvert.com/cn/">
@@ -2823,7 +2823,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://convertio.co/zh/mp4-ogv/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://convertio.co/zh/mp4-ogv/">
@@ -2843,7 +2843,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://convert-video-online.com/cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://convert-video-online.com/cn/">
@@ -2863,7 +2863,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.pdfdo.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.pdfdo.com/">
@@ -2883,7 +2883,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tinywow.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tinywow.com/">
@@ -2911,7 +2911,7 @@
                 <i class="ti ti-tag" id="在线生成"></i>在线生成
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.uugai.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.uugai.com/">
@@ -2931,7 +2931,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.bitbug.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.bitbug.net/">
@@ -2951,7 +2951,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.ico51.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.ico51.cn/">
@@ -2971,7 +2971,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://mi-logo.lvwzhen.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://mi-logo.lvwzhen.com/">
@@ -2991,7 +2991,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://getavataaars.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://getavataaars.com/">
@@ -3011,7 +3011,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://notion-avatar.vercel.app/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://notion-avatar.vercel.app/">
@@ -3031,7 +3031,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://ctfile.qinlili.bid/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://ctfile.qinlili.bid/">
@@ -3051,7 +3051,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://xiaomark.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://xiaomark.com/">
@@ -3071,7 +3071,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://cli.im/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://cli.im/">
@@ -3091,7 +3091,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://id.zhengzhaopai.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://id.zhengzhaopai.com/">
@@ -3119,7 +3119,7 @@
                 <i class="ti ti-tag" id="其他在线"></i>其他在线
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://store.rg-adguard.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://store.rg-adguard.net/">
@@ -3139,7 +3139,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.processon.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.processon.com/">
@@ -3159,7 +3159,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://zhimap.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://zhimap.com/">
@@ -3179,7 +3179,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://gitmind.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://gitmind.cn/">
@@ -3199,7 +3199,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://habo.qq.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://habo.qq.com/">
@@ -3219,7 +3219,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.virscan.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.virscan.org/">
@@ -3239,7 +3239,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.virustotal.com/gui/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.virustotal.com/gui/">
@@ -3259,7 +3259,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://monitor.firefox.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://monitor.firefox.com/">
@@ -3279,7 +3279,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://xiezuocat.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://xiezuocat.com/">
@@ -3299,7 +3299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.gaoding.com', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.gaoding.com">
@@ -3319,7 +3319,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://whoer.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://whoer.net/">
@@ -3339,7 +3339,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://ip8.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://ip8.com/">
@@ -3359,7 +3359,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.deepl.com/translator","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.deepl.com/translator">
@@ -3379,7 +3379,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.youcompress.com/videos/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.youcompress.com/videos/">
@@ -3399,7 +3399,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://ip.soshoulu.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://ip.soshoulu.com/">
@@ -3419,7 +3419,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://speed.neu6.edu.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://speed.neu6.edu.cn/">
@@ -3439,7 +3439,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://test-ipv6.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://test-ipv6.com/">
@@ -3459,7 +3459,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://acl4ssr-sub.github.io/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://acl4ssr-sub.github.io/">
@@ -3479,7 +3479,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://supes.top/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://supes.top/">
@@ -3499,7 +3499,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://ipw.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://ipw.cn/">
@@ -3527,7 +3527,7 @@
                 <i class="ti ti-tag" id="上传下载"></i>上传下载
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://wormhole.app/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://wormhole.app/">
@@ -3547,7 +3547,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.wenshushu.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.wenshushu.cn/">
@@ -3567,7 +3567,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://apkpure.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://apkpure.com/">
@@ -3587,7 +3587,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://cn.uptodown.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://cn.uptodown.com/">
@@ -3607,7 +3607,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.fosshub.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.fosshub.com/">
@@ -3627,7 +3627,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://alternativeto.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://alternativeto.net/">
@@ -3647,7 +3647,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://youtube.iiilab.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://youtube.iiilab.com/">
@@ -3675,7 +3675,7 @@
                 <i class="ti ti-tag" id="软件精选"></i>软件精选
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://zh.snipaste.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://zh.snipaste.com/">
@@ -3695,7 +3695,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.bandisoft.com/honeyview/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.bandisoft.com/honeyview/">
@@ -3715,7 +3715,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://u.tools/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://u.tools/">
@@ -3735,7 +3735,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://anydesk.com/zhs","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://anydesk.com/zhs">
@@ -3755,7 +3755,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.gotohttp.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.gotohttp.com/">
@@ -3775,7 +3775,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.freedownloadmanager.org/zh/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.freedownloadmanager.org/zh/">
@@ -3795,7 +3795,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://faxian.appinn.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://faxian.appinn.com/">
@@ -3815,7 +3815,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.423down.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.423down.com/">
@@ -3835,7 +3835,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.mpyit.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.mpyit.com/">
@@ -3855,7 +3855,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.atlassian.com/software/confluence?bundle=confluence&edition=free', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.atlassian.com/software/confluence?bundle=confluence&edition=free">
@@ -3875,7 +3875,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.teambition.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.teambition.com/">
@@ -3895,7 +3895,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://obsproject.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://obsproject.com/">
@@ -3915,7 +3915,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://handbrake.fr/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://handbrake.fr/">
@@ -3935,7 +3935,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.pdfgear.com/zh/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.pdfgear.com/zh/">
@@ -3963,7 +3963,7 @@
                 <i class="ti ti-tag" id="浏览器插件"></i>浏览器插件
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://chrome.zzzmh.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://chrome.zzzmh.cn/">
@@ -3983,7 +3983,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://chrome.google.com/webstore/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://chrome.google.com/webstore/">
@@ -4003,7 +4003,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://microsoftedge.microsoft.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://microsoftedge.microsoft.com/">
@@ -4023,7 +4023,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.userscript.zone/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.userscript.zone/">
@@ -4043,7 +4043,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://greasyfork.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://greasyfork.org/">
@@ -4063,7 +4063,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://openuserjs.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://openuserjs.org/">
@@ -4091,7 +4091,7 @@
                 <i class="ti ti-tag" id="虚拟信息"></i>虚拟信息
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://bestsms.xyz/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://bestsms.xyz/">
@@ -4111,7 +4111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.shejiinn.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.shejiinn.com/">
@@ -4131,7 +4131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://yunduanxin.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://yunduanxin.net/">
@@ -4151,7 +4151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.rvso.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.rvso.com/">
@@ -4171,7 +4171,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://sms-activate.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://sms-activate.org/">
@@ -4191,7 +4191,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.haoweichi.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.haoweichi.com/">
@@ -4211,7 +4211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.meiguodizhi.com/tw-address","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.meiguodizhi.com/tw-address">
@@ -4231,7 +4231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://smailpro.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://smailpro.com/">
@@ -4251,7 +4251,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://24mail.chacuo.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://24mail.chacuo.net/">
@@ -4271,7 +4271,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.ip138.com/post/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.ip138.com/post/">
@@ -4291,7 +4291,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://shenfendaquan.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://shenfendaquan.com/">
@@ -4311,7 +4311,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.fakepersongenerator.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.fakepersongenerator.com/">
@@ -4331,7 +4331,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.fakemailgenerator.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.fakemailgenerator.com/">
@@ -4359,7 +4359,7 @@
                 <i class="ti ti-tag" id="壁纸下载"></i>壁纸下载
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://wallhaven.cc/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://wallhaven.cc/">
@@ -4379,7 +4379,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://wall.alphacoders.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://wall.alphacoders.com/">
@@ -4399,7 +4399,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://konachan.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://konachan.net/">
@@ -4419,7 +4419,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://pixivic.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://pixivic.com/">
@@ -4439,7 +4439,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.pixiv.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.pixiv.net/">
@@ -4459,7 +4459,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.wallpapermaiden.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.wallpapermaiden.com/">
@@ -4479,7 +4479,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://unsplash.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://unsplash.com/">
@@ -4499,7 +4499,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.eso.org/public/images/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.eso.org/public/images/">
@@ -4519,7 +4519,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://pixabay.com/zh/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://pixabay.com/zh/">
@@ -4547,7 +4547,7 @@
                 <i class="ti ti-tag" id="PNG免扣"></i>PNG免扣
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.51yuansu.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.51yuansu.com/">
@@ -4567,7 +4567,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.sucai999.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.sucai999.com/">
@@ -4587,7 +4587,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://616pic.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://616pic.com/">
@@ -4607,7 +4607,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://pixian.ai/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://pixian.ai/">
@@ -4635,7 +4635,7 @@
                 <i class="ti ti-tag" id="PPT资源"></i>PPT资源
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.officeplus.cn/Template/Home.shtml', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.officeplus.cn/Template/Home.shtml">
@@ -4655,7 +4655,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.ypppt.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.ypppt.com/">
@@ -4675,7 +4675,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.woodo.cn/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.woodo.cn/">
@@ -4695,7 +4695,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://pptsupermarket.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://pptsupermarket.com/">
@@ -4715,7 +4715,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.tretars.com/ppt-templates', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.tretars.com/ppt-templates">
@@ -4735,7 +4735,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.1ppt.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.1ppt.com/">
@@ -4755,7 +4755,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.pptbz.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.pptbz.com/">
@@ -4781,7 +4781,7 @@
             <!-- 字体资源 -->
             <h6 class="tag"><i class="ti ti-tag" id="字体资源"></i>字体资源</h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://fonts.google.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://fonts.google.com/">
@@ -4801,7 +4801,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.foundertype.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.foundertype.com/">
@@ -4821,7 +4821,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://ziticq.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://ziticq.com/">
@@ -4841,7 +4841,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.100font.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.100font.com/">
@@ -4861,7 +4861,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.fonts.net.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.fonts.net.cn/">
@@ -4889,7 +4889,7 @@
                 <i class="ti ti-tag" id="其他资源"></i>其他资源
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://sc.chinaz.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://sc.chinaz.com/">
@@ -4909,7 +4909,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.doutula.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.doutula.com/">
@@ -4929,7 +4929,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.iconfont.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.iconfont.cn/">
@@ -4949,7 +4949,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.emojidaquan.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.emojidaquan.com/">
@@ -4969,7 +4969,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://madebyevan.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://madebyevan.com/">
@@ -4989,7 +4989,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.dbbqb.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.dbbqb.com/">
@@ -5009,7 +5009,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://fontawesome.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://fontawesome.com/">
@@ -5029,7 +5029,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tabler-icons.io/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tabler-icons.io/">
@@ -5049,7 +5049,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://iconpark.oceanengine.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://iconpark.oceanengine.com/">
@@ -5069,7 +5069,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.colorgg.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.colorgg.com/">
@@ -5097,7 +5097,7 @@
                 <i class="ti ti-tag" id="设计灵感"></i>设计灵感
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.pinterest.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.pinterest.com/">
@@ -5117,7 +5117,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://loftcn.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://loftcn.com/">
@@ -5137,7 +5137,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.aestate.co/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.aestate.co/">
@@ -5157,7 +5157,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://decomyplace.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://decomyplace.com/">
@@ -5183,7 +5183,7 @@
             <!-- API资源 -->
             <h6 class="tag"><i class="ti ti-tag" id="API资源"></i>API资源</h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://dev.qweather.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://dev.qweather.com/">
@@ -5203,7 +5203,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.mxnzp.com/doc/list', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.mxnzp.com/doc/list">
@@ -5223,7 +5223,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://api.btstu.cn/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://api.btstu.cn/">
@@ -5243,7 +5243,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://bing.img.run/api.html', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://bing.img.run/api.html">
@@ -5263,7 +5263,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.eee.dog/tech/rand-pic-api.html', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.eee.dog/tech/rand-pic-api.html">
@@ -5283,7 +5283,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://api2.wer.plus/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://api2.wer.plus/">
@@ -5303,7 +5303,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://api.ddkjt.com/index.php', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://api.ddkjt.com/index.php">
@@ -5323,7 +5323,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://api.xinac.net/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://api.xinac.net/">
@@ -5343,7 +5343,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.jinrishici.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.jinrishici.com/">
@@ -5363,7 +5363,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://api.uomg.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://api.uomg.com/">
@@ -5383,7 +5383,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://hitokoto.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://hitokoto.cn/">
@@ -5403,7 +5403,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tuapi.eees.cc/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tuapi.eees.cc/">
@@ -5423,7 +5423,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://api.isoyu.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://api.isoyu.com/">
@@ -5443,7 +5443,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://api.nxvav.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://api.nxvav.cn/">
@@ -5463,7 +5463,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.dmoe.cc/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.dmoe.cc/">
@@ -5483,7 +5483,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://api.vvhan.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://api.vvhan.com/">
@@ -5503,7 +5503,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://img-api.ymz.icu/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://img-api.ymz.icu/">
@@ -5523,7 +5523,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://api.oioweb.cn/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://api.oioweb.cn/">
@@ -5549,7 +5549,7 @@
             <!-- 域名申请 -->
             <h6 class="tag"><i class="ti ti-tag" id="域名申请"></i>域名申请</h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.namecheap.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.namecheap.com/">
@@ -5569,7 +5569,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.west.cn/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.west.cn/">
@@ -5589,7 +5589,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.xinnet.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.xinnet.com/">
@@ -5617,7 +5617,7 @@
                 <i class="ti ti-tag" id="云端服务"></i>云端服务
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://cloud.tencent.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://cloud.tencent.com/">
@@ -5637,7 +5637,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.aliyun.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.aliyun.com/">
@@ -5657,7 +5657,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.upyun.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.upyun.com/">
@@ -5677,7 +5677,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.leancloud.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="总站：https://leancloud.app/">
@@ -5697,7 +5697,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.npmjs.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.npmjs.com/">
@@ -5717,7 +5717,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.aliyundrive.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.aliyundrive.com/">
@@ -5737,7 +5737,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.lanzou.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.lanzou.com/">
@@ -5757,7 +5757,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://pan.baidu.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://pan.baidu.com/">
@@ -5777,7 +5777,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.weiyun.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.weiyun.com/">
@@ -5797,7 +5797,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://cloud.huawei.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://cloud.huawei.com/">
@@ -5817,7 +5817,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://i.mi.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://i.mi.com/">
@@ -5837,7 +5837,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://infinityfree.net/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://infinityfree.net/">
@@ -5857,7 +5857,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.awardspace.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.awardspace.com/">
@@ -5877,7 +5877,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://vercel.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://vercel.com/">
@@ -5897,7 +5897,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://railway.app/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://railway.app/">
@@ -5917,7 +5917,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.heroku.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.heroku.com/">
@@ -5937,7 +5937,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.netlify.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.netlify.com/">
@@ -5957,7 +5957,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.koyeb.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.koyeb.com/">
@@ -5977,7 +5977,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://4everland.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://4everland.org/">
@@ -5997,7 +5997,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.mongodb.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.mongodb.com/">
@@ -6017,7 +6017,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://sm.ms/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://sm.ms/">
@@ -6037,7 +6037,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://replit.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://replit.com/">
@@ -6065,7 +6065,7 @@
                 <i class="ti ti-tag" id="开发文档"></i>开发文档
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://chat.openai.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://chat.openai.com/">
@@ -6085,7 +6085,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://valine.js.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://valine.js.org/">
@@ -6105,7 +6105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://dplayer.diygod.dev/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://dplayer.diygod.dev/">
@@ -6125,7 +6125,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://aplayer.js.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://aplayer.js.org/">
@@ -6145,7 +6145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://fancyapps.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://fancyapps.com/">
@@ -6165,7 +6165,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://gitee.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://gitee.com/">
@@ -6185,7 +6185,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.cutercounter.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.cutercounter.com/">
@@ -6205,7 +6205,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://count.getloli.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://count.getloli.com/">
@@ -6225,7 +6225,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://music.piphp.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://music.piphp.com/">
@@ -6245,7 +6245,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://typecho.org/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://typecho.org/">
@@ -6265,7 +6265,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://themes.gohugo.io/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://themes.gohugo.io/">
@@ -6285,7 +6285,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://html5up.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://html5up.net/">
@@ -6313,7 +6313,7 @@
                 <i class="ti ti-tag" id="网站管理"></i>网站管理
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.google.com/adsense","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.google.com/adsense">
@@ -6333,7 +6333,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://analytics.google.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://analytics.google.com/">
@@ -6353,7 +6353,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://ziyuan.baidu.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://ziyuan.baidu.com/">
@@ -6373,7 +6373,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://urlsec.qq.com/check.html","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://urlsec.qq.com/check.html">
@@ -6393,7 +6393,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://pagespeed.web.dev/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://pagespeed.web.dev/">
@@ -6413,7 +6413,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tongji.baidu.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tongji.baidu.com/">
@@ -6433,7 +6433,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.cloudflare.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.cloudflare.com/">
@@ -6461,7 +6461,7 @@
                 <i class="ti ti-tag" id="系统下载"></i>系统下载
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://msdn.itellyou.cn/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://msdn.itellyou.cn/">
@@ -6481,7 +6481,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://tb.rg-adguard.net/public.php","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://tb.rg-adguard.net/public.php">
@@ -6501,7 +6501,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://msdn.sjjzm.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://msdn.sjjzm.com/">
@@ -6521,7 +6521,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.newxitong.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.newxitong.com/">
@@ -6549,7 +6549,7 @@
                 <i class="ti ti-tag" id="系统美化"></i>系统美化
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://zhutix.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://zhutix.com/">
@@ -6569,7 +6569,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://fliqlo.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://fliqlo.com/">
@@ -6589,7 +6589,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://zhuti.ithome.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://zhuti.ithome.com/">
@@ -6609,7 +6609,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.gnome-look.org/browse/cat/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.gnome-look.org/browse/cat/">
@@ -6637,7 +6637,7 @@
                 <i class="ti ti-tag" id="系统工具"></i>系统工具
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.mydrivers.com/zhuanti/tianti/gpu/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.mydrivers.com/zhuanti/tianti/gpu/">
@@ -6657,7 +6657,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.mydrivers.com/zhuanti/tianti/cpu/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.mydrivers.com/zhuanti/tianti/cpu/">
@@ -6677,7 +6677,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.itsk.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.itsk.com/">
@@ -6697,7 +6697,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.yrxitong.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.yrxitong.com/">
@@ -6725,7 +6725,7 @@
                 <i class="ti ti-tag" id="学无止境"></i>学无止境
             </h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.liaoxuefeng.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.liaoxuefeng.com/">
@@ -6745,7 +6745,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://github.com/jackfrued/Python-100-Days","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://github.com/jackfrued/Python-100-Days">
@@ -6765,7 +6765,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.dxzy163.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.dxzy163.com/">
@@ -6785,7 +6785,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.51zxw.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.51zxw.net/">
@@ -6805,7 +6805,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("http://www.bathome.net/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="http://www.bathome.net/">
@@ -6825,7 +6825,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.memrise.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.memrise.com/">
@@ -6845,7 +6845,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://web.dudianji.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://web.dudianji.com/">
@@ -6865,7 +6865,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://www.oalib.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://www.oalib.com/">
@@ -6885,7 +6885,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://zh.wikihow.com/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://zh.wikihow.com/">
@@ -6911,7 +6911,7 @@
             <!-- 社区资讯 -->
             <h6 class="tag"><i class="ti ti-tag" id="社区资讯"></i>社区资讯</h6>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.52pojie.cn/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.52pojie.cn/">
@@ -6931,7 +6931,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.ithome.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.ithome.com/">
@@ -6951,7 +6951,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.landiannews.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.landiannews.com/">
@@ -6971,7 +6971,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.nruan.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.nruan.com/">
@@ -6991,7 +6991,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.leiphone.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.leiphone.com/">
@@ -7011,7 +7011,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://36kr.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://36kr.com/">
@@ -7031,7 +7031,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.digitaling.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.digitaling.com/">
@@ -7051,7 +7051,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.woshipm.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.woshipm.com/">
@@ -7071,7 +7071,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.niaogebiji.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.niaogebiji.com/">
@@ -7091,7 +7091,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.pmcaff.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.pmcaff.com/">
@@ -7111,7 +7111,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.iyunying.org/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.iyunying.org/">
@@ -7131,7 +7131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.douban.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.douban.com/">
@@ -7151,7 +7151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://sspai.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://sspai.com/">
@@ -7171,7 +7171,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.ifanr.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.ifanr.com/">
@@ -7191,7 +7191,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://www.yxdown.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://www.yxdown.com/">
@@ -7211,7 +7211,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('https://www.right.com.cn/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="https://www.right.com.cn/">
@@ -7231,7 +7231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2"
                         onclick='window.open("https://qnmlgb.tech/","_blank")' data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="https://qnmlgb.tech/">
@@ -7251,7 +7251,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
                     <div class="w-widget box2" 
                         onclick="window.open('http://news.mtime.com/', '_blank')" data-bs-toggle="tooltip" 
                         data-bs-placement="bottom" title="http://news.mtime.com/">
@@ -7276,13 +7276,13 @@
             <!--END 社区资讯 -->
             <h6 class="tag"><i id="about"></i></h6>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-12">
                     <div class="w-widget panel">
                         <!-- 关于网站 -->
                         <h6 class="tag">关于本站</h6>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-sm-12 myinfo">
+                                <div class="col-12 myinfo">
                                     <p>自用收藏书签，精挑细选，无任何广告行为</p>
                                     <p>如收藏的书签给您造成各种问题，与本站无关，请与相应站长商讨</p>
                                     <p>如果本站对您有所帮助，请随意打赏，谢谢~</p>
@@ -7330,7 +7330,7 @@
                                     </div>
                                 </div>
                                 <br />
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     <div class="poem">
                                         <p>
                                             <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
