@@ -94,8 +94,8 @@ body.night .go-up a:hover {
     background-color: rgb(123 123 123 0.6) !important;
 }
 
-@media (max-width: 767px) {
-    body.night .user-info-navbar {
+@media (max-width: 767.99px) {
+    body.night .user-info-navbar.mobile-is-visible {
       background-color: #ffffff00 !important;
       backdrop-filter: none !important;
     }
@@ -207,6 +207,10 @@ body.night #starfield{
 }
 
 /*悬浮窗*/
+.night .suspension_box {
+    backdrop-filter: none;
+}
+
 .night .suspension_ax {
     background: url(../images/sun.svg) no-repeat center center #464646a6;
     background-size: 60% 60%;
@@ -228,19 +232,19 @@ body.night #starfield{
 }
 
 .night #fk-span {
-    background: #2c2e2fa6;
-    border: 1px solid #2c2e2fa6;
+    background: #464646a6;
+    backdrop-filter: none;
     color: #dfdfdf;
     transition: 0.3s;
 }
 
 .night #fk-span-right {
-    border-left: 10px solid #2c2e2fa6;
+    border-left: 10px solid #464646a6;
     transition: 0.3s;
 }
 
 .night #fk-span-right:after {
-    border-left: 10px solid #2c2e2fa6;
+    border-left: 10px solid #464646a6;
     transition: 0.3s;
 }
 
@@ -250,7 +254,8 @@ body.night #starfield{
 }
 
 .night .iziToast {
-    background: #333 none repeat scroll 0 0 !important;
+    background: #464646a6 none repeat scroll 0 0 !important;
+    backdrop-filter: none !important;
 }
 
 .night .iziToast-title.slideIn {
