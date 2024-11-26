@@ -2,7 +2,7 @@
 <strong><h1>WayneのNav</h1></strong>
 </p>
 
-## Webstack网址导航美化版
+## 网址导航
 
 ### Demo
 
