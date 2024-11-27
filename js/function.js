@@ -69,20 +69,21 @@ eval(function (e, t, a, c, i, n) {
 );
 
 //回到顶部
-window.onscroll = function () {
-    if (document.documentElement.scrollTop + document.body.scrollTop > 100) {
-        $("#topup").css({
-            display: 'block',
-            transform: 'translateX(0px)',
-            transition: '0.3s',
-        });
+$(window).scroll(function () {
+    if ($(this).scrollTop() >= 50) {
+        $('#topup').fadeIn(200);
+        $('.sidebar-menu').addClass('bgchange');
     } else {
-        $("#topup").css({
-            transform: 'translateX(60px)',
-            transition: '0.3s',
-        });
+        $('#topup').fadeOut(200);
+        $('.sidebar-menu').removeClass('bgchange');
     }
-}
+});
+$('a[rel="go-top"]').click(function () {
+    $('body,html').animate({
+        scrollTop: 0
+    }, 500);
+return false;
+}); 
 
 //夜间模式切换
 function dark() {
@@ -216,19 +217,6 @@ var public_vars = public_vars || {};
 
 		// Setup Sidebar Menu
 		setup_sidebar_menu();
-
-		// Go to top links
-		$('body').on('click', 'a[rel="go-top"]', function(ev)
-		{
-			ev.preventDefault();
-
-			var obj = {pos: $(window).scrollTop()};
-
-			TweenLite.to(obj, .3, {pos: 0, ease:Power4.easeOut, onUpdate: function()
-			{
-				$(window).scrollTop(obj.pos);
-			}});
-		});
 
 		// User info navbar equal heights
 		if(public_vars.$userInfoMenu.length)
@@ -481,6 +469,7 @@ function ps_destroy()
 			ev.preventDefault();
 
 			public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
+			public_vars.$sidebarMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
 			ps_destroy();
 		});
 

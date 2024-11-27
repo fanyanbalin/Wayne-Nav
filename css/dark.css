@@ -94,13 +94,6 @@ body.night .go-up a:hover {
     background-color: rgb(123 123 123 0.6) !important;
 }
 
-@media (max-width: 767.99px) {
-    body.night .user-info-navbar.mobile-is-visible {
-      background-color: #ffffff00 !important;
-      backdrop-filter: none !important;
-    }
-}
-
 /* 背景宇宙星光 */
 body.night #starfield{
     display: block;
@@ -118,13 +111,6 @@ body.night #starfield{
 }
 
 /*左侧导航栏*/
-.night .sidebar-menu {
-    background: #464646a6 !important;
-}
-
-.night .sidebar-menu::before {
-    backdrop-filter: none;
-}
 
 .night .sidebar-menu .main-menu a {
     color: #d8d8d8 !important;
@@ -139,6 +125,13 @@ body.night #starfield{
 }
 
 @media (min-width: 768px) {
+    .night .sidebar-menu {
+        background: #464646a6 !important;
+    }
+    
+    .night .sidebar-menu::before {
+        backdrop-filter: none;
+    }
     .night .sidebar-menu.collapsed .main-menu > li > ul {
         background: #464646a6;
         backdrop-filter: blur(5px);

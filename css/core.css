@@ -573,7 +573,7 @@ footer.main-footer.fixed {
   border: 0;
   padding: 0;
   margin: -30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .user-info-navbar .user-info-menu {
   margin: 0;
@@ -645,7 +645,26 @@ footer.main-footer.fixed {
     height: auto;
   }
   .page-container .sidebar-menu {
-    position: relative;
+    position: fixed;
+    z-index: 99;
+    background: #ffffff00;
+  }
+  .page-container .sidebar-menu::before {
+    backdrop-filter: none;
+  }
+  .page-container .sidebar-menu.mobile-is-visible::before {
+    backdrop-filter: blur(15px);
+  }
+  .page-container .sidebar-menu.mobile-is-visible {
+    background: #ffffff38;
+  }
+  .page-container .sidebar-menu.bgchange {
+    color:initial;
+    background: #ffffff38;
+    backdrop-filter: blur(15px);
+  }
+  .page-container .sidebar-menu.bgchange.mobile-is-visible::before {
+    backdrop-filter: none;
   }
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;
@@ -738,6 +757,11 @@ footer.main-footer.fixed {
     display: block;
     background-color: #ffffff38;
     backdrop-filter: blur(15px);
+    position: fixed !important;
+    height: 50px;
+    margin-top: 27.03px;
+    width: 100%;
+    z-index: 99;
   }
   .page-container .main-content .navbar.user-info-navbar .user-info-menu > li {
     min-height: 0 !important;
@@ -952,7 +976,7 @@ nav.navbar {
 /*搜索框*/
 #search {
   max-width: 700px;
-  margin: 60px auto 0px;
+  margin: 80px auto 0px;
 }
 #search form {
   position: relative;
@@ -1137,9 +1161,6 @@ input::-webkit-input-placeholder {
   transition: all .3s ease;
 }
 @media (max-width: 767.99px) {
-  #search {
-      margin: 20px auto 0px;
-  }
   .s-type-list label {
       padding: 5px 0;
   }
