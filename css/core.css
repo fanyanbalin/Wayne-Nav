@@ -625,12 +625,18 @@ footer.main-footer.fixed {
   color: #606161;
 }
 /* 小屏显示 */
-@media (max-width: 292px) {
+@media (max-width: 370px) {
   .page-container .sidebar-menu .sidebar-menu-inner .logo-env .logo-expanded {
     display: none;
   }
   .page-container .sidebar-menu .sidebar-menu-inner .logo-env .logo-collapsed {
     display: block;
+  }
+  .w-comment {
+    margin-left: 0 !important;
+  }
+  .w-comment-entry img {
+    display: none !important;
   }
 }
 @media (max-width: 767.98px) {
