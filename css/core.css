@@ -840,19 +840,9 @@ ul {
   border: 1px solid transparent !important;
 }
 .tag {
-  color: #fff;
-  text-shadow: 
-  0 0 0.5px skyblue,
-  0 0 1px skyblue,
-  0 0 2px skyblue,
-  0 0 4px skyblue,
-  0 0 8px skyblue;
-  animation: mycolor 5s linear infinite;
-}
-@keyframes mycolor {
-  to {
-    filter: hue-rotate(360deg);
-  }
+  background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 .tag i {
   margin-right: 7px;
@@ -866,9 +856,9 @@ ul {
   -webkit-text-fill-color: transparent;  
   -webkit-background-clip: text;  
   -webkit-background-size: 200% 100%; 
-  -webkit-animation: mycolor2 4s infinite linear;  
+  -webkit-animation: mycolor 4s infinite linear;  
 }
-@keyframes mycolor2 {  
+@keyframes mycolor {  
  0% {  
   background-position: 0 0;  
  } 

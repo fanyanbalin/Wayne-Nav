@@ -1,6 +1,7 @@
 /*全局样式*/
 body.night a {
     color: #d8d8d8 !important;
+    background: none !important;
 }
 
 body.night {
@@ -16,6 +17,11 @@ body.night #body {
 
 body.night .text-gray {
     color: #f8f8f8;
+}
+
+body.night .tag {
+    color: #d8d8d8;
+    background: none;
 }
 
 body.night .w-widget {
@@ -52,20 +58,22 @@ body.night .box2:hover {
 
 .night footer.main-footer .footer-text {
     color: #a9a9a9;
+    background: none;
 }
 
 body.night .footer-text a {
-    color: #a9a9a9;
+    color: #a9a9a9 !important;
 }
 
 body.night .footer-text a:hover,
 body.night .footer-text a:focus {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 body.night #time,
 body.night #result {
     color: #a9a9a9;
+    background: none;
 }
 
 body.night .panel {
