@@ -48,7 +48,7 @@ body {
   background-position: center;
   background-size: cover;
 }
-/* @media (max-width: 767.99px) {
+/* @media (max-width: 767.98px) {
   body {
     background-image: url(https://api.dujin.org/bing/m.php); 
   }
@@ -633,7 +633,7 @@ footer.main-footer.fixed {
     display: block;
   }
 }
-@media (max-width: 767.99px) {
+@media (max-width: 767.98px) {
   .page-container {
     display: block;
     position: relative;
@@ -1160,7 +1160,7 @@ input::-webkit-input-placeholder {
   opacity: 0;
   transition: all .3s ease;
 }
-@media (max-width: 767.99px) {
+@media (max-width: 767.98px) {
   .s-type-list label {
       padding: 5px 0;
   }
@@ -1245,7 +1245,7 @@ input::-webkit-input-placeholder {
       margin-right: 12px !important;
   }
 }
-@media (max-width: 1199.99px) {
+@media (max-width: 1199.98px) {
   .weather {
     display: none;
   }
@@ -1360,7 +1360,7 @@ input::-webkit-input-placeholder {
   word-break: break-all !important;
 }
 
-@media (max-width: 575.99px) {
+@media (max-width: 575.98px) {
   .iziToast-texts {
       max-width: unset !important;
       min-width: unset !important;
