@@ -136,10 +136,10 @@ a:focus {
   display: inline-block;
 }
 .sidebar-menu .main-menu a:hover {
-  color: #f35656 !important;
+  color: #FF0500 !important;
 }
 .sidebar-menu .main-menu li.active > a {
-  color: #f35656 !important;
+  color: #FF0500 !important;
 }
 .sidebar-menu .main-menu li.has-sub > a:before {
   position: relative;
@@ -1261,11 +1261,13 @@ input::-webkit-input-placeholder {
   background: url(../images/up.png) no-repeat center center #ffffff38;
   background-size: 60% 60%;
 }
-.suspension_upward:hover {
-  border: 0;
-  background: url(../images/up-dark.png) no-repeat center center #4f7cfc;
-  background-size: 60% 60%;
-  cursor: pointer;
+@media (hover: hover) {
+  .suspension_upward:hover {
+    border: 0;
+    background: url(../images/up-dark.png) no-repeat center center #4f7cfc;
+    background-size: 60% 60%;
+    cursor: pointer;
+  }
 }
 .suspension_upward:hover .suspension_upward_cont {
   display: block;
