@@ -930,13 +930,6 @@ ul {
   --bs-tooltip-bg: #ffffff38 !important;
   backdrop-filter: blur(15px);
 }
-.radio input[type="radio"],
-.checkbox input[type="checkbox"] {
-  margin-top: 2px;
-}
-nav.navbar {
-  border: 0;
-}
 .label.label-info {
   background-color: #5a5a5a;
   color: #fff;

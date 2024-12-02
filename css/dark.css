@@ -85,23 +85,6 @@ body.night .tooltip {
     --bs-tooltip-bg: #232323a6 !important;
 }
 
-.go-up {
-    right: 10px !important;
-    position: fixed !important;
-    bottom: 20px !important;
-    height: 20px;
-}
-
-body.night .go-up a {
-    background-color: rgb(88 88 88 0.6) !important;
-    padding: 15px 20px !important;
-    border-radius: 50% !important;
-}
-
-body.night .go-up a:hover {
-    background-color: rgb(123 123 123 0.6) !important;
-}
-
 /* 背景宇宙星光 */
 body.night #starfield{
     display: block;
