@@ -370,7 +370,7 @@ a:focus {
   width: inherit;
   overflow-y: auto;
 }
-@media (min-width: 768px) and (max-height: 600px) {
+@media (min-width: 768px) and (max-height: 700px) {
   .sidebar-menu.collapsed .sidebar-menu-inner {
     position: relative !important; /* 屏幕高度不够时左侧菜单栏不固定 */
   }
@@ -450,52 +450,17 @@ a:focus {
   }
   .sidebar-menu.collapsed .main-menu > li > ul {
     position: absolute;
-    width: 250px;
+    width: 100px;
     top: 0;
     left: 100%;
-    text-align: left;
+    text-align: center;
     border-radius: 3px;
     background: #ffffff38;
     backdrop-filter: blur(15px);
+    padding: 10px 0;
   }
-  .sidebar-menu.collapsed .main-menu > li > ul > li > a {
-    padding-left: 20px;
-  }
-  .sidebar-menu.collapsed .main-menu > li > ul > li > ul > li > a {
-    padding-left: 35px;
-  }
-  .sidebar-menu.collapsed .main-menu > li > ul > li > ul > li > ul > li > a {
-    padding-left: 50px;
-  }
-  .sidebar-menu.collapsed
-    .main-menu
-    > li
-    > ul
-    > li
-    > ul
-    > li
-    > ul
-    > li
-    > ul
-    > li
-    > a {
-    padding-left: 65px;
-  }
-  .sidebar-menu.collapsed
-    .main-menu
-    > li
-    > ul
-    > li
-    > ul
-    > li
-    > ul
-    > li
-    > ul
-    > li
-    > ul
-    > li
-    > a {
-    padding-left: 80px;
+  .sidebar-menu.collapsed .main-menu > li > ul a {
+    padding: 10px 0;
   }
   .sidebar-menu.collapsed .main-menu > li > ul li.has-sub > a:before {
     margin-right: 10px;
@@ -584,9 +549,6 @@ footer.main-footer.fixed {
 .user-info-navbar .user-info-menu li a {
   line-height: 1;
 }
-.user-info-navbar .user-info-menu li a img {
-  line-height: 1;
-}
 .user-info-navbar .user-info-menu > li {
   position: relative;
   margin: 0;
@@ -615,14 +577,6 @@ footer.main-footer.fixed {
 }
 .user-info-navbar .user-info-menu > li a[data-toggle="sidebar"] {
   padding-left: 25px;
-}
-.user-info-navbar .user-info-menu > li.open {
-  border-left-color: #ddd;
-  border-right-color: #ddd;
-  z-index: 15;
-}
-.user-info-navbar .user-info-menu > li.open > a {
-  color: #606161;
 }
 /* 小屏显示 */
 @media (max-width: 370px) {
@@ -1436,7 +1390,8 @@ input::-webkit-input-placeholder {
 }
 
 @media print {
-  .sidebar-menu {
+  .sidebar-menu,
+  .suspension {
     display: none;
   }
   .main-content {
