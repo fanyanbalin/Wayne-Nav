@@ -30,10 +30,7 @@ $(window).scroll(function () {
     }
 });
 $('a[rel="go-top"]').click(function () {
-    $('body,html').animate({
-        scrollTop: 0
-    }, 500);
-return false;
+    window.scrollTo(0,0)
 }); 
 
 //夜间模式切换
@@ -460,12 +457,7 @@ $(document).ready(function() {
     }), $("a.smooth").click(function (s) {
         s.preventDefault(), public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass(
             "mobile-is-visible"), public_vars.$sidebarMenu.add(public_vars.$sidebarProfile).toggleClass(
-			'mobile-is-visible'), ps_destroy(), $("html, body").animate({
-            scrollTop: $($(this).attr("href")).offset().top - 30
-        }, {
-            duration: 500,
-            easing: "swing"
-        })
+			'mobile-is-visible'), ps_destroy(), window.scrollTo(0,$($(this).attr("href")).offset().top - 30)
     }), !1
 });
 var href = "",
