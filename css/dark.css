@@ -37,10 +37,6 @@ body.night .box2 {
     border: 1px solid #3f4142;
 }
 
-body.night .w-comment a {
-    color: #d8d8d8;
-}
-
 body.night .w-comment p {
     color: #979898 !important;
 }
@@ -102,10 +98,9 @@ body.night #starfield{
 }
 
 /*左侧导航栏*/
-
 .night .sidebar-menu .main-menu a {
     color: #d8d8d8 !important;
-  }
+}
 
 .night .sidebar-menu .main-menu a:hover {
     background: #313233a6;
@@ -119,7 +114,6 @@ body.night #starfield{
     .night .sidebar-menu {
         background: #464646a6 !important;
     }
-    
     .night .sidebar-menu::before {
         backdrop-filter: none;
     }
