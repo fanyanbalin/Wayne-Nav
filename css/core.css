@@ -598,6 +598,9 @@ footer.main-footer.fixed {
     display: block;
     position: relative;
   }
+  .page-container.mobile-is-visible {
+    overflow: hidden;
+  }
   .page-container .sidebar-menu,
   .page-container .main-content {
     display: block;
@@ -612,19 +615,16 @@ footer.main-footer.fixed {
   .page-container .sidebar-menu::before {
     backdrop-filter: none;
   }
-  .page-container .sidebar-menu.mobile-is-visible::before {
-    backdrop-filter: blur(15px);
-  }
   .page-container .sidebar-menu.mobile-is-visible {
     background: #ffffff38;
+    backdrop-filter: blur(15px);
+    height: 100%;
+    overflow-y: auto;
   }
   .page-container .sidebar-menu.bgchange {
     color:initial;
     background: #ffffff38;
     backdrop-filter: blur(15px);
-  }
-  .page-container .sidebar-menu.bgchange.mobile-is-visible::before {
-    backdrop-filter: none;
   }
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;

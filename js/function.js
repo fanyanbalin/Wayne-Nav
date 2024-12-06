@@ -151,17 +151,11 @@ var public_vars = public_vars || {};
 		public_vars.$body                 = $("body");
 		public_vars.$pageContainer        = public_vars.$body.find(".page-container");
 		public_vars.$sidebarMenu          = public_vars.$pageContainer.find('.sidebar-menu');
-		public_vars.$sidebarProfile       = public_vars.$sidebarMenu.find('.sidebar-user-info');
 		public_vars.$mainMenu             = public_vars.$sidebarMenu.find('.main-menu');
-
 		public_vars.$mainContent          = public_vars.$pageContainer.find('.main-content');
 		public_vars.$mainFooter           = public_vars.$body.find('footer.main-footer');
-
 		public_vars.$userInfoMenu         = public_vars.$body.find('nav.navbar.user-info-navbar');
-
 		public_vars.wheelPropagation      = true; // used in Main menu (sidebar)
-
-		public_vars.defaultColorsPalette = ['#68b828','#7c38bc','#0e62c7','#fcd036','#4fcdfc','#00b19d','#ff6264','#f7aa47'];
 
 		// Setup Sidebar Menu
 		setup_sidebar_menu();
@@ -416,8 +410,9 @@ function ps_destroy()
 		{
 			ev.preventDefault();
 
-			public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
-			public_vars.$sidebarMenu.add(public_vars.$sidebarProfile).toggleClass('mobile-is-visible');
+			public_vars.$mainMenu.toggleClass('mobile-is-visible');
+			public_vars.$sidebarMenu.toggleClass('mobile-is-visible');
+			public_vars.$pageContainer.toggleClass('mobile-is-visible');
 			ps_destroy();
 		});
 
@@ -455,8 +450,9 @@ $(document).ready(function() {
     }), $("#main-menu li ul li").click(function () {
         $(this).siblings("li").removeClass("active"), $(this).addClass("active")
     }), $("a.smooth").click(function (s) {
-        s.preventDefault(), public_vars.$mainMenu.add(public_vars.$sidebarProfile).toggleClass(
-            "mobile-is-visible"), public_vars.$sidebarMenu.add(public_vars.$sidebarProfile).toggleClass(
+        s.preventDefault(), public_vars.$mainMenu.toggleClass(
+            "mobile-is-visible"), public_vars.$sidebarMenu.toggleClass(
+			'mobile-is-visible'), public_vars.$pageContainer.toggleClass(
 			'mobile-is-visible'), ps_destroy(), window.scrollTo(0,$($(this).attr("href")).offset().top - 30)
     }), !1
 });
