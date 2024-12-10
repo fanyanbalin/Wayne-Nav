@@ -48,11 +48,11 @@ body {
   background-position: center;
   background-size: cover;
 }
-/* @media (max-width: 767.98px) {
+@media (max-width: 767.98px) {
   body {
     background-image: url(https://api.dujin.org/bing/m.php); 
   }
-} */
+}
 a,
 a:hover,
 a:focus {
@@ -384,22 +384,6 @@ a:focus {
   .sidebar-menu.collapsed .hidden-collapsed {
     display: none !important;
   }
-  .sidebar-menu.collapsed
-    + .main-content
-    .user-info-navbar
-    .user-info-menu
-    a[data-toggle="sidebar"] {
-    background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .sidebar-menu.collapsed
-    + .main-content
-    .user-info-navbar
-    .user-info-menu
-    a[data-toggle="sidebar"]:hover {
-    color: #FF0500;
-  }
   .sidebar-menu.collapsed + .main-content .main-footer {
     left: 80px;
   }
@@ -506,7 +490,7 @@ footer.main-footer:after {
 }
 footer.main-footer .footer-text {
   float: left;
-  background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
+  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -527,7 +511,7 @@ footer.main-footer.fixed {
 #result {
   float: right;
   padding: 0px 6px;
-  background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
+  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -563,7 +547,7 @@ footer.main-footer.fixed {
   position: relative;
   display: block;
   padding: 15px 15px 0px 10px;
-  background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
+  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
   -webkit-background-clip: text;
   color: transparent;
   z-index: 5;
@@ -800,9 +784,13 @@ ul {
   border: 1px solid transparent !important;
 }
 .tag {
-  background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
-  -webkit-background-clip: text;
-  color: transparent;
+  color: #197dff;
+  animation: mycolor 5s linear infinite;
+}
+@keyframes mycolor {
+  to {
+    filter: hue-rotate(360deg);
+  }
 }
 .tag i {
   margin-right: 7px;
@@ -816,9 +804,9 @@ ul {
   -webkit-text-fill-color: transparent;  
   -webkit-background-clip: text;  
   -webkit-background-size: 200% 100%; 
-  -webkit-animation: mycolor 4s infinite linear;  
+  -webkit-animation: mycolor2 4s infinite linear;  
 }
-@keyframes mycolor {  
+@keyframes mycolor2 {  
  0% {  
   background-position: 0 0;  
  } 
@@ -1053,7 +1041,7 @@ ul {
   padding-left: 18px;
   font-size: 1rem;
   line-height: 31px;
-  background: linear-gradient(to bottom,#f0610e, #e8771a, #fff34a);
+  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
   -webkit-background-clip: text;
   color: transparent;
 }
