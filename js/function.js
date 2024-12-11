@@ -489,6 +489,34 @@ fetch('https://api.vvhan.com/api/weather')
     })
     .catch(console.error)
 
+//获取时间
+let t = null;
+t = setTimeout(time, 1000);
+
+function time() {
+    clearTimeout(t);
+    dt = new Date();
+    let y = dt.getYear() + 1900;
+    let mm = dt.getMonth() + 1;
+    let d = dt.getDate();
+    let weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    let day = dt.getDay();
+    let h = dt.getHours();
+    let m = dt.getMinutes();
+    let s = dt.getSeconds();
+    if (h < 10) {
+        h = "0" + h;
+    }
+    if (m < 10) {
+        m = "0" + m;
+    }
+    if (s < 10) {
+        s = "0" + s;
+    }
+    $("#times").html(y + "." + mm + "." + d + "&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
+    t = setTimeout(time, 1000);
+}
+
 //脚注
 $(document).ready(function () {
     var t1 = performance.now();
