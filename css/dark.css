@@ -1,9 +1,4 @@
 /*全局样式*/
-body.night a {
-    color: #d8d8d8 !important;
-    background: none !important;
-}
-
 body.night {
     background-image: none !important;
     transition: 0.3s;
@@ -12,7 +7,6 @@ body.night {
 body.night,
 body.night #body {
     background-color: #000000 !important;
-    color: #a9a9a9 !important;
 }
 
 body.night .text-gray {
@@ -21,7 +15,6 @@ body.night .text-gray {
 
 body.night .tag {
     color: #d8d8d8;
-    background: none;
 }
 
 body.night .w-widget {
@@ -35,10 +28,6 @@ body.night .w-comment-entry img {
 
 body.night .box2 {
     border: 1px solid #3f4142;
-}
-
-body.night .w-comment p {
-    color: #979898 !important;
 }
 
 body.night .box2:hover {
@@ -57,15 +46,6 @@ body.night .box2:hover {
     background: none;
 }
 
-body.night .footer-text a {
-    color: #a9a9a9 !important;
-}
-
-body.night .footer-text a:hover,
-body.night .footer-text a:focus {
-    color: #ffffff !important;
-}
-
 body.night #time,
 body.night #result {
     color: #a9a9a9;
@@ -76,14 +56,11 @@ body.night .panel {
     background: #464646a6;
 }
 
-body.night .tooltip {
-    --bs-tooltip-color: #d8d8d8 !important;
-    --bs-tooltip-bg: #232323a6 !important;
+.night .user-info-navbar .user-info-menu > li > a {
+    color: #d8d8d8 !important;
+    background: none;
 }
 
-.night .user-info-navbar .user-info-menu > li > a {
-    color: #efefef !important;
-}
 /* 背景宇宙星光 */
 body.night #starfield{
     display: block;
@@ -101,12 +78,8 @@ body.night #starfield{
 }
 
 /*左侧导航栏*/
-.night .sidebar-menu .main-menu a {
-    color: #d8d8d8 !important;
-}
-
 .night .sidebar-menu .main-menu a:hover {
-    background: #313233a6;
+    background: #1f2020a6;
 }
 
 .night .sidebar-menu .main-menu li.active>a {
@@ -121,34 +94,17 @@ body.night #starfield{
         backdrop-filter: none;
     }
     .night .sidebar-menu.collapsed .main-menu > li > ul {
-        background: #464646a6;
-        backdrop-filter: blur(5px);
+        background: rgb(0 0 0 / 25%);
+        backdrop-filter: blur(10px);
     }
-}
-
-.night .sidebar-menu .main-menu li.has-sub > a:before {
-    color: #d8d8d8 !important;
 }
 
 /* 关于 */
 .night .label.label-info {
     background-color: #232323a6;
-    color: #d8d8d8;
-}
-
-.night .panel-body p {
-    color: #d8d8d8;
-}
-
-.night .poem {
-    color: #d8d8d8;
 }
 
 /*搜索栏*/
-.night span.dark-text {
-    color: #ddd9ce !important;
-}
-
 .night .search-type input:checked+label,
 .night .search-type input:hover+label {
     background-color: #464646a6 !important;
@@ -167,24 +123,16 @@ body.night #starfield{
 
 .night .type-text{
     color: #d8d8d8;
+    background: none;
 }
 
 .night #search button:hover {
     background: #464646a6;
-  }
-
-.night #search button i {
-    color: #b1b1b1;
 }
 
 .night #search-text {
     background-color: #464646a6;
-    color: #bdbdbd;
     backdrop-filter: none;
-}
-
-.night input::-webkit-input-placeholder {
-    color: #d8d8d8a2;
 }
 
 /*悬浮窗*/
@@ -215,7 +163,6 @@ body.night #starfield{
 .night #fk-span {
     background: #464646a6;
     backdrop-filter: none;
-    color: #dfdfdf;
     transition: 0.3s;
 }
 
@@ -239,35 +186,9 @@ body.night #starfield{
     backdrop-filter: none !important;
 }
 
-.night .iziToast-title.slideIn {
-    color: #aaa !important;
-}
-
-.night .iziToast-message.slideIn {
-    color: #aaa !important;
-}
-
-.night .iziToast-icon {
-    color: #aaa !important;
-}
-
-.night .iziToast>.iziToast-progressbar {
-    background: rgb(51, 51, 51) !important;
-}
-
-.night .iziToast>.iziToast-progressbar>div {
-    background: rgb(170, 170, 170) !important;
-}
-
-.night .iziToast>.iziToast-close {
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAJOgAACToB8GSSSgAAAAZQTFRFqKioAAAAmKDP8QAAAAJ0Uk5T/wDltzBKAAAAY0lEQVR4nDWOsQ0AIQwDHVGkZARGYTQYjVEyAiUFwg+WvjkpSnI2MjnhZCCRA0Z2dNIw2kmIuh2zrIyVZ8H2qDhpNNA6wW4XI12EX8z8Q6MWOnnHepNAKkmlV5AiFa4aKvSqfSWBUGXNeqSXAAAAAElFTkSuQmCC) no-repeat 50% 50% !important;
-    background-size: 8px !important;
-}
-
 /* 打赏 */
 .night .post-reward .reward-button {
     background-color: #e9284252;
-    color: #d8d8d8;
 }
 .night .post-reward:hover .reward-button {
     background-color: #464646a6;
