@@ -31,12 +31,6 @@ footer.main-footer .footer-inner:after {
 footer.main-footer .footer-inner:after {
   clear: both;
 }
-a {
-  outline: 0 !important;
-}
-p {
-  color: #979898;
-}
 html,
 body {
   height: 100%;
@@ -62,10 +56,21 @@ a:hover,
 a:focus {
   text-decoration: none !important;
 }
-/* a:hover,
-a:focus {
+a {
+  outline: 0 !important;
+  color: #efefef !important;
+}
+p {
+  color: #acacac !important;
+}
+a:hover,
+a:focus,
+a:active {
   color: #FF0500 !important;
-} */
+}
+ul {
+  font-size: 0.9rem;
+}
 .page-container {
   display: table;
   width: 100%;
@@ -97,7 +102,7 @@ a:focus {
   display: table-cell;
   position: relative;
   width: 200px;
-  background: #ffffff38;
+  background: rgb(0 0 0 / 25%);
   z-index: 1;
 }
 .sidebar-menu::before {
@@ -107,7 +112,7 @@ a:focus {
   bottom: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
 }
 .sidebar-menu .logo-env {
   padding: 28px 15px;
@@ -127,7 +132,6 @@ a:focus {
   list-style: none;
 }
 .sidebar-menu .main-menu a {
-  color: #000000 !important;
   display: block;
   padding: 13px 5px;
   border-bottom: 1px solid #31343700;
@@ -139,19 +143,12 @@ a:focus {
 .sidebar-menu .main-menu a > span {
   display: inline-block;
 }
-.sidebar-menu .main-menu a:hover {
-  color: #FF0500 !important;
-}
-.sidebar-menu .main-menu li.active > a {
-  color: #FF0500 !important;
-}
 .sidebar-menu .main-menu li.has-sub > a:before {
   position: relative;
   display: inline-block;
   font-family: tabler-icons;
   content: '\ea5f';
   float: right;
-  color: #000000;
   margin-left: 10px;
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -382,6 +379,7 @@ a:focus {
   font-size: 1rem;
   height: auto;
   margin-top: auto;
+  color: #efefef;
 }
 span.time-text {
   font-size: 3rem;
@@ -462,8 +460,8 @@ span.time-text {
     left: 100%;
     text-align: center;
     border-radius: 3px;
-    background: #ffffff38;
-    backdrop-filter: blur(15px);
+    background: rgb(0 0 0 / 25%);
+    backdrop-filter: blur(10px);
     padding: 10px 0;
   }
   .sidebar-menu.collapsed .main-menu > li > ul a {
@@ -520,10 +518,6 @@ footer.main-footer .footer-text {
   -webkit-background-clip: text;
   color: transparent;
 }
-.footer-text a:hover,
-.footer-text a:focus {
-  color: #FF0500;
-}
 footer.main-footer.fixed {
   position: fixed;
   left: 0px;
@@ -575,15 +569,12 @@ footer.main-footer.fixed {
   padding: 15px 15px 0px 10px;
   background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
   -webkit-background-clip: text;
-  color: transparent;
+  color: transparent !important;
   z-index: 5;
 }
 .user-info-navbar .user-info-menu > li > a i {
   font-size: 16px;
   line-height: 1;
-}
-.user-info-navbar .user-info-menu > li > a:hover {
-  color: #FF0500;
 }
 .user-info-navbar .user-info-menu > li a[data-toggle="sidebar"] {
   padding-left: 25px;
@@ -626,15 +617,15 @@ footer.main-footer.fixed {
     backdrop-filter: none;
   }
   .page-container .sidebar-menu.mobile-is-visible {
-    background: #ffffff38;
-    backdrop-filter: blur(15px);
+    background: rgb(0 0 0 / 25%);
+    backdrop-filter: blur(10px);
     height: 100%;
     overflow-y: auto;
   }
   .page-container .sidebar-menu.bgchange {
     color:initial;
-    background: #ffffff38;
-    backdrop-filter: blur(15px);
+    background: rgb(0 0 0 / 25%);
+    backdrop-filter: blur(10px);
   }
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;
@@ -665,7 +656,7 @@ footer.main-footer.fixed {
     a {
     position: relative;
     display: inline-block;
-    color: #4f7cfc;
+    color: #4f7cfc !important;
     line-height: 1;
     margin-left: 10px;
     margin-right: 20px;
@@ -680,26 +671,6 @@ footer.main-footer.fixed {
     line-height: 1;
     font-size: 18px;
     position: absolute;
-  }
-  .page-container
-    .sidebar-menu
-    .sidebar-menu-inner
-    .logo-env
-    .mobile-menu-toggle
-    a:hover,
-  .page-container
-    .sidebar-menu
-    .sidebar-menu-inner
-    .logo-env
-    .mobile-menu-toggle
-    a:active,
-  .page-container
-    .sidebar-menu
-    .sidebar-menu-inner
-    .logo-env
-    .mobile-menu-toggle
-    a:focus {
-    color: #FF0500;
   }
   .page-container .sidebar-menu .sidebar-menu-inner .main-menu {
     display: none;
@@ -725,8 +696,8 @@ footer.main-footer.fixed {
   }
   .page-container .main-content .navbar.user-info-navbar.mobile-is-visible {
     display: block;
-    background-color: #ffffff38;
-    backdrop-filter: blur(15px);
+    background-color: rgb(0 0 0 / 25%);
+    backdrop-filter: blur(10px);
     position: fixed !important;
     height: 50px;
     margin-top: 27.03px;
@@ -771,15 +742,11 @@ footer.main-footer.fixed {
 #starfield{
   display: none;
 }
-ul {
-  font-size: 0.9rem;
-}
 .box2 {
   height: 74px;
   cursor: pointer;
   border-radius: 4px;
   padding: 0px 30px 0px 30px;
-  background-color: #fff;
   border-radius: 4px;
   border: 1px solid #078bff00;
   margin: 20px 0 0 0;
@@ -802,6 +769,9 @@ ul {
 }
 .box2:hover strong {
   color: #FF0500;
+}
+.box2:hover p {
+  color: white !important;
 }
 .navbar {
   position: relative !important;
@@ -845,13 +815,9 @@ ul {
   margin-left: 50px;
   top: 50%;
 }
-.w-comment a {
-  color: #000000;
-}
 .w-comment p {
   margin-bottom: 0px;
   margin-right: 15px;
-  color: #2c2626;
 }
 .w-comment-entry img {
   float: left;
@@ -862,8 +828,8 @@ ul {
   position: relative;
   margin-bottom: 0px;
   padding: 15px;
-  background: #ffffff38;
-  backdrop-filter: blur(15px);
+  background: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(10px);
 }
 .stationmaster {
   position: relative;
@@ -893,19 +859,19 @@ ul {
   width: 40px;
 }
 .tooltip {
-  --bs-tooltip-color: #000000 !important;
-  --bs-tooltip-bg: #ffffff38 !important;
-  backdrop-filter: blur(15px);
+  --bs-tooltip-color: #efefef !important;
+  --bs-tooltip-bg: rgb(0 0 0 / 25%) !important;
+  backdrop-filter: blur(10px);
 }
 .label.label-info {
   background-color: #5a5a5a;
-  color: #fff;
+  color: #efefef;
   border-radius: 20%;
   padding: 1px 4px;
 }
 .label.label-pink {
   background-color: #ff6264;
-  color: #fff;
+  color: #efefef;
   border-radius: 20%;
 }
 .pinkfix {
@@ -920,14 +886,14 @@ ul {
   padding: 0px 6px;
 }
 /* 关于 */
-.panel-body p {
-  color: #000000;
-}
 .poem {
   text-align: center;
   font-size: 1rem;
-  color: #000000;
+  color: #efefef;
   margin: 30px 0 0 0;
+}
+.poem p {
+  color: #efefef !important;
 }
 /*搜索框*/
 #search {
@@ -944,8 +910,8 @@ ul {
   font-size: 1pc;
   border: 0;
   border-radius: 3px;
-  background-color: #ffffff38;
-  backdrop-filter: blur(15px);
+  background-color: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 #search-text:hover {
@@ -1016,8 +982,8 @@ ul {
   top: 31px;
   padding: 6px 0;
   width: 70px;
-  background: #ffffff38;
-  backdrop-filter: blur(15px);
+  background: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(10px);
   border-radius: 5px;
   box-shadow: 0 9px 20px rgba(0, 0, 0, .16);
 }
@@ -1030,12 +996,13 @@ ul {
   width: 0;
   height: 0;
   border: 10px solid transparent;
-  border-bottom-color: #ffffff38;
-  backdrop-filter: blur(15px);
+  border-bottom-color: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(10px);
 }
 .s-type-list label {
   display: block;
   font-size: 15px;
+  color: #acacac;
   text-align: center;
   font-weight: normal;
   margin-bottom: 0;
@@ -1045,16 +1012,6 @@ ul {
 }
 .s-type-list label:hover {
   background: rgba(136, 136, 136, .6);
-}
-.s-type-list .tile-lg {
-  color: #ffffff38;
-  width: 3pc;
-  height: 3pc;
-  font-size: 1rem;
-  line-height: 3rem;
-  border-radius: .3rem;
-  display: block;
-  margin: auto;
 }
 .s-type:hover .s-type-list {
   display: block;
@@ -1098,11 +1055,11 @@ ul {
 }
 .search-type input:checked+label,
 .search-type input:hover+label {
-  background-color: #ffffff38 !important;
-  backdrop-filter: blur(15px);
+  background-color: rgb(0 0 0 / 25%) !important;
+  backdrop-filter: blur(10px);
 }
 input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.699);
+  color: rgba(255, 255, 255, 0.575);
 }
 .set-check {
   margin-top: 3px;
@@ -1136,10 +1093,10 @@ input::-webkit-input-placeholder {
   position: fixed;
   right: 8px;
   top: 77%;
-  /* 垂直位置 */
-  font-size: 14px;
-  color: #243558;
   z-index: 10000;
+}
+.suspension span {
+  color: #acacac;
 }
 .suspension ul {
   margin: 0;
@@ -1157,8 +1114,8 @@ input::-webkit-input-placeholder {
 .suspension_box {
   width: 40px;
   height: 40px;
-  background: #ffffff38;
-  backdrop-filter: blur(15px);
+  background: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(10px);
   margin-bottom: 10px;
   border-radius: 4px;
   box-sizing: border-box;
@@ -1171,7 +1128,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
-  border-left: 11px solid #ffffff38;
+  border-left: 11px solid rgb(0 0 0 / 25%);
   z-index: 1010;
   transition: 0.3s;
 }
@@ -1182,7 +1139,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 10px solid #ffffff38;
+  border-left: 10px solid rgb(0 0 0 / 25%);
   z-index: 1000;
   transition: 0.3s;
 }
@@ -1218,7 +1175,7 @@ input::-webkit-input-placeholder {
 }
 /* 回顶按钮 */
 .suspension_upward {
-  background: url(../images/up.png) no-repeat center center #ffffff38;
+  background: url(../images/up.png) no-repeat center center rgb(0 0 0 / 25%);
   background-size: 60% 60%;
 }
 @media (hover: hover) {
@@ -1243,9 +1200,8 @@ input::-webkit-input-placeholder {
   height: 40px;
   line-height: 40px;
   border-radius: 3px;
-  color: black;
-  background: #ffffff38;
-  backdrop-filter: blur(15px);
+  background: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(10px);
   right: 62px;
   position: absolute;
   text-align: center;
@@ -1255,7 +1211,7 @@ input::-webkit-input-placeholder {
 }
 /* 暗色模式按钮 */
 .suspension_ax {
-  background: url(../images/sun.png) no-repeat center center #ffffff38;
+  background: url(../images/sun.png) no-repeat center center rgb(0 0 0 / 25%);
   background-size: 50% 50%;
 }
 .suspension_ax:hover {
@@ -1277,9 +1233,8 @@ input::-webkit-input-placeholder {
   width: 112px;
   height: 40px;
   line-height: 40px;
-  color: black;
-  background: #ffffff38;
-  backdrop-filter: blur(15px);
+  background: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(10px);
   border-radius: 5px;
   right: 62px;
   text-align: center;
@@ -1292,8 +1247,8 @@ input::-webkit-input-placeholder {
 }
 /*弹窗*/
 .iziToast {
-  background: #ffffff38 !important;
-  backdrop-filter: blur(15px) !important;
+  background: rgb(0 0 0 / 25%) !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 .iziToast-texts {
@@ -1364,7 +1319,7 @@ input::-webkit-input-placeholder {
   margin:0;
   padding:20px 10px;
   border-radius:4px;
-  background-color: #ffffff38;
+  background-color: rgb(0 0 0 / 25%);
 }
 .post-reward .reward-main .reward-all::before {
   position:absolute;
@@ -1382,7 +1337,7 @@ input::-webkit-input-placeholder {
   margin:0 auto;
   width:0;
   height:0;
-  border-top:13px solid #ffffff38;
+  border-top:13px solid rgb(0 0 0 / 25%);
   border-right:13px solid transparent;
   border-left:13px solid transparent;
   content:'';
