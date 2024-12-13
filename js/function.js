@@ -491,9 +491,9 @@ fetch('https://api.vvhan.com/api/weather')
 
 //获取时间
 let t = null;
-t = setTimeout(time, 1000);
+t = setTimeout(times, 1000);
 
-function time() {
+function times() {
     clearTimeout(t);
     dt = new Date();
     let y = dt.getYear() + 1900;
@@ -514,7 +514,7 @@ function time() {
         s = "0" + s;
     }
     $("#times").html(y + "." + mm + "." + d + "&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
-    t = setTimeout(time, 1000);
+    t = setTimeout(times, 1000);
 }
 
 //脚注
