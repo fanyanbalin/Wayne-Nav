@@ -26,8 +26,7 @@
 1️⃣ [韩小韩 WebAPI 接口站](https://api.vvhan.com/)     
 2️⃣ [今日诗词 API](https://www.jinrishici.com/)     
 3️⃣ [新逸Cary API](https://api.xinac.net/)    
-4️⃣ [图样跑酷](https://bing.img.run/api.html)  
-5️⃣ [缙哥哥博客 API](https://www.dujin.org/3618.html)     
+4️⃣ [缙哥哥博客 API](https://www.dujin.org/3618.html)      
 
 ![Alt](https://repobeats.axiom.co/api/embed/c2e76567810bef1e9530a1d532a6e83385658d6e.svg "Repobeats analytics image")
 
