@@ -39,7 +39,7 @@ const element = document.getElementById("pointer");
 const halfElementWidth = element.offsetWidth / 2;
 
 function setPosition(x, y) {
-    element.style.transform = `translate(${x - halfElementWidth + 1}px, ${y - halfElementWidth + 1}px)`;
+    element.style.transform = `translate(${x - halfElementWidth + 19}px, ${y - halfElementWidth + 19}px)`;
 }
 
 // 监听鼠标移动，更新指针位置

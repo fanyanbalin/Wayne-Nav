@@ -79,8 +79,8 @@ ul {
 /* 鼠标样式 */
 #pointer {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -18px;
+  left: -18px;
   width: 18px;
   height: 18px;
   transition: 0.05s linear;
