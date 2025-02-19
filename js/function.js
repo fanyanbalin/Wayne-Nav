@@ -33,6 +33,26 @@ $('a[rel="go-top"]').click(function () {
     window.scrollTo(0,0)
 }); 
 
+//鼠标样式
+const body = document.querySelector("body");
+const element = document.getElementById("pointer");
+const halfElementWidth = element.offsetWidth / 2;
+
+function setPosition(x, y) {
+    element.style.transform = `translate(${x - halfElementWidth + 1}px, ${y - halfElementWidth + 1}px)`;
+}
+
+// 监听鼠标移动，更新指针位置
+body.addEventListener("mousemove", (e) => {
+    window.requestAnimationFrame(() => setPosition(e.clientX, e.clientY));
+});
+
+//移动端除去鼠标样式
+switch (true) {
+    case navigator.userAgent.indexOf('Mobile') > 0:
+    $('#pointer').css("display", "none");
+}
+
 //夜间模式切换
 function dark() {
     document.body.classList.add('night');
