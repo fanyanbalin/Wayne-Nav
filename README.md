@@ -7,6 +7,8 @@
 ### Demo
 
 [➡️ WayneのNav](https://wnav.pages.dev)
+[➡️ WayneのNav备用1](https://n.caiys.us.kg)
+[➡️ WayneのNav备用2](https://nav.caiys.us.kg)
 
 ### 原作者项目
 
