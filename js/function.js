@@ -47,9 +47,8 @@ body.addEventListener("mousemove", (e) => {
     window.requestAnimationFrame(() => setPosition(e.clientX, e.clientY));
 });
 
-//移动端除去鼠标样式
-switch (true) {
-    case navigator.userAgent.indexOf('Mobile') > 0:
+//非桌面端去除鼠标样式
+if (/Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent)) {
     $('#pointer').css("display", "none");
 }
 
