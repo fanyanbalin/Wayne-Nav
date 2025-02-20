@@ -1,6 +1,6 @@
 /*
 	This function will be called in the event when browser breakpoint changes
- */
+*/
 
 var public_vars = public_vars || {};
 
@@ -16,7 +16,6 @@ jQuery.extend(public_vars, {
 	lastBreakpoint: null
 });
 
-
 /* Main Function that will be called each time when the screen breakpoint changes */
 function resizable(breakpoint)
 {
@@ -27,18 +26,15 @@ function resizable(breakpoint)
 	{
 	}
 
-
 	// Tablet or larger screen
 	if(ismdxl())
 	{
 	}
 
-
 	// Tablet Screen Specific Script
 	if(is('tabletscreen'))
 	{
 	}
-
 
 	// Tablet device screen
 	if(is('tabletscreen'))
@@ -47,14 +43,11 @@ function resizable(breakpoint)
 		ps_destroy();
 	}
 
-
 	// Tablet Screen Specific Script
 	if(isxs())
 	{
 	}
 }
-
-
 
 /* Functions */
 
@@ -82,13 +75,11 @@ function get_current_breakpoint()
 	return null;
 }
 
-
 // Check current screen breakpoint
 function is(screen_label)
 {
 	return get_current_breakpoint() == screen_label;
 }
-
 
 // Is xs device
 function isxs()
@@ -101,7 +92,6 @@ function ismdxl()
 {
 	return is('tabletscreen') || is('largescreen');
 }
-
 
 // Trigger Resizable Function
 function trigger_resizable()
