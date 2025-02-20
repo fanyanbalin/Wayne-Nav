@@ -703,7 +703,7 @@ footer.main-footer.fixed {
     backdrop-filter: blur(10px);
     position: fixed !important;
     height: 50px;
-    margin-top: 27.03px;
+    margin-top: 27px;
     width: 100%;
     z-index: 99;
   }
