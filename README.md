@@ -7,8 +7,8 @@
 ### Demo
 
 [➡️ WayneのNav](https://wnav.pages.dev)          
-[➡️ WayneのNav备用1](https://n.caiys.us.kg)           
-[➡️ WayneのNav备用2](https://nav.caiys.us.kg)           
+[➡️ WayneのNav备用1](https://wayne-nav.vercel.app)           
+[➡️ WayneのNav备用2](https://nav.way3301.ggff.net)           
 
 ### 原作者项目
 
