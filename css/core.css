@@ -120,7 +120,7 @@ footer.main-footer .footer-inner:after {
 .sidebar-menu {
   display: table-cell;
   position: relative;
-  width: 200px;
+  width: 160px;
   background: rgb(0 0 0 / 25%);
   z-index: 1;
 }
@@ -134,7 +134,7 @@ footer.main-footer .footer-inner:after {
   backdrop-filter: blur(10px);
 }
 .sidebar-menu .logo-env {
-  padding: 28px 15px;
+  padding: 18px 15px;
   border-bottom: 1px solid #31343700;
 }
 .sidebar-menu .logo-env .logo {
@@ -401,7 +401,7 @@ footer.main-footer .footer-inner:after {
   color: #d8d8d8;
 }
 span.time-text {
-  font-size: 3rem;
+  font-size: 2.6rem;
   letter-spacing: 2px;
   font-family: 'UnidreamLED' !important;
 }
@@ -871,14 +871,6 @@ footer.main-footer.fixed {
   border-radius: 20%;
   padding: 1px 4px;
 }
-.label.label-pink {
-  background-color: #ff6264;
-  color: #d8d8d8;
-  border-radius: 20%;
-}
-.pinkfix {
-  margin-right: 24.41px;
-}
 .pull-right {
   float: right !important;
   padding: 0px 6px;
@@ -911,7 +903,7 @@ footer.main-footer.fixed {
   height: 50px;
   font-size: 1pc;
   border: 0;
-  border-radius: 3px;
+  border-radius: 25px;
   background-color: rgb(0 0 0 / 25%);
   backdrop-filter: blur(10px);
   transition: 0.3s;
@@ -924,13 +916,13 @@ footer.main-footer.fixed {
   position: absolute;
   top: 0;
   right: 0;
-  background: rgb(64, 187, 234, 0.6);
+  background: rgb(0, 0, 0, 0);
   border: 0;
-  width: 60px;
-  height: 36px;
+  width: 56px;
+  height: 34px;
   margin: 8px;
-  line-height: 36px;
-  border-radius: 3px;
+  line-height: 34px;
+  border-radius: 0px 25px 25px 0px;
   transition: 0.3s;
   height: 100%;
   margin: auto !important;
@@ -943,8 +935,8 @@ footer.main-footer.fixed {
 #search button i {
   position: relative;
   color: #ffffffc7;
-  font-size: 26px;
-  top: 4px;
+  font-size: 22px;
+  top: 2px;
 }
 .search-group {
   display: none;

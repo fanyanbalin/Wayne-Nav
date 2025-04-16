@@ -9,6 +9,7 @@
 [➡️ WayneのNav](https://wnav.pages.dev)          
 [➡️ WayneのNav备用1](https://wayne-nav.vercel.app)           
 [➡️ WayneのNav备用2](https://nav.way3301.ggff.net)           
+[➡️ WayneのNav备用3](https://nav.ccys.dpdns.org)          
 
 ### 原作者项目
 
@@ -20,7 +21,8 @@
 ✅ 随机背景   
 ✅ 快捷搜索      
 ✅ 实时天气          
-✅ 夜间模式     
+✅ 日期时间           
+✅ 日月轮转     
 ✅ 星空背景     
 
 ### API
