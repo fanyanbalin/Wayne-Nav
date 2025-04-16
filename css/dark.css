@@ -146,6 +146,10 @@ body.night #starfield{
     backdrop-filter: none;
 }
 
+.night .dark-text {
+    color: #d8d8d8 !important;
+}
+
 /*悬浮窗*/
 .night .suspension_box {
     backdrop-filter: none;
