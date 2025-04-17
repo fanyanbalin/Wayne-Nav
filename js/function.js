@@ -579,8 +579,8 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：4.7.4
-更新日期：2025-03-17
+版 本 号：4.7.5
+更新日期：2025-04-17
 
 WayneのNav: https://wnav.pages.dev
 Github:  https://github.com/Waynenet/Wayne-Nav
