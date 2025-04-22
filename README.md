@@ -4,10 +4,9 @@
 <strong><h1>WayneのNav</h1></strong>
 </p>
 
-<p>
-    <img src="https://img.shields.io/github/v/release/Waynenet/Wayne-Nav" />
-    <img src="https://img.shields.io/badge/Copyright%20%C2%A9%202022--2025-Wayne-red">
-</p>
+[![Version](https://img.shields.io/github/v/release/Waynenet/Wayne-Nav?color=00aaff&logo=github)](https://github.com/Waynenet/Wayne-Nav/releases/latest)
+[![License](https://img.shields.io/github/license/Waynenet/Wayne-Nav?color=orange)](LICENSE)
+[![Channel](https://img.shields.io/badge/Telegram-Channel-blue?logo=telegram)](https://t.me/wayne_3301)
 
 一个纯静态导航网站，精挑细选优质书签，无任何广告行为。
 
@@ -28,15 +27,12 @@
 ✅ 实时天气          
 ✅ 日期时间           
 ✅ 日月轮转     
-✅ 星空背景     
-
-## API
-
-1️⃣ [韩小韩 WebAPI 接口站](https://api.vvhan.com/)     
-2️⃣ [今日诗词 API](https://www.jinrishici.com/)     
-3️⃣ [新逸Cary API](https://api.xinac.net/)    
-4️⃣ [缙哥哥博客 API](https://www.dujin.org/3618.html)      
+✅ 星空背景        
 
 ## 特别鸣谢
 
 - [WebStackPage](https://github.com/WebStackPage/WebStackPage.github.io)
+- [韩小韩 WebAPI 接口站](https://api.vvhan.com/)
+- [今日诗词 API](https://www.jinrishici.com/)
+- [新逸Cary API](https://api.xinac.net/)
+- [缙哥哥博客 API](https://www.dujin.org/3618.html)
