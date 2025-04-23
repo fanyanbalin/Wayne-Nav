@@ -3,33 +3,26 @@ body.night {
     background-image: none !important;
     transition: 0.3s;
 }
-
 body.night,
 body.night #body {
     background-color: #000000 !important;
 }
-
 body.night .text-gray {
     color: #f8f8f8;
 }
-
 body.night .tag {
     color: #d8d8d8;
 }
-
 body.night .w-widget {
     background: #464646a6;
     backdrop-filter: none;
 }
-
 body.night .w-comment-entry img {
     filter: brightness(95%);
 }
-
 body.night .box2 {
     border: 1px solid #3f4142;
 }
-
 body.night .box2:hover {
     box-shadow: 0 26px 40px -24px rgb(255, 255, 255);
     -webkit-box-shadow: 0 26px 40px -24px rgba(130, 130, 130, 0.13);
@@ -40,27 +33,22 @@ body.night .box2:hover {
     transition: all 0.3s ease-out;
     background-color: #232323a6 !important;
 }
-
 .night footer.main-footer .footer-text {
     color: #a9a9a9;
     background: none;
 }
-
 body.night #time,
 body.night #result {
     color: #a9a9a9;
     background: none;
 }
-
 body.night .panel {
     background: #464646a6;
 }
-
 .night .user-info-navbar .user-info-menu > li > a {
     color: #d8d8d8 !important;
     background: none;
 }
-
 /* 背景宇宙星光 */
 body.night #starfield{
     display: block;
@@ -76,16 +64,13 @@ body.night #starfield{
     pointer-events: none;
     z-index: -1;
 }
-
 /*左侧导航栏*/
 .night .sidebar-menu .main-menu a:hover {
     background: #1f2020a6;
 }
-
 .night .sidebar-menu .main-menu li.active>a {
     background: #46464600;
 }
-
 @media (min-width: 768px) {
     .night .sidebar-menu {
         background: #464646a6 !important;
@@ -98,7 +83,6 @@ body.night #starfield{
         backdrop-filter: blur(5px);
     }
 }
-
 @media (max-width: 767.98px) {
     .night .page-container
     .sidebar-menu
@@ -109,98 +93,79 @@ body.night #starfield{
         color: #d8d8d8 !important;
     }
 }
-
 /* 关于 */
 .night .label.label-info {
     background-color: #232323a6;
 }
-
 /*搜索栏*/
 .night .search-type input:checked+label,
 .night .search-type input:hover+label {
     background-color: #464646a6 !important;
 }
-
 .night .s-type-list {
     background-color: #464646ea;
     box-shadow: 0 9px 20px rgba(0, 0, 0, .7);
     backdrop-filter: none;
 }
-
 .night .s-type-list:before {
     border-bottom-color: #464646ea;
     backdrop-filter: none;
 }
-
 .night .type-text{
     color: #d8d8d8;
     background: none;
 }
-
 .night #search button:hover {
     background: #464646a6;
 }
-
 .night #search-text {
     background-color: #464646a6;
     backdrop-filter: none;
 }
-
 .night .dark-text {
     color: #d8d8d8 !important;
 }
-
 /*悬浮窗*/
 .night .suspension_box {
     backdrop-filter: none;
 }
-
 .night .suspension_ax {
     background: url(../images/sun.svg) no-repeat center center #464646a6;
     background-size: 60% 60%;
 }
-
 .night .suspension_ax:hover {
     background: url(../images/sun.svg) no-repeat center center #313233a6;
     background-size: 60% 60%;
 }
-
 .night .suspension_upward {
     background: url(../images/up-dark.png) no-repeat center center #464646a6;
     background-size: 60% 60%;
 }
-
 .night .suspension_upward:hover {
     background: url(../images/up-dark.png) no-repeat center center #313233a6;
     background-size: 60% 60%;
 }
-
 .night #fk-span {
     background: #464646a6;
     backdrop-filter: none;
     transition: 0.3s;
 }
-
 .night #fk-span-right {
     border-left: 10px solid #464646a6;
     transition: 0.3s;
 }
-
 .night #fk-span-right:after {
     border-left: 10px solid #464646a6;
     transition: 0.3s;
 }
-
 /*弹窗暗黑样式*/
 .night .iziToast:after {
     border-radius: 8px !important;
 }
-
 .night .iziToast {
     background: #464646a6 none repeat scroll 0 0 !important;
     backdrop-filter: none !important;
 }
-
 /* 打赏 */
 .night .post-reward .reward-button {
     background-color: #e9284252;

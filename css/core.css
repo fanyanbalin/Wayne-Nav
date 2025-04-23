@@ -1242,51 +1242,40 @@ input::-webkit-input-placeholder {
   background: rgb(0 0 0 / 25%) !important;
   backdrop-filter: blur(10px) !important;
 }
-
 .iziToast-texts {
   max-width: 300px !important;
   min-width: 200px !important;
 }
-
 .iziToast-body .iziToast-message {
   line-height: 18px !important;
 }
-
 .iziToast:after {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !important;
   border-radius: 8px !important;
 }
-
 .iziToast-message.slideIn {
   margin-top: 5px !important;
   color: #d8d8d8 !important;
 }
-
 .iziToast-title.slideIn {
   color: #d8d8d8 !important;
 }
-
 .iziToast-icon {
   color: #d8d8d8 !important;
 }
-
 .iziToast-message {
   word-break: break-all !important;
 }
-
 .iziToast>.iziToast-progressbar {
   background: rgb(51, 51, 51) !important;
 }
-
 .iziToast>.iziToast-progressbar>div {
   background: rgb(170, 170, 170) !important;
 }
-
 .iziToast>.iziToast-close {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAJOgAACToB8GSSSgAAAAZQTFRFqKioAAAAmKDP8QAAAAJ0Uk5T/wDltzBKAAAAY0lEQVR4nDWOsQ0AIQwDHVGkZARGYTQYjVEyAiUFwg+WvjkpSnI2MjnhZCCRA0Z2dNIw2kmIuh2zrIyVZ8H2qDhpNNA6wW4XI12EX8z8Q6MWOnnHepNAKkmlV5AiFa4aKvSqfSWBUGXNeqSXAAAAAElFTkSuQmCC) no-repeat 50% 50% !important;
   background-size: 8px !important;
 }
-
 @media (max-width: 575.98px) {
   .iziToast-texts {
       max-width: unset !important;

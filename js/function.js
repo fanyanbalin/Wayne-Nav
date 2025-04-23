@@ -1,14 +1,12 @@
 var public_vars = public_vars || {};
 
 jQuery.extend(public_vars, {
-
 	breakpoints: {
 		largescreen: 	[991, -1],
 		tabletscreen: 	[768, 990],
 		devicescreen: 	[420, 767],
 		sdevicescreen:	[0, 419]
 	},
-
 	lastBreakpoint: null
 });
 
@@ -16,29 +14,24 @@ jQuery.extend(public_vars, {
 function resizable(breakpoint)
 {
 	var sb_with_animation;
-
 	// Large Screen Specific Script
 	if(is('largescreen'))
 	{
 	}
-
 	// Tablet or larger screen
 	if(ismdxl())
 	{
 	}
-
 	// Tablet Screen Specific Script
 	if(is('tabletscreen'))
 	{
 	}
-
 	// Tablet device screen
 	if(is('tabletscreen'))
 	{
 		public_vars.$sidebarMenu.addClass('collapsed');
 		ps_destroy();
 	}
-
 	// Tablet Screen Specific Script
 	if(isxs())
 	{
@@ -46,7 +39,6 @@ function resizable(breakpoint)
 }
 
 /* Functions */
-
 // Get current breakpoint
 function get_current_breakpoint()
 {
