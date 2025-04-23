@@ -405,12 +405,10 @@ span.time-text {
   letter-spacing: 2px;
   font-family: 'UnidreamLED' !important;
 }
-@media (min-width: 768px) and (max-height: 700px) {
+@media (min-width: 768px) and (max-height: 750px) {
   .sidebar-menu.collapsed .sidebar-menu-inner {
     position: relative !important; /* 屏幕高度不够时左侧菜单栏不固定 */
   }
-}
-@media (min-width: 768px) and (max-height: 750px) {
   .timeshow {
     display: none;
   }
