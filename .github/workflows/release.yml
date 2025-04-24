@@ -7,12 +7,12 @@ on:
 
 jobs:
   release:
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -20,34 +20,26 @@ jobs:
       - name: Get previous tag
         id: previous_tag
         run: |
-          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ || echo "")
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
           echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
 
-      - name: Generate grouped changelog
+      - name: Get Changelog
         id: changelog
         run: |
-          echo "changelog<<EOF" >> $GITHUB_ENV
-          echo "## Changelog" >> $GITHUB_ENV
+          {
+            echo "changelog<<EOF"
+            echo "## Changelog"
 
-          COMMITS=$(if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
-                      git log --pretty=format:"%s (%h)"
-                    else
-                      git log --pretty=format:"%s (%h)" ${{ steps.previous_tag.outputs.previous_tag }}..HEAD
-                    fi)
+            if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
+              git log --pretty=format:"- %s (%h)"
+            else
+              git log --pretty=format:"- %s (%h)" ${{ steps.previous_tag.outputs.previous_tag }}..HEAD
+            fi
 
-          echo "$COMMITS" | grep -i '^feat:' | sed 's/^feat:/-/' | sed '1s/^/### Features\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -i '^fix:' | sed 's/^fix:/-/' | sed '1s/^/### Bug Fixes\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -i '^docs:' | sed 's/^docs:/-/' | sed '1s/^/### Documentation\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -i '^ci:' | sed 's/^ci:/-/' | sed '1s/^/### CI\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -i '^chore:' | sed 's/^chore:/-/' | sed '1s/^/### Chores\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -i '^refactor:' | sed 's/^refactor:/-/' | sed '1s/^/### Refactoring\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -i '^style:' | sed 's/^style:/-/' | sed '1s/^/### Style\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -i '^test:' | sed 's/^test:/-/' | sed '1s/^/### Tests\n/' >> $GITHUB_ENV
-          echo "$COMMITS" | grep -v -E '^(feat:|fix:|docs:|ci:|chore:|refactor:|style:|test:)' | sed '1s/^/### Others\n/' | sed 's/^/-/' >> $GITHUB_ENV
+            echo "EOF"
+          } >> "$GITHUB_ENV"
 
-          echo "EOF" >> $GITHUB_ENV
-
-      - name: Create GitHub Release
+      - name: Publish Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
