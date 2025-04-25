@@ -17,8 +17,6 @@
 ➡️ [WayneのNav备用2](https://nav.way3301.ggff.net)           
 ➡️ [WayneのNav备用3](https://nav.ccys.dpdns.org)          
 
-![Alt](https://repobeats.axiom.co/api/embed/c2e76567810bef1e9530a1d532a6e83385658d6e.svg "Repobeats analytics image")
-
 ## 功能特性
 
 ✅ 丰富资源     
@@ -32,6 +30,7 @@
 ## 特别鸣谢
 
 - [WebStackPage](https://github.com/WebStackPage/WebStackPage.github.io)
+- [ChatGPT](https://chat.openai.com/)
 - [韩小韩 WebAPI 接口站](https://api.vvhan.com/)
 - [今日诗词 API](https://www.jinrishici.com/)
 - [新逸Cary API](https://api.xinac.net/)
