@@ -573,7 +573,7 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：v5.0.3
+版 本 号：v5.0.4
 更新日期：2025-04-25
 
 WayneのNav: https://wnav.pages.dev
