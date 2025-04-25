@@ -361,9 +361,14 @@ function sidebar_menu_item_expand($li, $sub)
 	$sub.height(0);
 
 
-	TweenMax.to($sub, sm_duration, {css: {height: sub_height}, onUpdate: ps_update, onComplete: function(){
-		$sub.height('');
-	}});
+	gsap.to($sub, {
+		duration: sm_duration,
+		height: sub_height,
+		onUpdate: ps_update,
+		onComplete: () => {
+		  $sub.height('');
+		}
+	});
 
 	var interval_1 = $li.data('sub_i_1'),
 		interval_2 = $li.data('sub_i_2');
@@ -416,17 +421,18 @@ function sidebar_menu_item_collapse($li, $sub)
 	$li.removeClass('expanded').data('is-busy', true);
 	$sub_items.addClass('hidden-item');
 
-	TweenMax.to($sub, sm_duration, {css: {height: 0}, onUpdate: ps_update, onComplete: function()
-	{
-		$li.data('is-busy', false).removeClass('opened');
-
-		$sub.attr('style', '').hide();
-		$sub_items.removeClass('hidden-item');
-
-		$li.find('li.expanded ul').attr('style', '').hide().parent().removeClass('expanded');
-
-		ps_update(true);
-	}});
+	gsap.to($sub, {
+		duration: sm_duration,
+		height: 0,
+		onUpdate: ps_update,
+		onComplete: () => {
+		  $li.data('is-busy', false).removeClass('opened');
+		  $sub.attr('style', '').hide();
+		  $sub_items.removeClass('hidden-item');
+		  $li.find('li.expanded ul').attr('style', '').hide().parent().removeClass('expanded');
+		  ps_update(true);
+		}
+	});
 }
 
 function sidebar_menu_close_items_siblings($li)
@@ -542,40 +548,48 @@ function ps_destroy()
 })(jQuery, window);
 
 
-$(document).ready(function() {
-    //img lazy loaded
-    const observer = lozad();
-    observer.observe();
-    return $(document).on("click", ".has-sub", function () {
-        var e = $(this);
-        $(this).hasClass("expanded") ? $(".has-sub ul").each(function (s, i) {
-            var t = $(this);
-            e.find("ul")[0] != i && setTimeout(function () {
-                t.attr("style", "")
-            }, 300)
-        }) : setTimeout(function () {
-            e.find("ul").attr("style", "")
-        }, 300)
-    }), $(".user-info-menu .d-none").click(function () {
-        $(".sidebar-menu").hasClass("collapsed") ? $(".has-sub.expanded > ul").attr("style",
-            "") : $(".has-sub.expanded > ul").show()
-    }), $("#main-menu li ul li").click(function () {
-        $(this).siblings("li").removeClass("active"), $(this).addClass("active")
-    }), $("a.smooth").click(function (s) {
-        s.preventDefault(), public_vars.$mainMenu.toggleClass(
-            "mobile-is-visible"), public_vars.$sidebarMenu.toggleClass(
-			'mobile-is-visible'), public_vars.$pageContainer.toggleClass(
-			'mobile-is-visible'), ps_destroy(), window.scrollTo(0,$($(this).attr("href")).offset().top - 30)
-    }), !1
+$(document).ready(function () {
+	// 图片懒加载
+	lozad().observe()   
+	// 子菜单展开/收起
+	$(document).on("click", ".has-sub", function () {
+	    const $this = $(this);
+	    const isExpanded = $this.hasClass("expanded")   
+	    if (isExpanded) {
+	        $(".has-sub ul").not($this.find("ul")).removeAttr("style");
+	    } else {
+	        $this.find("ul").removeAttr("style");
+	    }
+	})   
+	// 切换侧边栏状态时处理菜单展开状态
+	$(".user-info-menu .d-none").on("click", function () {
+	    if ($(".sidebar-menu").hasClass("collapsed")) {
+	        $(".has-sub.expanded > ul").removeAttr("style");
+	    } else {
+	        $(".has-sub.expanded > ul").show();
+	    }
+	})   
+	// 二级菜单选中状态切换
+	$("#main-menu li ul li").on("click", function () {
+	    $(this).siblings().removeClass("active");
+	    $(this).addClass("active");
+	})   
+	// 平滑滚动与激活状态切换
+	$("a.smooth").on("click", function (e) {
+	    e.preventDefault()   
+	    const targetId = $(this).attr("href");
+	    const targetOffset = $(targetId).offset().top - 30   
+	    // 激活主菜单项
+	    $("#main-menu li").removeClass("active");
+	    $(this).parent("li").addClass("active")   
+	    // 移动端菜单隐藏
+	    public_vars.$mainMenu.toggleClass("mobile-is-visible");
+	    public_vars.$sidebarMenu.toggleClass("mobile-is-visible");
+	    public_vars.$pageContainer.toggleClass("mobile-is-visible")   
+	    if (typeof ps_destroy === "function") ps_destroy();
+	    window.scrollTo({ top: targetOffset, behavior: "smooth" });
+	});
 });
-var href = "",
-    pos = 0;
-$("a.smooth").click(function (s) {
-    $("#main-menu li").each(function () {
-            $(this).removeClass("active")
-        }), $(this).parent("li").addClass("active"), s.preventDefault(), href = $(this).attr("href"),
-        pos = $(href).position().top - 30
-})
 
 function imgerrorfun(){ 
     var img=event.srcElement; 
