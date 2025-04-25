@@ -409,6 +409,24 @@ function sidebar_menu_close_items_siblings($li)
 
 	$(document).ready(function()
 	{
+		// Sidebar Toggle
+		$('a[data-toggle="sidebar"]').each(function(i, el)
+		{
+			$(el).on('click', function(ev)
+			{
+				ev.preventDefault();
+
+				if(public_vars.$sidebarMenu.hasClass('collapsed'))
+				{
+					public_vars.$sidebarMenu.removeClass('collapsed');
+				}
+				else
+				{
+					public_vars.$sidebarMenu.addClass('collapsed');
+				}
+			});
+		});
+		
 		// Mobile Menu Trigger
 		$('a[data-toggle="mobile-menu"]').on('click', function(ev)
 		{
