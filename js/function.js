@@ -30,7 +30,6 @@ function resizable(breakpoint)
 	if(is('tabletscreen'))
 	{
 		public_vars.$sidebarMenu.addClass('collapsed');
-		ps_destroy();
 	}
 	// Tablet Screen Specific Script
 	if(isxs())
@@ -295,25 +294,6 @@ function setup_sidebar_menu()
 
 		$items_with_subs.filter('.active').addClass('expanded');
 
-		// On larger screens collapse sidebar when the window is tablet screen
-		if(is('largescreen') && public_vars.$sidebarMenu.hasClass('collapsed') == false)
-		{
-			$(window).on('resize', function()
-			{
-				if(is('tabletscreen'))
-				{
-					public_vars.$sidebarMenu.addClass('collapsed');
-					ps_destroy();
-				}
-				else
-				if(is('largescreen'))
-				{
-					public_vars.$sidebarMenu.removeClass('collapsed');
-					ps_init();
-				}
-			});
-		}
-
 		$items_with_subs.each(function(i, el)
 		{
 			var $li = jQuery(el),
@@ -364,7 +344,6 @@ function sidebar_menu_item_expand($li, $sub)
 	gsap.to($sub, {
 		duration: sm_duration,
 		height: sub_height,
-		onUpdate: ps_update,
 		onComplete: () => {
 		  $sub.height('');
 		}
@@ -424,13 +403,11 @@ function sidebar_menu_item_collapse($li, $sub)
 	gsap.to($sub, {
 		duration: sm_duration,
 		height: 0,
-		onUpdate: ps_update,
 		onComplete: () => {
 		  $li.data('is-busy', false).removeClass('opened');
 		  $sub.attr('style', '').hide();
 		  $sub_items.removeClass('hidden-item');
 		  $li.find('li.expanded ul').attr('style', '').hide().parent().removeClass('expanded');
-		  ps_update(true);
 		}
 	});
 }
@@ -446,83 +423,12 @@ function sidebar_menu_close_items_siblings($li)
 	});
 }
 
-// Perfect scroll bar functions by Arlind Nushi
-function ps_update(destroy_init)
-{
-	if(isxs())
-		return;
-
-	if(jQuery.isFunction(jQuery.fn.perfectScrollbar))
-	{
-		if(public_vars.$sidebarMenu.hasClass('collapsed'))
-		{
-			return;
-		}
-
-		public_vars.$sidebarMenu.find('.sidebar-menu-inner').perfectScrollbar('update');
-
-		if(destroy_init)
-		{
-			ps_destroy();
-			ps_init();
-		}
-	}
-}
-
-function ps_init()
-{
-	if(isxs())
-		return;
-
-	if(jQuery.isFunction(jQuery.fn.perfectScrollbar))
-	{
-		if(public_vars.$sidebarMenu.hasClass('collapsed') || ! public_vars.$sidebarMenu.hasClass('fixed'))
-		{
-			return;
-		}
-
-		public_vars.$sidebarMenu.find('.sidebar-menu-inner').perfectScrollbar({
-			wheelSpeed: 1,
-			wheelPropagation: public_vars.wheelPropagation
-		});
-	}
-}
-
-function ps_destroy()
-{
-	if(jQuery.isFunction(jQuery.fn.perfectScrollbar))
-	{
-		public_vars.$sidebarMenu.find('.sidebar-menu-inner').perfectScrollbar('destroy');
-	}
-}
-
 ;(function($, window, undefined)
 {
 	"use strict";
 
 	$(document).ready(function()
 	{
-		// Sidebar Toggle
-		$('a[data-toggle="sidebar"]').each(function(i, el)
-		{
-			$(el).on('click', function(ev)
-			{
-				ev.preventDefault();
-
-
-				if(public_vars.$sidebarMenu.hasClass('collapsed'))
-				{
-					public_vars.$sidebarMenu.removeClass('collapsed');
-					ps_init();
-				}
-				else
-				{
-					public_vars.$sidebarMenu.addClass('collapsed');
-					ps_destroy();
-				}
-			});
-		});
-
 		// Mobile Menu Trigger
 		$('a[data-toggle="mobile-menu"]').on('click', function(ev)
 		{
@@ -531,7 +437,6 @@ function ps_destroy()
 			public_vars.$mainMenu.toggleClass('mobile-is-visible');
 			public_vars.$sidebarMenu.toggleClass('mobile-is-visible');
 			public_vars.$pageContainer.toggleClass('mobile-is-visible');
-			ps_destroy();
 		});
 
         // Mobile User Info Menu Trigger
@@ -586,7 +491,6 @@ $(document).ready(function () {
 	    public_vars.$mainMenu.toggleClass("mobile-is-visible");
 	    public_vars.$sidebarMenu.toggleClass("mobile-is-visible");
 	    public_vars.$pageContainer.toggleClass("mobile-is-visible")   
-	    if (typeof ps_destroy === "function") ps_destroy();
 	    window.scrollTo({ top: targetOffset, behavior: "smooth" });
 	});
 });
@@ -597,10 +501,13 @@ function imgerrorfun(){
     img.onerror=null; 
 } 
 
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+// 获取所有带有 data-bs-toggle="tooltip" 的元素，转换为数组
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+
+// 遍历这些元素，为每个元素创建一个 Bootstrap Tooltip 实例
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-})
+  return new bootstrap.Tooltip(tooltipTriggerEl);
+});
 
 //获取天气
 fetch('https://api.vvhan.com/api/weather')
