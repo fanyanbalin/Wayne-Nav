@@ -1,94 +1,3 @@
-var public_vars = public_vars || {};
-
-jQuery.extend(public_vars, {
-	breakpoints: {
-		largescreen: 	[991, -1],
-		tabletscreen: 	[768, 990],
-		devicescreen: 	[420, 767],
-		sdevicescreen:	[0, 419]
-	},
-	lastBreakpoint: null
-});
-
-/* Main Function that will be called each time when the screen breakpoint changes */
-function resizable(breakpoint)
-{
-	// Large Screen Specific Script
-	if(is('largescreen'))
-	{
-	}
-	// Tablet or larger screen
-	if(ismdxl())
-	{
-	}
-	// Tablet Screen Specific Script
-	if(is('tabletscreen'))
-	{
-		public_vars.$sidebarMenu.addClass('collapsed');
-	}
-	// Tablet device screen
-	if(is('devicescreen'))
-	{
-	}
-	// Tablet Screen Specific Script
-	if(isxs())
-	{
-	}
-}
-
-/* Functions */
-// Get current breakpoint
-function get_current_breakpoint()
-{
-	var width = jQuery(window).width(),
-		breakpoints = public_vars.breakpoints;
-
-	for(var breakpoint_label in breakpoints)
-	{
-		var bp_arr = breakpoints[breakpoint_label],
-			min = bp_arr[0],
-			max = bp_arr[1];
-
-		if(max == -1)
-			max = width;
-
-		if(min <= width && max >= width)
-		{
-			return breakpoint_label;
-		}
-	}
-
-	return null;
-}
-
-// Check current screen breakpoint
-function is(screen_label)
-{
-	return get_current_breakpoint() == screen_label;
-}
-
-// Is xs device
-function isxs()
-{
-	return is('devicescreen') || is('sdevicescreen');
-}
-
-// Is md or xl
-function ismdxl()
-{
-	return is('tabletscreen') || is('largescreen');
-}
-
-// Trigger Resizable Function
-function trigger_resizable()
-{
-	if(public_vars.lastBreakpoint != get_current_breakpoint())
-	{
-		public_vars.lastBreakpoint = get_current_breakpoint();
-		resizable(public_vars.lastBreakpoint);
-	}
-}
-
 //搜索框
 eval(function (e, t, a, c, i, n) {
     if (i = function (e) {
@@ -506,6 +415,82 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl);
 });
+
+// 全局变量定义
+var public_vars = public_vars || {};
+
+jQuery.extend(public_vars, {
+    breakpoints: {
+        largescreen: [991, -1],
+        tabletscreen: [768, 990],
+        devicescreen: [420, 767],
+        sdevicescreen: [0, 419]
+    },
+    lastBreakpoint: null
+});
+
+// 主响应函数：根据断点执行逻辑
+function resizable(breakpoint) {
+    switch (breakpoint) {
+        case 'largescreen':
+            // 可放大屏专用逻辑
+			public_vars.$sidebarMenu.removeClass('collapsed');
+            break;
+        case 'tabletscreen':
+            // 平板屏幕时折叠菜单
+            public_vars.$sidebarMenu.addClass('collapsed');
+            break;
+        case 'devicescreen':
+        case 'sdevicescreen':
+            // 移动端逻辑
+            break;
+    }
+}
+
+// 获取当前断点
+function get_current_breakpoint() {
+    const width = jQuery(window).width();
+    const breakpoints = public_vars.breakpoints;
+
+    for (const label in breakpoints) {
+        let [min, max] = breakpoints[label];
+        if (max === -1) max = Infinity;
+
+        if (width >= min && width <= max) {
+            return label;
+        }
+    }
+
+    return null;
+}
+
+// 判断是否处于某个断点
+function is(screen_label) {
+    return get_current_breakpoint() === screen_label;
+}
+
+// 是否是超小屏（手机类）
+function isxs() {
+    return is('devicescreen') || is('sdevicescreen');
+}
+
+// 是否是平板及以上
+function ismdxl() {
+    return is('tabletscreen') || is('largescreen');
+}
+
+// 响应断点变化触发函数
+function trigger_resizable() {
+    const currentBreakpoint = get_current_breakpoint();
+
+    if (public_vars.lastBreakpoint !== currentBreakpoint) {
+        public_vars.lastBreakpoint = currentBreakpoint;
+        resizable(currentBreakpoint);
+    }
+}
+
+// 添加窗口尺寸变化监听
+jQuery(window).on('resize orientationchange', trigger_resizable);
 
 //获取天气
 fetch('https://api.vvhan.com/api/weather')
