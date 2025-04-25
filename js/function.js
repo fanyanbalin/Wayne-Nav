@@ -352,11 +352,8 @@ function sidebar_menu_close_items_siblings($li)
 			ev.preventDefault();
 
 			public_vars.$userInfoMenu.toggleClass('mobile-is-visible');
-
 		});
-
 	});
-
 })(jQuery, window);
 
 
@@ -576,7 +573,7 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：v5.0.2
+版 本 号：v5.0.3
 更新日期：2025-04-25
 
 WayneのNav: https://wnav.pages.dev
