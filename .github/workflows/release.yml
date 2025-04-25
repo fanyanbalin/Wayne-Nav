@@ -23,23 +23,21 @@ jobs:
           PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
           echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
 
-      - name: Get Changelog
+      - name: Generate Changelog
         id: changelog
         run: |
-          {
-            echo "changelog<<EOF"
-            echo "## Changelog"
+          echo "changelog<<EOF" >> $GITHUB_ENV
+          echo "## Changelog" >> $GITHUB_ENV
 
-            if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
-              git log --pretty=format:"- %s (%h)"
-            else
-              git log --pretty=format:"- %s (%h)" ${{ steps.previous_tag.outputs.previous_tag }}..HEAD
-            fi
+          if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
+            git log --pretty=format:"- %s (%h)"
+          else
+            git log --pretty=format:"- %s (%h)" ${{ steps.previous_tag.outputs.previous_tag }}..HEAD
+          fi >> $GITHUB_ENV
 
-            echo EOF
-          } >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
-      - name: Publish Release
+      - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
