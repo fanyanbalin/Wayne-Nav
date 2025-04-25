@@ -13,7 +13,6 @@ jQuery.extend(public_vars, {
 /* Main Function that will be called each time when the screen breakpoint changes */
 function resizable(breakpoint)
 {
-	var sb_with_animation;
 	// Large Screen Specific Script
 	if(is('largescreen'))
 	{
@@ -25,11 +24,11 @@ function resizable(breakpoint)
 	// Tablet Screen Specific Script
 	if(is('tabletscreen'))
 	{
+		public_vars.$sidebarMenu.addClass('collapsed');
 	}
 	// Tablet device screen
-	if(is('tabletscreen'))
+	if(is('devicescreen'))
 	{
-		public_vars.$sidebarMenu.addClass('collapsed');
 	}
 	// Tablet Screen Specific Script
 	if(isxs())
@@ -44,9 +43,9 @@ function get_current_breakpoint()
 	var width = jQuery(window).width(),
 		breakpoints = public_vars.breakpoints;
 
-	for(var breakpont_label in breakpoints)
+	for(var breakpoint_label in breakpoints)
 	{
-		var bp_arr = breakpoints[breakpont_label],
+		var bp_arr = breakpoints[breakpoint_label],
 			min = bp_arr[0],
 			max = bp_arr[1];
 
@@ -55,7 +54,7 @@ function get_current_breakpoint()
 
 		if(min <= width && max >= width)
 		{
-			return breakpont_label;
+			return breakpoint_label;
 		}
 	}
 
@@ -320,74 +319,55 @@ function setup_sidebar_menu()
 	}
 }
 
-function sidebar_menu_item_expand($li, $sub)
-{
-	if($li.data('is-busy') || ($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed')))
-		return;
+function sidebar_menu_item_expand($li, $sub) {
+	// 若正在动画中或菜单已折叠，直接返回
+	if ($li.data('is-busy') || ($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed'))) {
+	   return;
+	}
 
 	$li.addClass('expanded').data('is-busy', true);
 	$sub.show();
 
-	var $sub_items 	  = $sub.children(),
-		sub_height	= $sub.outerHeight(),
+	const $sub_items = $sub.children();
+	const sub_height = $sub.outerHeight();
 
-		win_y			 = jQuery(window).height(),
-		total_height	  = $li.outerHeight(),
-		current_y		 = public_vars.$sidebarMenu.scrollTop(),
-		item_max_y		= $li.position().top + current_y,
-		fit_to_viewpport  = public_vars.$sidebarMenu.hasClass('fit-in-viewport');
+	const current_scroll = public_vars.$sidebarMenu.scrollTop();
+	const li_top = $li.position().top + current_scroll;
 
+	// 初始化子项状态
 	$sub_items.addClass('is-hidden');
-	$sub.height(0);
+	$sub.height(0); // 开始时高度为 0
 
-
+	// 使用 GSAP 执行动画
 	gsap.to($sub, {
-		duration: sm_duration,
-		height: sub_height,
-		onComplete: () => {
-		  $sub.height('');
-		}
+	    duration: sm_duration,
+	    height: sub_height,
+	    onComplete: () => $sub.height('') // 动画结束后清除内联高度
 	});
 
-	var interval_1 = $li.data('sub_i_1'),
-		interval_2 = $li.data('sub_i_2');
+	// 清除旧定时器
+	clearTimeout($li.data('sub_i_1'));
+	clearTimeout($li.data('sub_i_2'));
 
-	window.clearTimeout(interval_1);
+	// 设置新的定时器，稍后执行子项显示
+	const interval_1 = setTimeout(() => {
+	    $sub_items.each((i, el) => jQuery(el).addClass('is-shown'));
 
-	interval_1 = setTimeout(function()
-	{
-		$sub_items.each(function(i, el)
-		{
-			var $sub_item = jQuery(el);
+	    // 动画完成时间计算（兼容 transition 的 delay/duration）
+	    const t_duration = parseFloat($sub_items.eq(0).css('transition-duration')) || 0;
+	    const t_delay = parseFloat($sub_items.last().css('transition-delay')) || 0;
+	    const finish_on = (t_duration + t_delay) * 1000 || sm_transition_delay * $sub_items.length;
 
-			$sub_item.addClass('is-shown');
-		});
+	    // 设置清除临时类的延时任务
+	    const interval_2 = setTimeout(() => {
+	        $sub_items.removeClass('is-hidden is-shown');
+	    }, finish_on);
 
-		var finish_on = sm_transition_delay * $sub_items.length,
-			t_duration = parseFloat($sub_items.eq(0).css('transition-duration')),
-			t_delay = parseFloat($sub_items.last().css('transition-delay'));
-
-		if(t_duration && t_delay)
-		{
-			finish_on = (t_duration + t_delay) * 1000;
-		}
-
-		// In the end
-		window.clearTimeout(interval_2);
-
-		interval_2 = setTimeout(function()
-		{
-			$sub_items.removeClass('is-hidden is-shown');
-
-		}, finish_on);
-
-
-		$li.data('is-busy', false);
-
+	    $li.data('sub_i_2', interval_2);
+	    $li.data('is-busy', false);
 	}, 0);
 
-	$li.data('sub_i_1', interval_1),
-	$li.data('sub_i_2', interval_2);
+	$li.data('sub_i_1', interval_1);
 }
 
 function sidebar_menu_item_collapse($li, $sub)
