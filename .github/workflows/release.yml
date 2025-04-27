@@ -26,14 +26,15 @@ jobs:
       - name: Generate grouped changelog
         id: changelog
         run: |
-          # 获取提交记录
-          COMMITS=$(if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
-                        git log --pretty=format:"%s (%h)"
-                      else
-                        git log --pretty=format:"%s (%h)" ${{ steps.previous_tag.outputs.previous_tag }}..HEAD
-                      fi)
+          echo "changelog<<EOF" >> $GITHUB_ENV
 
-          # 定义提交类型和对应标题（保留表情符号）
+          COMMITS=$(if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
+                      git log --pretty=format:"%s (%h)"
+                    else
+                      git log --pretty=format:"%s (%h)" ${{ steps.previous_tag.outputs.previous_tag }}..HEAD
+                    fi)
+
+          # 定义提交类型和对应标题
           declare -A TYPE_TITLE=(
             [feat]="### 🚀 新增功能"
             [fix]="### 🐞 Bug修复"
@@ -45,30 +46,25 @@ jobs:
             [build]="### 🛠 依赖变更"
             [perf]="### ⚙ 性能优化"
           )
-
-          # 创建 changelog 文件
-          changelog_file="changelog.md"
-          echo "" > $changelog_file
-
-          # 遍历所有类型
+          
           for type in "${!TYPE_TITLE[@]}"; do
             COMMITS_BY_TYPE=$(echo "$COMMITS" | grep -i "^[^a-zA-Z0-9]*$type:")
-
+            
             if [ -n "$COMMITS_BY_TYPE" ]; then
-              echo -e "${TYPE_TITLE[$type]}" >> $changelog_file
-              echo "$COMMITS_BY_TYPE" | sed "s/^[^a-zA-Z0-9]*$type:/- /i" >> $changelog_file
+              echo -e "${TYPE_TITLE[$type]}" >> $GITHUB_ENV
+              echo "$COMMITS_BY_TYPE" | sed "s/^[^a-zA-Z0-9]*$type:/- /i" >> $GITHUB_ENV
             fi
           done
-
+          
           # 处理未分类的提交
-          OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|ci|chore|refactor|style|build|perf):')
+          OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|ci|chore|refactor|style|build):')
+          
           if [ -n "$OTHER_COMMITS" ]; then
-            echo -e "### 🎨 其他修改" >> $changelog_file
-            echo "$OTHER_COMMITS" | sed 's/^/- /' >> $changelog_file
+            echo -e "### 🎨 其他修改" >> $GITHUB_ENV
+            echo "$OTHER_COMMITS" | sed 's/^/- /' >> $GITHUB_ENV
           fi
 
-          # 保存 changelog 文件
-          echo "changelog file created at $changelog_file"
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
