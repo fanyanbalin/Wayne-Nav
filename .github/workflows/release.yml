@@ -23,6 +23,10 @@ jobs:
           PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ || echo "")
           echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
 
+      - name: Clear changelog
+        run: |
+          echo "" >> $GITHUB_ENV
+
       - name: Generate grouped changelog
         id: changelog
         run: |
