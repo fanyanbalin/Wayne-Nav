@@ -158,245 +158,226 @@ function stars() {
 stars()
 
 //侧边栏菜单键
+// ========== 定义公共变量 ==========
 var public_vars = public_vars || {};
 
-;(function($, window, undefined){
+// ========== 页面初始化 ==========
+;(function($, window, undefined) {
+    "use strict";
 
-	"use strict";
+    $(document).ready(function() {
+        // 缓存常用元素
+        public_vars.$body           = $("body");
+        public_vars.$pageContainer  = public_vars.$body.find(".page-container");
+        public_vars.$sidebarMenu    = public_vars.$pageContainer.find('.sidebar-menu');
+        public_vars.$mainMenu       = public_vars.$sidebarMenu.find('.main-menu');
+        public_vars.$mainContent    = public_vars.$pageContainer.find('.main-content');
+        public_vars.$mainFooter     = public_vars.$body.find('footer.main-footer');
+        public_vars.$userInfoMenu   = public_vars.$body.find('nav.navbar.user-info-navbar');
+        public_vars.wheelPropagation = true; // 主菜单滚轮传播开关
 
-	$(document).ready(function()
-	{
-		// Main Vars
-		public_vars.$body                 = $("body");
-		public_vars.$pageContainer        = public_vars.$body.find(".page-container");
-		public_vars.$sidebarMenu          = public_vars.$pageContainer.find('.sidebar-menu');
-		public_vars.$mainMenu             = public_vars.$sidebarMenu.find('.main-menu');
-		public_vars.$mainContent          = public_vars.$pageContainer.find('.main-content');
-		public_vars.$mainFooter           = public_vars.$body.find('footer.main-footer');
-		public_vars.$userInfoMenu         = public_vars.$body.find('nav.navbar.user-info-navbar');
-		public_vars.wheelPropagation      = true; // used in Main menu (sidebar)
+        // 初始化侧边栏菜单
+        setup_sidebar_menu();
 
-		// Setup Sidebar Menu
-		setup_sidebar_menu();
+        // 设置用户信息菜单各项高度一致
+        if (public_vars.$userInfoMenu.length) {
+            public_vars.$userInfoMenu.find('.user-info-menu > li').css({
+                minHeight: public_vars.$userInfoMenu.outerHeight() - 1
+            });
+        }
+    });
 
-		// User info navbar equal heights
-		if(public_vars.$userInfoMenu.length)
-		{
-			public_vars.$userInfoMenu.find('.user-info-menu > li').css({
-				minHeight: public_vars.$userInfoMenu.outerHeight() - 1
-			});
-		}
-	});
 })(jQuery, window);
 
-// Sideber Menu Setup function
-var sm_duration = .2,
-	sm_transition_delay = 150;
+// ========== 侧边栏菜单初始化 ==========
+var sm_duration = 0.2, // 子菜单动画时长（秒）
+    sm_transition_delay = 150; // 子菜单动画延迟（毫秒）
 
-function setup_sidebar_menu()
-{
-	if(public_vars.$sidebarMenu.length)
-	{
-		var $items_with_subs = public_vars.$sidebarMenu.find('li:has(> ul)'),
-			toggle_others = public_vars.$sidebarMenu.hasClass('toggle-others');
+function setup_sidebar_menu() {
+    if (!public_vars.$sidebarMenu.length) return;
 
-		$items_with_subs.filter('.active').addClass('expanded');
+    var $items_with_subs = public_vars.$sidebarMenu.find('li:has(> ul)'),
+        toggle_others = public_vars.$sidebarMenu.hasClass('toggle-others');
 
-		$items_with_subs.each(function(i, el)
-		{
-			var $li = jQuery(el),
-				$a = $li.children('a'),
-				$sub = $li.children('ul');
+    // 默认展开 active 菜单
+    $items_with_subs.filter('.active').addClass('expanded');
 
-			$li.addClass('has-sub');
+    $items_with_subs.each(function() {
+        var $li = $(this),
+            $a = $li.children('a'),
+            $sub = $li.children('ul');
 
-			$a.on('click', function(ev)
-			{
-				ev.preventDefault();
+        $li.addClass('has-sub');
 
-				if(toggle_others)
-				{
-					sidebar_menu_close_items_siblings($li);
-				}
+        $a.on('click', function(e) {
+            e.preventDefault();
 
-				if($li.hasClass('expanded') || $li.hasClass('opened'))
-					sidebar_menu_item_collapse($li, $sub);
-				else
-					sidebar_menu_item_expand($li, $sub);
-			});
-		});
-	}
+            if (toggle_others) {
+                sidebar_menu_close_items_siblings($li);
+            }
+
+            if ($li.hasClass('expanded') || $li.hasClass('opened')) {
+                sidebar_menu_item_collapse($li, $sub);
+            } else {
+                sidebar_menu_item_expand($li, $sub);
+            }
+        });
+    });
 }
 
+// ========== 展开子菜单 ==========
 function sidebar_menu_item_expand($li, $sub) {
-	// 若正在动画中或菜单已折叠，直接返回
-	if ($li.data('is-busy') || ($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed'))) {
-	   return;
-	}
+    if ($li.data('is-busy') || ($li.parent('.main-menu').length && public_vars.$sidebarMenu.hasClass('collapsed'))) {
+        return;
+    }
 
-	$li.addClass('expanded').data('is-busy', true);
-	$sub.show();
+    $li.addClass('expanded').data('is-busy', true);
+    $sub.show();
 
-	const $sub_items = $sub.children();
-	const sub_height = $sub.outerHeight();
+    var $sub_items = $sub.children(),
+        sub_height = $sub.outerHeight();
 
-	const current_scroll = public_vars.$sidebarMenu.scrollTop();
-	const li_top = $li.position().top + current_scroll;
+    // 初始化子项动画状态
+    $sub_items.addClass('is-hidden');
+    $sub.height(0);
 
-	// 初始化子项状态
-	$sub_items.addClass('is-hidden');
-	$sub.height(0); // 开始时高度为 0
+    // 使用 GSAP 执行动画展开
+    gsap.to($sub, {
+        duration: sm_duration,
+        height: sub_height,
+        onComplete: () => $sub.height('')
+    });
 
-	// 使用 GSAP 执行动画
-	gsap.to($sub, {
-	    duration: sm_duration,
-	    height: sub_height,
-	    onComplete: () => $sub.height('') // 动画结束后清除内联高度
-	});
+    // 清除之前定时器
+    clearTimeout($li.data('sub_i_1'));
+    clearTimeout($li.data('sub_i_2'));
 
-	// 清除旧定时器
-	clearTimeout($li.data('sub_i_1'));
-	clearTimeout($li.data('sub_i_2'));
+    // 设置新定时器
+    var interval_1 = setTimeout(() => {
+        $sub_items.each((i, el) => $(el).addClass('is-shown'));
 
-	// 设置新的定时器，稍后执行子项显示
-	const interval_1 = setTimeout(() => {
-	    $sub_items.each((i, el) => jQuery(el).addClass('is-shown'));
+        // 计算 transition 结束时间
+        var t_duration = parseFloat($sub_items.eq(0).css('transition-duration')) || 0,
+            t_delay = parseFloat($sub_items.last().css('transition-delay')) || 0,
+            finish_time = (t_duration + t_delay) * 1000 || sm_transition_delay * $sub_items.length;
 
-	    // 动画完成时间计算（兼容 transition 的 delay/duration）
-	    const t_duration = parseFloat($sub_items.eq(0).css('transition-duration')) || 0;
-	    const t_delay = parseFloat($sub_items.last().css('transition-delay')) || 0;
-	    const finish_on = (t_duration + t_delay) * 1000 || sm_transition_delay * $sub_items.length;
+        var interval_2 = setTimeout(() => {
+            $sub_items.removeClass('is-hidden is-shown');
+        }, finish_time);
 
-	    // 设置清除临时类的延时任务
-	    const interval_2 = setTimeout(() => {
-	        $sub_items.removeClass('is-hidden is-shown');
-	    }, finish_on);
+        $li.data('sub_i_2', interval_2);
+        $li.data('is-busy', false);
+    }, 0);
 
-	    $li.data('sub_i_2', interval_2);
-	    $li.data('is-busy', false);
-	}, 0);
-
-	$li.data('sub_i_1', interval_1);
+    $li.data('sub_i_1', interval_1);
 }
 
-function sidebar_menu_item_collapse($li, $sub)
-{
-	if($li.data('is-busy'))
-		return;
+// ========== 收起子菜单 ==========
+function sidebar_menu_item_collapse($li, $sub) {
+    if ($li.data('is-busy')) return;
 
-	var $sub_items = $sub.children();
+    var $sub_items = $sub.children();
 
-	$li.removeClass('expanded').data('is-busy', true);
-	$sub_items.addClass('hidden-item');
+    $li.removeClass('expanded').data('is-busy', true);
+    $sub_items.addClass('hidden-item');
 
-	gsap.to($sub, {
-		duration: sm_duration,
-		height: 0,
-		onComplete: () => {
-		  $li.data('is-busy', false).removeClass('opened');
-		  $sub.attr('style', '').hide();
-		  $sub_items.removeClass('hidden-item');
-		  $li.find('li.expanded ul').attr('style', '').hide().parent().removeClass('expanded');
-		}
-	});
+    gsap.to($sub, {
+        duration: sm_duration,
+        height: 0,
+        onComplete: () => {
+            $li.data('is-busy', false).removeClass('opened');
+            $sub.attr('style', '').hide();
+            $sub_items.removeClass('hidden-item');
+            $li.find('li.expanded ul').attr('style', '').hide().parent().removeClass('expanded');
+        }
+    });
 }
 
-function sidebar_menu_close_items_siblings($li)
-{
-	$li.siblings().not($li).filter('.expanded, .opened').each(function(i, el)
-	{
-		var $_li = jQuery(el),
-			$_sub = $_li.children('ul');
+// ========== 关闭同级菜单 ==========
+function sidebar_menu_close_items_siblings($li) {
+    $li.siblings('.expanded, .opened').each(function() {
+        var $_li = $(this),
+            $_sub = $_li.children('ul');
 
-		sidebar_menu_item_collapse($_li, $_sub);
-	});
+        sidebar_menu_item_collapse($_li, $_sub);
+    });
 }
 
-;(function($, window, undefined)
-{
-	"use strict";
+// ========== 侧边栏、移动端菜单开关 ==========
+;(function($, window, undefined) {
+    "use strict";
 
-	$(document).ready(function()
-	{
-		// Sidebar Toggle
-		$('a[data-toggle="sidebar"]').each(function(i, el)
-		{
-			$(el).on('click', function(ev)
-			{
-				ev.preventDefault();
+    $(document).ready(function() {
+        // 侧边栏折叠按钮
+        $('a[data-toggle="sidebar"]').on('click', function(e) {
+            e.preventDefault();
+            public_vars.$sidebarMenu.toggleClass('collapsed');
+        });
 
-				if(public_vars.$sidebarMenu.hasClass('collapsed'))
-				{
-					public_vars.$sidebarMenu.removeClass('collapsed');
-				}
-				else
-				{
-					public_vars.$sidebarMenu.addClass('collapsed');
-				}
-			});
-		});
-		
-		// Mobile Menu Trigger
-		$('a[data-toggle="mobile-menu"]').on('click', function(ev)
-		{
-			ev.preventDefault();
+        // 移动端主菜单按钮
+        $('a[data-toggle="mobile-menu"]').on('click', function(e) {
+            e.preventDefault();
+            public_vars.$mainMenu.toggleClass('mobile-is-visible');
+            public_vars.$sidebarMenu.toggleClass('mobile-is-visible');
+            public_vars.$pageContainer.toggleClass('mobile-is-visible');
+        });
 
-			public_vars.$mainMenu.toggleClass('mobile-is-visible');
-			public_vars.$sidebarMenu.toggleClass('mobile-is-visible');
-			public_vars.$pageContainer.toggleClass('mobile-is-visible');
-		});
+        // 移动端用户信息菜单按钮
+        $('a[data-toggle="user-info-menu"]').on('click', function(e) {
+            e.preventDefault();
+            public_vars.$userInfoMenu.toggleClass('mobile-is-visible');
+        });
+    });
 
-        // Mobile User Info Menu Trigger
-		$('a[data-toggle="user-info-menu"]').on('click', function(ev)
-		{
-			ev.preventDefault();
-
-			public_vars.$userInfoMenu.toggleClass('mobile-is-visible');
-		});
-	});
 })(jQuery, window);
 
+// ========== 页面交互功能 ==========
+$(document).ready(function() {
+    // 图片懒加载
+    lozad().observe();
 
-$(document).ready(function () {
-	// 图片懒加载
-	lozad().observe()   
-	// 子菜单展开/收起
-	$(document).on("click", ".has-sub", function () {
-	    const $this = $(this);
-	    const isExpanded = $this.hasClass("expanded")   
-	    if (isExpanded) {
-	        $(".has-sub ul").not($this.find("ul")).removeAttr("style");
-	    } else {
-	        $this.find("ul").removeAttr("style");
-	    }
-	})   
-	// 切换侧边栏状态时处理菜单展开状态
-	$(".user-info-menu .d-none").on("click", function () {
-	    if ($(".sidebar-menu").hasClass("collapsed")) {
-	        $(".has-sub.expanded > ul").removeAttr("style");
-	    } else {
-	        $(".has-sub.expanded > ul").show();
-	    }
-	})   
-	// 二级菜单选中状态切换
-	$("#main-menu li ul li").on("click", function () {
-	    $(this).siblings().removeClass("active");
-	    $(this).addClass("active");
-	})   
-	// 平滑滚动与激活状态切换
-	$("a.smooth").on("click", function (e) {
-	    e.preventDefault()   
-	    const targetId = $(this).attr("href");
-	    const targetOffset = $(targetId).offset().top - 30   
-	    // 激活主菜单项
-	    $("#main-menu li").removeClass("active");
-	    $(this).parent("li").addClass("active")   
-	    // 移动端菜单隐藏
-	    public_vars.$mainMenu.toggleClass("mobile-is-visible");
-	    public_vars.$sidebarMenu.toggleClass("mobile-is-visible");
-	    public_vars.$pageContainer.toggleClass("mobile-is-visible")   
-	    window.scrollTo({ top: targetOffset, behavior: "smooth" });
-	});
+    // 点击展开子菜单时收起其他菜单
+    $(document).on("click", ".has-sub", function() {
+        var $this = $(this);
+        if ($this.hasClass("expanded")) {
+            $(".has-sub ul").not($this.find("ul")).removeAttr("style");
+        } else {
+            $this.find("ul").removeAttr("style");
+        }
+    });
+
+    // 切换侧边栏时处理子菜单展开状态
+    $(".user-info-menu .d-none").on("click", function() {
+        if ($(".sidebar-menu").hasClass("collapsed")) {
+            $(".has-sub.expanded > ul").removeAttr("style");
+        } else {
+            $(".has-sub.expanded > ul").show();
+        }
+    });
+
+    // 二级菜单选中切换
+    $("#main-menu li ul li").on("click", function() {
+        $(this).siblings().removeClass("active");
+        $(this).addClass("active");
+    });
+
+    // 平滑滚动并切换选中状态
+    $("a.smooth").on("click", function(e) {
+        e.preventDefault();
+
+        var targetId = $(this).attr("href"),
+            targetOffset = $(targetId).offset().top - 30;
+
+        $("#main-menu li").removeClass("active");
+        $(this).parent("li").addClass("active");
+
+        // 隐藏移动端菜单
+        public_vars.$mainMenu.removeClass("mobile-is-visible");
+        public_vars.$sidebarMenu.removeClass("mobile-is-visible");
+        public_vars.$pageContainer.removeClass("mobile-is-visible");
+
+        window.scrollTo({ top: targetOffset, behavior: "smooth" });
+    });
 });
 
 function imgerrorfun(){ 
