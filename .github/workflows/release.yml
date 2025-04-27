@@ -51,7 +51,7 @@ jobs:
             COMMITS_BY_TYPE=$(echo "$COMMITS" | grep -i "^[^a-zA-Z0-9]*$type:")
             
             if [ -n "$COMMITS_BY_TYPE" ]; then
-              echo -e "${TYPE_TITLE[$type]}" >> $GITHUB_ENV
+              echo "${TYPE_TITLE[$type]}" >> $GITHUB_ENV
               echo "$COMMITS_BY_TYPE" | sed "s/^[^a-zA-Z0-9]*$type:/- /i" >> $GITHUB_ENV
             fi
           done
@@ -60,7 +60,7 @@ jobs:
           OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|ci|chore|refactor|style|build):')
           
           if [ -n "$OTHER_COMMITS" ]; then
-            echo -e "### 🎨 其他修改" >> $GITHUB_ENV
+            echo "### 🎨 其他修改" >> $GITHUB_ENV
             echo "$OTHER_COMMITS" | sed 's/^/- /' >> $GITHUB_ENV
           fi
 
