@@ -44,6 +44,7 @@ jobs:
             [refactor]="### 🦄 代码重构"
             [style]="### 🌈 格式变动"
             [build]="### 🛠️ 依赖变更"
+            [perf]="### 🌈 性能优化"
           )
           
           # 遍历所有类型
@@ -59,7 +60,7 @@ jobs:
           done
           
           # 处理未分类的提交
-          OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|ci|chore|refactor|style|build):')
+          OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|ci|chore|refactor|style|build|perf):')
           if [ -n "$OTHER_COMMITS" ]; then
             {
               echo -e "### 🎨 其他修改"
