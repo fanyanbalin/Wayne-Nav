@@ -33,7 +33,7 @@ jobs:
         env:
           PREVIOUS_TAG: ${{ steps.previous_tag.outputs.previous_tag }}
         run: |
-          # 获取当前版本（例如 refs/tags/v1.2.3 -> v1.2.3)
+          # 获取当前版本
           VERSION=${GITHUB_REF##*/}
 
           # 获取当前日期
@@ -45,12 +45,12 @@ jobs:
           else
             COMMITS=$(git log --pretty=format:"%s (%h)" "$PREVIOUS_TAG"..HEAD)
           fi
-
+      
           if [ -z "$COMMITS" ]; then
             echo "没有新提交，跳过 changelog 生成。"
             exit 0
           fi
-
+      
           # 定义提交类型和标题
           declare -A TYPE_TITLE=(
             [feat]="### 🚀 新增功能"
@@ -63,33 +63,35 @@ jobs:
             [build]="### 🛠️ 依赖变更"
             [ci]="### 🔧 CI变更"
           )
-
+      
           # 初始化 changelog 内容
           CHANGELOG_CONTENT="# 📜 更新日志\n\n"
           CHANGELOG_CONTENT+="## $VERSION ($DATE)\n\n"
-
+      
           # 按类型分组
           for type in "${!TYPE_TITLE[@]}"; do
             COMMITS_BY_TYPE=$(echo "$COMMITS" | grep -i "^[^a-zA-Z0-9]*$type:")
-
+      
             if [ -n "$COMMITS_BY_TYPE" ]; then
               CHANGELOG_CONTENT+="${TYPE_TITLE[$type]}\n"
               CHANGELOG_CONTENT+="$(echo "$COMMITS_BY_TYPE" | sed -E "s/^[^a-zA-Z0-9]*$type:[[:space:]]*/- /i")\n\n"
             fi
           done
-
+      
           # 处理未分类提交
           OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|perf|chore|refactor|style|build|ci):')
-
+      
           if [ -n "$OTHER_COMMITS" ]; then
             CHANGELOG_CONTENT+="### 🎨 其他修改\n"
             CHANGELOG_CONTENT+="$(echo "$OTHER_COMMITS" | sed 's/^/- /')\n\n"
           fi
-
+      
           # 输出到环境变量
-          echo "CHANGELOG<<EOF" >> $GITHUB_ENV
-          echo -e "$CHANGELOG_CONTENT" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          {
+            echo "CHANGELOG<<EOF"
+            printf '%b\n' "$CHANGELOG_CONTENT"
+            echo "EOF"
+          } >> "$GITHUB_ENV"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
