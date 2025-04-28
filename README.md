@@ -31,6 +31,7 @@
 
 - [WebStackPage](https://github.com/WebStackPage/WebStackPage.github.io)
 - [ChatGPT](https://chat.openai.com/)
+- [DeepSeek](https://www.deepseek.com/)
 - [韩小韩 WebAPI 接口站](https://api.vvhan.com/)
 - [今日诗词 API](https://www.jinrishici.com/)
 - [新逸Cary API](https://api.xinac.net/)
