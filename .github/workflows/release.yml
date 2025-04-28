@@ -17,15 +17,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get previous tag
-        id: previous_tag
-        run: |
-          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ || echo "")
-          echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
-
       - name: Generate grouped changelog
         id: changelog
         run: |
+          # 获取版本号，比如 v1.2.3
+          VERSION=${{ github.ref_name }}
+      
+          # 获取当前日期，比如 2025-04-28
+          DATE=$(date '+%Y-%m-%d')
+      
           # 获取提交日志
           COMMITS=$(if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
                       git log --pretty=format:"%s (%h)"
@@ -42,33 +42,36 @@ jobs:
             [chore]="### ✨ 杂项变动"
             [refactor]="### 🦄 代码重构"
             [style]="### 🌈 格式变动"
-            [build]="### 🛠 依赖变更"
+            [build]="### 🛠️ 依赖变更"
             [ci]="### 🔧 CI变更"
           )
-          
-          # 将 changelog 开头标记添加到环境变量
-          echo "changelog=" >> $GITHUB_ENV
       
-          # 遍历提交类型，按类型分组
+          # 初始化 changelog 内容，带版本和日期
+          CHANGELOG_CONTENT="# 📜 更新日志\n\n"
+          CHANGELOG_CONTENT+="## $VERSION ($DATE)\n\n"
+      
+          # 遍历提交类型，分类拼接
           for type in "${!TYPE_TITLE[@]}"; do
             COMMITS_BY_TYPE=$(echo "$COMMITS" | grep -i "^[^a-zA-Z0-9]*$type:")
-            
+      
             if [ -n "$COMMITS_BY_TYPE" ]; then
-              echo "${TYPE_TITLE[$type]}" >> $GITHUB_ENV
-              echo "$COMMITS_BY_TYPE" | sed "s/^[^a-zA-Z0-9]*$type:/- /i" >> $GITHUB_ENV
+              CHANGELOG_CONTENT+="${TYPE_TITLE[$type]}\n"
+              CHANGELOG_CONTENT+="$(echo "$COMMITS_BY_TYPE" | sed -E "s/^[^a-zA-Z0-9]*$type:[[:space:]]*/- /i")\n\n"
             fi
           done
-          
-          # 处理未分类的提交
+      
+          # 处理未分类提交
           OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|perf|chore|refactor|style|build|ci):')
-          
+      
           if [ -n "$OTHER_COMMITS" ]; then
-            echo "### 🎨 其他修改" >> $GITHUB_ENV
-            echo "$OTHER_COMMITS" | sed 's/^/- /' >> $GITHUB_ENV
+            CHANGELOG_CONTENT+="### 🎨 其他修改\n"
+            CHANGELOG_CONTENT+="$(echo "$OTHER_COMMITS" | sed 's/^/- /')\n\n"
           fi
       
-          # 将 changelog 结束标记添加到环境变量
-          echo "changelog_end=" >> $GITHUB_ENV
+          # 最后写入环境变量（多行格式）
+          echo "CHANGELOG<<EOF" >> $GITHUB_ENV
+          echo -e "$CHANGELOG_CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
