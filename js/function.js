@@ -52,110 +52,225 @@ if (/Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent)) {
     $('#pointer').css("display", "none");
 }
 
-//夜间模式切换
-function dark() {
-    document.body.classList.add('night');
-    document.cookie = "night=1;path=/";
-    document.getElementById("suspension_text").innerHTML = "切换日间模式";
-    iziToast.info({
-        timeout: 2000,
-        icon: 'tabler-icons',
-        closeOnEscape: 'true',
-        transitionOut: 'fadeOutRight',
-        displayMode: 'replace',
-        layout: '2',
-        transitionIn: 'bounceInLeft',
-        position: 'topRight',
-        icon: 'ti ti-moon-filled',
-        backgroundColor: '#fff',
-        title: '夜间模式切换',
-        message: '已切换为夜间模式'
-    });
-}
+// 从 localStorage 获取指定键名的值
+const getStorage = (key) => localStorage.getItem(key);
 
-function light() {
-    document.body.classList.remove('night');
-    document.cookie = "night=0;path=/";
-    document.getElementById("suspension_text").innerHTML = "切换夜间模式";
-    iziToast.info({
-        timeout: 2000,
-        icon: 'tabler-icons',
-        closeOnEscape: 'true',
-        transitionOut: 'fadeOutRight',
-        displayMode: 'replace',
-        layout: '2',
-        transitionIn: 'bounceInLeft',
-        position: 'topRight',
-        icon: 'ti ti-sun-filled',
-        backgroundColor: '#fff',
-        title: '日间模式切换',
-        message: '已切换为日间模式'
-    });
-}
+// 向 localStorage 设置指定键名和值
+const setStorage = (key, value) => localStorage.setItem(key, value);
 
-function switchNightMode() {
-    var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
-    if (night == '0') {
-        dark();
+// 设置夜间模式或日间模式
+const setNightMode = (enable) => {
+    if (enable) {
+        // 启用夜间模式
+        document.body.classList.add('night');
+        setStorage('night', '1'); // 记录为夜间模式
+        document.getElementById('suspension_text').innerText = '切换日间模式';
+        iziToast.info({
+            timeout: 2000,
+            closeOnEscape: true,
+            transitionOut: 'fadeOutRight',
+            displayMode: 'replace',
+            layout: 2,
+            transitionIn: 'bounceInLeft',
+            position: 'topRight',
+            icon: 'ti ti-moon-filled',
+            backgroundColor: '#fff',
+            title: '夜间模式切换',
+            message: '已切换为夜间模式'
+        });
     } else {
-        light();
+        // 启用日间模式
+        document.body.classList.remove('night');
+        setStorage('night', '0'); // 记录为日间模式
+        document.getElementById('suspension_text').innerText = '切换夜间模式';
+        iziToast.info({
+            timeout: 2000,
+            closeOnEscape: true,
+            transitionOut: 'fadeOutRight',
+            displayMode: 'replace',
+            layout: 2,
+            transitionIn: 'bounceInLeft',
+            position: 'topRight',
+            icon: 'ti ti-sun-filled',
+            backgroundColor: '#fff',
+            title: '日间模式切换',
+            message: '已切换为日间模式'
+        });
     }
-}
+};
 
-window.matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', event => {
-        if (event.matches) {
-            dark();
-        } else {
-            light();
-        }
-    });
-    
-(function () {
-    if (document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") === '') {
-        if (new Date().getHours() > 18 || new Date().getHours() < 7) {
-        document.body.classList.add('night');
-        document.cookie = "night=1;path=/";
-        } else {
-        document.body.classList.remove('night');
-        document.cookie = "night=0;path=/";
-        }
+// 切换当前模式：夜间 -> 日间，日间 -> 夜间
+const switchNightMode = () => {
+    const night = getStorage('night') || '0'; // 默认为日间模式（0）
+    setNightMode(night === '0');
+};
+
+// 判断当前时间是否属于夜间时间段（19点后或凌晨7点前）
+const isNightTime = () => {
+    const hour = new Date().getHours();
+    return hour > 18 || hour < 7;
+};
+
+// 监听系统配色方案变化（比如 Windows、Mac 自动切换暗色模式）
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    setNightMode(event.matches);
+});
+
+// 页面首次加载时，根据 localStorage 或时间设置初始模式
+(() => {
+    const night = getStorage('night');
+    if (night === null) {
+        // 如果没有存储记录，根据当前时间自动切换
+        setNightMode(isNightTime());
     } else {
-        var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
-        if (night == '0') {
-        document.body.classList.remove('night');
-        } else if (night == '1') {
-        document.body.classList.add('night');
-        }
+        // 如果有记录，按记录来
+        setNightMode(night === '1');
     }
 })();
 
-// 星空背景 
+// 星空背景动画
 function stars() {
-    window.requestAnimationFrame=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame;
-    var n,e,i,h,t=.05,s=document.getElementById("starfield"),o=!0,a="180,184,240",r="226,225,142",d="226,225,224",c=[];
-    function f(){n=window.innerWidth,e=window.innerHeight,i=.216*n,s.setAttribute("width",n),s.setAttribute("height",e)}
-    function u(){h.clearRect(0,0,n,e);for(var t=c.length,i=0;i<t;i++){var s=c[i];s.move(),s.fadeIn(),s.fadeOut(),s.draw()}}
-    function y(){
-        this.reset=function(){this.giant=m(3),this.comet=!this.giant&&!o&&m(10),this.x=l(0,n-10),this.y=l(0,e),
-        this.r=l(1.1,2.6),this.dx=l(t,6*t)+(this.comet+1-1)*t*l(50,120)+2*t,this.dy=-l(t,6*t)-(this.comet+1-1)*t*l(50,120),
-        this.fadingOut=null,this.fadingIn=!0,this.opacity=0,this.opacityTresh=l(.2,1-.4*(this.comet+1-1)),
-        this.do=l(5e-4,.002)+.001*(this.comet+1-1)},
-        this.fadeIn=function(){this.fadingIn&&(this.fadingIn=!(this.opacity>this.opacityTresh),this.opacity+=this.do)},
-        this.fadeOut=function(){this.fadingOut&&(this.fadingOut=!(this.opacity<0),this.opacity-=this.do/2,(this.x>n||this.y<0)&&(this.fadingOut=!1,this.reset()))},
-        this.draw=function(){
-            if(h.beginPath(),this.giant)h.fillStyle="rgba("+a+","+this.opacity+")",h.arc(this.x,this.y,2,0,2*Math.PI,!1);
-            else if(this.comet){h.fillStyle="rgba("+d+","+this.opacity+")",h.arc(this.x,this.y,1.5,0,2*Math.PI,!1);
-            for(var t=0;t<30;t++)h.fillStyle="rgba("+d+","+(this.opacity-this.opacity/20*t)+")",h.rect(this.x-this.dx/4*t,this.y-this.dy/4*t-2,2,2),h.fill()
-        }else h.fillStyle="rgba("+r+","+this.opacity+")",h.rect(this.x,this.y,this.r,this.r);
-        h.closePath(),h.fill()},this.move=function(){this.x+=this.dx,this.y+=this.dy,!1===this.fadingOut&&this.reset(),(this.x>n-n/4||this.y<0)&&(this.fadingOut=!0)},
-        setTimeout(function(){o=!1},50)
+    const canvas = document.getElementById("starfield"); // 获取画布元素
+    const ctx = canvas.getContext("2d"); // 获取2D绘图上下文
+    let width = window.innerWidth; // 当前窗口宽度
+    let height = window.innerHeight; // 当前窗口高度
+    let stars = []; // 存放所有星星对象
+    let initialBurst = true; // 初始阶段，是否让流星出现更多
+    const STAR_COUNT = Math.floor(0.3 * width); // 根据屏幕宽度决定星星数量
+  
+    // 定义星星、巨星、流星的颜色（RGB）
+    const COLORS = {
+      giant: "180,184,240", // 巨星：蓝白色
+      star: "226,225,142",  // 普通星星：黄色
+      comet: "225,225,225"  // 流星：白色
+    };
+  
+    // 定义星星类
+    class Star {
+      constructor() {
+        this.reset(); // 初始化星星属性
+      }
+  
+      // 初始化或重置星星属性
+      reset() {
+        this.isGiant = randomChance(3); // 3%的概率是巨星
+        this.isComet = !this.isGiant && !initialBurst && randomChance(20); // 初期流星多，之后减少
+        this.x = randomRange(0, width); // 随机x位置
+        this.y = randomRange(0, height); // 随机y位置
+        this.size = randomRange(1.1, 2.6); // 星星尺寸
+        // 水平和垂直移动速度（流星速度更快）
+        this.dx = randomRange(0.05, 0.3) + (this.isComet ? randomRange(2.5, 6) : 0.05);
+        this.dy = -randomRange(0.05, 0.3) - (this.isComet ? randomRange(2.5, 6) : 0.05);
+        this.opacity = 0; // 当前透明度
+        this.opacityTarget = randomRange(0.6, this.isComet ? 0.8 : 1); // 目标透明度
+        this.fadeSpeed = randomRange(0.0005, 0.002) + (this.isComet ? 0.001 : 0); // 渐变速度
+        this.fadingIn = true; // 是否处于淡入阶段
+        this.fadingOut = false; // 是否处于淡出阶段
+      }
+  
+      // 处理星星淡入效果
+      fadeIn() {
+        if (this.fadingIn) {
+          this.opacity += this.fadeSpeed;
+          if (this.opacity >= this.opacityTarget) {
+            this.fadingIn = false; // 达到目标透明度后停止淡入
+          }
+        }
+      }
+  
+      // 处理星星淡出效果
+      fadeOut() {
+        if (this.fadingOut) {
+          this.opacity -= this.fadeSpeed / 2;
+          if (this.opacity <= 0) {
+            this.reset(); // 透明度降到0后，重置星星
+          }
+        }
+      }
+  
+      // 更新星星的位置
+      move() {
+        this.x += this.dx;
+        this.y += this.dy;
+        // 如果星星移动到屏幕边缘，开始淡出
+        if (!this.fadingOut && (this.x > width - width / 4 || this.y < 0)) {
+          this.fadingOut = true;
+        }
+      }
+  
+      // 绘制星星
+      draw() {
+        ctx.beginPath();
+        if (this.isGiant) {
+          // 绘制巨星（大圆）
+          ctx.fillStyle = `rgba(${COLORS.giant},${this.opacity})`;
+          ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+        } else if (this.isComet) {
+          // 绘制流星（小圆+拖尾）
+          ctx.fillStyle = `rgba(${COLORS.comet},${this.opacity})`;
+          ctx.arc(this.x, this.y, 1.5, 0, 2 * Math.PI);
+          // 绘制流星的尾巴（多个小矩形）
+          for (let i = 0; i < 30; i++) {
+            ctx.fillStyle = `rgba(${COLORS.comet},${this.opacity - this.opacity / 20 * i})`;
+            ctx.fillRect(this.x - this.dx / 4 * i, this.y - this.dy / 4 * i - 2, 2, 2);
+          }
+        } else {
+          // 绘制普通星星（小方块）
+          ctx.fillStyle = `rgba(${COLORS.star},${this.opacity})`;
+          ctx.fillRect(this.x, this.y, this.size, this.size);
+        }
+        ctx.closePath();
+        ctx.fill();
+      }
     }
-    function m(t){return Math.floor(1e3*Math.random())+1<10*t}
-    function l(t,i){return Math.random()*(i-t)+t}f(),window.addEventListener("resize",f,!1),
-    function(){h=s.getContext("2d");for(var t=0;t<i;t++)c[t]=new y,c[t].reset();u()}(),
-    function t(){document.getElementsByTagName('html')[0]&&u(),window.requestAnimationFrame(t)}()};
-stars()
+  
+    // 工具函数：按概率返回true
+    function randomChance(percent) {
+      return Math.random() * 1000 < percent * 10;
+    }
+  
+    // 工具函数：返回[min, max]范围内的随机数
+    function randomRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+  
+    // 根据窗口尺寸调整画布大小
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.setAttribute("width", width);
+      canvas.setAttribute("height", height);
+    }
+  
+    // 更新所有星星：移动+透明度变化+绘制
+    function update() {
+      ctx.clearRect(0, 0, width, height); // 清空画布
+      for (let star of stars) {
+        star.move();
+        star.fadeIn();
+        star.fadeOut();
+        star.draw();
+      }
+      requestAnimationFrame(update); // 下一帧继续
+    }
+  
+    // 初始化函数
+    function init() {
+      resizeCanvas(); // 初始设置画布大小
+      stars = Array.from({ length: STAR_COUNT }, () => new Star()); // 创建所有星星
+      update(); // 启动动画
+      setTimeout(() => initialBurst = false, 50); // 50ms后关闭初始爆发
+    }
+  
+    // 监听窗口尺寸变化，重新调整画布大小
+    window.addEventListener("resize", resizeCanvas);
+  
+    // 执行初始化
+    init();
+}
+  
+// 调用stars函数，启动星空背景
+stars();
 
 //侧边栏菜单键
 // ========== 定义公共变量 ==========
