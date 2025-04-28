@@ -57,8 +57,7 @@ jobs:
           CURRENT_TAG=${GITHUB_REF##*/}
           DATE=$(date '+%Y-%m-%d')
           
-          CHANGELOG="# 📜 更新日志\n\n"
-          CHANGELOG+="## $CURRENT_TAG ($DATE)\n\n"
+          CHANGELOG="## 📜 更新日志 $CURRENT_TAG ($DATE)\n\n"
           
           if [ -z "$PREVIOUS_TAG" ]; then
             echo "首次发布，包含所有提交"
@@ -124,6 +123,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: 发布 ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
           body: ${{ env.CHANGELOG }}
           make_latest: true
