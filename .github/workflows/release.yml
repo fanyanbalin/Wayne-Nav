@@ -12,88 +12,104 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 检出代码
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 获取完整历史记录
 
-      # 获取上一个 tag（如果没有也不报错）
-      - name: Get previous tag
+      - name: 获取上一个tag
         id: previous_tag
         run: |
-          if git describe --tags --abbrev=0 HEAD^ >/dev/null 2>&1; then
-            echo "previous_tag=$(git describe --tags --abbrev=0 HEAD^)" >> $GITHUB_OUTPUT
-          else
+          # 获取所有tag并按时间排序
+          ALL_TAGS=$(git tag --sort=-creatordate)
+          
+          # 如果没有tag则设为空
+          if [ -z "$ALL_TAGS" ]; then
             echo "previous_tag=" >> $GITHUB_OUTPUT
+          else
+            # 当前正在创建的tag是最新的，所以取第二个才是上一个tag
+            PREV_TAG=$(echo "$ALL_TAGS" | head -n 1)
+            echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
           fi
 
-      # 生成分组 changelog
-      - name: Generate grouped changelog
+      - name: 生成分组更新日志
         id: changelog
         env:
           PREVIOUS_TAG: ${{ steps.previous_tag.outputs.previous_tag }}
         run: |
-          # 获取当前版本
-          VERSION=${GITHUB_REF##*/}
+          # 设置调试模式(遇到错误立即退出)
+          set -e
+
+          # 获取当前版本(从refs/tags/v1.0.0提取v1.0.0)
+          CURRENT_TAG=${GITHUB_REF##*/}
+          echo "当前版本: $CURRENT_TAG"
 
           # 获取当前日期
-          DATE=$(date '+%Y-%m-%d')
+          RELEASE_DATE=$(date '+%Y-%m-%d')
 
-          # 获取提交日志
+          # 初始化更新日志内容
+          CHANGELOG="# 📜 更新日志\n\n"
+          CHANGELOG+="## $CURRENT_TAG ($RELEASE_DATE)\n\n"
+
+          # 获取提交范围
           if [ -z "$PREVIOUS_TAG" ]; then
-            COMMITS=$(git log --pretty=format:"%s (%h)")
+            echo "没有找到上一个tag，将包含所有提交"
+            COMMIT_RANGE=""
           else
-            COMMITS=$(git log --pretty=format:"%s (%h)" "$PREVIOUS_TAG"..HEAD)
+            echo "比较范围: $PREVIOUS_TAG..HEAD"
+            COMMIT_RANGE="$PREVIOUS_TAG..HEAD"
           fi
-      
-          if [ -z "$COMMITS" ]; then
-            echo "没有新提交，跳过 changelog 生成。"
-            exit 0
-          fi
-      
-          # 定义提交类型和标题
-          declare -A TYPE_TITLE=(
-            [feat]="### 🚀 新增功能"
-            [fix]="### 🐞 Bug修复"
-            [docs]="### 📝 文档变更"
-            [perf]="### ⚙ 性能优化"
-            [chore]="### ✨ 杂项变动"
-            [refactor]="### 🦄 代码重构"
-            [style]="### 🌈 格式变动"
-            [build]="### 🛠️ 依赖变更"
-            [ci]="### 🔧 CI变更"
-          )
-      
-          # 初始化 changelog 内容
-          CHANGELOG_CONTENT="# 📜 更新日志\n\n"
-          CHANGELOG_CONTENT+="## $VERSION ($DATE)\n\n"
-      
-          # 按类型分组
-          for type in "${!TYPE_TITLE[@]}"; do
-            COMMITS_BY_TYPE=$(echo "$COMMITS" | grep -i "^[^a-zA-Z0-9]*$type:")
-      
-            if [ -n "$COMMITS_BY_TYPE" ]; then
-              CHANGELOG_CONTENT+="${TYPE_TITLE[$type]}\n"
-              CHANGELOG_CONTENT+="$(echo "$COMMITS_BY_TYPE" | sed -E "s/^[^a-zA-Z0-9]*$type:[[:space:]]*/- /i")\n\n"
-            fi
-          done
-      
-          # 处理未分类提交
-          OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|perf|chore|refactor|style|build|ci):')
-      
-          if [ -n "$OTHER_COMMITS" ]; then
-            CHANGELOG_CONTENT+="### 🎨 其他修改\n"
-            CHANGELOG_CONTENT+="$(echo "$OTHER_COMMITS" | sed 's/^/- /')\n\n"
-          fi
-      
-          # 输出到环境变量
-          {
-            echo "CHANGELOG<<EOF"
-            printf '%b\n' "$CHANGELOG_CONTENT"
-            echo "EOF"
-          } >> "$GITHUB_ENV"
 
-      - name: Create GitHub Release
+          # 获取提交信息(只取标题和hash)
+          COMMITS=$(git log $COMMIT_RANGE --pretty=format:"%s (%h)" || echo "")
+
+          if [ -z "$COMMITS" ]; then
+            echo "警告: 没有找到新提交"
+            CHANGELOG+="### 🎯 无显著变更\n\n"
+          else
+            echo "找到 ${#COMMITS[@]} 条提交"
+
+            # 定义提交类型映射
+            declare -A TYPE_MAP=(
+              [feat]="🚀 新功能"
+              [fix]="🐞 Bug修复"
+              [docs]="📝 文档更新"
+              [perf]="⚡ 性能优化"
+              [refactor]="🛠️ 代码重构"
+              [style]="🎨 代码样式"
+              [test]="🧪 测试相关"
+              [chore]="🧹 日常维护"
+              [build]="📦 构建系统"
+              [ci]="🔧 CI配置"
+            )
+
+            # 按类型分组处理
+            for TYPE in "${!TYPE_MAP[@]}"; do
+              FILTERED_COMMITS=$(echo "$COMMITS" | grep -iE "^$TYPE[:\(]|^[^a-zA-Z0-9]*$TYPE:" || true)
+              
+              if [ -n "$FILTERED_COMMITS" ]; then
+                CHANGELOG+="### ${TYPE_MAP[$TYPE]}\n"
+                CHANGELOG+=$(echo "$FILTERED_COMMITS" | sed -E "s/^[^a-zA-Z0-9]*$type[: ][[:space:]]*/- /i")
+                CHANGELOG+="\n\n"
+              fi
+            done
+
+            # 处理未分类提交
+            OTHERS=$(echo "$COMMITS" | grep -viE '^(feat|fix|docs|perf|refactor|style|test|chore|build|ci)[:(]')
+            if [ -n "$OTHERS" ]; then
+              CHANGELOG+="### 🎭 其他变更\n"
+              CHANGELOG+=$(echo "$OTHERS" | sed 's/^/- /')
+              CHANGELOG+="\n\n"
+            fi
+          fi
+
+          # 输出到环境变量(多行内容)
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "CHANGELOG<<$EOF" >> $GITHUB_ENV
+          echo -e "$CHANGELOG" >> $GITHUB_ENV
+          echo "$EOF" >> $GITHUB_ENV
+
+      - name: 创建GitHub发布
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
