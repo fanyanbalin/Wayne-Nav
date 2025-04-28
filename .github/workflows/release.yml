@@ -15,21 +15,36 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 获取完整历史记录
+          fetch-depth: 0
 
       - name: 获取上一个tag
         id: previous_tag
         run: |
-          # 获取所有tag并按时间排序
-          ALL_TAGS=$(git tag --sort=-creatordate)
+          # 获取所有tag并按时间排序(从旧到新)
+          ALL_TAGS=$(git tag --sort=creatordate)
           
-          # 如果没有tag则设为空
-          if [ -z "$ALL_TAGS" ]; then
+          # 如果没有tag或只有一个tag则设为空
+          if [ $(echo "$ALL_TAGS" | wc -l) -le 1 ]; then
             echo "previous_tag=" >> $GITHUB_OUTPUT
           else
-            # 当前正在创建的tag是最新的，所以取第二个才是上一个tag
-            PREV_TAG=$(echo "$ALL_TAGS" | head -n 1)
-            echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
+            # 获取当前正在创建的tag
+            CURRENT_TAG=${GITHUB_REF##*/}
+            
+            # 找出当前tag在列表中的位置
+            TAG_LIST=($ALL_TAGS)
+            for i in "${!TAG_LIST[@]}"; do
+              if [[ "${TAG_LIST[$i]}" == "$CURRENT_TAG" ]]; then
+                # 如果是第一个tag则没有上一个tag
+                if [ $i -eq 0 ]; then
+                  echo "previous_tag=" >> $GITHUB_OUTPUT
+                else
+                  # 否则取前一个tag
+                  PREV_TAG="${TAG_LIST[$i-1]}"
+                  echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
+                fi
+                break
+              fi
+            done
           fi
 
       - name: 生成分组更新日志
@@ -37,39 +52,25 @@ jobs:
         env:
           PREVIOUS_TAG: ${{ steps.previous_tag.outputs.previous_tag }}
         run: |
-          # 设置调试模式(遇到错误立即退出)
           set -e
-
-          # 获取当前版本(从refs/tags/v1.0.0提取v1.0.0)
+          
           CURRENT_TAG=${GITHUB_REF##*/}
-          echo "当前版本: $CURRENT_TAG"
-
-          # 获取当前日期
-          RELEASE_DATE=$(date '+%Y-%m-%d')
-
-          # 初始化更新日志内容
+          DATE=$(date '+%Y-%m-%d')
+          
           CHANGELOG="# 📜 更新日志\n\n"
-          CHANGELOG+="## $CURRENT_TAG ($RELEASE_DATE)\n\n"
-
-          # 获取提交范围
+          CHANGELOG+="## $CURRENT_TAG ($DATE)\n\n"
+          
           if [ -z "$PREVIOUS_TAG" ]; then
-            echo "没有找到上一个tag，将包含所有提交"
-            COMMIT_RANGE=""
+            echo "首次发布，包含所有提交"
+            COMMITS=$(git log --pretty=format:"%s (%h)")
           else
             echo "比较范围: $PREVIOUS_TAG..HEAD"
-            COMMIT_RANGE="$PREVIOUS_TAG..HEAD"
+            COMMITS=$(git log --pretty=format:"%s (%h)" "$PREVIOUS_TAG..HEAD" || echo "")
           fi
-
-          # 获取提交信息(只取标题和hash)
-          COMMITS=$(git log $COMMIT_RANGE --pretty=format:"%s (%h)" || echo "")
-
+          
           if [ -z "$COMMITS" ]; then
-            echo "警告: 没有找到新提交"
             CHANGELOG+="### 🎯 无显著变更\n\n"
           else
-            echo "找到 ${#COMMITS[@]} 条提交"
-
-            # 定义提交类型映射
             declare -A TYPE_MAP=(
               [feat]="🚀 新功能"
               [fix]="🐞 Bug修复"
@@ -82,19 +83,16 @@ jobs:
               [build]="📦 构建系统"
               [ci]="🔧 CI配置"
             )
-
-            # 按类型分组处理
+            
             for TYPE in "${!TYPE_MAP[@]}"; do
-              FILTERED_COMMITS=$(echo "$COMMITS" | grep -iE "^$TYPE[:\(]|^[^a-zA-Z0-9]*$TYPE:" || true)
-              
-              if [ -n "$FILTERED_COMMITS" ]; then
+              FILTERED=$(echo "$COMMITS" | grep -iE "^$TYPE[:\(]|^[^a-zA-Z0-9]*$TYPE:" || true)
+              if [ -n "$FILTERED" ]; then
                 CHANGELOG+="### ${TYPE_MAP[$TYPE]}\n"
-                CHANGELOG+=$(echo "$FILTERED_COMMITS" | sed -E "s/^[^a-zA-Z0-9]*$type[: ][[:space:]]*/- /i")
+                CHANGELOG+=$(echo "$FILTERED" | sed -E "s/^[^a-zA-Z0-9]*$TYPE[: ][[:space:]]*/- /i")
                 CHANGELOG+="\n\n"
               fi
             done
-
-            # 处理未分类提交
+            
             OTHERS=$(echo "$COMMITS" | grep -viE '^(feat|fix|docs|perf|refactor|style|test|chore|build|ci)[:(]')
             if [ -n "$OTHERS" ]; then
               CHANGELOG+="### 🎭 其他变更\n"
@@ -102,8 +100,7 @@ jobs:
               CHANGELOG+="\n\n"
             fi
           fi
-
-          # 输出到环境变量(多行内容)
+          
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "CHANGELOG<<$EOF" >> $GITHUB_ENV
           echo -e "$CHANGELOG" >> $GITHUB_ENV
@@ -113,6 +110,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
+          name: 发布 ${{ github.ref_name }}
           body: ${{ env.CHANGELOG }}
           make_latest: true
