@@ -26,27 +26,30 @@ jobs:
       - name: Generate grouped changelog
         id: changelog
         run: |
-          echo "changelog<<EOF" >> $GITHUB_ENV
-
+          # 获取提交日志
           COMMITS=$(if [ -z "${{ steps.previous_tag.outputs.previous_tag }}" ]; then
                       git log --pretty=format:"%s (%h)"
                     else
                       git log --pretty=format:"%s (%h)" ${{ steps.previous_tag.outputs.previous_tag }}..HEAD
                     fi)
-
+      
           # 定义提交类型和对应标题
           declare -A TYPE_TITLE=(
             [feat]="### 🚀 新增功能"
             [fix]="### 🐞 Bug修复"
             [docs]="### 📝 文档变更"
-            [ci]="### 🔧 CI变更"
+            [perf]="### ⚙ 性能优化"
             [chore]="### ✨ 杂项变动"
             [refactor]="### 🦄 代码重构"
             [style]="### 🌈 格式变动"
             [build]="### 🛠 依赖变更"
-            [perf]="### ⚙ 性能优化"
+            [ci]="### 🔧 CI变更"
           )
           
+          # 将 changelog 开头标记添加到环境变量
+          echo "changelog=" >> $GITHUB_ENV
+      
+          # 遍历提交类型，按类型分组
           for type in "${!TYPE_TITLE[@]}"; do
             COMMITS_BY_TYPE=$(echo "$COMMITS" | grep -i "^[^a-zA-Z0-9]*$type:")
             
@@ -57,14 +60,15 @@ jobs:
           done
           
           # 处理未分类的提交
-          OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|ci|chore|refactor|style|build):')
+          OTHER_COMMITS=$(echo "$COMMITS" | grep -viE '^[^a-zA-Z0-9]*(feat|fix|docs|perf|chore|refactor|style|build|ci):')
           
           if [ -n "$OTHER_COMMITS" ]; then
             echo "### 🎨 其他修改" >> $GITHUB_ENV
             echo "$OTHER_COMMITS" | sed 's/^/- /' >> $GITHUB_ENV
           fi
-
-          echo "EOF" >> $GITHUB_ENV
+      
+          # 将 changelog 结束标记添加到环境变量
+          echo "changelog_end=" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
