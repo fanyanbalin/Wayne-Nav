@@ -84,16 +84,30 @@ jobs:
               [ci]="🔧 CI配置"
             )
             
+            # 先收集所有已分类的提交hash
+            CLASSIFIED_HASHES=""
             for TYPE in "${!TYPE_MAP[@]}"; do
               FILTERED=$(echo "$COMMITS" | grep -iE "^$TYPE[:\(]|^[^a-zA-Z0-9]*$TYPE:" || true)
               if [ -n "$FILTERED" ]; then
+                # 提取hash部分(括号内的内容)
+                HASHES=$(echo "$FILTERED" | sed -nE 's/.*\(([^)]*)\).*/\1/p')
+                CLASSIFIED_HASHES+="$HASHES"$'\n'
+                
                 CHANGELOG+="### ${TYPE_MAP[$TYPE]}\n"
                 CHANGELOG+=$(echo "$FILTERED" | sed -E "s/^[^a-zA-Z0-9]*$TYPE[: ][[:space:]]*/- /i")
                 CHANGELOG+="\n\n"
               fi
             done
             
-            OTHERS=$(echo "$COMMITS" | grep -viE '^(feat|fix|docs|perf|refactor|style|test|chore|build|ci)[:(]')
+            # 筛选真正未分类的提交(既不在已分类hash中，也不符合任何类型格式)
+            OTHERS=$(echo "$COMMITS" | while read -r line; do
+              HASH=$(echo "$line" | sed -nE 's/.*\(([^)]*)\).*/\1/p')
+              if ! echo "$CLASSIFIED_HASHES" | grep -q "$HASH" && \
+                 ! echo "$line" | grep -qiE "^($(IFS='|'; echo "${!TYPE_MAP[*]}"))[:\(]"; then
+                echo "$line"
+              fi
+            done)
+            
             if [ -n "$OTHERS" ]; then
               CHANGELOG+="### 🎭 其他变更\n"
               CHANGELOG+=$(echo "$OTHERS" | sed 's/^/- /')
