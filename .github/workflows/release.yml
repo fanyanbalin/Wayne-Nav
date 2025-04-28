@@ -17,6 +17,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Get previous tag
+        id: previous_tag
+        run: |
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ || echo "")
+          echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
+
       - name: Generate grouped changelog
         id: changelog
         run: |
