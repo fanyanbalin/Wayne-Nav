@@ -25,10 +25,6 @@
         transition-duration: .25s
     }
     
-    section {
-        display: block
-    }
-    
     body {
         line-height: 1
     }
@@ -89,27 +85,11 @@
     }
     
     @media (max-width: 580px) {
-        #about {
-            width: 100%;
-            left: 0px;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-        }
-        #about h1 {
-            margin: 30px;
-        }
         #about p {
-            margin: 30px;
             margin-bottom: 0px
         }
         #about .social {
-            margin: 30px;
             margin-bottom: 0px
-        }
-        #about .copyright {
-            width: 100%;
-            float: left;
-            margin-bottom: 0px;
         }
     }
     
@@ -184,6 +164,15 @@
     .bg-align {
         margin-top: 50%;
     }
+
+    .home-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #333;
+    color: white;
+    border-radius: 4px;
+    margin: 10px 5px;
+    }
     </style>
 </head>
 
@@ -193,10 +182,10 @@
             <h1>404</h1>
             <p>很抱歉，您访问的页面不存在！</p>
             <p>请仔细检查您输入的网址是否正确。</p>
-            <p><a href="https://wnav.pages.dev">👉  WayneのNav</a>&nbsp;
-            <a href="https://wayne-nav.vercel.app">👉  WayneのNav备用1</a>&nbsp;
-            <a href="https://nav.way3301.ggff.net">👉  WayneのNav备用2</a>&nbsp;
-            <a href="https://nav.ccys.dpdns.org">👉  WayneのNav备用3</a></p>
+            <p><a class="home-btn" href="https://wnav.pages.dev">返回首页</a >
+            <a class="home-btn" href="https://wayne-nav.vercel.app">备用站点1</a >
+            <a class="home-btn" href="https://nav.way3301.ggff.net">备用站点2</a >
+            <a class="home-btn" href="https://nav.ccys.dpdns.org">备用站点3</a ></p>
         </div>
     </section>
 </body>
