@@ -272,6 +272,29 @@ function stars() {
 // 调用stars函数，启动星空背景
 stars();
 
+//背景图片加载失败，设置背景纯色
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取背景图片URL
+    const body = document.querySelector('body');
+    const bgUrl = window.getComputedStyle(body).backgroundImage.slice(4, -1).replace(/"/g, "");
+    
+    // 创建一个临时图片元素来测试加载
+    const img = new Image();
+    img.src = bgUrl;
+    
+    img.onload = function() {
+        // 图片加载成功，不做任何操作
+        console.log('背景图片加载成功');
+    };
+    
+    img.onerror = function() {
+        // 图片加载失败，设置背景纯色
+        body.style.background = '#3f5d5c';
+        body.style.backgroundImage = 'none'; // 移除失败的背景图片
+        console.log('背景图片加载失败，已设置为纯色背景');
+    };
+});
+
 //侧边栏菜单键
 // ========== 定义公共变量 ==========
 var public_vars = public_vars || {};
