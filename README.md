@@ -12,10 +12,9 @@
 
 ## Demo
 
-➡️ [WayneのNav](https://wnav.pages.dev)          
+➡️ [WayneのNav](https://nav-26e.pages.dev)          
 ➡️ [WayneのNav备用1](https://wayne-nav.vercel.app)           
-➡️ [WayneのNav备用2](https://nav.way3301.ggff.net)           
-➡️ [WayneのNav备用3](https://nav.ccys.dpdns.org)          
+➡️ [WayneのNav备用2](https://nav.wayne.so.kg/)           
 
 ## 功能特性
 
