@@ -515,7 +515,7 @@ footer.main-footer {
 }
 footer.main-footer .footer-text {
   float: left;
-  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
+  background: linear-gradient(-225deg,#2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -532,7 +532,7 @@ footer.main-footer.fixed {
 #result {
   float: right;
   padding: 0px 6px;
-  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
+  background: linear-gradient(-225deg,#2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -568,7 +568,7 @@ footer.main-footer.fixed {
   position: relative;
   display: block;
   padding: 15px 15px 0px 10px;
-  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
+  background: linear-gradient(-225deg,#2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
   -webkit-background-clip: text;
   color: transparent !important;
   z-index: 5;
@@ -1015,7 +1015,7 @@ footer.main-footer.fixed {
   padding-left: 18px;
   font-size: 1rem;
   line-height: 31px;
-  background: linear-gradient(to bottom,#ffffff, #50dcff, #197dff, #0026ff);
+  background: linear-gradient(-225deg,#2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
