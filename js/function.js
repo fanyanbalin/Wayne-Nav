@@ -692,8 +692,8 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：v5.2.1
-更新日期：2025-05-27
+版 本 号：v5.2.2
+更新日期：2025-06-13
 
 WayneのNav: https://nav-26e.pages.dev
 Github:  https://github.com/Waynenet/Wayne-Nav
