@@ -126,9 +126,6 @@ body.night #starfield{
     color: #d8d8d8 !important;
 }
 /*悬浮窗*/
-.night .suspension_box {
-    backdrop-filter: none;
-}
 .night .suspension_ax {
     background: url(../images/sun.svg) no-repeat center center #464646a6;
     background-size: 60% 60%;
@@ -147,7 +144,6 @@ body.night #starfield{
 }
 .night #fk-span {
     background: #464646a6;
-    backdrop-filter: none;
     transition: 0.3s;
 }
 .night #fk-span-right {
