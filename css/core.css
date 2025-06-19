@@ -488,7 +488,7 @@ span.time-text {
     margin-right: 10px;
   }
   .sidebar-menu.collapsed .main-menu > li:hover > ul {
-    display: block;
+    display: block !important;
   }
   .sidebar-menu.collapsed .timeshow {
     display: none;
