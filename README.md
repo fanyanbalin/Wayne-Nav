@@ -14,7 +14,7 @@
 
 ➡️ [WayneのNav](https://nav-26e.pages.dev)          
 ➡️ [WayneのNav备用1](https://wayne-nav.vercel.app)           
-➡️ [WayneのNav备用2](https://nav.wayne.so.kg/)           
+➡️ [WayneのNav备用2](https://nav.3301.qzz.io/)           
 
 ## 功能特性
 
