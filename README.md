@@ -12,10 +12,10 @@
 
 ## Demo
 
-➡️ [WayneのNav](https://nav-26e.pages.dev/)       
+➡️ [WayneのNav](https://nav.3301.qzz.io/)       
 ➡️ [WayneのNav备用1](https://nav.way.ciao.su/)         
-➡️ [WayneのNav备用2](https://wayne-nav.vercel.app/)            
-➡️ [WayneのNav备用3](https://nav.3301.qzz.io/)           
+➡️ [WayneのNav备用2](https://nav-26e.pages.dev/)            
+➡️ [WayneのNav备用3](https://wayne-nav.vercel.app/)           
 
 ## 功能特性
 
