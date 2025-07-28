@@ -675,10 +675,10 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：v5.2.2
-更新日期：2025-06-13
+版 本 号：v6.0.0
+更新日期：2025-07-28
 
-WayneのNav: https://nav-26e.pages.dev
+WayneのNav: https://nav.3301.qzz.io/
 Github:  https://github.com/Waynenet/Wayne-Nav
 `
 console.log(`%c${title1} %c${title2}
