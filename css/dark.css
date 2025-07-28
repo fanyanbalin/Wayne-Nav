@@ -97,34 +97,6 @@ body.night #starfield{
 .night .label.label-info {
     background-color: #232323a6;
 }
-/*搜索栏*/
-.night .search-type input:checked+label,
-.night .search-type input:hover+label {
-    background-color: #464646a6 !important;
-}
-.night .s-type-list {
-    background-color: #464646ea;
-    box-shadow: 0 9px 20px rgba(0, 0, 0, .7);
-    backdrop-filter: none;
-}
-.night .s-type-list:before {
-    border-bottom-color: #464646ea;
-    backdrop-filter: none;
-}
-.night .type-text{
-    color: #d8d8d8;
-    background: none;
-}
-.night #search button:hover {
-    background: #464646a6;
-}
-.night #search-text {
-    background-color: #464646a6;
-    backdrop-filter: none;
-}
-.night .dark-text {
-    color: #d8d8d8 !important;
-}
 /*悬浮窗*/
 .night .suspension_ax {
     background: url(../images/sun.svg) no-repeat center center #464646a6;

@@ -900,198 +900,211 @@ footer.main-footer.fixed {
 .poem p {
   color: #d8d8d8 !important;
 }
-/*搜索框*/
+/* 搜索框 */
+/* 使用CSS变量进行主题化*/
+:root {
+    --search-bg-color: rgba(255, 255, 255, 0.15);
+    --search-bg-hover-color: rgba(255, 255, 255, 0.25);
+    --search-border-color: rgba(255, 255, 255, 0.2);
+    --search-shadow-color: rgba(0, 0, 0, 0.1);
+    --search-placeholder-color: rgba(255, 255, 255, 0.6);
+    --search-text-color: #ffffff;
+    --search-accent-color: #6a88ff;
+    --search-tab-inactive-color: rgba(255, 255, 255, 0.5);
+    --search-tab-active-bg: rgba(0, 0, 0, 0.2);
+}
+
+.night {
+    --search-bg-color: rgba(30, 30, 30, 0.5);
+    --search-bg-hover-color: rgba(50, 50, 50, 0.7);
+    --search-border-color: rgba(255, 255, 255, 0.1);
+    --search-shadow-color: rgba(0, 0, 0, 0.3);
+    --search-placeholder-color: rgba(255, 255, 255, 0.4);
+    --search-text-color: #e0e0e0;
+    --search-accent-color: #7d9aff;
+    --search-tab-inactive-color: rgba(255, 255, 255, 0.4);
+    --search-tab-active-bg: rgba(0, 0, 0, 0.4);
+}
+
 #search {
-  max-width: 700px;
-  margin: 80px auto 0px;
+  max-width: 650px;
+  margin: 80px auto 0;
+  position: relative; /* 用于选项面板定位 */
 }
-#search form {
+
+/* 主搜索栏容器 */
+.search-bar {
+  display: flex;
+  align-items: center;
   position: relative;
+  background-color: var(--search-bg-color);
+  border: 1px solid var(--search-border-color);
+  border-radius: 50px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px var(--search-shadow-color);
+  transition: all 0.3s ease;
 }
+
+.search-bar:hover,
+.search-bar.focused {
+  background-color: var(--search-bg-hover-color);
+  box-shadow: 0 8px 30px var(--search-shadow-color);
+}
+
+/* 当前所选搜索引擎的图标 */
+.selected-engine {
+  padding: 0 8px 0 20px; /* 增加了右边距 */
+  cursor: pointer;
+  flex-shrink: 0; /* 防止图标区域被压缩 */
+}
+.selected-engine .icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px; /* 增高以容纳内容 */
+  min-width: 32px; /* 保证最小宽度 */
+  padding: 0 10px; /* 增加内边距，让内容有呼吸空间 */
+  border-radius: 16px; /* 保持圆角 */
+  background: rgba(0,0,0,0.1);
+  font-size: 14px; /* 稍微减小字体，以适应复杂图标 */
+  white-space: nowrap; /* 禁止内部换行 */
+  overflow: hidden; /* 隐藏溢出的内容 */
+  text-overflow: ellipsis; /* 对溢出的文本显示省略号 */
+  max-width: 120px; /* 限制最大宽度，防止过长的名字撑开布局 */
+  box-sizing: border-box; /* 确保 padding 不会增加总宽度 */
+}
+
+.selected-engine .icon-wrapper span {
+    line-height: 1.2; /* 优化垂直对齐 */
+    display: block; /* 确保 text-overflow 生效 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 #search-text {
-  padding: 9pt;
+  flex-grow: 1;
   width: 100%;
-  height: 50px;
-  font-size: 1pc;
-  border: 0;
-  border-radius: 25px;
-  background-color: rgb(0 0 0 / 25%);
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
+  height: 52px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--search-text-color);
 }
-#search-text:hover {
-  box-shadow: 0px 6px 12px -4px rgb(0 0 0 / 20%);
-  transition: 0.3s;
+
+#search-text::placeholder {
+  color: var(--search-placeholder-color);
+  transition: color 0.3s ease;
 }
+
 #search button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: rgb(0, 0, 0, 0);
-  border: 0;
-  width: 56px;
-  height: 34px;
-  margin: 8px;
-  line-height: 34px;
-  border-radius: 0px 25px 25px 0px;
-  transition: 0.3s;
-  height: 100%;
-  margin: auto !important;
+  width: 48px;
+  height: 48px;
+  margin: 2px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--search-accent-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /*  禁止按钮被压缩  */
 }
+
 #search button:hover {
-  background: #4f7cfc;
-  cursor: pointer;
-  transition: 0.3s;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--search-accent-color);
 }
+
 #search button i {
-  position: relative;
-  color: #ffffffc7;
   font-size: 22px;
-  top: 2px;
 }
-.search-group {
-  display: none;
-  padding-left: 75px;
-}
-.s-current .search-type {
-  padding-left: 0;
-  display: block;
-}
-.s-current .search-type::-webkit-scrollbar {
-  height: 0px;
-}
-.s-current {
-  display: block;
-}
-#search-list {
-  position: relative;
-}
-.s-type {
+
+/* --- 选项面板 --- */
+.search-options-panel {
   position: absolute;
-  top: 0;
+  top: calc(100% + 12px);
   left: 0;
-  z-index: 13;
-  width: 75px;
-}
-.s-type:hover {
-  height: auto;
-}
-.s-type>span {
-  display: block;
-  height: 31px;
-  width: 75px;
-}
-.s-type-list {
-  display: none;
-  position: absolute;
-  top: 31px;
-  padding: 6px 0;
-  width: 70px;
-  background: rgb(0 0 0 / 25%);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  box-shadow: 0 9px 20px rgba(0, 0, 0, .16);
-}
-.s-type-list::before {
-  position: absolute;
-  top: -20px;
-  left: 24px;
-  content: '';
-  display: block;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-bottom-color: rgb(0 0 0 / 25%);
-  backdrop-filter: blur(10px);
-}
-.s-type-list label {
-  display: block;
-  font-size: 15px;
-  color: #acacac;
-  text-align: center;
-  font-weight: normal;
-  margin-bottom: 0;
-  padding: 6px 0;
-  cursor: pointer;
-  transition: .3s;
-}
-.s-type-list label:hover {
-  background: rgba(136, 136, 136, .6);
-}
-.s-type:hover .s-type-list {
-  display: block;
-}
-.type-text {
-  position: absolute;
-  left: 0;
-  width: 75px;
-  padding-left: 18px;
-  font-size: 1rem;
-  line-height: 31px;
-  background: linear-gradient(-225deg,#2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-.type-text:after {
-  content: '\ea61';
-  font-family: tabler-icons;
-  margin: 0 0 0 8px;
-}
-.search-type {
-  white-space: nowrap;
-  margin: 0;
-  overflow: auto !important;
-}
-.search-type label {
-  margin: 0;
-}
-.search-type li {
-  list-style: none;
-  display: inline-block;
-}
-.search-type li label {
-  display: inline-block;
-  padding: 0 11px;
-  font-size: 14px;
-  line-height: 31px;
-  border-radius: 6px 6px 0 0;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.search-type input:checked+label,
-.search-type input:hover+label {
-  background-color: rgb(0 0 0 / 25%) !important;
-  backdrop-filter: blur(10px);
-}
-input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.575);
-}
-.set-check {
-  margin-top: 3px;
-  font-size: 9pt;
-}
-.set-check label {
-  margin-left: 3px;
-}
-.set-check input,
-.set-check label {
+  width: 100%;
+  background-color: var(--search-bg-color);
+  border: 1px solid var(--search-border-color);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px var(--search-shadow-color);
+  padding: 15px;
+  z-index: 100;
   opacity: 0;
-  transition: all .3s ease;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-@media (max-width: 767.98px) {
-  .s-type-list label {
-      padding: 5px 0;
-  }
-  .search-type {
-      overflow: scroll;
-  }
-  .search-list {
-      height: 30px;
-      overflow-y: hidden;
-      overflow-x: scroll;
-      white-space: nowrap;
-  }
+
+.search-options-panel.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
+
+/* 分类标签 */
+.search-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--search-border-color);
+  margin-bottom: 15px;
+}
+.search-categories .category-tab {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--search-tab-inactive-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+.search-categories .category-tab:hover {
+  color: var(--search-text-color);
+  background-color: var(--search-tab-active-bg);
+}
+.search-categories .category-tab.active {
+  color: var(--search-text-color);
+  background-color: var(--search-accent-color);
+  font-weight: bold;
+}
+
+/* 服务提供商列表 */
+.search-providers .provider-list {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.search-providers .provider-list.active {
+  display: flex;
+}
+.search-providers .provider-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid transparent;
+}
+.search-providers .provider-item:hover {
+  background-color: var(--search-tab-active-bg);
+}
+.search-providers .provider-item.selected {
+  background-color: var(--search-tab-active-bg);
+  border-color: var(--search-accent-color);
+}
+.search-providers .provider-item span {
+    line-height: 1.2; /* 更复杂的跨度更好的对齐 */
+}
+
 /*悬浮窗*/
 .suspension {
   max-height: 232px;
