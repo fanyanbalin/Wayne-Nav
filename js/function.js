@@ -471,9 +471,6 @@ function sidebar_menu_close_items_siblings($li) {
 
 // ========== 页面交互功能 ==========
 $(document).ready(function() {
-    // 图片懒加载
-    lozad().observe();
-
     // 点击展开子菜单时收起其他菜单
     $(document).on("click", ".has-sub", function() {
         var $this = $(this);
@@ -516,20 +513,6 @@ $(document).ready(function() {
 
         window.scrollTo({ top: targetOffset, behavior: "smooth" });
     });
-});
-
-function imgerrorfun(){ 
-    var img=event.srcElement; 
-    img.src="images/browser.svg"; //默认图片
-    img.onerror=null; 
-} 
-
-// 获取所有带有 data-bs-toggle="tooltip" 的元素，转换为数组
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-
-// 遍历这些元素，为每个元素创建一个 Bootstrap Tooltip 实例
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl);
 });
 
 // 全局变量定义

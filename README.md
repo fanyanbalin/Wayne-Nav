@@ -12,17 +12,19 @@
 
 ## Demo
 
-➡️ [WayneのNav](https://nav-26e.pages.dev)          
-➡️ [WayneのNav备用1](https://wayne-nav.vercel.app)           
-➡️ [WayneのNav备用2](https://nav.3301.qzz.io/)           
+➡️ [WayneのNav](https://nav-26e.pages.dev/)       
+➡️ [WayneのNav备用1](https://nav.way.ciao.su/)         
+➡️ [WayneのNav备用2](https://wayne-nav.vercel.app/)            
+➡️ [WayneのNav备用3](https://nav.3301.qzz.io/)           
 
 ## 功能特性
 
 ✅ 丰富资源     
 ✅ 随机背景   
 ✅ 快捷搜索      
+✅ 数据管理          
 ✅ 实时天气          
-✅ 日期时间           
+✅ 时间模块                  
 ✅ 日月轮转     
 ✅ 星空背景        
 
