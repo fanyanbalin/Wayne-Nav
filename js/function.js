@@ -654,8 +654,8 @@ let title2 = `
 ==============================
 `
 let content = `
-版 本 号：v6.0.0
-更新日期：2025-07-28
+版 本 号：v6.1.0
+更新日期：2025-07-29
 
 WayneのNav: https://nav.3301.qzz.io/
 Github:  https://github.com/Waynenet/Wayne-Nav
