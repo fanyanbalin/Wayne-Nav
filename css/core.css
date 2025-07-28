@@ -25,11 +25,22 @@ body {
   font-family: "LXGWWenKai-Regular" !important;
 }
 body {
-  background-image: url(https://api.vvhan.com/api/wallpaper/views); /* 随机图片API */
+  background-image: url(https://api.vvhan.com/api/wallpaper/views);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+}
+/* 添加半透明遮罩 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* 黑色，透明度0.4 */
+  z-index: -1; /* 确保遮罩在背景图片之上，但内容之下 */
 }
 @media (max-width: 767.98px) {
   body {
