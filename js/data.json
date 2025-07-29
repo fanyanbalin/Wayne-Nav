@@ -98,7 +98,8 @@
         { "title": "哔哩哔哩", "url": "https://bilibili.com/", "description": "中国版youtube" },
         { "title": "GitHub", "url": "https://github.com/", "description": "管理软件开发以及发现已有代码的首选方法" },
         { "title": "ChatGPT", "url": "https://chatgpt.com/", "description": "ChatGPT 是由 OpenAI 开发的一种人工智能语言模型，能够根据上下文和过去的对话生成类似人类的文本。" },
-        { "title": "DeepSeek", "url": "https://www.deepseek.com/", "description": "DeepSeek | 深度求索  探索未至之境" }
+        { "title": "DeepSeek", "url": "https://www.deepseek.com/", "description": "DeepSeek | 深度求索  探索未至之境" },
+        { "title": "Google AI Studio", "url": "https://aistudio.google.com/", "description": "基于浏览器的轻量级AI平台" }
       ]
     },
     {
@@ -204,7 +205,8 @@
         { "title": "从未出现过的人", "url": "https://thispersondoesnotexist.com/", "description": "AI脸谱" },
         { "title": "迷宫生成器", "url": "https://www.mazegenerator.net/", "description": "迷宫生成器" },
         { "title": "流体模拟器", "url": "https://david.li/fluid/", "description": "流体模拟器" },
-        { "title": "六十秒冥想", "url": "https://pixelthoughts.co/", "description": "六十秒冥想" }
+        { "title": "六十秒冥想", "url": "https://pixelthoughts.co/", "description": "六十秒冥想" },
+        { "title": "经典益智游戏合集", "url": "https://puzzles-game.com/zh/", "description": "包含40款在线益智游戏网站" }
       ]
     },
     {
@@ -218,7 +220,8 @@
         { "title": "通义千问", "url": "https://www.tongyi.com/", "description": "通义千问是阿里巴巴推出的一个AI预训练模型，它主要基于阿里巴巴达摩院在自然语言处理领域的先进技术，采用深度学习和大规模语言模型的方法。通义千问旨在为用户提供高效、准确的信息检索和问题解答服务，同时支持多种自然语言处理任务，如语音识别、机器翻译等。" },
         { "title": "智谱清言", "url": "https://chatglm.cn/", "description": "智谱清言是由北京智谱华章科技有限公司开发的生成式AI聊天助手，基于智谱AI自主研发的中英双语对话模型ChatGLM2。它具有千亿级别的参数和一系列强大的功能，旨在提供高效、精准的语音交互体验。" },
         { "title": "豆包", "url": "https://www.doubao.com/chat/", "description": "豆包，一款由字节跳动精心打造的AI助手，它不仅是你的私人问答专家，更是写作、翻译、情感陪伴、编程等多面手。无论是Web端还是iOS/安卓，一键登录（手机号、抖音号、Apple ID任选），即刻开启智能生活新篇章！" },
-        { "title": "天工AI", "url": "https://www.tiangong.cn/", "description": "天工是一款支持搜索、写作、对话、文档分析、画画、做PPT的全能型AI助手。你可以借助AI技术，检索信息、多语言翻译、写论文、写代码、写方案、写汇报、做PPT、归纳总结文档和音频视频，还可以智能编辑彩页和宝典，让AI生成高质量彩页内容，收获点赞关注。" }
+        { "title": "天工AI", "url": "https://www.tiangong.cn/", "description": "天工是一款支持搜索、写作、对话、文档分析、画画、做PPT的全能型AI助手。你可以借助AI技术，检索信息、多语言翻译、写论文、写代码、写方案、写汇报、做PPT、归纳总结文档和音频视频，还可以智能编辑彩页和宝典，让AI生成高质量彩页内容，收获点赞关注。" },
+        { "title": "Google AI Studio", "url": "https://aistudio.google.com/", "description": "基于浏览器的轻量级AI平台" }
       ]
     },
     {
@@ -254,7 +257,8 @@
         { "title": "改图鸭", "url": "https://www.gaituya.com/", "description": "综合改图工具" },
         { "title": "iLoveIMG | 图像文件在线编辑工具", "url": "https://www.iloveimg.com/", "description": "可批量编辑图片" },
         { "title": "电子包浆", "url": "https://magiconch.com/patina/", "description": "图片做旧工具，赛博包浆虚拟器" },
-        { "title": "搞笑图片合成", "url": "http://www.pichacks.com/", "description": "在线搞笑图片合成" }
+        { "title": "搞笑图片合成", "url": "http://www.pichacks.com/", "description": "在线搞笑图片合成" },
+        { "title": "Raphael AI", "url": "https://raphael.app/", "description": "无限制免费AI图片生成器" }
       ]
     },
     {
@@ -379,7 +383,8 @@
         { "title": "查邮编", "url": "https://www.ip138.com/post/", "description": "邮政编码、长途电话区号专业在线查询" },
         { "title": "虚拟地址生成器", "url": "https://shenfendaquan.com/", "description": "美日加英多国虚拟地址生成" },
         { "title": "虚拟个人信息", "url": "https://www.fakepersongenerator.com/", "description": "虚拟信息生成器" },
-        { "title": "fakemail", "url": "http://www.fakemailgenerator.com/", "description": "临时邮箱生成器" }
+        { "title": "fakemail", "url": "http://www.fakemailgenerator.com/", "description": "临时邮箱生成器" },
+        { "title": "AddressGen", "url": "https://addressgen.top/", "description": "在线地址生成器" }
       ]
     },
     {
