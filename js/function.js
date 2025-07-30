@@ -14,11 +14,11 @@ $('a[rel="go-top"]').click(function () {
 
 //鼠标样式
 const body = document.querySelector("body");
-const element = document.getElementById("pointer");
-const halfElementWidth = element.offsetWidth / 2;
+const pointerElement = document.getElementById("pointer");
+const halfElementWidth = pointerElement.offsetWidth / 2;
 
 function setPosition(x, y) {
-    element.style.transform = `translate(${x - halfElementWidth + 19}px, ${y - halfElementWidth + 19}px)`;
+    pointerElement.style.transform = `translate(${x - halfElementWidth + 19}px, ${y - halfElementWidth + 19}px)`;
 }
 
 // 监听鼠标移动，更新指针位置
@@ -110,7 +110,8 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (ev
 // 星空背景动画
 function stars() {
     const canvas = document.getElementById("starfield"); // 获取画布元素
-    const ctx = canvas.getContext("2d"); // 获取2D绘图上下文
+    if (!canvas) return; // 防止画布缺失时出现错误
+ const ctx = canvas.getContext("2d"); // 获取2D绘图上下文
     let width = window.innerWidth; // 当前窗口宽度
     let height = window.innerHeight; // 当前窗口高度
     let stars = []; // 存放所有星星对象
@@ -253,46 +254,31 @@ stars();
 
 //背景图片加载失败，设置背景纯色
 document.addEventListener('DOMContentLoaded', function() {
-    // 获取背景图片URL
     const body = document.querySelector('body');
-    const bgUrl = window.getComputedStyle(body).backgroundImage.slice(4, -1).replace(/"/g, "");
+    const bgUrlMatch = window.getComputedStyle(body).backgroundImage.match(/url\("?(.+?)"?\)/);
+    if (!bgUrlMatch) return;
+    const bgUrl = bgUrlMatch[1];
     
-    // 创建一个临时图片元素来测试加载
     const img = new Image();
     img.src = bgUrl;
-    
-    img.onload = function() {
-        // 图片加载成功，不做任何操作
-        console.log('背景图片加载成功');
-    };
-    
     img.onerror = function() {
-        // 图片加载失败，设置背景纯色
         body.style.background = '#3f5d5c';
-        body.style.backgroundImage = 'none'; // 移除失败的背景图片
-        console.log('背景图片加载失败，已设置为纯色背景');
+        body.style.backgroundImage = 'none';
+        console.warn('背景图片加载失败，已设置为纯色背景');
     };
 });
 
 //侧边栏菜单键
-// ========== 定义公共变量 ==========
 var public_vars = public_vars || {};
-
-// ========== 页面初始化 ==========
 ;(function($, window, undefined) {
     "use strict";
-
     $(document).ready(function() {
-        // 缓存常用元素
-        public_vars.$body           = $("body");
-        public_vars.$pageContainer  = public_vars.$body.find(".page-container");
-        public_vars.$sidebarMenu    = public_vars.$pageContainer.find('.sidebar-menu');
-        public_vars.$mainMenu       = public_vars.$sidebarMenu.find('.main-menu');
-        public_vars.$mainContent    = public_vars.$pageContainer.find('.main-content');
-        public_vars.$mainFooter     = public_vars.$body.find('footer.main-footer');
-        public_vars.$userInfoMenu   = public_vars.$body.find('nav.navbar.user-info-navbar');
-        public_vars.wheelPropagation = true; // 主菜单滚轮传播开关
-
+        public_vars.$body = $("body");
+        public_vars.$pageContainer = $(".page-container");
+        public_vars.$sidebarMenu = $('.sidebar-menu');
+        public_vars.$mainMenu = $('.main-menu');
+        public_vars.$mainContent = $('.main-content');
+        public_vars.$userInfoMenu = $('nav.user-info-navbar');
         // 初始化侧边栏菜单
         setup_sidebar_menu();
 
@@ -574,58 +560,32 @@ jQuery(window).on('resize orientationchange', trigger_resizable);
 fetch('https://api.vvhan.com/api/weather')
     .then(response => response.json())
     .then(data => {
-        $('#wea_text').html(data.data.type)
-        $('#city_text').html(data.city)
-        $('#tem_low').html(data.data.low)
-        $('#tem_high').html(data.data.high)
-        $('#win_text').html(data.data.fengxiang)
-        $('#win_speed').html(data.data.fengli)
-    })
-    .catch(console.error)
+        $('#wea_text').html(data.data.type); $('#city_text').html(data.city);
+        $('#tem_low').html(data.data.low); $('#tem_high').html(data.data.high);
+        $('#win_text').html(data.data.fengxiang); $('#win_speed').html(data.data.fengli);
+    }).catch(console.error);
 
 //获取时间
 let t = null;
-t = setTimeout(times, 1000);
-
 function times() {
     clearTimeout(t);
-    dt = new Date();
-    let y = dt.getYear() + 1900;
-    let mm = dt.getMonth() + 1;
-    let d = dt.getDate();
-    let weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-    let day = dt.getDay();
-    let h = dt.getHours();
-    let m = dt.getMinutes();
-    let s = dt.getSeconds();
-    if (h < 10) {
-        h = "0" + h;
-    }
-    if (m < 10) {
-        m = "0" + m;
-    }
-    if (s < 10) {
-        s = "0" + s;
-    }
-    $("#times").html(y + "." + mm + "." + d + "&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
+    const dt = new Date();
+    const weekday = ["日", "一", "二", "三", "四", "五", "六"];
+    const h = dt.getHours().toString().padStart(2, '0');
+    const m = dt.getMinutes().toString().padStart(2, '0');
+    const s = dt.getSeconds().toString().padStart(2, '0');
+    $("#times").html(`${dt.getFullYear()}.${dt.getMonth() + 1}.${dt.getDate()} <span class='weekday'>星期${weekday[dt.getDay()]}</span><br/><span class='time-text'>${h}:${m}:${s}</span>`);
     t = setTimeout(times, 1000);
 }
+times();
 
 //脚注
 $(document).ready(function () {
     var t1 = performance.now();
     if (typeof t1 != "undefined") { document.getElementById("time").innerHTML = " 页面加载耗时 " + Math.round(t1) + " 毫秒 "; }
     $.get("/cdn-cgi/trace", function (data) {
-        sip = data.match(/(ip=?)(\S*)/)[2];
-        str = data.match(/(colo=?)(\S*)/)[2];
-        loc = data.match(/(loc=?)(\S*)/)[2];
-        sts = data.match(/(http==?)(\S*)/)[2];
-        tls = data.match(/(tls==?)(\S*)/)[2];
-        $("#result").append("节点:" + str);
-        $("#result").append("\n访客:" + loc);
-        $("#result").append("\n" + sts);
-        $("#result").append("\n加密:" + tls);
-        $("#result").append("\nIP:" + sip);
+        let info = Object.fromEntries(data.trim().split('\n').map(e => e.split('=')));
+        $("#result").html(`节点:${info.colo} | 访客:${info.loc} | IP:${info.ip}`);
     });
 });
 
