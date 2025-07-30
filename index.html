@@ -193,7 +193,7 @@
                             <h6 class="tag">关于站长</h6>
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <div class="stationmaster box2" 
+                                    <div class="w-widget box2" 
                                          onclick="window.open('https://Waynenet.github.io/about/', '_blank')" 
                                          data-bs-toggle="tooltip" data-bs-placement="bottom" title="关于站长">
                                         <div class="w-comment-entry">
@@ -240,20 +240,60 @@
             </div>
             <div class="suspension">
                 <ul>
-                    <li class="suspension_box suspension_ax" onclick="switchNightMode()">
-                        <div class="suspension_ax_cont" id="fk-span"> 
-                            <span class="suspension_triangle" id="fk-span-right"></span>
-                            <span id="suspension_text">切换夜间模式</span>
-                        </div>
-                    </li>
+                    <!-- 回到顶部 -->
                     <a rel="go-top">
-                        <li class="suspension_box suspension_upward" id="topup" style="display: none;">
-                            <div class="suspension_upward_cont" id="fk-span"> 
-                                <span class="suspension_triangle" id="fk-span-right"></span> 
-                                <span>返回顶部</span>
-                            </div>
+                        <li class="suspension-item" id="topup" style="display: none;">
+                            <div class="suspension_box suspension_upward"></div>
+                            <div class="suspension-panel suspension-tooltip">返回顶部</div>
                         </li>
                     </a>
+
+                    <!-- 夜间模式 -->
+                    <li class="suspension-item">
+                        <div class="suspension_box suspension_ax" onclick="switchNightMode()"></div>
+                        <div class="suspension-panel suspension-tooltip" id="night-mode-tooltip">切换夜间模式</div>
+                    </li>
+
+                    <!-- 外观设置 -->
+                    <li class="suspension-item" id="settings-container">
+                        <ul class="settings-controls" id="settings-controls">
+                            <li class="suspension-item control-item">
+                                <div class="suspension_box suspension_control" data-control="overlay">
+                                    <i class="ti ti-droplet"></i>
+                                </div>
+                                <div class="suspension-panel suspension-tooltip">背景遮罩</div>
+                                <div class="suspension-panel control-slider-panel" id="overlay-panel">
+                                    <input type="range" id="overlay-slider" class="control-slider" min="0" max="0.8" step="0.05" data-variable="--overlay-opacity" data-unit="">
+                                    <span class="slider-value">0.4</span>
+                                </div>
+                            </li>
+                            <li class="suspension-item control-item">
+                                <div class="suspension_box suspension_control" data-control="blur">
+                                    <i class="ti ti-blur"></i>
+                                </div>
+                                <div class="suspension-panel suspension-tooltip">模块模糊</div>
+                                <div class="suspension-panel control-slider-panel" id="blur-panel">
+                                    <input type="range" id="blur-slider" class="control-slider" min="0" max="20" step="1" data-variable="--module-blur-value" data-unit="px">
+                                    <span class="slider-value">12</span>
+                                </div>
+                            </li>
+                            <li class="suspension-item control-item">
+                                <div class="suspension_box suspension_control" data-control="alpha">
+                                    <i class="ti ti-adjustments-alt"></i>
+                                </div>
+                                <div class="suspension-panel suspension-tooltip">模块透明</div>
+                                 <div class="suspension-panel control-slider-panel" id="alpha-panel">
+                                    <input type="range" id="alpha-slider" class="control-slider" min="0" max="1" step="0.05" data-variable="--module-bg-alpha" data-unit="">
+                                    <span class="slider-value">0.1</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- 主设置按钮 -->
+                        <div class="suspension_box suspension_settings_toggle" id="settings-toggle">
+                            <i class="ti ti-settings"></i>
+                        </div>
+                        <div class="suspension-panel suspension-tooltip">外观设置</div>
+                    </li>
                 </ul>
             </div>
             <footer class="main-footer">
