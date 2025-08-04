@@ -141,6 +141,7 @@ console.clear(); console.log(`%cWayneのNav %c\n==============================\n
 document.addEventListener('DOMContentLoaded', function() {
     const docElem = document.documentElement;
     const settingsContainer = document.getElementById('settings-container');
+    const decimalSliders = ['alpha-slider', 'overlay-slider'];
 
     if (!settingsContainer) {
         console.warn("外观设置控件容器未找到，功能禁用。");
@@ -177,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
             slider.value = finalValue;
             if (slider.nextElementSibling) {
                 // 根据滑块ID判断是否需要小数
-                const precision = slider.id === 'alpha-slider' ? 2 : 0;
+                const precision = decimalSliders.includes(slider.id) ? 2 : 0;
                 slider.nextElementSibling.textContent = parseFloat(finalValue).toFixed(precision);
             }
         });
@@ -221,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 2. 更新数值显示
             if (this.nextElementSibling) {
-                const precision = this.id === 'alpha-slider' ? 2 : 0;
+                const precision = decimalSliders.includes(this.id) ? 2 : 0;
                 this.nextElementSibling.textContent = parseFloat(value).toFixed(precision);
             }
 
