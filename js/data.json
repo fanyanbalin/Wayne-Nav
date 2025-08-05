@@ -1,40 +1,26 @@
 {
   "searchConfig": {
     "groups": [
-      { "name": "常用", "id": "type-baidu" },
-      { "name": "搜索", "id": "type-search" },
-      { "name": "工具", "id": "type-br" },
-      { "name": "社区", "id": "type-zhihu" },
-      { "name": "生活", "id": "type-taobao" },
-      { "name": "求职", "id": "type-zhaopin" }
+      { "name": "搜索" },
+      { "name": "工具" },
+      { "name": "社区" },
+      { "name": "生活" },
+      { "name": "求职" }
     ],
     "providers": [
       {
-        "groupLetter": "a",
-        "groupName": "常用",
+        "groupName": "搜索",
         "items": [
-          { "id": "type-baidu", "name": "<span style='color:#2100E0' class='dark-text'>百度</span>", "url": "https://www.baidu.com/s?wd=", "placeholder": "百度一下，你就知道", "isDefault": true },
+          { "id": "type-baidu", "name": "<span style='color:#2319dc' class='dark-text'>百度</span>", "url": "https://www.baidu.com/s?wd=", "placeholder": "百度一下，你就知道", "isDefault": true },
           { "id": "type-bing", "name": "<span style='color:#007daa'>Bing</span>", "url": "https://cn.bing.com/search?q=", "placeholder": "微软 Bing 搜索" },
           { "id": "type-google", "name": "<span style='color:#3B83FA'>G</span><span style='color:#F3442C'>o</span><span style='color:#FFC300'>o</span><span style='color:#4696F8'>g</span><span style='color:#2CAB4E'>l</span><span style='color:#F54231'>e</span>", "url": "https://www.google.com/search?q=", "placeholder": "谷歌搜索" },
+          { "id": "type-360", "name": "<span style='color:#19b955'>360</span>", "url": "https://www.so.com/s?q=", "placeholder": "360好搜" },
+          { "id": "type-sogou", "name": "<span style='color:#ff5943'>搜狗</span>", "url": "https://www.sogou.com/web?query=", "placeholder": "搜狗搜索" },
           { "id": "type-bili", "name": "<span style='color:#00a1d6'>BiliBili</span>", "url": "https://search.bilibili.com/all?keyword=", "placeholder": "哔哩哔哩搜索" },
           { "id": "type-git", "name": "<span style='color:#000000' class='dark-text'>Github</span>", "url": "https://github.com/search?utf8=%E2%9C%93&q=", "placeholder": "搜索 Github 仓库" }
         ]
       },
       {
-        "groupLetter": "b",
-        "groupName": "搜索",
-        "items": [
-          { "id": "type-search", "name": "<span style='color:#2319dc' class='dark-text'>百度</span>", "url": "https://www.baidu.com/s?wd=", "placeholder": "百度一下，你就知道", "isDefault": true },
-          { "id": "type-bing1", "name": "<span style='color:#007daa'>Bing</span>", "url": "https://cn.bing.com/search?q=", "placeholder": "微软 Bing 搜索" },
-          { "id": "type-google1", "name": "<span style='color:#3B83FA'>G</span><span style='color:#F3442C'>o</span><span style='color:#FFC300'>o</span><span style='color:#4696F8'>g</span><span style='color:#2CAB4E'>l</span><span style='color:#F54231'>e</span>", "url": "https://www.google.com/search?q=", "placeholder": "谷歌搜索" },
-          { "id": "type-360", "name": "<span style='color:#19b955'>360</span>", "url": "https://www.so.com/s?q=", "placeholder": "360好搜" },
-          { "id": "type-sogo", "name": "<span style='color:#ff5943'>搜狗</span>", "url": "https://www.sogou.com/web?query=", "placeholder": "搜狗搜索" },
-          { "id": "type-bili1", "name": "<span style='color:#00a1d6'>BiliBili</span>", "url": "https://search.bilibili.com/all?keyword=", "placeholder": "哔哩哔哩搜索" },
-          { "id": "type-git1", "name": "<span style='color:#000000' class='dark-text'>Github</span>", "url": "https://github.com/search?utf8=%E2%9C%93&q=", "placeholder": "搜索 Github 仓库" }
-        ]
-      },
-      {
-        "groupLetter": "c",
         "groupName": "工具",
         "items": [
           { "id": "type-ping", "name": "<span style='color:#00599e'>PING检测</span>", "url": "https://ping.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" },
@@ -46,7 +32,6 @@
         ]
       },
       {
-        "groupLetter": "d",
         "groupName": "社区",
         "items": [
           { "id": "type-zhihu", "name": "<span style='color:#0084ff'>知乎</span>", "url": "https://www.zhihu.com/search?type=content&q=", "placeholder": "知乎，与你分享刚编的故事", "isDefault": true },
@@ -57,12 +42,11 @@
         ]
       },
       {
-        "groupLetter": "e",
         "groupName": "生活",
         "items": [
           { "id": "type-taobao", "name": "<span style='color:#f40'>淘宝</span>", "url": "https://s.taobao.com/search?q=", "placeholder": "淘宝", "isDefault": true },
           { "id": "type-jd", "name": "<span style='color:#c91623'>京东</span>", "url": "https://search.jd.com/Search?keyword=", "placeholder": "京东" },
-          { "id": "type-xiachufang", "name": "<span style='color:#dd3915'>下厨房</span>", "url": "http://www.xiachufang.com/search/?keyword=", "placeholder": "下厨房" },
+          { "id": "type-xiacf", "name": "<span style='color:#dd3915'>下厨房</span>", "url": "http://www.xiachufang.com/search/?keyword=", "placeholder": "下厨房" },
           { "id": "type-xiangha", "name": "<span style='color:#930'>香哈菜谱</span>", "url": "https://www.xiangha.com/so/?q=caipu&s=", "placeholder": "香哈菜谱" },
           { "id": "type-12306", "name": "<span style='color:#07f'>12306</span>", "url": "http://www.12306.cn/?", "placeholder": "12306" },
           { "id": "type-qunar", "name": "<span style='color:#00afc7'>去哪儿</span>", "url": "https://www.qunar.com/?", "placeholder": "去哪儿" },
@@ -70,7 +54,6 @@
         ]
       },
       {
-        "groupLetter": "f",
         "groupName": "求职",
         "items": [
           { "id": "type-zhaopin", "name": "<span style='color:#689fee'>智联招聘</span>", "url": "https://sou.zhaopin.com/jobs/searchresult.ashx?kw=", "placeholder": "智联招聘", "isDefault": true },
