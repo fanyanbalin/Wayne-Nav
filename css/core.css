@@ -1222,7 +1222,13 @@ footer.main-footer.fixed {
 
 @media (min-width: 992px) {
   .row {
-      margin-right: 12px !important;
+    margin-right: 12px !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .weather {
+    display: none;
   }
 }
 
