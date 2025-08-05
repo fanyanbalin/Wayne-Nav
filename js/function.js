@@ -2,10 +2,10 @@
 $(window).scroll(function () {
     if ($(this).scrollTop() >= 50) {
         $('#topup').fadeIn(200);
-        $('.sidebar-menu').addClass('bgchange');
+        $('.sidebar-menu-inner').removeClass('bgchange');
     } else {
         $('#topup').fadeOut(200);
-        $('.sidebar-menu').removeClass('bgchange');
+        $('.sidebar-menu-inner').addClass('bgchange');
     }
 });
 $('a[rel="go-top"]').click(function () {

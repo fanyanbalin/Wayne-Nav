@@ -695,6 +695,12 @@ footer.main-footer.fixed {
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;
   }
+  .page-container .sidebar-menu .sidebar-menu-inner.bgchange {
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    backdrop-filter: blur(0) !important;
+    -webkit-backdrop-filter: blur(0) !important;
+  }
   .page-container .sidebar-menu .sidebar-menu-inner .logo-env,
   .page-container .sidebar-menu .sidebar-menu-inner .main-menu {
     padding-left: 20px;
