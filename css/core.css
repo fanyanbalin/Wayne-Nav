@@ -20,16 +20,11 @@
 :root {
   /* 玻璃模块颜色，方便与透明度分离 */
   --module-bg-rgb: 255, 255, 255; 
-  --module-bg-alpha: 0.1;
 
   /* 玻璃模块样式变量 */
   --module-bg-color: rgba(var(--module-bg-rgb), var(--module-bg-alpha));
   --module-bg-hover-color: rgba(var(--module-bg-rgb), calc(var(--module-bg-alpha) + 0.15));
   --module-border-color: rgba(255, 255, 255, 0.2);
-  --module-blur-value: 12px;
-  
-  /* 背景遮罩变量 */
-  --overlay-opacity: 0.4;
 
   /* 暗黑模式下的二级菜单背景 */
   --collapsed-submenu-bg: rgba(20, 20, 20, 0.7);
@@ -43,7 +38,6 @@
 .night {
   /* 暗黑模式下的变量覆盖 */
   --module-bg-rgb: 50, 50, 50; 
-  /* --module-bg-alpha 将由JS和LocalStorage管理，这里无需设置默认值 */
   --module-border-color: rgba(255, 255, 255, 0.1);
   --collapsed-submenu-bg: rgba(35, 35, 35, 0.75);
 }
