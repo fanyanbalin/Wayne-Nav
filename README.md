@@ -5,7 +5,7 @@
 </p>
 
 [![Version](https://img.shields.io/github/v/release/Waynenet/Wayne-Nav?color=00aaff&logo=github)](https://github.com/Waynenet/Wayne-Nav/releases/latest)
-[![License](https://img.shields.io/github/license/Waynenet/Wayne-Nav?color=orange)](LICENSE)
+[![License](https://img.shields.io/github/license/Waynenet/Wayne-Nav?color=orange&logo=gnu)](LICENSE)
 [![Channel](https://img.shields.io/badge/Telegram-Channel-blue?logo=telegram)](https://t.me/wayne_3301)
 
 一个纯静态导航网站，精挑细选优质书签，无任何广告行为。
@@ -32,6 +32,7 @@
 
 - [WebStackPage](https://github.com/WebStackPage/WebStackPage.github.io)
 - [ChatGPT](https://chat.openai.com/)
+- [Google AI Studio](https://aistudio.google.com/)
 - [DeepSeek](https://www.deepseek.com/)
 - [韩小韩 WebAPI 接口站](https://api.vvhan.com/)
 - [今日诗词 API](https://www.jinrishici.com/)
