@@ -507,7 +507,7 @@ span.time-text {
   }
   .sidebar-menu.collapsed .main-menu > li.active,
   .sidebar-menu.collapsed .main-menu > li li.active {
-    background-color: #ffffff00;
+    background-color: transparent;
   }
   .sidebar-menu.collapsed .main-menu > li > a > i {
     margin-right: 0;
