@@ -163,7 +163,6 @@ footer.main-footer .footer-inner:after {
   background: transparent;
   border-right: 1px solid var(--module-border-color);
 }
-.sidebar-menu::before { content: none; }
 
 /* --- 通用玻璃模块样式 --- */
 
@@ -602,7 +601,7 @@ footer.main-footer.fixed {
 }
 /* 顶栏 */
 .user-info-navbar {
-  background-color: #fff0;
+  background-color: transparent;
   min-height: 0;
   border: 0;
   padding: 0;
@@ -622,7 +621,7 @@ footer.main-footer.fixed {
   position: relative;
   margin: 0;
   padding: 0;
-  border: 1px solid #fff0;
+  border: 1px solid transparent;
   border-top: 0;
   border-bottom: 0;
   display: block;
@@ -685,6 +684,11 @@ footer.main-footer.fixed {
   .page-container .sidebar-menu.mobile-is-visible {
     height: 100%;
     overflow-y: auto;
+  }
+  .night .page-container .sidebar-menu,
+  .night .page-container .main-content .navbar.user-info-navbar.mobile-is-visible {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
   }
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;
