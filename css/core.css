@@ -1,6 +1,7 @@
 @font-face {
   font-family: "UnidreamLED";
   src: url('https://gcore.jsdelivr.net/npm/wayne-img@latest/font/UnidreamLED.ttf') format('truetype');
+  font-display: swap;
 }
 @media (min-width: 1200px) and (max-width: 1399.98px)  {
   .col-xl-2w {

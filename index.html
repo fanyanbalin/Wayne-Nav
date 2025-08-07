@@ -9,6 +9,7 @@
     <meta name="keywords" content="网址导航,网站导航,Wayne,Navigation"/>
     <meta name="description" content="WayneのNav - 一个纯静态导航网站，精挑细选优质书签，无任何广告行为。">
     <link rel="shortcut icon" type="image/x-icon" href="images/wayne.png"/>
+    <link rel="preload" href="https://gcore.jsdelivr.net/npm/wayne-img@latest/font/UnidreamLED.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="css/core.min.css">
     <link rel="stylesheet" href="css/dark.min.css">
     <!-- lozad -->
@@ -26,7 +27,8 @@
     <!-- gsap -->
     <script src="https://gcore.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
     <!-- LXGW WenKai -->
-    <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css" />
+    <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css"></noscript>
 </head>
 <body class="page-body">
     <div id="pointer"></div>
@@ -300,12 +302,9 @@
             </div>
             <footer class="main-footer">
                 <div class="footer-inner">
-                    <div class="footer-text">COPYRIGHT © 2022-<script>document.write( new Date().getFullYear() );</script> 
+                    <div class="footer-text">COPYRIGHT © 2022-<script>document.write( new Date().getFullYear() );</script> & Made by 
                         <a href="https://home.3301.qzz.io/" target="_blank">
                             <strong>Wayne</strong>
-                        </a> 丨 POWERED BY 
-                        <a href="https://github.com/WebStackPage/WebStackPage.github.io" target="_blank">
-                            <strong>WebStack</strong>
                         </a>
                     </div>
                     <div id="time"></div>
