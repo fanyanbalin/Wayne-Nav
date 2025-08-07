@@ -29,6 +29,14 @@
   --text-color-primary: #d8d8d8;
   --text-color-secondary: #acacac;
   --text-color-footer: #a9a9a9;
+  
+  /* 搜索模块颜色 */
+  --search-shadow-color: rgba(0, 0, 0, 0.1);
+  --search-placeholder-color: rgba(255, 255, 255, 0.6);
+  --search-text-color: #ffffff;
+  --search-accent-color: #6a88ff;
+  --search-tab-inactive-color: rgba(255, 255, 255, 0.5);
+  --search-tab-active-bg: rgba(0, 0, 0, 0.2);
 }
 
 .night {
@@ -36,6 +44,14 @@
   --module-bg-rgb: 50, 50, 50; 
   --module-border-color: rgba(255, 255, 255, 0.1);
   --collapsed-submenu-bg: rgba(35, 35, 35, 0.75);
+  
+  /* 暗黑模式下的搜索模块颜色 */
+  --search-shadow-color: rgba(0, 0, 0, 0.3);
+  --search-placeholder-color: rgba(255, 255, 255, 0.4);
+  --search-text-color: #e0e0e0;
+  --search-accent-color: #7d9aff;
+  --search-tab-inactive-color: rgba(255, 255, 255, 0.4);
+  --search-tab-active-bg: rgba(0, 0, 0, 0.4);
 }
 
 html,
@@ -932,31 +948,8 @@ footer.main-footer.fixed {
 .poem p {
   color: var(--text-color-primary) !important;
 }
+
 /* 搜索框 */
-:root {
-    --search-bg-color: rgba(255, 255, 255, 0.15);
-    --search-bg-hover-color: rgba(255, 255, 255, 0.25);
-    --search-border-color: rgba(255, 255, 255, 0.2);
-    --search-shadow-color: rgba(0, 0, 0, 0.1);
-    --search-placeholder-color: rgba(255, 255, 255, 0.6);
-    --search-text-color: #ffffff;
-    --search-accent-color: #6a88ff;
-    --search-tab-inactive-color: rgba(255, 255, 255, 0.5);
-    --search-tab-active-bg: rgba(0, 0, 0, 0.2);
-}
-
-.night {
-    --search-bg-color: rgba(30, 30, 30, 0.5);
-    --search-bg-hover-color: rgba(50, 50, 50, 0.7);
-    --search-border-color: rgba(255, 255, 255, 0.1);
-    --search-shadow-color: rgba(0, 0, 0, 0.3);
-    --search-placeholder-color: rgba(255, 255, 255, 0.4);
-    --search-text-color: #e0e0e0;
-    --search-accent-color: #7d9aff;
-    --search-tab-inactive-color: rgba(255, 255, 255, 0.4);
-    --search-tab-active-bg: rgba(0, 0, 0, 0.4);
-}
-
 #search {
   max-width: 650px;
   margin: 80px auto 0;
@@ -968,18 +961,18 @@ footer.main-footer.fixed {
   display: flex;
   align-items: center;
   position: relative;
-  background-color: var(--search-bg-color);
-  border: 1px solid var(--search-border-color);
+  background-color: var(--module-bg-color);
+  border: 1px solid var(--module-border-color);
   border-radius: 50px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--module-blur-value));
+  -webkit-backdrop-filter: blur(var(--module-blur-value));
   box-shadow: 0 4px 20px var(--search-shadow-color);
   transition: all 0.3s ease;
 }
 
 .search-bar:hover,
 .search-bar.focused {
-  background-color: var(--search-bg-hover-color);
+  background-color: var(--module-bg-hover-color);
   box-shadow: 0 8px 30px var(--search-shadow-color);
 }
 
@@ -1061,11 +1054,11 @@ footer.main-footer.fixed {
   top: calc(100% + 12px);
   left: 0;
   width: 100%;
-  background-color: var(--search-bg-color);
-  border: 1px solid var(--search-border-color);
+  background-color: var(--module-bg-hover-color);
+  border: 1px solid var(--module-border-color);
   border-radius: 20px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--module-blur-value));
+  -webkit-backdrop-filter: blur(var(--module-blur-value));
   box-shadow: 0 8px 30px var(--search-shadow-color);
   padding: 15px;
   z-index: 100;
@@ -1087,7 +1080,7 @@ footer.main-footer.fixed {
   flex-wrap: wrap;
   gap: 10px;
   padding-bottom: 15px;
-  border-bottom: 1px solid var(--search-border-color);
+  border-bottom: 1px solid var(--module-border-color);
   margin-bottom: 15px;
 }
 .search-categories .category-tab {
@@ -1133,7 +1126,11 @@ footer.main-footer.fixed {
   border-color: var(--search-accent-color);
 }
 .search-providers .provider-item span {
-    line-height: 1.2; /* 更复杂的跨度更好的对齐 */
+  line-height: 1.2; /* 更复杂的跨度更好的对齐 */
+}
+
+.night .dark-text {
+  color: var(--text-color-primary) !important;
 }
 
 /* ---悬浮窗--- */
