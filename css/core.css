@@ -26,15 +26,17 @@
   --collapsed-submenu-bg: rgba(20, 20, 20, 0.7);
 
   /* 文本颜色 */
+  --text-primary: #f0f0f0;
   --text-color-primary: #d8d8d8;
   --text-color-secondary: #acacac;
   --text-color-footer: #a9a9a9;
+
+  --accent-color: #6a88ff;
   
   /* 搜索模块颜色 */
   --search-shadow-color: rgba(0, 0, 0, 0.1);
   --search-placeholder-color: rgba(255, 255, 255, 0.6);
   --search-text-color: #ffffff;
-  --search-accent-color: #6a88ff;
   --search-tab-inactive-color: rgba(255, 255, 255, 0.5);
   --search-tab-active-bg: rgba(0, 0, 0, 0.2);
 }
@@ -44,12 +46,13 @@
   --module-bg-rgb: 50, 50, 50; 
   --module-border-color: rgba(255, 255, 255, 0.1);
   --collapsed-submenu-bg: rgba(35, 35, 35, 0.75);
+
+  --accent-color: #7d9aff;
   
   /* 暗黑模式下的搜索模块颜色 */
   --search-shadow-color: rgba(0, 0, 0, 0.3);
   --search-placeholder-color: rgba(255, 255, 255, 0.4);
   --search-text-color: #e0e0e0;
-  --search-accent-color: #7d9aff;
   --search-tab-inactive-color: rgba(255, 255, 255, 0.4);
   --search-tab-active-bg: rgba(0, 0, 0, 0.4);
 }
@@ -840,18 +843,24 @@ footer.main-footer.fixed {
   position: relative !important;
   min-height: 50px !important;
 }
+
 .tag {
-  color: #197dff;
-  animation: mycolor 5s linear infinite;
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: linear-gradient(to right, var(--accent-color), #a27fff);
+  border-radius: 20px;
 }
-@keyframes mycolor {
-  to {
-    filter: hue-rotate(360deg);
-  }
+.tag i { margin-right: 8px; }
+
+.night .tag {
+  color: var(--text-color-primary);
+  background: transparent;
 }
-.tag i {
-  margin-right: 7px;
-}
+
 .weather,
 .myinfo p {
   text-align: center;
@@ -1029,7 +1038,7 @@ footer.main-footer.fixed {
   margin: 2px;
   border: none;
   border-radius: 50%;
-  background-color: var(--search-accent-color);
+  background-color: var(--accent-color);
   color: white;
   display: flex;
   align-items: center;
@@ -1041,7 +1050,7 @@ footer.main-footer.fixed {
 
 #search button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 15px var(--search-accent-color);
+  box-shadow: 0 0 15px var(--accent-color);
 }
 
 #search button i {
@@ -1098,7 +1107,7 @@ footer.main-footer.fixed {
 }
 .search-categories .category-tab.active {
   color: var(--search-text-color);
-  background-color: var(--search-accent-color);
+  background-color: var(--accent-color);
   font-weight: bold;
 }
 
@@ -1123,7 +1132,7 @@ footer.main-footer.fixed {
 }
 .search-providers .provider-item.selected {
   background-color: var(--search-tab-active-bg);
-  border-color: var(--search-accent-color);
+  border-color: var(--accent-color);
 }
 .search-providers .provider-item span {
   line-height: 1.2; /* 更复杂的跨度更好的对齐 */
@@ -1304,7 +1313,7 @@ input[type="range"].control-slider::-webkit-slider-thumb {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: var(--search-accent-color);
+  background: var(--accent-color);
   cursor: pointer;
   border-radius: 50%;
   border: 2px solid white;
@@ -1312,7 +1321,7 @@ input[type="range"].control-slider::-webkit-slider-thumb {
 input[type="range"].control-slider::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: var(--search-accent-color);
+  background: var(--accent-color);
   cursor: pointer;
   border-radius: 50%;
   border: 2px solid white;
