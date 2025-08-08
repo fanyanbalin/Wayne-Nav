@@ -55,13 +55,6 @@
   --search-shadow-color: rgba(0, 0, 0, 0.1);
   --search-tab-inactive-color: rgba(var(--palette-white-rgb), 0.5);
   --search-tab-active-bg: rgba(0, 0, 0, 0.2);
-  
-  /* 悬浮按钮图标 */
-  --suspension-upward-bg: url(../images/up.png);
-  --suspension-upward-hover-bg: url(../images/up-dark.png);
-  --suspension-moon-bg: url(../images/moon.png);
-  --suspension-sun-bg: url(../images/sun.svg);
-  --suspension-hover-color: var(--palette-accent-interactive);
 }
 
 .night {
@@ -88,13 +81,9 @@
   --reward-button-bg: rgba(var(--palette-brand-red), 0.32); /* #e9284252 */
   --reward-button-hover-bg: #464646a6;
   --reward-button-hover-color: var(--palette-brand-red);
-  --suspension-hover-color: #313233a6;
   --search-shadow-color: rgba(0, 0, 0, 0.3);
   --search-tab-inactive-color: rgba(var(--palette-white-rgb), 0.4);
   --search-tab-active-bg: rgba(0, 0, 0, 0.4);
-
-  /* 悬浮按钮图标 */
-  --suspension-upward-bg: url(../images/up-dark.png);
 }
 
 @media (min-width: 1200px) and (max-width: 1399.98px)  {
@@ -1199,32 +1188,18 @@ input[type="range"].control-slider::-moz-range-thumb {
   color: var(--text-color-primary);
 }
 
-/* 回顶按钮 */
-.suspension_upward {
-  background: var(--suspension-upward-bg) no-repeat center center;
-  background-size: 60% 60%;
-}
-@media (hover: hover) {
-  .suspension_upward:hover {
-    background: var(--suspension-upward-hover-bg) no-repeat center center var(--suspension-hover-color);
-    background-size: 60% 60%;
-  }
-}
-.night .suspension_upward {
-    background: var(--suspension-upward-bg) no-repeat center center;
-}
-
 /* 暗色模式按钮 */
-.suspension_ax {
-  background: var(--suspension-moon-bg) no-repeat center center;
-  background-size: 50% 50%;
+.suspension_ax .ti-sun {
+  display: none;
 }
-.night .suspension_ax {
-    background: var(--suspension-sun-bg) no-repeat center center;
-    background-size: 60% 60%;
+.suspension_ax .ti-moon {
+  display: inline-block;
 }
-.suspension_ax:hover {
-  background-color: var(--suspension-hover-color);
+.night .suspension_ax .ti-sun {
+  display: inline-block;
+}
+.night .suspension_ax .ti-moon {
+  display: none;
 }
 
 /*滚动条*/
@@ -1376,20 +1351,6 @@ body.night #starfield {
     height: 100%;
     pointer-events: none;
     z-index: -1;
-}
-
-.night .suspension_ax {
-    background: var(--suspension-sun-bg) no-repeat center center;
-    background-size: 60% 60%;
-}
-
-.night .suspension_upward {
-    background: var(--suspension-upward-bg) no-repeat center center;
-    background-size: 60% 60%;
-}
-
-.night .suspension_ax:hover, .night .suspension_upward:hover {
-    background-color: var(--suspension-hover-color) !important;
 }
 
 .night .sidebar-menu .main-menu a:hover {
