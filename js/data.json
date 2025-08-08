@@ -1,12 +1,5 @@
 {
   "searchConfig": {
-    "groups": [
-      { "name": "搜索" },
-      { "name": "工具" },
-      { "name": "社区" },
-      { "name": "生活" },
-      { "name": "求职" }
-    ],
     "providers": [
       {
         "groupName": "搜索",

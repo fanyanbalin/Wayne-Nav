@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchContainer = document.getElementById('search-container');
         if (!searchConfig || !searchContainer) return;
 
-        const categoriesHTML = searchConfig.groups.map((group, index) => 
-            `<div class="category-tab ${index === 0 ? 'active' : ''}" data-category="${group.name}">${group.name}</div>`
+        const categoriesHTML = searchConfig.providers.map((group, index) => 
+            `<div class="category-tab ${index === 0 ? 'active' : ''}" data-category="${group.groupName}">${group.groupName}</div>`
         ).join('');
 
         const providersHTML = searchConfig.providers.map((providerGroup, index) => {
