@@ -5,75 +5,92 @@
 }
 
 :root {
-  /* --- 主题变量 (日间模式) --- */
+  /* --- 主题变量 --- */
 
+  /* --- 第一层: 基础调色板 (Palette) --- */
+  --palette-accent-primary: #6a88ff;
+  --palette-accent-secondary: #a27fff;
+  --palette-accent-interactive: #4f7cfc;
+  --palette-brand-red: #e92843;
+  --palette-white-rgb: 255, 255, 255;
+  --palette-dark-rgb: 50, 50, 50;
+  --palette-gray-1: #f0f0f0;
+  --palette-gray-2: #d8d8d8;
+  --palette-gray-3: #acacac;
+  --palette-gray-4: #a9a9a9;
+  --palette-gray-dark: #5a5a5a;
+  --palette-gradient: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+  --palette-transparent: transparent;
+
+  /* --- 第二层: 语义化别名 (Semantic Aliases - 日间模式) --- */
+  
   /* 玻璃效果与模块 */
-  --module-bg-rgb: 255, 255, 255;
+  --module-bg-rgb: var(--palette-white-rgb);
   --module-bg-color: rgba(var(--module-bg-rgb), var(--module-bg-alpha));
   --module-bg-hover-color: rgba(var(--module-bg-rgb), calc(var(--module-bg-alpha) + 0.15));
-  --module-border-color: rgba(255, 255, 255, 0.2);
+  --module-border-color: rgba(var(--palette-white-rgb), 0.2);
   --collapsed-submenu-bg: rgba(20, 20, 20, 0.7);
 
   /* 文本与链接 */
-  --text-primary: #f0f0f0;
-  --text-color-primary: #d8d8d8;
-  --text-color-secondary: #acacac;
-  --text-color-footer: transparent;
-  --link-hover-color: #FF0500;
-  --search-placeholder-color: rgba(255, 255, 255, 0.6); /* 搜索框占位符颜色 */
-  --search-text-color: #ffffff;                       /* 搜索框输入文本颜色 */
+  --text-primary: var(--palette-gray-1);
+  --text-color-primary: var(--palette-gray-2);
+  --text-color-secondary: var(--palette-gray-3);
+  --text-color-footer: var(--palette-transparent); /* 日间模式页脚使用渐变，文字需透明 */
+  --link-hover-color: #FF0500; /* 特殊高亮红色，保持独立 */
+  --search-placeholder-color: rgba(var(--palette-white-rgb), 0.6);
+  --search-text-color: rgb(var(--palette-white-rgb));
 
   /* 强调色与渐变 */
-  --accent-color: #6a88ff;
-  --gradient-text: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
-  --tag-bg: linear-gradient(to right, var(--accent-color), #a27fff);
+  --accent-color: var(--palette-accent-primary);
+  --gradient-text: var(--palette-gradient);
+  --tag-bg: linear-gradient(to right, var(--accent-color), var(--palette-accent-secondary));
 
   /* 特定组件与状态 */
-  --label-info-bg: #5a5a5a;
-  --reward-button-bg: #e92843c7;
-  --reward-button-hover-bg: #ffffff1f;
-  --reward-button-hover-color: #e92843;
-  --reward-qr-text-color: #e92843;
-  --menu-toggle-color: #4f7cfc;
-  --search-shadow-color: rgba(0, 0, 0, 0.1);          /* 搜索框阴影 */
-  --search-tab-inactive-color: rgba(255, 255, 255, 0.5); /* 搜索选项卡未激活颜色 */
-  --search-tab-active-bg: rgba(0, 0, 0, 0.2);         /* 搜索选项卡悬停/激活背景 */
+  --label-info-bg: var(--palette-gray-dark);
+  --reward-button-bg: rgba(var(--palette-brand-red), 0.78); /* #e92843c7 */
+  --reward-button-hover-bg: rgba(var(--palette-white-rgb), 0.12); /* #ffffff1f */
+  --reward-button-hover-color: var(--palette-brand-red);
+  --reward-qr-text-color: var(--palette-brand-red);
+  --menu-toggle-color: var(--palette-accent-interactive);
+  --search-shadow-color: rgba(0, 0, 0, 0.1);
+  --search-tab-inactive-color: rgba(var(--palette-white-rgb), 0.5);
+  --search-tab-active-bg: rgba(0, 0, 0, 0.2);
   
   /* 悬浮按钮图标 */
   --suspension-upward-bg: url(../images/up.png);
   --suspension-upward-hover-bg: url(../images/up-dark.png);
   --suspension-moon-bg: url(../images/moon.png);
   --suspension-sun-bg: url(../images/sun.svg);
-  --suspension-hover-color: #4f7cfc;
+  --suspension-hover-color: var(--palette-accent-interactive);
 }
 
 .night {
-  /* --- 主题变量 (夜间模式 - 覆盖日间模式) --- */
+  /* --- 第三层: 主题覆盖 (Theme Overrides - 夜间模式) --- */
 
   /* 玻璃效果与模块 */
-  --module-bg-rgb: 50, 50, 50; 
-  --module-border-color: rgba(255, 255, 255, 0.1);
+  --module-bg-rgb: var(--palette-dark-rgb);
+  --module-border-color: rgba(var(--palette-white-rgb), 0.1);
   --collapsed-submenu-bg: rgba(35, 35, 35, 0.75);
 
   /* 文本与链接 */
-  --search-placeholder-color: rgba(255, 255, 255, 0.4);
+  --search-placeholder-color: rgba(var(--palette-white-rgb), 0.4);
   --search-text-color: #e0e0e0;
-  --reward-qr-text-color: var(--text-color-primary);
+  --text-color-footer: var(--palette-gray-4); /* 夜间模式页脚使用纯色 */
+  --reward-qr-text-color: var(--text-color-primary); /* 与链接颜色保持一致 */
 
   /* 强调色与渐变 */
-  --accent-color: #7d9aff;
-  --text-color-footer: #a9a9a9;
+  --accent-color: #7d9aff; /* 夜间模式的强调色不同，直接覆盖 */
   --gradient-text: none;
-  --tag-bg: transparent;
+  --tag-bg: var(--palette-transparent);
   
   /* 特定组件与状态 */
   --label-info-bg: #232323a6;
-  --reward-button-bg: #e9284252;
+  --reward-button-bg: rgba(var(--palette-brand-red), 0.32); /* #e9284252 */
   --reward-button-hover-bg: #464646a6;
-  --reward-button-hover-color: #e92842;
+  --reward-button-hover-color: var(--palette-brand-red);
   --suspension-hover-color: #313233a6;
   --search-shadow-color: rgba(0, 0, 0, 0.3);
-  --search-tab-inactive-color: rgba(255, 255, 255, 0.4);
+  --search-tab-inactive-color: rgba(var(--palette-white-rgb), 0.4);
   --search-tab-active-bg: rgba(0, 0, 0, 0.4);
 
   /* 悬浮按钮图标 */
