@@ -188,20 +188,7 @@ ul {
 .user-info-navbar .user-info-menu > li > a {
   transition: all 220ms ease-in-out;
 }
-.sidebar-menu .logo-env:before,
-.sidebar-menu .logo-env:after,
-footer.main-footer:before,
-footer.main-footer:after,
-footer.main-footer .footer-inner:before,
-footer.main-footer .footer-inner:after {
-  content: " ";
-  display: table;
-}
-.sidebar-menu .logo-env:after,
-footer.main-footer:after,
-footer.main-footer .footer-inner:after {
-  clear: both;
-}
+
 /* --- 侧边栏 --- */
 .sidebar-menu {
   display: table-cell;
@@ -259,7 +246,7 @@ footer.main-footer .footer-inner:after {
 .sidebar-menu .main-menu a {
   display: block;
   padding: 13px 5px;
-  border-bottom: 1px solid #31343700;
+  border-bottom: 1px solid transparent;
 }
 .sidebar-menu .main-menu a > i {
   display: inline-block;
@@ -590,7 +577,8 @@ footer.main-footer.fixed {
     height: 100%;
     overflow-y: auto;
   }
-  .night .page-container .sidebar-menu,
+  .night .page-container .sidebar-menu .sidebar-menu-inner,
+  .night .page-container .sidebar-menu.mobile-is-visible,
   .night .page-container .main-content .navbar.user-info-navbar.mobile-is-visible {
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
