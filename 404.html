@@ -3,190 +3,171 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Wayne">
     <title>404 | WayneのNav</title>
     <meta name="keywords" content="网址导航,网站导航,Wayne,Navigation"/>
     <meta name="description" content="WayneのNav - 一个纯静态导航网站，精挑细选优质书签，无任何广告行为。">
     <link rel="shortcut icon" type="image/x-icon" href="images/wayne.png"/>
 
-    <style>
-    html,
-    body {
-        width: 99%;
-        height: 99%
-    }
-    
-    a,
-    a img,
-    a:before,
-    a:after {
-        text-decoration: none;
-        transition-duration: .25s
-    }
-    
-    body {
-        line-height: 1
-    }
-    
-    #about {
-        width: 40%;
-        position: absolute;
-        top: 25%;
-        left: 10%;
-        z-index: 20;
-        transform: translate(0, -50%);
-    }
-    
-    #about h1 {
-        margin: 30px;
-    }
-    
-    #about p {
-        margin: 30px;
-    }
-    
-    #about img {
-        margin-left: 30px;
-    }
-    
-    #about .social {
-        float: left;
-        margin: 30px;
-    }
-    
-    #about .copyright {
-        width: 100%;
-        float: left;
-        margin-bottom: 0px;
-    }
-    
-    @media (max-width: 768px) {
-        #about {
-            width: 100%;
-            left: 0px;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-        }
-        #about h1 {
-            margin: 30px;
-        }
-        #about p {
-            margin: 30px;
-        }
-        #about .social {
-            margin: 30px;
-        }
-        #about .copyright {
-            width: 100%;
-            float: left;
-            margin-bottom: 0px;
-        }
-    }
-    
-    @media (max-width: 580px) {
-        #about p {
-            margin-bottom: 0px
-        }
-        #about .social {
-            margin-bottom: 0px
-        }
-    }
-    
-    .animated {
-        animation-duration: 1s;
-        animation-fill-mode: both
-    }
-    
-    .bounce-in {
-        animation-name: bounce-in
-    }
-    
-    @keyframes bounce-in {
-        from,
-        60%,
-        75%,
-        90%,
-        to {
-            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
-        }
-        0% {
-            opacity: 0;
-            transform: translate3d(-3000px, -50%, 0)
-        }
-        60% {
-            opacity: 1;
-            transform: translate3d(25px, -50%, 0)
-        }
-        75% {
-            transform: translate3d(-10px, -50%, 0)
-        }
-        90% {
-            transform: translate3d(5px, -50%, 0)
-        }
-        to {
-            transform: translate3d(0, -50%)
-        }
-    }
-    
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 1.75;
-        color: rgba(0, 0, 0, 0.65)
-    }
-    
-    h1 {
-        font-family: "Merriweather", sans-serif;
-        font-size: 50px;
-        font-weight: 700;
-        line-height: 1.25;
-        color: rgba(0, 0, 0, 0.85);
-        margin-bottom: 25px
-    }
-    
-    a {
-        color: rgba(3, 3, 3, 0.85);
-        font-weight: 600;
-    }
-    
-    @media (max-width: 580px) {
-        body {
-            font-size: 14px
-        }
-        h1 {
-            font-size: 42px;
-            line-height: 1.45
-        }
-    }
-    
-    .bg-align {
-        margin-top: 50%;
-    }
+    <!-- 1. 引入了页面所需的在线字体，确保设计风格正确显示 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@300;600&display=swap" rel="stylesheet">
 
-    .home-btn {
-    display: inline-block;
-    padding: 8px 16px;
-    background: #333;
-    color: white;
-    border-radius: 4px;
-    margin: 10px 5px;
-    }
+    <style>
+        /* 2. 基础样式重置和现代布局准备 */
+        :root {
+            --text-color: rgba(0, 0, 0, 0.7);
+            --heading-color: rgba(0, 0, 0, 0.9);
+            --accent-color: #333;
+            --accent-hover-color: #555;
+            --card-bg-color: rgba(255, 255, 255, 0.9);
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif; /* 默认字体 */
+            line-height: 1.75;
+            color: var(--text-color);
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* 3. 使用Flexbox实现完美居中，并添加了柔和的渐变背景 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        /* 4. 主内容卡片样式，更具现代感 */
+        .content-card {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px 50px;
+            text-align: center;
+            background: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: "Merriweather", sans-serif; /* 标题字体 */
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--heading-color);
+            margin: 0 0 20px;
+        }
+
+        p {
+            margin: 0 0 25px;
+            font-size: 18px;
+        }
+
+        /* 5. 按钮组和按钮样式优化，增加了交互效果 */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px; /* 按钮间距 */
+            margin-top: 30px;
+        }
+
+        .home-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.25s ease, transform 0.25s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .home-btn:hover, .home-btn:focus {
+            background: var(--accent-hover-color);
+            transform: translateY(-3px); /* 悬浮时轻微上移 */
+        }
+        
+        /* 6. 动画效果保留并微调，使其更平滑 */
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        .bounce-in {
+            animation-name: bounce-in;
+        }
+
+        /* 7. 动画关键帧简化，以适应新的布局方式 */
+        @keyframes bounce-in {
+            from, 60%, 75%, 90%, to {
+                animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            75% {
+                transform: scale(0.95);
+            }
+            90% {
+                transform: scale(1.02);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        /* 8. 响应式设计，适配移动端设备 */
+        @media (max-width: 600px) {
+            .content-card {
+                padding: 30px 25px;
+                box-shadow: none; /* 在小屏上移除阴影，使其更贴合背景 */
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .button-group {
+                flex-direction: column; /* 按钮垂直排列 */
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <section id="about" class="animated bounce-in">
-        <div class="bg-align">
-            <h1>404</h1>
-            <p>很抱歉，您访问的页面不存在！</p>
-            <p>请仔细检查您输入的网址是否正确。</p>
-            <p><a class="home-btn" href="https://nav.3301.qzz.io/">返回首页</a >
-            <a class="home-btn" href="https://nav.way.ciao.su/">备用站点1</a >
-            <a class="home-btn" href="https://nav-26e.pages.dev/">备用站点2</a >
-            <a class="home-btn" href="https://wayne-nav.vercel.app/">备用站点3</a ></p>
+    <main class="content-card animated bounce-in">
+        <h1>404</h1>
+        <p>很抱歉，您要查找的页面似乎已经迷路了。</p>
+        <p>请检查您输入的网址是否正确，或从以下链接返回。</p>
+        
+        <div class="button-group">
+            <a class="home-btn" href="https://nav.3301.qzz.io/">返回首页</a>
+            <a class="home-btn" href="https://nav.way.ciao.su/">备用站点1</a>
+            <a class="home-btn" href="https://nav-26e.pages.dev/">备用站点2</a>
+            <a class="home-btn" href="https://wayne-nav.vercel.app/">备用站点3</a>
         </div>
-    </section>
+    </main>
 </body>
 </html>
