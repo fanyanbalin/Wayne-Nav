@@ -68,18 +68,30 @@ function renderContent() {
     function renderSearchSection(searchConfig) {
         const searchContainer = document.getElementById('search-container');
         if (!searchConfig || !searchContainer) return;
-
-        const categoriesHTML = searchConfig.providers.map((group, index) => 
-            `<div class="category-tab ${index === 0 ? 'active' : ''}" data-category="${group.groupName}">${group.groupName}</div>`
-        ).join('');
-
-        const providersHTML = searchConfig.providers.map((providerGroup, index) => {
-            const itemsHTML = providerGroup.items.map(item =>
-                `<div class="provider-item" data-id="${item.id}">${item.name}</div>`
-            ).join('');
-            return `<div class="provider-list ${index === 0 ? 'active' : ''}" data-category-content="${providerGroup.groupName}">${itemsHTML}</div>`;
-        }).join('');
-
+        
+        // 使用 reduce 一次性遍历并生成两组 HTML
+        const { categoriesHTML, providersHTML } = searchConfig.providers.reduce(
+            (acc, group, index) => {
+                const isActive = index === 0 ? 'active' : '';
+            
+                // 1. 生成并累加 category tab 的 HTML
+                acc.categoriesHTML += `
+                    <div class="category-tab ${isActive}" data-category="${group.groupName}">${group.groupName}</div>`;
+                
+                // 2. 生成内部的 provider items 的 HTML
+                const itemsHTML = group.items.map(item =>
+                    `<div class="provider-item" data-id="${item.id}">${item.name}</div>`
+                ).join('');
+            
+                // 3. 生成并累加 provider list 的 HTML
+                acc.providersHTML += `
+                    <div class="provider-list ${isActive}" data-category-content="${group.groupName}">${itemsHTML}</div>`;
+            
+                return acc; // 返回累加器，用于下一次迭代
+            },
+            { categoriesHTML: '', providersHTML: '' } // 初始值
+        );
+    
         const fullSearchHTML = `
             <div class="search-bar" id="search-bar">
                 <div class="selected-engine" id="selected-engine"></div>
@@ -91,6 +103,7 @@ function renderContent() {
                 <div class="search-providers">${providersHTML}</div>
             </div>
         `;
+    
         searchContainer.innerHTML = fullSearchHTML;
     }
 
