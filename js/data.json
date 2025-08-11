@@ -1,6 +1,5 @@
 {
-  "searchConfig": {
-    "providers": [
+  "searchConfig": [
       {
         "groupName": "搜索",
         "items": [
@@ -55,8 +54,7 @@
           { "id": "type-liepin", "name": "<span style='color:#303a40' class='dark-text'>猎聘网</span>", "url": "https://www.liepin.com/zhaopin/?key=", "placeholder": "猎聘网" }
         ]
       }
-    ]
-  },
+  ],
   "categories": [
     {
       "categoryName": "热搜新闻",

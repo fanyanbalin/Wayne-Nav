@@ -70,7 +70,7 @@ function renderContent() {
         if (!searchConfig || !searchContainer) return;
         
         // 使用 reduce 一次性遍历并生成两组 HTML
-        const { categoriesHTML, providersHTML } = searchConfig.providers.reduce(
+        const { categoriesHTML, providersHTML } = searchConfig.reduce(
             (acc, group, index) => {
                 const isActive = index === 0 ? 'active' : '';
             
@@ -158,7 +158,7 @@ function renderContent() {
         }
 
         const providerMap = new Map();
-        searchConfig.providers.forEach(group => {
+        searchConfig.forEach(group => {
             group.items.forEach(item => providerMap.set(item.id, item));
         });
 
@@ -223,7 +223,7 @@ function renderContent() {
         if (initialEngineId && providerMap.has(initialEngineId)) {
             updateSearchUI(initialEngineId);
             const initialEngine = providerMap.get(initialEngineId);
-            const initialGroup = searchConfig.providers.find(p => p.items.some(i => i.id === initialEngineId));
+            const initialGroup = searchConfig.find(p => p.items.some(i => i.id === initialEngineId));
             if (initialGroup) {
                 const initialTab = document.querySelector(`.category-tab[data-category="${initialGroup.groupName}"]`);
                 if (initialTab) initialTab.click();
