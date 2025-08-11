@@ -47,7 +47,7 @@
 
   /* 特定组件与状态 */
   --label-info-bg: var(--palette-gray-dark);
-  --reward-button-bg: rgba(var(--palette-brand-red), 0.78); /* #e92843c7 */
+  --reward-button-bg: color-mix(in srgb, var(--palette-brand-red), transparent 22%); /* #e92843c7 */
   --reward-button-hover-bg: rgba(var(--palette-white-rgb), 0.12); /* #ffffff1f */
   --reward-button-hover-color: var(--palette-brand-red);
   --reward-qr-text-color: var(--palette-brand-red);
@@ -78,7 +78,7 @@
   
   /* 特定组件与状态 */
   --label-info-bg: #232323a6;
-  --reward-button-bg: rgba(var(--palette-brand-red), 0.32); /* #e9284252 */
+  --reward-button-bg: color-mix(in srgb, var(--palette-brand-red), transparent 68%); /* #e9284252 */
   --reward-button-hover-bg: #464646a6;
   --reward-button-hover-color: var(--palette-brand-red);
   --search-shadow-color: rgba(0, 0, 0, 0.3);
@@ -1317,64 +1317,52 @@ input[type="range"].control-slider::-moz-range-thumb {
   width:130px;
   color: var(--reward-qr-text-color);
 }
-.night .post-reward .reward-main .reward-all .reward-item .post-qr-code-desc {
-    color: var(--reward-qr-text-color);
-}
 
 body.night::before {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 body.night {
-    background-image: none !important;
-    background-color: #000000 !important;
+  background-image: none !important;
+  background-color: #000000 !important;
 }
 
 body.night #starfield {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .night .sidebar-menu .main-menu a:hover {
-    background: #1f2020a6;
+  background: #1f2020a6;
 }
 
 .night .sidebar-menu .main-menu li.active>a {
-    background: #46464600;
+  background: transparent;
 }
 
 .night .label.label-info {
-    background-color: var(--label-info-bg);
+  background-color: var(--label-info-bg);
 }
 
 .night #fk-span {
-    background: #464646a6;
-    transition: 0.3s;
+  background: #464646a6;
+  transition: 0.3s;
 }
 
 .night #fk-span-right {
-    border-left: 10px solid #464646a6;
-    transition: 0.3s;
+  border-left: 10px solid #464646a6;
+  transition: 0.3s;
 }
 
 .night #fk-span-right:after {
-    border-left: 10px solid #464646a6;
-    transition: 0.3s;
-}
-
-.night .post-reward .reward-button {
-    background-color: var(--reward-button-bg);
-}
-
-.night .post-reward:hover .reward-button {
-    background-color: var(--reward-button-hover-bg);
-    color: var(--reward-button-hover-color);
+  border-left: 10px solid #464646a6;
+  transition: 0.3s;
 }
 
 @media print {
