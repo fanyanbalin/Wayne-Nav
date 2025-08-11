@@ -1,0 +1,829 @@
+// 全局变量，用于侧边栏等功能
+const public_vars = {
+    // 将在 DOM 加载后填充
+    $body: null,
+    $pageContainer: null,
+    $sidebarMenu: null,
+    $mainMenu: null,
+    $mainContent: null,
+    $userInfoMenu: null,
+    // 断点配置
+    breakpoints: {
+        largescreen: [991, -1],
+        tabletscreen: [768, 990],
+        devicescreen: [420, 767],
+        sdevicescreen: [0, 419]
+    },
+    lastBreakpoint: null
+};
+
+// ===================================================================
+// 主执行函数：等待 DOM 加载完毕后运行所有逻辑
+// ===================================================================
+document.addEventListener('DOMContentLoaded', function () {
+
+    // --- 1. 动态内容渲染 ---
+    renderContent();
+
+    // --- 2. 页面交互功能初始化 ---
+    initializePageFunctions();
+
+});
+
+
+// ===================================================================
+// 模块一: 内容渲染函数
+// ===================================================================
+function renderContent() {
+    fetch('js/data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP 错误！状态: ${response.status}. 无法加载 'js/data.json'`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!data || !data.searchConfig || !data.categories) {
+                throw new Error("JSON 数据格式不正确或缺少必要的配置部分。");
+            }
+
+            // 步骤 1: 渲染所有静态HTML部分
+            renderSearchSection(data.searchConfig);
+            renderBookmarkCategories(data.categories);
+
+            // 步骤 2: 绑定搜索框的交互事件
+            attachSearchEventListeners(data.searchConfig);
+
+            // 步骤 3: 初始化第三方插件 (如 lozad, bootstrap tooltips)
+            initializePlugins();
+        })
+        .catch(error => {
+            console.error('严重错误:', error);
+            const contentContainer = document.getElementById('dynamic-content-container');
+            if (contentContainer) {
+                contentContainer.innerHTML = '<p style="text-align: center; color: red;">加载内容失败！请按F12查看控制台中的详细错误信息。</p>';
+            }
+        });
+
+    function renderSearchSection(searchConfig) {
+        const searchContainer = document.getElementById('search-container');
+        if (!searchConfig || !searchContainer) return;
+
+        const categoriesHTML = searchConfig.providers.map((group, index) => 
+            `<div class="category-tab ${index === 0 ? 'active' : ''}" data-category="${group.groupName}">${group.groupName}</div>`
+        ).join('');
+
+        const providersHTML = searchConfig.providers.map((providerGroup, index) => {
+            const itemsHTML = providerGroup.items.map(item =>
+                `<div class="provider-item" data-id="${item.id}">${item.name}</div>`
+            ).join('');
+            return `<div class="provider-list ${index === 0 ? 'active' : ''}" data-category-content="${providerGroup.groupName}">${itemsHTML}</div>`;
+        }).join('');
+
+        const fullSearchHTML = `
+            <div class="search-bar" id="search-bar">
+                <div class="selected-engine" id="selected-engine"></div>
+                <input type="text" id="search-text" autocomplete="off">
+                <button type="submit"><i class="ti ti-search"></i></button>
+            </div>
+            <div class="search-options-panel" id="search-options-panel">
+                <div class="search-categories">${categoriesHTML}</div>
+                <div class="search-providers">${providersHTML}</div>
+            </div>
+        `;
+        searchContainer.innerHTML = fullSearchHTML;
+    }
+
+    function renderBookmarkCategories(categories) {
+        const contentContainer = document.getElementById('dynamic-content-container');
+        if (!categories || !contentContainer) return;
+
+        const allContentHTML = categories.map(category => {
+            const itemsHTML = category.items.map(item => {
+                let faviconUrl = 'images/browser.svg'; // 默认图标
+                try {
+                    const hostname = new URL(item.url).hostname;
+                    faviconUrl = `https://api.xinac.net/icon/?url=${hostname}`;
+                } catch (e) {
+                    console.warn(`无效的URL，无法生成图标: ${item.url}`);
+                }
+
+                return `
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
+                        <div class="w-widget box2" onclick="window.open('${item.url}', '_blank')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${item.url}">
+                            <div class="w-comment-entry">
+                                <a><img data-src="${faviconUrl}" class="lozad img-circle" onerror="this.onerror=null;this.src='images/browser.svg';"></a>
+                                <div class="w-comment">
+                                    <a class="overflowClip_1"><strong>${item.title}</strong></a>
+                                    <p class="overflowClip_2">${item.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            return `<h6 class="tag"><i class="ti ti-tag" id="${category.categoryName}"></i>${category.categoryName}</h6><div class="row">${itemsHTML}</div><br />`;
+        }).join('');
+        contentContainer.innerHTML = allContentHTML;
+    }
+
+    function attachSearchEventListeners(searchConfig) {
+        const elements = {
+            form: document.getElementById('super-search-fm'),
+            container: document.getElementById('search-container'),
+            bar: document.getElementById('search-bar'),
+            input: document.getElementById('search-text'),
+            engineDisplay: document.getElementById('selected-engine'),
+            panel: document.getElementById('search-options-panel'),
+            categoryTabsContainer: document.querySelector('.search-categories'),
+            providerListsContainer: document.querySelector('.search-providers')
+        };
+
+        if (Object.values(elements).some(el => !el)) {
+            console.error("关键搜索元素未在DOM中找到，无法绑定事件。");
+            return;
+        }
+
+        const providerMap = new Map();
+        searchConfig.providers.forEach(group => {
+            group.items.forEach(item => providerMap.set(item.id, item));
+        });
+
+        const updateSearchUI = (engineId) => {
+            const engine = providerMap.get(engineId);
+            if (!engine) {
+                const firstEngine = providerMap.values().next().value;
+                if (firstEngine) updateSearchUI(firstEngine.id);
+                return;
+            }
+            elements.input.placeholder = engine.placeholder;
+            elements.form.action = engine.url;
+            elements.engineDisplay.innerHTML = `<div class="icon-wrapper">${engine.name}</div>`;
+            elements.panel.querySelectorAll('.provider-item').forEach(item => {
+                item.classList.toggle('selected', item.dataset.id === engineId);
+            });
+            localStorage.setItem('searchEngineId', engineId);
+        };
+
+        elements.engineDisplay.addEventListener('click', (e) => {
+            elements.panel.classList.toggle('active');
+            elements.bar.classList.toggle('focused');
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!elements.container.contains(e.target)) {
+                elements.panel.classList.remove('active');
+                elements.bar.classList.remove('focused');
+            }
+        });
+
+        elements.panel.addEventListener('click', (e) => {
+            const categoryTab = e.target.closest('.category-tab');
+            if (categoryTab) {
+                const categoryName = categoryTab.dataset.category;
+                elements.categoryTabsContainer.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+                categoryTab.classList.add('active');
+                elements.providerListsContainer.querySelectorAll('.provider-list').forEach(list => {
+                    list.classList.toggle('active', list.dataset.categoryContent === categoryName);
+                });
+            }
+            const providerItem = e.target.closest('.provider-item');
+            if (providerItem) {
+                updateSearchUI(providerItem.dataset.id);
+                elements.input.focus();
+                elements.panel.classList.remove('active');
+                elements.bar.classList.remove('focused');
+            }
+        });
+
+        elements.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = elements.input.value.trim();
+            if (query) {
+                const url = `${elements.form.action}${encodeURIComponent(query)}`;
+                window.open(url, '_blank');
+            }
+        });
+
+        const initialEngineId = localStorage.getItem('searchEngineId');
+        if (initialEngineId && providerMap.has(initialEngineId)) {
+            updateSearchUI(initialEngineId);
+            const initialEngine = providerMap.get(initialEngineId);
+            const initialGroup = searchConfig.providers.find(p => p.items.some(i => i.id === initialEngineId));
+            if (initialGroup) {
+                const initialTab = document.querySelector(`.category-tab[data-category="${initialGroup.groupName}"]`);
+                if (initialTab) initialTab.click();
+            }
+        } else {
+            const firstEngine = providerMap.values().next().value;
+            if (firstEngine) {
+                updateSearchUI(firstEngine.id);
+                const firstTab = document.querySelector('.category-tab');
+                if (firstTab) firstTab.click();
+            }
+        }
+    }
+
+    function initializePlugins() {
+        if (typeof lozad === 'function') {
+            const observer = lozad();
+            observer.observe();
+        }
+        if (typeof bootstrap !== 'undefined') {
+            const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(tooltipTriggerEl => {
+                new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        }
+    }
+}
+
+
+// ===================================================================
+// 模块二: 页面交互功能
+// ===================================================================
+function initializePageFunctions() {
+
+    // --- 缓存常用 DOM 元素到 public_vars ---
+    Object.assign(public_vars, {
+        $body: document.body,
+        $pageContainer: document.querySelector(".page-container"),
+        $sidebarMenu: document.querySelector('.sidebar-menu'),
+        $mainMenu: document.querySelector('.main-menu'),
+        $mainContent: document.querySelector('.main-content'),
+        $userInfoMenu: document.querySelector('nav.user-info-navbar')
+    });
+
+    // --- 各个功能模块初始化 ---
+    setupBackToTop();
+    setupMousePointer();
+    setupDarkMode();
+    setupStarfield();
+    setupBgImageFallback();
+    setupSidebarMenu(); // 侧边栏主逻辑
+    setupSidebarToggles(); // 侧边栏各种切换按钮
+    setupAppearanceSettings();
+    setupFooterInfo();
+}
+
+// --- 返回顶部 ---
+function setupBackToTop() {
+    const topupButton = document.getElementById('topup');
+    const sidebarMenuInner = document.querySelector('.sidebar-menu-inner');
+
+    if (topupButton) {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY >= 50) {
+                topupButton.style.display = 'block';
+                topupButton.style.opacity = '1';
+                if (sidebarMenuInner) sidebarMenuInner.classList.remove('bgchange');
+            } else {
+                topupButton.style.opacity = '0';
+                // 使用 transitionend 事件确保平滑消失后再隐藏
+                topupButton.addEventListener('transitionend', () => {
+                    if (window.scrollY < 50) {
+                        topupButton.style.display = 'none';
+                    }
+                }, { once: true });
+                if (sidebarMenuInner) sidebarMenuInner.classList.add('bgchange');
+            }
+        });
+
+        const goTopLink = document.querySelector('a[rel="go-top"]');
+        if (goTopLink) {
+            goTopLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }
+}
+
+// --- 鼠标样式 ---
+function setupMousePointer() {
+    const body = document.body;
+    const pointerElement = document.getElementById("pointer");
+    if (pointerElement) {
+        const halfElementWidth = pointerElement.offsetWidth / 2;
+        function setPosition(x, y) {
+            pointerElement.style.transform = `translate(${x - halfElementWidth + 19}px, ${y - halfElementWidth + 19}px)`;
+        }
+        body.addEventListener("mousemove", (e) => {
+            window.requestAnimationFrame(() => setPosition(e.clientX, e.clientY));
+        });
+    }
+    if (/Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent)) {
+        if (pointerElement) pointerElement.style.display = "none";
+    }
+}
+
+// --- 暗黑模式 ---
+function setupDarkMode() {
+    const getStorage = (key) => localStorage.getItem(key);
+    const setStorage = (key, value) => localStorage.setItem(key, value);
+
+    const setNightMode = (enable) => {
+        const nightModeTooltip = document.getElementById('night-mode-tooltip');
+        const toastMessage = enable ? '已切换为夜间模式' : '已切换为日间模式';
+        const toastIcon = enable ? 'ti ti-moon-filled' : 'ti ti-sun-filled';
+        const toastTitle = enable ? '夜间模式切换' : '日间模式切换';
+
+        if (enable) {
+            document.body.classList.add('night');
+            setStorage('night', '1');
+            if (nightModeTooltip) nightModeTooltip.innerText = '切换日间模式';
+        } else {
+            document.body.classList.remove('night');
+            setStorage('night', '0');
+            if (nightModeTooltip) nightModeTooltip.innerText = '切换夜间模式';
+        }
+
+        if (typeof iziToast !== 'undefined') {
+            iziToast.info({
+                timeout: 2000, closeOnEscape: true, transitionOut: 'fadeOutRight',
+                displayMode: 'replace', layout: 2, transitionIn: 'bounceInLeft',
+                position: 'topRight', icon: toastIcon, backgroundColor: '#fff',
+                title: toastTitle, message: toastMessage
+            });
+        }
+    };
+
+    // 1. 定义一个用于切换的函数
+    const switchNightMode = () => {
+        const isCurrentlyDay = getStorage('night') === '0';
+        setNightMode(isCurrentlyDay);
+    };
+
+    // 2. 找到切换按钮并为其绑定点击事件
+    const switchButton = document.getElementById('dark-mode-switch');
+    if (switchButton) {
+        switchButton.addEventListener('click', (e) => {
+            e.preventDefault(); // 防止链接跳转
+            switchNightMode();
+        });
+    }
+    
+    // 自动判断和系统主题跟随逻辑保持不变
+    const isNightTime = () => { const hour = new Date().getHours(); return hour > 18 || hour < 7; };
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => setNightMode(e.matches));
+    
+    // 初始化
+    const night = getStorage('night');
+    setNightMode(night === null ? isNightTime() : night === '1');
+}
+
+// --- 星空背景 ---
+function setupStarfield() {
+    function stars() {
+        const canvas = document.getElementById("starfield");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        let width = window.innerWidth, height = window.innerHeight, starsArr = [], initialBurst = true;
+        const STAR_COUNT = Math.floor(0.3 * width);
+        const COLORS = { giant: "180,184,240", star: "226,225,142", comet: "225,225,225" };
+        class Star {
+            constructor() { this.reset(); }
+            reset() {
+                this.isGiant = randomChance(3); this.isComet = !this.isGiant && !initialBurst && randomChance(20);
+                this.x = randomRange(0, width); this.y = randomRange(0, height); this.size = randomRange(1.1, 2.6);
+                this.dx = randomRange(0.05, 0.3) + (this.isComet ? randomRange(2.5, 6) : 0.05);
+                this.dy = -randomRange(0.05, 0.3) - (this.isComet ? randomRange(2.5, 6) : 0.05);
+                this.opacity = 0; this.opacityTarget = randomRange(0.6, this.isComet ? 0.8 : 1);
+                this.fadeSpeed = randomRange(0.0005, 0.002) + (this.isComet ? 0.001 : 0);
+                this.fadingIn = true; this.fadingOut = false;
+            }
+            fadeIn() { if (this.fadingIn) { this.opacity += this.fadeSpeed; if (this.opacity >= this.opacityTarget) this.fadingIn = false; } }
+            fadeOut() { if (this.fadingOut) { this.opacity -= this.fadeSpeed / 2; if (this.opacity <= 0) this.reset(); } }
+            move() { this.x += this.dx; this.y += this.dy; if (!this.fadingOut && (this.x > width - width / 4 || this.y < 0)) this.fadingOut = true; }
+            draw() {
+                ctx.beginPath();
+                if (this.isGiant) { ctx.fillStyle = `rgba(${COLORS.giant},${this.opacity})`; ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI); }
+                else if (this.isComet) {
+                    ctx.fillStyle = `rgba(${COLORS.comet},${this.opacity})`; ctx.arc(this.x, this.y, 1.5, 0, 2 * Math.PI);
+                    for (let i = 0; i < 30; i++) { ctx.fillStyle = `rgba(${COLORS.comet},${this.opacity - this.opacity / 20 * i})`; ctx.fillRect(this.x - this.dx / 4 * i, this.y - this.dy / 4 * i - 2, 2, 2); }
+                } else { ctx.fillStyle = `rgba(${COLORS.star},${this.opacity})`; ctx.fillRect(this.x, this.y, this.size, this.size); }
+                ctx.closePath(); ctx.fill();
+            }
+        }
+        function randomChance(p) { return Math.random() * 1000 < p * 10; }
+        function randomRange(min, max) { return Math.random() * (max - min) + min; }
+        function resizeCanvas() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
+        function update() { ctx.clearRect(0, 0, width, height); for (let s of starsArr) { s.move(); s.fadeIn(); s.fadeOut(); s.draw(); } requestAnimationFrame(update); }
+        function init() { resizeCanvas(); starsArr = Array.from({ length: STAR_COUNT }, () => new Star()); update(); setTimeout(() => initialBurst = false, 50); }
+        window.addEventListener("resize", resizeCanvas);
+        init();
+    }
+    stars();
+}
+
+// --- 背景图片失败处理 ---
+function setupBgImageFallback() {
+    const body = document.body;
+    const bgUrlMatch = window.getComputedStyle(body).backgroundImage.match(/url\("?(.+?)"?\)/);
+    if (!bgUrlMatch) return;
+    const bgUrl = bgUrlMatch[1];
+    const img = new Image();
+    img.src = bgUrl;
+    img.onerror = () => {
+        body.style.background = '#3f5d5c';
+        body.style.backgroundImage = 'none';
+        console.warn('背景图片加载失败，已设置为纯色背景');
+    };
+}
+
+// --- 侧边栏菜单主逻辑 ---
+function setupSidebarMenu() {
+    const { $sidebarMenu } = public_vars;
+    if (!$sidebarMenu) return;
+
+    const sm_d = 0.2; // 动画持续时间 (秒)
+    const sm_t_d = 150; // 动画延迟 (毫秒)
+    const toggleOthers = $sidebarMenu.classList.contains('toggle-others');
+
+    // 找到所有包含子菜单的 `li` 元素
+    const itemsWithSubmenu = Array.from($sidebarMenu.querySelectorAll('li')).filter(li => li.querySelector(':scope > ul'));
+
+    itemsWithSubmenu.forEach(li => {
+        li.classList.add('has-sub');
+        if (li.classList.contains('active')) {
+            li.classList.add('expanded');
+        }
+
+        const anchor = li.querySelector(':scope > a');
+        const submenu = li.querySelector(':scope > ul');
+
+        if (anchor && submenu) {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                if (toggleOthers) {
+                    // 关闭同级的其他已打开菜单
+                    const siblings = Array.from(li.parentElement.children).filter(child => child !== li && child.classList.contains('has-sub'));
+                    siblings.forEach(siblingLi => {
+                        if (siblingLi.classList.contains('expanded') || siblingLi.classList.contains('opened')) {
+                            const siblingSubmenu = siblingLi.querySelector(':scope > ul');
+                            if (siblingSubmenu) sidebar_menu_item_collapse(siblingLi, siblingSubmenu);
+                        }
+                    });
+                }
+                // 切换当前点击的菜单
+                if (li.classList.contains('expanded') || li.classList.contains('opened')) {
+                    sidebar_menu_item_collapse(li, submenu);
+                } else {
+                    sidebar_menu_item_expand(li, submenu);
+                }
+            });
+        }
+    });
+
+    function sidebar_menu_item_expand(li, s) {
+        if (li.dataset.isBusy === 'true' || (li.parentElement.classList.contains('main-menu') && $sidebarMenu.classList.contains('collapsed'))) return;
+        
+        li.classList.add('expanded');
+        li.dataset.isBusy = 'true';
+        s.style.display = 'block';
+
+        const submenuItems = Array.from(s.children);
+        const height = s.scrollHeight;
+
+        submenuItems.forEach(item => item.classList.add('is-hidden'));
+        s.style.height = '0px';
+
+        gsap.to(s, {
+            duration: sm_d,
+            height: height,
+            onComplete: () => {
+                s.style.height = ''; // 移除固定高度
+            }
+        });
+
+        clearTimeout(li.dataset.s1);
+        clearTimeout(li.dataset.s2);
+
+        const timer1 = setTimeout(() => {
+            submenuItems.forEach(el => el.classList.add('is-shown'));
+            
+            const firstItem = submenuItems[0];
+            const lastItem = submenuItems[submenuItems.length - 1];
+            
+            const transitionDuration = firstItem ? parseFloat(window.getComputedStyle(firstItem).transitionDuration) || 0 : 0;
+            const transitionDelay = lastItem ? parseFloat(window.getComputedStyle(lastItem).transitionDelay) || 0 : 0;
+            const totalTime = (transitionDuration + transitionDelay) * 1000 || sm_t_d * submenuItems.length;
+
+            const timer2 = setTimeout(() => {
+                submenuItems.forEach(el => el.classList.remove('is-hidden', 'is-shown'));
+                li.dataset.isBusy = 'false';
+            }, totalTime);
+            
+            li.dataset.s2 = timer2;
+        }, 0);
+        li.dataset.s1 = timer1;
+    }
+
+    function sidebar_menu_item_collapse(li, s) {
+        if (li.dataset.isBusy === 'true') return;
+        
+        const submenuItems = Array.from(s.children);
+        li.classList.remove('expanded');
+        li.dataset.isBusy = 'true';
+        submenuItems.forEach(item => item.classList.add('hidden-item'));
+
+        gsap.to(s, {
+            duration: sm_d,
+            height: 0,
+            onComplete: () => {
+                li.dataset.isBusy = 'false';
+                li.classList.remove('opened');
+                s.removeAttribute('style');
+                s.style.display = 'none';
+                submenuItems.forEach(item => item.classList.remove('hidden-item'));
+                
+                // 折叠所有子孙菜单
+                li.querySelectorAll('li.expanded').forEach(expandedLi => {
+                    const innerSubmenu = expandedLi.querySelector(':scope > ul');
+                    if(innerSubmenu) {
+                        innerSubmenu.removeAttribute('style');
+                        innerSubmenu.style.display = 'none';
+                        expandedLi.classList.remove('expanded');
+                    }
+                });
+            }
+        });
+    }
+}
+
+// --- 侧边栏各种切换按钮 ---
+function setupSidebarToggles() {
+    const { $sidebarMenu, $mainMenu, $pageContainer, $userInfoMenu } = public_vars;
+
+    document.querySelectorAll('a[data-toggle="sidebar"]').forEach(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault();
+            if ($sidebarMenu) $sidebarMenu.classList.toggle('collapsed');
+        });
+    });
+
+    document.querySelectorAll('a[data-toggle="mobile-menu"]').forEach(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault();
+            if ($mainMenu) $mainMenu.classList.toggle('mobile-is-visible');
+            if ($sidebarMenu) $sidebarMenu.classList.toggle('mobile-is-visible');
+            if ($pageContainer) $pageContainer.classList.toggle('mobile-is-visible');
+        });
+    });
+
+    document.querySelectorAll('a[data-toggle="user-info-menu"]').forEach(el => {
+        el.addEventListener('click', e => {
+            e.preventDefault();
+            if ($userInfoMenu) $userInfoMenu.classList.toggle('mobile-is-visible');
+        });
+    });
+    
+    // 用户信息菜单高度自适应
+    if ($userInfoMenu) {
+        const height = $userInfoMenu.offsetHeight - 1;
+        $userInfoMenu.querySelectorAll('.user-info-menu > li').forEach(li => {
+            li.style.minHeight = `${height}px`;
+        });
+    }
+    
+    // 子菜单点击逻辑
+    document.addEventListener("click", function(e) {
+        if (e.target.closest('.has-sub')) {
+            const hasSub = e.target.closest('.has-sub');
+            if (!hasSub.classList.contains("expanded")) {
+                const submenu = hasSub.querySelector("ul");
+                if (submenu) submenu.removeAttribute("style");
+            }
+        }
+    });
+
+    // 用户信息菜单内的修复
+    document.querySelectorAll(".user-info-menu .d-none").forEach(el => {
+        el.addEventListener("click", () => {
+            if ($sidebarMenu && $sidebarMenu.classList.contains("collapsed")) {
+                document.querySelectorAll(".has-sub.expanded > ul").forEach(ul => ul.removeAttribute("style"));
+            } else {
+                document.querySelectorAll(".has-sub.expanded > ul").forEach(ul => ul.style.display = 'block');
+            }
+        });
+    });
+
+    // 导航项点击激活和滚动
+    document.querySelectorAll("#main-menu li ul li").forEach(li => {
+        li.addEventListener("click", function() {
+            Array.from(this.parentElement.children).forEach(sibling => sibling.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+
+    document.querySelectorAll("a.smooth").forEach(a => {
+        a.addEventListener("click", function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+
+            const offsetTop = targetElement.offsetTop - 30;
+            
+            document.querySelectorAll("#main-menu li").forEach(li => li.classList.remove("active"));
+            this.parentElement.classList.add("active");
+
+            if ($mainMenu) $mainMenu.classList.remove("mobile-is-visible");
+            if ($sidebarMenu) $sidebarMenu.classList.remove("mobile-is-visible");
+            if ($pageContainer) $pageContainer.classList.remove("mobile-is-visible");
+
+            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        });
+    });
+    
+    // 响应式断点处理
+    function resizable(breakpoint) {
+        if (!$sidebarMenu) return;
+        switch (breakpoint) {
+            case 'largescreen':
+                $sidebarMenu.classList.remove('collapsed');
+                break;
+            case 'tabletscreen':
+                $sidebarMenu.classList.add('collapsed');
+                break;
+        }
+    }
+    
+    function get_current_breakpoint() {
+        const width = window.innerWidth;
+        for (const label in public_vars.breakpoints) {
+            let [min, max] = public_vars.breakpoints[label];
+            if (max === -1) max = Infinity;
+            if (width >= min && width <= max) return label;
+        }
+        return null;
+    }
+    
+    function trigger_resizable() {
+        const currentBreakpoint = get_current_breakpoint();
+        if (public_vars.lastBreakpoint !== currentBreakpoint) {
+            public_vars.lastBreakpoint = currentBreakpoint;
+            resizable(currentBreakpoint);
+        }
+    }
+    
+    window.addEventListener('resize', trigger_resizable);
+    window.addEventListener('orientationchange', trigger_resizable);
+    trigger_resizable(); // 初始加载时执行一次
+}
+
+// --- 外观设置控制逻辑 ---
+function setupAppearanceSettings() {
+    const docElem = document.documentElement;
+    const settingsContainer = document.getElementById('settings-container');
+    const decimalSliders = ['alpha-slider', 'overlay-slider'];
+
+    if (!settingsContainer) {
+        console.warn("外观设置控件容器未找到，功能禁用。");
+        return;
+    }
+
+    const controls = {
+        'overlay-slider': { variable: '--overlay-opacity', defaults: { light: 0.4, night: 0 }, unit: '' },
+        'blur-slider': { variable: '--module-blur-value', defaults: { light: 12, night: 0 }, unit: 'px' },
+        'alpha-slider': { variable: '--module-bg-alpha', defaults: { light: 0.1, night: 0.15 }, unit: '' }
+    };
+
+    const getCurrentTheme = () => document.body.classList.contains('night') ? 'night' : 'light';
+
+    const loadSettingsForTheme = () => {
+        const theme = getCurrentTheme();
+
+        Object.values(controls).forEach(config => {
+            const slider = document.querySelector(`.control-slider[data-variable="${config.variable}"]`);
+            if (!slider) return;
+
+            const storageKey = `${config.variable}-${theme}`;
+            const savedValue = localStorage.getItem(storageKey);
+            const defaultValue = config.defaults[theme];
+
+            const finalValue = savedValue !== null ? savedValue : defaultValue;
+
+            docElem.style.setProperty(config.variable, finalValue + config.unit);
+
+            slider.value = finalValue;
+            if (slider.nextElementSibling) {
+                const precision = decimalSliders.includes(slider.id) ? 2 : 0;
+                slider.nextElementSibling.textContent = parseFloat(finalValue).toFixed(precision);
+            }
+        });
+    };
+
+    settingsContainer.addEventListener('click', function (e) {
+        const target = e.target.closest('.suspension_box');
+        if (!target) return;
+        e.stopPropagation();
+        if (target.id === 'settings-toggle') {
+            this.classList.toggle('open');
+            if (!this.classList.contains('open')) {
+                this.querySelectorAll('.control-slider-panel.visible').forEach(p => p.classList.remove('visible'));
+                this.classList.remove('hide-tooltips');
+            }
+            return;
+        }
+        if (target.classList.contains('suspension_control')) {
+            const panel = document.getElementById(`${target.dataset.control}-panel`);
+            if (!panel) return;
+            const wasVisible = panel.classList.contains('visible');
+            this.querySelectorAll('.control-slider-panel').forEach(p => p.classList.remove('visible'));
+            if (!wasVisible) {
+                panel.classList.add('visible');
+            }
+            const anySliderVisible = this.querySelector('.control-slider-panel.visible') !== null;
+            this.classList.toggle('hide-tooltips', anySliderVisible);
+        }
+    });
+
+    document.querySelectorAll('.control-slider').forEach(slider => {
+        slider.addEventListener('input', function () {
+            const variable = this.dataset.variable;
+            const unit = this.dataset.unit;
+            const value = this.value;
+
+            docElem.style.setProperty(variable, value + unit);
+
+            if (this.nextElementSibling) {
+                const precision = decimalSliders.includes(this.id) ? 2 : 0;
+                this.nextElementSibling.textContent = parseFloat(value).toFixed(precision);
+            }
+
+            const storageKey = `${variable}-${getCurrentTheme()}`;
+            localStorage.setItem(storageKey, value);
+        });
+        slider.closest('.control-slider-panel').addEventListener('click', e => e.stopPropagation());
+    });
+
+    document.addEventListener('click', function () {
+        if (settingsContainer.classList.contains('open')) {
+            settingsContainer.classList.remove('open', 'hide-tooltips');
+            settingsContainer.querySelectorAll('.control-slider-panel.visible').forEach(p => p.classList.remove('visible'));
+        }
+    });
+
+    new MutationObserver(() => {
+        loadSettingsForTheme();
+    }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    loadSettingsForTheme();
+}
+
+// --- 天气、时间、脚注、控制台输出 ---
+function setupFooterInfo() {
+    // 天气
+    fetch('https://api.vvhan.com/api/weather')
+        .then(r => r.json())
+        .then(d => {
+            const wea_text = document.getElementById('wea_text');
+            const city_text = document.getElementById('city_text');
+            const tem_low = document.getElementById('tem_low');
+            const tem_high = document.getElementById('tem_high');
+            const win_text = document.getElementById('win_text');
+            const win_speed = document.getElementById('win_speed');
+            if (wea_text) wea_text.innerHTML = d.data.type;
+            if (city_text) city_text.innerHTML = d.city;
+            if (tem_low) tem_low.innerHTML = d.data.low;
+            if (tem_high) tem_high.innerHTML = d.data.high;
+            if (win_text) win_text.innerHTML = d.data.fengxiang;
+            if (win_speed) win_speed.innerHTML = d.data.fengli;
+        }).catch(console.error);
+
+    // 时间
+    let t = null;
+    function times() {
+        clearTimeout(t);
+        const d = new Date(), w = ["日", "一", "二", "三", "四", "五", "六"],
+            h = d.getHours().toString().padStart(2, '0'),
+            m = d.getMinutes().toString().padStart(2, '0'),
+            s = d.getSeconds().toString().padStart(2, '0'),
+            el = document.getElementById("times");
+        if (el) el.innerHTML = `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()} <span class='weekday'>星期${w[d.getDay()]}</span><br/><span class='time-text'>${h}:${m}:${s}</span>`;
+        t = setTimeout(times, 1000);
+    }
+    times();
+
+    // 页面加载耗时和 cdn-cgi/trace
+    const timeElement = document.getElementById("time");
+    if (timeElement && performance.now()) {
+        timeElement.innerHTML = ` 页面加载耗时 ${Math.round(performance.now())} 毫秒 `;
+    }
+
+    fetch("/cdn-cgi/trace")
+        .then(response => response.text())
+        .then(data => {
+            const traceInfo = Object.fromEntries(data.trim().split('\n').map(e => e.split('=')));
+            const resultElement = document.getElementById("result");
+            if (resultElement) {
+                resultElement.innerHTML = `节点:${traceInfo.colo} | 访客:${traceInfo.loc} | IP:${traceInfo.ip}`;
+            }
+        });
+
+    // 控制台输出
+    console.clear();
+    console.log(`%cWayneのNav %c\n==============================\n#   #    #   #   # #   # #####\n#   #   # #   # #  ##  # #\n# # #  #####   #   # # # #####\n## ##  #   #   #   #  ## #\n#   #  #   #   #   #   # #####\n==============================\n %c\n版 本 号：v6.1.0\n更新日期：2025-07-29\n\nWayneのNav: https://nav.3301.qzz.io/\nGithub:  https://github.com/Waynenet/Wayne-Nav\n`, `font-size: 20px; font-weight: 600; color: rgb(244,167,89);`, `font-size: 16px; color: rgb(244,167,89);`, `color: rgb(30,152,255);`);
+}

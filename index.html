@@ -16,8 +16,6 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/wayne-img@latest/bootstrap/bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <script src="https://gcore.jsdelivr.net/npm/wayne-img@latest/bootstrap/bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://gcore.jsdelivr.net/npm/wayne-img@latest/js/jquery-4.0.0-beta.2.min.js"></script>
     <!-- tabler-icons -->
     <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <!-- Izitoast -->
@@ -45,7 +43,6 @@
                         </a>
                     </div>
                     <div class="mobile-menu-toggle d-md-none">
-                        <a onclick="switchNightMode()"><i class="ti ti-yin-yang-filled"></i></a>
                         <a href="#" data-toggle="user-info-menu"><i class="ti ti-settings"></i></a>
                         <a href="#" data-toggle="mobile-menu"><i class="ti ti-menu-2"></i></a>
                     </div>
@@ -255,7 +252,7 @@
 
                     <!-- 夜间模式 -->
                     <li class="suspension-item">
-                        <div class="suspension_box suspension_ax" onclick="switchNightMode()">
+                        <div class="suspension_box suspension_ax" id="dark-mode-switch">
                             <i class="ti ti-moon"></i>
                             <i class="ti ti-sun"></i>
                         </div>
@@ -318,7 +315,6 @@
         </div>
     </div>
     <canvas id="starfield"></canvas>
-    <script src="js/function.min.js"></script>
-    <script src="js/render.min.js"></script>
+    <script src="js/core.min.js"></script>
 </body>
 </html>
