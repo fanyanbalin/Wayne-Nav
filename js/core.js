@@ -48,14 +48,17 @@ function renderContent() {
             }
 
             // 步骤 1: 渲染所有静态HTML部分
+            renderMainMenu(data.menuConfig);
             renderSearchSection(data.searchConfig);
             renderBookmarkCategories(data.categories);
 
             // 步骤 2: 绑定搜索框的交互事件
             attachSearchEventListeners(data.searchConfig);
 
-            // 步骤 3: 初始化第三方插件 (如 lozad, bootstrap tooltips)
+            // 步骤 3: 初始化第三方插件(lozad, bootstrap tooltips)以及侧边栏动画
             initializePlugins();
+            setupSidebarMenu(); 
+            setupSidebarToggles();
         })
         .catch(error => {
             console.error('严重错误:', error);
@@ -64,6 +67,33 @@ function renderContent() {
                 contentContainer.innerHTML = '<p style="text-align: center; color: red;">加载内容失败！请按F12查看控制台中的详细错误信息。</p>';
             }
         });
+
+    function renderMainMenu(menuData) {
+        const menuContainer = document.getElementById('main-menu');
+        if (!menuContainer) return;
+        const menuHTML = menuData.map(item => {
+            // 检查是否有子菜单
+            if (item.children && item.children.length > 0) {
+                const childrenHTML = item.children.map(child =>
+                    `<li><a href="${child.href}" class="smooth"><span class="title">${child.title}</span></a></li>`
+                ).join('');
+                return `
+                    <li>
+                        <a><i class="${item.icon}"></i> <span class="title">${item.title}</span></a>
+                        <ul>${childrenHTML}</ul>
+                    </li>
+                `;
+            } else {
+                // 没有子菜单的顶级项
+                return `
+                    <li>
+                        <a href="${item.href}" class="smooth"><i class="${item.icon}"></i> <span class="title">${item.title}</span></a>
+                    </li>
+                `;
+            }
+        }).join('');
+        menuContainer.innerHTML = menuHTML;
+    }
 
     function renderSearchSection(searchConfig) {
         const searchContainer = document.getElementById('search-container');
@@ -274,8 +304,6 @@ function initializePageFunctions() {
     setupDarkMode();
     setupStarfield();
     setupBgImageFallback();
-    setupSidebarMenu(); // 侧边栏主逻辑
-    setupSidebarToggles(); // 侧边栏各种切换按钮
     setupAppearanceSettings();
     setupFooterInfo();
 }

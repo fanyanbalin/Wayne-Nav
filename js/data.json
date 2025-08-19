@@ -55,6 +55,77 @@
         ]
       }
   ],
+  "menuConfig": [
+    { "icon": "ti ti-search", "title": "实用搜索", "href": "#search" },
+    { "icon": "ti ti-flame", "title": "热搜新闻", "href": "#热搜新闻" },
+    { "icon": "ti ti-star", "title": "常用推荐", "href": "#常用推荐" },
+    {
+      "icon": "ti ti-disc",
+      "title": "及时行乐",
+      "children": [
+        { "title": "文艺至死", "href": "#文艺至死" },
+        { "title": "音乐天堂", "href": "#音乐天堂" },
+        { "title": "直播聚合", "href": "#直播聚合" },
+        { "title": "在线综合", "href": "#在线综合" },
+        { "title": "影视搜索", "href": "#影视搜索" },
+        { "title": "字幕仓库", "href": "#字幕仓库" },
+        { "title": "资源仓库", "href": "#资源仓库" },
+        { "title": "休闲娱乐", "href": "#休闲娱乐" }
+      ]
+    },
+    {
+      "icon": "ti ti-tool",
+      "title": "实用工具",
+      "children": [
+        { "title": "人工智能", "href": "#人工智能" },
+        { "title": "在线工具", "href": "#在线工具" },
+        { "title": "在线改图", "href": "#在线改图" },
+        { "title": "以图搜图", "href": "#以图搜图" },
+        { "title": "在线转格", "href": "#在线转格" },
+        { "title": "在线生成", "href": "#在线生成" },
+        { "title": "其他在线", "href": "#其他在线" },
+        { "title": "上传下载", "href": "#上传下载" },
+        { "title": "软件精选", "href": "#软件精选" },
+        { "title": "浏览器插件", "href": "#浏览器插件" },
+        { "title": "虚拟信息", "href": "#虚拟信息" }
+      ]
+    },
+    {
+      "icon": "ti ti-book",
+      "title": "素材资源",
+      "children": [
+        { "title": "壁纸下载", "href": "#壁纸下载" },
+        { "title": "PNG免扣", "href": "#PNG免扣" },
+        { "title": "PPT资源", "href": "#PPT资源" },
+        { "title": "字体资源", "href": "#字体资源" },
+        { "title": "其他资源", "href": "#其他资源" },
+        { "title": "设计灵感", "href": "#设计灵感" },
+        { "title": "API资源", "href": "#API资源" }
+      ]
+    },
+    {
+      "icon": "ti ti-database",
+      "title": "开发生产",
+      "children": [
+        { "title": "域名申请", "href": "#域名申请" },
+        { "title": "云端服务", "href": "#云端服务" },
+        { "title": "开发文档", "href": "#开发文档" },
+        { "title": "网站管理", "href": "#网站管理" }
+      ]
+    },
+    {
+      "icon": "ti ti-device-desktop",
+      "title": "系统相关",
+      "children": [
+        { "title": "系统下载", "href": "#系统下载" },
+        { "title": "系统美化", "href": "#系统美化" },
+        { "title": "系统工具", "href": "#系统工具" }
+      ]
+    },
+    { "icon": "ti ti-school", "title": "学无止境", "href": "#学无止境" },
+    { "icon": "ti ti-news", "title": "社区资讯", "href": "#社区资讯" },
+    { "icon": "ti ti-id", "title": "关于本站", "href": "#about" }
+  ],
   "categories": [
     {
       "categoryName": "热搜新闻",
