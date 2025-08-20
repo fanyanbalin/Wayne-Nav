@@ -43,14 +43,20 @@ function renderContent() {
             return response.json();
         })
         .then(data => {
-            if (!data || !data.searchConfig || !data.pageData) {
+            if (!data || !data.pageData) {
                 throw new Error("JSON 数据格式不正确或缺少必要的配置部分。");
+            }
+
+            const searchItem = data.pageData.find(item => item.id === 'search');
+            const searchConfig = searchItem ? searchItem.searchConfig : null;
+            if (!searchConfig) {
+                throw new Error("在 pageData 中未找到有效的 searchConfig。");
             }
 
             renderMainMenu(data.pageData);
             renderBookmarkCategories(data.pageData);
-            renderSearchSection(data.searchConfig);
-            attachSearchEventListeners(data.searchConfig);
+            renderSearchSection(searchConfig);
+            attachSearchEventListeners(searchConfig);
 
             // 初始化第三方插件(lozad, bootstrap tooltips)以及侧边栏动画
             initializePlugins();
