@@ -1,134 +1,69 @@
 {
   "searchConfig": [
-      {
-        "groupName": "搜索",
-        "items": [
-          { "id": "type-baidu", "name": "<span style='color:#2100E0' class='dark-text'>百度</span>", "url": "https://www.baidu.com/s?wd=", "placeholder": "百度一下，你就知道" },
-          { "id": "type-bing", "name": "<span style='color:#007daa'>Bing</span>", "url": "https://cn.bing.com/search?q=", "placeholder": "微软 Bing 搜索" },
-          { "id": "type-google", "name": "<span style='color:#3B83FA'>G</span><span style='color:#F3442C'>o</span><span style='color:#FFC300'>o</span><span style='color:#4696F8'>g</span><span style='color:#2CAB4E'>l</span><span style='color:#F54231'>e</span>", "url": "https://www.google.com/search?q=", "placeholder": "谷歌搜索" },
-          { "id": "type-360", "name": "<span style='color:#19b955'>360</span>", "url": "https://www.so.com/s?q=", "placeholder": "360好搜" },
-          { "id": "type-sogou", "name": "<span style='color:#ff5943'>搜狗</span>", "url": "https://www.sogou.com/web?query=", "placeholder": "搜狗搜索" },
-          { "id": "type-bili", "name": "<span style='color:#00a1d6'>BiliBili</span>", "url": "https://search.bilibili.com/all?keyword=", "placeholder": "哔哩哔哩搜索" },
-          { "id": "type-git", "name": "<span style='color:#000000' class='dark-text'>Github</span>", "url": "https://github.com/search?utf8=%E2%9C%93&q=", "placeholder": "搜索 Github 仓库" }
-        ]
-      },
-      {
-        "groupName": "工具",
-        "items": [
-          { "id": "type-ping", "name": "<span style='color:#00599e'>PING检测</span>", "url": "https://ping.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" },
-          { "id": "type-icp", "name": "<span style='color:#ffac00'>备案查询</span>", "url": "https://icp.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" },
-          { "id": "type-br", "name": "<span style='color:#55a300'>权重查询</span>", "url": "https://rank.chinaz.com/all/", "placeholder": "请输入网址 ( 不带http:// )" },
-          { "id": "type-links", "name": "<span style='color:#313439' class='dark-text'>友链检测</span>", "url": "https://link.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" },
-          { "id": "type-404", "name": "<span style='color:#f00'>HTTPS检测</span>", "url": "https://stool.chinaz.com/https?url=", "placeholder": "请输入网址 ( 不带http:// )" },
-          { "id": "type-ciku", "name": "<span style='color:#016DBD'>SEO查询</span>", "url": "https://seo.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" }
-        ]
-      },
-      {
-        "groupName": "社区",
-        "items": [
-          { "id": "type-zhihu", "name": "<span style='color:#0084ff'>知乎</span>", "url": "https://www.zhihu.com/search?type=content&q=", "placeholder": "知乎，与你分享刚编的故事" },
-          { "id": "type-wechat", "name": "<span style='color:#00a06a'>微信</span>", "url": "http://weixin.sogou.com/weixin?type=2&query=", "placeholder": "微信" },
-          { "id": "type-weibo", "name": "<span style='color:#e6162d'>微博</span>", "url": "http://s.weibo.com/weibo/", "placeholder": "微博" },
-          { "id": "type-douban", "name": "<span style='color:#55a300'>豆瓣</span>", "url": "https://www.douban.com/search?q=", "placeholder": "豆瓣" },
-          { "id": "type-why", "name": "<span style='color:#428bca'>搜外问答</span>", "url": "https://ask.seowhy.com/search/?q=", "placeholder": "SEO问答社区" }
-        ]
-      },
-      {
-        "groupName": "生活",
-        "items": [
-          { "id": "type-taobao", "name": "<span style='color:#f40'>淘宝</span>", "url": "https://s.taobao.com/search?q=", "placeholder": "淘宝" },
-          { "id": "type-jd", "name": "<span style='color:#c91623'>京东</span>", "url": "https://search.jd.com/Search?keyword=", "placeholder": "京东" },
-          { "id": "type-xiacf", "name": "<span style='color:#dd3915'>下厨房</span>", "url": "http://www.xiachufang.com/search/?keyword=", "placeholder": "下厨房" },
-          { "id": "type-xiangha", "name": "<span style='color:#930'>香哈菜谱</span>", "url": "https://www.xiangha.com/so/?q=caipu&s=", "placeholder": "香哈菜谱" },
-          { "id": "type-12306", "name": "<span style='color:#07f'>12306</span>", "url": "http://www.12306.cn/?", "placeholder": "12306" },
-          { "id": "type-qunar", "name": "<span style='color:#00afc7'>去哪儿</span>", "url": "https://www.qunar.com/?", "placeholder": "去哪儿" },
-          { "id": "type-快递100", "name": "<span style='color:#3278e6'>快递100</span>", "url": "http://www.kuaidi100.com/?", "placeholder": "快递100" }
-        ]
-      },
-      {
-        "groupName": "求职",
-        "items": [
-          { "id": "type-zhaopin", "name": "<span style='color:#689fee'>智联招聘</span>", "url": "https://sou.zhaopin.com/jobs/searchresult.ashx?kw=", "placeholder": "智联招聘" },
-          { "id": "type-51job", "name": "<span style='color:#ff6000'>前程无忧</span>", "url": "https://search.51job.com/?", "placeholder": "前程无忧" },
-          { "id": "type-lagou", "name": "<span style='color:#00b38a'>拉钩网</span>", "url": "https://www.lagou.com/jobs/list_", "placeholder": "拉钩网" },
-          { "id": "type-liepin", "name": "<span style='color:#303a40' class='dark-text'>猎聘网</span>", "url": "https://www.liepin.com/zhaopin/?key=", "placeholder": "猎聘网" }
-        ]
-      }
+    {
+      "groupName": "搜索",
+      "items": [
+        { "id": "type-baidu", "name": "<span style='color:#2100E0' class='dark-text'>百度</span>", "url": "https://www.baidu.com/s?wd=", "placeholder": "百度一下，你就知道" },
+        { "id": "type-bing", "name": "<span style='color:#007daa'>Bing</span>", "url": "https://cn.bing.com/search?q=", "placeholder": "微软 Bing 搜索" },
+        { "id": "type-google", "name": "<span style='color:#3B83FA'>G</span><span style='color:#F3442C'>o</span><span style='color:#FFC300'>o</span><span style='color:#4696F8'>g</span><span style='color:#2CAB4E'>l</span><span style='color:#F54231'>e</span>", "url": "https://www.google.com/search?q=", "placeholder": "谷歌搜索" },
+        { "id": "type-360", "name": "<span style='color:#19b955'>360</span>", "url": "https://www.so.com/s?q=", "placeholder": "360好搜" },
+        { "id": "type-sogou", "name": "<span style='color:#ff5943'>搜狗</span>", "url": "https://www.sogou.com/web?query=", "placeholder": "搜狗搜索" },
+        { "id": "type-bili", "name": "<span style='color:#00a1d6'>BiliBili</span>", "url": "https://search.bilibili.com/all?keyword=", "placeholder": "哔哩哔哩搜索" },
+        { "id": "type-git", "name": "<span style='color:#000000' class='dark-text'>Github</span>", "url": "https://github.com/search?utf8=%E2%9C%93&q=", "placeholder": "搜索 Github 仓库" }
+      ]
+    },
+    {
+      "groupName": "工具",
+      "items": [
+        { "id": "type-ping", "name": "<span style='color:#00599e'>PING检测</span>", "url": "https://ping.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" },
+        { "id": "type-icp", "name": "<span style='color:#ffac00'>备案查询</span>", "url": "https://icp.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" },
+        { "id": "type-br", "name": "<span style='color:#55a300'>权重查询</span>", "url": "https://rank.chinaz.com/all/", "placeholder": "请输入网址 ( 不带http:// )" },
+        { "id": "type-links", "name": "<span style='color:#313439' class='dark-text'>友链检测</span>", "url": "https://link.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" },
+        { "id": "type-404", "name": "<span style='color:#f00'>HTTPS检测</span>", "url": "https://stool.chinaz.com/https?url=", "placeholder": "请输入网址 ( 不带http:// )" },
+        { "id": "type-ciku", "name": "<span style='color:#016DBD'>SEO查询</span>", "url": "https://seo.chinaz.com/", "placeholder": "请输入网址 ( 不带http:// )" }
+      ]
+    },
+    {
+      "groupName": "社区",
+      "items": [
+        { "id": "type-zhihu", "name": "<span style='color:#0084ff'>知乎</span>", "url": "https://www.zhihu.com/search?type=content&q=", "placeholder": "知乎，与你分享刚编的故事" },
+        { "id": "type-wechat", "name": "<span style='color:#00a06a'>微信</span>", "url": "http://weixin.sogou.com/weixin?type=2&query=", "placeholder": "微信" },
+        { "id": "type-weibo", "name": "<span style='color:#e6162d'>微博</span>", "url": "http://s.weibo.com/weibo/", "placeholder": "微博" },
+        { "id": "type-douban", "name": "<span style='color:#55a300'>豆瓣</span>", "url": "https://www.douban.com/search?q=", "placeholder": "豆瓣" },
+        { "id": "type-why", "name": "<span style='color:#428bca'>搜外问答</span>", "url": "https://ask.seowhy.com/search/?q=", "placeholder": "SEO问答社区" }
+      ]
+    },
+    {
+      "groupName": "生活",
+      "items": [
+        { "id": "type-taobao", "name": "<span style='color:#f40'>淘宝</span>", "url": "https://s.taobao.com/search?q=", "placeholder": "淘宝" },
+        { "id": "type-jd", "name": "<span style='color:#c91623'>京东</span>", "url": "https://search.jd.com/Search?keyword=", "placeholder": "京东" },
+        { "id": "type-xiacf", "name": "<span style='color:#dd3915'>下厨房</span>", "url": "http://www.xiachufang.com/search/?keyword=", "placeholder": "下厨房" },
+        { "id": "type-xiangha", "name": "<span style='color:#930'>香哈菜谱</span>", "url": "https://www.xiangha.com/so/?q=caipu&s=", "placeholder": "香哈菜谱" },
+        { "id": "type-12306", "name": "<span style='color:#07f'>12306</span>", "url": "http://www.12306.cn/?", "placeholder": "12306" },
+        { "id": "type-qunar", "name": "<span style='color:#00afc7'>去哪儿</span>", "url": "https://www.qunar.com/?", "placeholder": "去哪儿" },
+        { "id": "type-快递100", "name": "<span style='color:#3278e6'>快递100</span>", "url": "http://www.kuaidi100.com/?", "placeholder": "快递100" }
+      ]
+    },
+    {
+      "groupName": "求职",
+      "items": [
+        { "id": "type-zhaopin", "name": "<span style='color:#689fee'>智联招聘</span>", "url": "https://sou.zhaopin.com/jobs/searchresult.ashx?kw=", "placeholder": "智联招聘" },
+        { "id": "type-51job", "name": "<span style='color:#ff6000'>前程无忧</span>", "url": "https://search.51job.com/?", "placeholder": "前程无忧" },
+        { "id": "type-lagou", "name": "<span style='color:#00b38a'>拉钩网</span>", "url": "https://www.lagou.com/jobs/list_", "placeholder": "拉钩网" },
+        { "id": "type-liepin", "name": "<span style='color:#303a40' class='dark-text'>猎聘网</span>", "url": "https://www.liepin.com/zhaopin/?key=", "placeholder": "猎聘网" }
+      ]
+    }
   ],
-  "menuConfig": [
-    { "icon": "ti ti-search", "title": "实用搜索", "href": "#search" },
-    { "icon": "ti ti-flame", "title": "热搜新闻", "href": "#热搜新闻" },
-    { "icon": "ti ti-star", "title": "常用推荐", "href": "#常用推荐" },
+  "pageData": [
     {
-      "icon": "ti ti-disc",
-      "title": "及时行乐",
-      "children": [
-        { "title": "文艺至死", "href": "#文艺至死" },
-        { "title": "音乐天堂", "href": "#音乐天堂" },
-        { "title": "直播聚合", "href": "#直播聚合" },
-        { "title": "在线综合", "href": "#在线综合" },
-        { "title": "影视搜索", "href": "#影视搜索" },
-        { "title": "字幕仓库", "href": "#字幕仓库" },
-        { "title": "资源仓库", "href": "#资源仓库" },
-        { "title": "休闲娱乐", "href": "#休闲娱乐" }
-      ]
+      "id": "search",
+      "title": "实用搜索",
+      "icon": "ti ti-search"
     },
     {
-      "icon": "ti ti-tool",
-      "title": "实用工具",
-      "children": [
-        { "title": "人工智能", "href": "#人工智能" },
-        { "title": "在线工具", "href": "#在线工具" },
-        { "title": "在线改图", "href": "#在线改图" },
-        { "title": "以图搜图", "href": "#以图搜图" },
-        { "title": "在线转格", "href": "#在线转格" },
-        { "title": "在线生成", "href": "#在线生成" },
-        { "title": "其他在线", "href": "#其他在线" },
-        { "title": "上传下载", "href": "#上传下载" },
-        { "title": "软件精选", "href": "#软件精选" },
-        { "title": "浏览器插件", "href": "#浏览器插件" },
-        { "title": "虚拟信息", "href": "#虚拟信息" }
-      ]
-    },
-    {
-      "icon": "ti ti-book",
-      "title": "素材资源",
-      "children": [
-        { "title": "壁纸下载", "href": "#壁纸下载" },
-        { "title": "PNG免扣", "href": "#PNG免扣" },
-        { "title": "PPT资源", "href": "#PPT资源" },
-        { "title": "字体资源", "href": "#字体资源" },
-        { "title": "其他资源", "href": "#其他资源" },
-        { "title": "设计灵感", "href": "#设计灵感" },
-        { "title": "API资源", "href": "#API资源" }
-      ]
-    },
-    {
-      "icon": "ti ti-database",
-      "title": "开发生产",
-      "children": [
-        { "title": "域名申请", "href": "#域名申请" },
-        { "title": "云端服务", "href": "#云端服务" },
-        { "title": "开发文档", "href": "#开发文档" },
-        { "title": "网站管理", "href": "#网站管理" }
-      ]
-    },
-    {
-      "icon": "ti ti-device-desktop",
-      "title": "系统相关",
-      "children": [
-        { "title": "系统下载", "href": "#系统下载" },
-        { "title": "系统美化", "href": "#系统美化" },
-        { "title": "系统工具", "href": "#系统工具" }
-      ]
-    },
-    { "icon": "ti ti-school", "title": "学无止境", "href": "#学无止境" },
-    { "icon": "ti ti-news", "title": "社区资讯", "href": "#社区资讯" },
-    { "icon": "ti ti-id", "title": "关于本站", "href": "#about" }
-  ],
-  "categories": [
-    {
-      "categoryName": "热搜新闻",
+      "title": "热搜新闻",
+      "icon": "ti ti-flame",
       "items": [
         { "title": "多媒体数字报纸", "url": "http://www.53bk.com/baokan/", "description": "国内报纸电子版大全,国内杂志电子版大全,在线看报系统,报刊杂志大全" },
         { "title": "今日热榜", "url": "https://tophub.today/", "description": "今日热榜提供各站热榜聚合：微信、今日头条、百度、知乎、V2EX、微博、贴吧、豆瓣、天涯、虎扑、Github、抖音...追踪全网热点、简单高效阅读。" },
@@ -137,7 +72,8 @@
       ]
     },
     {
-      "categoryName": "常用推荐",
+      "title": "常用推荐",
+      "icon": "ti ti-star",
       "items": [
         { "title": "Youtube", "url": "https://www.youtube.com/", "description": "全球最大的视频分享平台" },
         { "title": "哔哩哔哩", "url": "https://bilibili.com/", "description": "中国版youtube" },
@@ -148,474 +84,505 @@
       ]
     },
     {
-      "categoryName": "文艺至死",
-      "items": [
-        { "title": "古诗文网", "url": "https://www.gushiwen.cn/", "description": "古诗文网作为传承经典的网站专注于古诗文服务，致力于让古诗文爱好者更便捷地发表及获取古诗文相关资料。" },
-        { "title": "中国诗歌网", "url": "https://www.zgshige.com/", "description": "诗歌高地，诗人家园。" },
-        { "title": "熊猫搜书", "url": "https://xmsoushu.com/", "description": "熊猫搜书平台，提供免费电子书下载，mobi、epud、pdf、txt格式，kindle电子书下载" },
-        { "title": "SoBooks", "url": "https://sobooks.net/", "description": "小说书籍资源搜索" },
-        { "title": "搬书匠", "url": "http://www.banshujiang.cn/", "description": "计算机类图书" },
-        { "title": "鸠摩搜索", "url": "https://www.jiumodiary.com/", "description": "图书搜索" }
+      "title": "及时行乐",
+      "icon": "ti ti-disc",
+      "children": [
+        {
+          "title": "文艺至死",
+          "items": [
+            { "title": "古诗文网", "url": "https://www.gushiwen.cn/", "description": "古诗文网作为传承经典的网站专注于古诗文服务，致力于让古诗文爱好者更便捷地发表及获取古诗文相关资料。" },
+            { "title": "中国诗歌网", "url": "https://www.zgshige.com/", "description": "诗歌高地，诗人家园。" },
+            { "title": "熊猫搜书", "url": "https://xmsoushu.com/", "description": "熊猫搜书平台，提供免费电子书下载，mobi、epud、pdf、txt格式，kindle电子书下载" },
+            { "title": "SoBooks", "url": "https://sobooks.net/", "description": "小说书籍资源搜索" },
+            { "title": "搬书匠", "url": "http://www.banshujiang.cn/", "description": "计算机类图书" },
+            { "title": "鸠摩搜索", "url": "https://www.jiumodiary.com/", "description": "图书搜索" }
+          ]
+        },
+        {
+          "title": "音乐天堂",
+          "items": [
+            { "title": "QQ音乐", "url": "https://y.qq.com/", "description": "QQ音乐平台" },
+            { "title": "网易云音乐", "url": "https://music.163.com/", "description": "网易音乐平台" },
+            { "title": "LALAL.AI", "url": "https://www.lalal.ai/zh-hans/", "description": "提取音频的人声和音轨" },
+            { "title": "音乐解锁", "url": "https://unlock-music-ix.netlify.app/", "description": "目前支持网易云音乐(ncm), QQ音乐(qmc, mflac, mgg), 酷狗音乐(kgm), 虾米音乐(xm), 酷我音乐(.kwm)" },
+            { "title": "Listen1音乐播放器", "url": "https://listen1.github.io/listen1/", "description": "Listen 1可以搜索和播放来自网易云音乐，虾米，QQ音乐，酷狗音乐，酷我音乐，Bilibili，咪咕音乐网站的歌曲，让你的曲库更全面。" },
+            { "title": "爱给网", "url": "https://www.aigei.com/", "description": "中国最大的数字娱乐免费素材下载网站,免费提供免费的音效配乐|3D模型|视频|游戏素材资源下载。" }
+          ]
+        },
+        {
+          "title": "直播聚合",
+          "items": [
+            { "title": "斗鱼", "url": "https://www.douyu.com/", "description": "每个人的直播平台" },
+            { "title": "虎牙", "url": "https://www.huya.com/", "description": "技术驱动娱乐-弹幕式互动直播平台" },
+            { "title": "央视官方直播", "url": "https://tv.cctv.com/live/", "description": "直播大全_CCTV节目官网_央视网" },
+            { "title": "爱看tv", "url": "http://www.aikantv.org/", "description": "网络电视直播_卫星电视直播在线观看" },
+            { "title": "好趣网", "url": "http://tv.haoqu99.com/", "description": "2000套高清网络电视直播在线观看" },
+            { "title": "看全球", "url": "http://www.zyz98.com/", "description": "CGTN、CCTV、世界各国电视台直播在线观看" },
+            { "title": "iTVer电视吧在线直播平台", "url": "http://cn.itver.cc/", "description": "精选海量网络电视在线直播线上收看园地" },
+            { "title": "eja TV", "url": "https://eja.tv/", "description": "全球直播在线观看网站" }
+          ]
+        },
+        {
+          "title": "在线综合",
+          "items": [
+            { "title": "大师兄影视", "url": "https://dsxys.com/", "description": "在线观看,蓝光电影,搞笑视频,美剧,韩剧,超前点播,免费视频" },
+            { "title": "555电影", "url": "https://55p8l4.com/", "description": "免费VIP资源在线观看，每天专业更新热火电影电视剧" },
+            { "title": "低端影视", "url": "https://ddys.site/", "description": "超清在线视频" },
+            { "title": "NO视频", "url": "https://www.novipnoad.com/", "description": "为用户提供及时的海外热门剧集在线观看，友好无广告，致力于最轻松的追剧体验" },
+            { "title": "Auete影视", "url": "https://auete.com/", "description": "超清精品影视在线" },
+            { "title": "去看吧", "url": "https://www.qkan8.com/", "description": "看吧动漫,无删减,bl动漫,耽美吧,耽美在线,k8動漫_好看的耽美動漫" },
+            { "title": "bangumi", "url": "https://bangumi.online/", "description": "アニメ新番組 - 次世代新番站" },
+            { "title": "奈菲影视", "url": "https://www.nfyingshi.com/", "description": "专为中国用户提供全球流媒体播放网站" },
+            { "title": "遇见小馒头", "url": "https://mov.5ixmt.com/", "description": "免费短视频分享大全 - 大中国" },
+            { "title": "Radiocast", "url": "https://radiocast.co/", "description": "世界电台网站。该网站以三维地球为核心交互界面，用户可以通过旋转地球来探索世界各地的电台。Radiocast 整合了超过 7000 个第三方公共广播流，覆盖全球各地电台。" }
+          ]
+        },
+        {
+          "title": "影视搜索",
+          "items": [
+            { "title": "茶杯狐", "url": "https://cupfox.app/", "description": "影视资源聚合搜索引擎" },
+            { "title": "7080影视搜", "url": "https://7080.wang/", "description": "影视资源聚合搜索引擎" },
+            { "title": "电影狗", "url": "https://www.dianyinggou.com/", "description": "专业电影搜索引擎看" },
+            { "title": "影猫", "url": "https://www.mvcat.com/", "description": "人生如戏，你是主角。" },
+            { "title": "豌豆PRO", "url": "https://www.wandou.pro/", "description": "实时聚合全网优质影视资源，同时支持在线、下载和字幕。" },
+            { "title": "电影淘淘", "url": "https://www.dianyingtaotao.com/", "description": "电影搜索引擎" },
+            { "title": "盘友圈", "url": "https://panyq.com/", "description": "在线网盘搜索引擎，支持百度网盘、阿里云盘、夸克网盘资源搜索" }
+          ]
+        },
+        {
+          "title": "字幕仓库",
+          "items": [
+            { "title": "字幕库", "url": "http://zimuku.org/", "description": "字幕,字幕下载,电影字幕下载,美剧字幕下载,韩剧字幕下载,中文字幕下载" },
+            { "title": "SubHD", "url": "https://subhd.tv/", "description": "Sub HD为影视爱好者们提供交流字幕的平台，你可以在这里找到并下载字幕，对字幕打分和评论，也可以上传字幕与大家分享" },
+            { "title": "R3字幕", "url": "https://r3sub.com/", "description": "R3字幕網提供最方便的字幕搜尋、電影簡介、電影劇照、電影評分" }
+          ]
+        },
+        {
+          "title": "资源仓库",
+          "items": [
+            { "title": "ZY Player 资源播放器", "url": "http://zyplayer.fun/", "description": "跨平台视频资源播放器, 简洁免费无广告" },
+            { "title": "人人影视资源站", "url": "https://yyets.click/", "description": "人人影视资源站，免费下载" },
+            { "title": "BT之家1LOU站发布页", "url": "https://www.1lou.cc/", "description": "影视bt下载站" },
+            { "title": "终点站emby公益服（需Telegram账号）", "url": "https://embywiki.911997.xyz/", "description": "Emby公益服是一个免费影视媒体库" },
+            { "title": "蜜柑计划", "url": "https://mikanani.me/", "description": "新一代的动漫下载站" }
+          ]
+        },
+        {
+          "title": "休闲娱乐",
+          "items": [
+            { "title": "游戏合集", "url": "https://poki.com/", "description": "大多来自手机移植" },
+            { "title": "自由钢琴 - AutoPiano", "url": "https://www.autopiano.cn/", "description": "自由钢琴(AutoPiano)是利用HTML5技术开发的在线钢琴应用，致力于为钢琴爱好者、音乐爱好者提供一个优雅、简洁的平台，在学习工作之余可以在线弹钢琴，享受音乐、生活的美好。自由钢琴支持自动演奏和手动演奏，简单易学，快来试试吧~" },
+            { "title": "Epic游戏商城", "url": "https://www.epicgames.com/", "description": "每周白嫖一款免费游戏" },
+            { "title": "香蕉网 - Game模型库", "url": "https://gamebanana.com/", "description": "DIY游戏必备网址论坛" },
+            { "title": "怀旧系列 - 红色警戒", "url": "https://game.chronodivide.com/", "description": "在线玩红色警戒" },
+            { "title": "小霸王游戏机", "url": "https://www.yikm.net/", "description": "魂斗罗，超级玛丽，热血足球，三国志，合金弹头，拳皇。这些小时候的回忆，黑白电视机前玩着小霸王游戏机的那种感觉令人怀念，希望大家可以找回童年的快乐" },
+            { "title": "在线经典游戏", "url": "https://nes.hocgin.top/", "description": "在线玩经典游戏，可联机，创建房间" },
+            { "title": "在线dos游戏", "url": "https://dos.zczc.cz/", "description": "dos游戏合集" },
+            { "title": "flash保存计划", "url": "https://flash.zczc.cz/", "description": "在线玩flash游戏" },
+            { "title": "国外怀旧游戏", "url": "https://www.lexaloffle.com/", "description": "在线国外怀旧游戏" },
+            { "title": "在线贪吃蛇", "url": "http://slither.io/", "description": "类似球球大作战，大乱斗" },
+            { "title": "在线坦克大战", "url": "https://diep.io/", "description": "超难操作的坦克大战，挑战下吧" },
+            { "title": "COLOR连线消消乐", "url": "https://lines.frvr.com/", "description": "在线COLOR消消游戏" },
+            { "title": "COLOR消消", "url": "https://hex.frvr.com/", "description": "在线COLOR消消游戏" },
+            { "title": "人声模拟器", "url": "https://dood.al/pinktrombone/", "description": "人声模拟器" },
+            { "title": "回归大自然", "url": "https://rainyscope.com/", "description": "回归大自然" },
+            { "title": "AutoDraw", "url": "https://www.autodraw.com/", "description": "自动涂鸦" },
+            { "title": "从未出现过的人", "url": "https://thispersondoesnotexist.com/", "description": "AI脸谱" },
+            { "title": "迷宫生成器", "url": "https://www.mazegenerator.net/", "description": "迷宫生成器" },
+            { "title": "流体模拟器", "url": "https://david.li/fluid/", "description": "流体模拟器" },
+            { "title": "六十秒冥想", "url": "https://pixelthoughts.co/", "description": "六十秒冥想" },
+            { "title": "经典益智游戏合集", "url": "https://puzzles-game.com/zh/", "description": "包含40款在线益智游戏网站" }
+          ]
+        }
       ]
     },
     {
-      "categoryName": "音乐天堂",
-      "items": [
-        { "title": "QQ音乐", "url": "https://y.qq.com/", "description": "QQ音乐平台" },
-        { "title": "网易云音乐", "url": "https://music.163.com/", "description": "网易音乐平台" },
-        { "title": "LALAL.AI", "url": "https://www.lalal.ai/zh-hans/", "description": "提取音频的人声和音轨" },
-        { "title": "音乐解锁", "url": "https://unlock-music-ix.netlify.app/", "description": "目前支持网易云音乐(ncm), QQ音乐(qmc, mflac, mgg), 酷狗音乐(kgm), 虾米音乐(xm), 酷我音乐(.kwm)" },
-        { "title": "Listen1音乐播放器", "url": "https://listen1.github.io/listen1/", "description": "Listen 1可以搜索和播放来自网易云音乐，虾米，QQ音乐，酷狗音乐，酷我音乐，Bilibili，咪咕音乐网站的歌曲，让你的曲库更全面。" },
-        { "title": "爱给网", "url": "https://www.aigei.com/", "description": "中国最大的数字娱乐免费素材下载网站,免费提供免费的音效配乐|3D模型|视频|游戏素材资源下载。" }
+      "title": "实用工具",
+      "icon": "ti ti-tool",
+      "children": [
+        {
+          "title": "人工智能",
+          "items": [
+            { "title": "ChatGPT", "url": "https://chatgpt.com/", "description": "ChatGPT 是由 OpenAI 开发的一种人工智能语言模型，能够根据上下文和过去的对话生成类似人类的文本。" },
+            { "title": "DeepSeek", "url": "https://www.deepseek.com/", "description": "DeepSeek | 深度求索  探索未至之境" },
+            { "title": "Gemini", "url": "https://gemini.google.com/", "description": "Gemini Pro是谷歌最新推出的高性能AI模型，专为编程和复杂任务处理优化。它具备强大的代码生成能力，能够处理复杂指令，并支持最高200万Token的上下文窗口。此外，Gemini Pro可调用Google搜索和代码执行，以增强推理能力和信息获取能力。" },
+            { "title": "Grok 3", "url": "https://x.com/i/grok/", "description": "马斯克旗下重磅AI，人工智能初创公司xAI团队研发的第三代大语言模型。2025年2月18日正式发布，同步发布的还有名为Deepsearch的Grok 3智能搜索引擎。" },
+            { "title": "文心一言", "url": "https://yiyan.baidu.com/", "description": "文心一言是百度研发的知识增强大语言模型，它采用了深度学习算法和大规模语料库训练，具备强大的语义理解和生成能力。文心一言能够与用户进行流畅的对话交流，理解用户的意图和需求，并提供精准、有价值的回答和建议。" },
+            { "title": "通义千问", "url": "https://www.tongyi.com/", "description": "通义千问是阿里巴巴推出的一个AI预训练模型，它主要基于阿里巴巴达摩院在自然语言处理领域的先进技术，采用深度学习和大规模语言模型的方法。通义千问旨在为用户提供高效、准确的信息检索和问题解答服务，同时支持多种自然语言处理任务，如语音识别、机器翻译等。" },
+            { "title": "智谱清言", "url": "https://chatglm.cn/", "description": "智谱清言是由北京智谱华章科技有限公司开发的生成式AI聊天助手，基于智谱AI自主研发的中英双语对话模型ChatGLM2。它具有千亿级别的参数和一系列强大的功能，旨在提供高效、精准的语音交互体验。" },
+            { "title": "豆包", "url": "https://www.doubao.com/chat/", "description": "豆包，一款由字节跳动精心打造的AI助手，它不仅是你的私人问答专家，更是写作、翻译、情感陪伴、编程等多面手。无论是Web端还是iOS/安卓，一键登录（手机号、抖音号、Apple ID任选），即刻开启智能生活新篇章！" },
+            { "title": "天工AI", "url": "https://www.tiangong.cn/", "description": "天工是一款支持搜索、写作、对话、文档分析、画画、做PPT的全能型AI助手。你可以借助AI技术，检索信息、多语言翻译、写论文、写代码、写方案、写汇报、做PPT、归纳总结文档和音频视频，还可以智能编辑彩页和宝典，让AI生成高质量彩页内容，收获点赞关注。" },
+            { "title": "Google AI Studio", "url": "https://aistudio.google.com/", "description": "基于浏览器的轻量级AI平台" }
+          ]
+        },
+        {
+          "title": "在线工具",
+          "items": [
+            { "title": "帮小忙", "url": "https://tool.browser.qq.com/", "description": "腾讯QQ浏览器在线工具箱平台" },
+            { "title": "一个工具箱", "url": "http://www.atoolbox.net/", "description": "在线工具大合集" },
+            { "title": "太美工具网", "url": "https://tiomg.org/", "description": "上班族常用的在线工具网站，免费在线软件工具包" },
+            { "title": "Canva可画在线平面设计", "url": "https://www.canva.cn/", "description": "在线设计网站,平面设计软件,免费在线设计软件,免费设计素材模板,Canva" },
+            { "title": "站长工具", "url": "https://tool.chinaz.com/", "description": "站长工具是站长的必备工具。经常上站长工具可以了解SEO数据变化。还可以检测网站死链接、蜘蛛访问、HTML格式检测、网站速度测试、友情链接检查、网站域名IP查询、PR、权重查询、alexa、whois查询等等。" },
+            { "title": "ITDOG", "url": "https://www.itdog.cn/", "description": "在线ping_在线tcping_网站测速_HTTP测速_API测速_路由追踪_在线MTR_DNS查询_ITDOG-云邦畅想" },
+            { "title": "开发工具箱", "url": "https://tool.lu/", "description": "在线工具,开发人员工具,代码格式化、压缩、加密、解密,下载链接转换,sql工具,正则测试工具,favicon在线制作,字帖工具,中文简繁体转换,迅雷下载链接转换,进制转换,二维码" },
+            { "title": "贝贝工具站", "url": "https://xbeibeix.com/", "description": "贝贝工具站，免费，高效，免登录，无限制" },
+            { "title": "万能兔", "url": "https://www.wntool.com/", "description": "万能兔在线工具箱(www.wntool.com)提供各种在线工具，为站长和互联网从业者提供免费的工具，我们的工具有在线JSON工具,在线加密工具,在线解密工具,代码格式化工具,正则工具等" },
+            { "title": "TOOLFK在线工具人", "url": "https://www.toolfk.com/", "description": "在线工具大全" },
+            { "title": "DOCstrong", "url": "https://docstrong.com/", "description": "docstrong - 免费在线图片压缩、GIF压缩工具、PDF压缩工具、PDF合并工具、PDF分割工具" }
+          ]
+        },
+        {
+          "title": "在线改图",
+          "items": [
+            { "title": "PNG压缩", "url": "https://compressjpeg.com/zh/", "description": "png压缩中文版" },
+            { "title": "PNG压缩", "url": "https://tinypng.com/", "description": "Smart PNG and JPEG compression More than 1 billion PNG and JPEG images optimized and still counting!" },
+            { "title": "Compress JPG", "url": "https://compressjpg.io/", "description": "一个免费在线的图片压缩工具" },
+            { "title": "在线图片放大", "url": "http://waifu2x.udp.jp/", "description": "使用卷积神经网络对动漫风格的图片进行放大操作（支持照片）" },
+            { "title": "AI人工智能图片放大", "url": "https://bigjpg.com/", "description": "使用最新人工智能深度学习技术——深度卷积神经网络。它会将噪点和锯齿的部分进行补充，实现图片的无损放大" },
+            { "title": "改图宝", "url": "https://www.gaitubao.com/", "description": "在线修改照片大小,在线修改图片大小,在线修改照片尺寸" },
+            { "title": "在线修改图片", "url": "https://www.sojson.com/image/change.html", "description": "图片大小修改器在线，在线修改图片大小，图片大小转换器，图片尺寸修改，图片大小修改器" },
+            { "title": "图片背景消除", "url": "https://www.remove.bg/zh", "description": "图片背景消除，100% 全自动且免费" },
+            { "title": "在线抠图换背景", "url": "https://www.fococlipping.com/", "description": "国外在线抠图换背景，纯英文界面" },
+            { "title": "在线替换图片背景", "url": "https://koutu.gaoding.com/", "description": "在线替换图片背景,稿定抠图" },
+            { "title": "在线去除元素", "url": "https://www.magiceraser.io/", "description": "在线修改图片指定元素" },
+            { "title": "改图鸭", "url": "https://www.gaituya.com/", "description": "综合改图工具" },
+            { "title": "iLoveIMG | 图像文件在线编辑工具", "url": "https://www.iloveimg.com/", "description": "可批量编辑图片" },
+            { "title": "电子包浆", "url": "https://magiconch.com/patina/", "description": "图片做旧工具，赛博包浆虚拟器" },
+            { "title": "搞笑图片合成", "url": "http://www.pichacks.com/", "description": "在线搞笑图片合成" },
+            { "title": "Raphael AI", "url": "https://raphael.app/", "description": "无限制免费AI图片生成器" }
+          ]
+        },
+        {
+          "title": "以图搜图",
+          "items": [
+            { "title": "Yandex搜图", "url": "https://yandex.com/images", "description": "目前最靠谱的以图找图，比Google准" },
+            { "title": "动漫以图搜图", "url": "https://trace.moe/", "description": "搜索动漫图片，可精确到番剧" },
+            { "title": "Google搜图", "url": "https://www.google.com.hk/imghp", "description": "以图找图" }
+          ]
+        },
+        {
+          "title": "在线转格",
+          "items": [
+            { "title": "online ocr", "url": "https://www.onlineocr.net/", "description": "在线文字识别，格式转换服务" },
+            { "title": "白描", "url": "https://web.baimiaoapp.com/", "description": "图片转文字在线 - 图片文字提取 - 网页OCR文字识别 - 白描网页版" },
+            { "title": "BSE64", "url": "https://www.webdesignrankings.com/resources/bse64/", "description": "Base64 Image Convertor" },
+            { "title": "语音转文字", "url": "https://app.xunjiepdf.com/voice2text/", "description": "一键搞定语音识别成文字" },
+            { "title": "PDF转Word", "url": "https://www.hipdf.cn/pdf-to-word", "description": "免费将PDF转换为Word文档" },
+            { "title": "迅捷PDF", "url": "https://app.xunjiepdf.com/", "description": "在线版PDF转换器转换文件仅限于2M以内文件" },
+            { "title": "格式转换", "url": "https://www.alltoall.net/", "description": "在线版PDF转换器转换，其他格式转换" },
+            { "title": "PDF转其他格式", "url": "https://easypdf.com/", "description": "From PDF to Easy The Online PDF Converter Made for Everyone" },
+            { "title": "格式转换", "url": "https://www.aconvert.com/cn/", "description": "文档音频格式转换" },
+            { "title": "Convertio", "url": "https://convertio.co/zh/mp4-ogv/", "description": "视频格式转换" },
+            { "title": "视频格式转换", "url": "https://convert-video-online.com/cn/", "description": "视频格式转换" },
+            { "title": "多功能PDF转换器", "url": "http://www.pdfdo.com/", "description": "集成数十种PDF操作， PDF转换/解密/页面处理/内容编辑" },
+            { "title": "TinyWow", "url": "https://tinywow.com/", "description": "免费格式转换网站，支持视频、文档、图片等的格式转换。" }
+          ]
+        },
+        {
+          "title": "在线生成",
+          "items": [
+            { "title": "U钙网", "url": "http://www.uugai.com/", "description": "免费的LOGO在线设计制作工具" },
+            { "title": "比特虫-ICO", "url": "https://www.bitbug.net/", "description": "在线制作ico图标ico图标转换工具" },
+            { "title": "ICO图标制作", "url": "http://www.ico51.cn/", "description": "在线生成透明ICO图标" },
+            { "title": "在线小米风格ICO", "url": "https://mi-logo.lvwzhen.com/", "description": "在线制作ICO，徽章" },
+            { "title": "虚拟头像（需翻墙）", "url": "https://getavataaars.com/", "description": "在线制作虚拟头像" },
+            { "title": "Notion风格头像", "url": "https://notion-avatar.vercel.app/", "description": "在线制作Notion风格头像" },
+            { "title": "城通网盘解析器", "url": "https://ctfile.qinlili.bid/", "description": "城通网盘在线解析器，获取直连" },
+            { "title": "小马短连接生成器", "url": "https://xiaomark.com/", "description": "小码短链接生成器,短连接生成,永久短链接生成,转换短链接工具,短网址压缩生成" },
+            { "title": "草料二维码", "url": "https://cli.im/", "description": "二维码生成器" },
+            { "title": "智能证件照", "url": "https://id.zhengzhaopai.com/", "description": "免费提供证件照一站式服务" }
+          ]
+        },
+        {
+          "title": "其他在线",
+          "items": [
+            { "title": "微软商店应用提取", "url": "https://store.rg-adguard.net/", "description": "在线微软商店应用提取" },
+            { "title": "在线流程图思维导图", "url": "https://www.processon.com/", "description": "需注册，专业强大的作图工具，支持多人实时在线协作，可用于原型图、UML、BPMN、网络拓扑图等多种图形绘制" },
+            { "title": "ZhiMap", "url": "https://zhimap.com/", "description": "在线思维导图、电脑与手机微信里都能作图" },
+            { "title": "GitMind在线思维导图", "url": "https://gitmind.cn/", "description": "免费在线思维导图软件，简化逻辑梳理，集思广益，释放创造力在线脑图、思维导图、流程图、组织架构图、工业设计、工程管理，一图涵千面" },
+            { "title": "VirSCAN", "url": "https://www.virscan.org/", "description": "一个非盈利性的免费病毒检测引擎" },
+            { "title": "VirusTotal", "url": "https://www.virustotal.com/gui/", "description": "国外文件在线检测程序" },
+            { "title": "Firefox Monitor", "url": "https://monitor.firefox.com/", "description": "看看您的账号是否也在数据外泄事件当中" },
+            { "title": "秘塔写作猫", "url": "https://xiezuocat.com/", "description": "写作猫是新一代AI写作伴侣，帮你推敲用语、斟酌文法、改写文风，还能实时同步翻译。" },
+            { "title": "稿定设计", "url": "https://www.gaoding.com", "description": "做图做视频必备_在线设计神器_海量版权素材模板" },
+            { "title": "IP查询", "url": "https://whoer.net/", "description": "查询代理后IP隐匿性" },
+            { "title": "IP查询", "url": "https://ip8.com/", "description": "ip8 - IP查询工具" },
+            { "title": "Deep翻译", "url": "https://www.deepl.com/translator", "description": "快速、准确和安全的即时文本翻译和完整的文档翻译" },
+            { "title": "youcompress", "url": "https://www.youcompress.com/videos/", "description": "免费在线压缩视频" },
+            { "title": "soshoulu", "url": "http://ip.soshoulu.com/", "description": "ip地址批量查询" },
+            { "title": "东北大学网络测速", "url": "http://speed.neu6.edu.cn/", "description": "东北大学网络测速ipv6" },
+            { "title": "IPv6 连接测试", "url": "http://test-ipv6.com/", "description": "IPv6 连接测试" },
+            { "title": "ACL4SSR", "url": "https://acl4ssr-sub.github.io/", "description": "ACL4SSR在线订阅转换" },
+            { "title": "OpenWrt固件下载与定制", "url": "https://supes.top/", "description": "OpenWrt固件下载与定制,一分钟在线定制编译专属OpenWrt固件,支持X86,小米,红米,Nanopi,斐讯,华硕等主流软硬路由器" },
+            { "title": "IP查询", "url": "https://ipw.cn/", "description": "致力于普及 IPv6 ,推进 IPv6 规模部署和应用" }
+          ]
+        },
+        {
+          "title": "上传下载",
+          "items": [
+            { "title": "虫洞", "url": "https://wormhole.app/", "description": "Wormhole 让你能以端到端加密和自动过期链接的方式分享文件。" },
+            { "title": "文叔叔", "url": "https://www.wenshushu.cn/", "description": "文叔叔是一款永不限速的网盘（云盘）产品，免费提供网络硬盘空间 40GB。支持：传文件（发文件）、收文件（收集文件）等功能，还支持查看历史记录等高级功能" },
+            { "title": "APKPure（需翻墙）", "url": "https://apkpure.com/", "description": "使用APKPure APK下载器下载官方正版应用.无需绑定账户，海量历史版本应用，极速下载更新。" },
+            { "title": "Uptodown（需翻墙）", "url": "https://cn.uptodown.com/", "description": "下载Android应用程序，Windows应用，Mac应用" },
+            { "title": "FOSSHUB", "url": "https://www.fosshub.com/", "description": "安全、快速、免费软件下载中心,无恶意软件，无捆绑软件" },
+            { "title": "软件替代", "url": "https://alternativeto.net/", "description": "AlternativeTo 是一项免费服务，可帮助您找到您喜欢和讨厌的产品的更好替代品。" },
+            { "title": "YouTube高清视频下载", "url": "https://youtube.iiilab.com/", "description": "已支持解析下载YouTube、等其他视频下载" }
+          ]
+        },
+        {
+          "title": "软件精选",
+          "items": [
+            { "title": "Snipaste", "url": "https://zh.snipaste.com/", "description": "截图 + 贴图，提高您的工作效率，免费. 免安装. 可个性定制" },
+            { "title": "Honeyview", "url": "https://www.bandisoft.com/honeyview/", "description": "免费的图像查看器，打开速度很快" },
+            { "title": "uTools", "url": "https://u.tools/", "description": "uTools 自由集成丰富插件，快速匹配「场景功能」，用完即走" },
+            { "title": "远程桌面软件", "url": "https://anydesk.com/zhs", "description": "远程连接到您的计算机，无论是从办公室的另一层还是世界的另一端。 AnyDesk为IT专业人员和移动用户提供安全可靠的远程桌面连接。" },
+            { "title": "GotoHTTP", "url": "http://www.gotohttp.com/", "description": "远程控制,远程桌面,桌面共享" },
+            { "title": "Free Download Manager", "url": "https://www.freedownloadmanager.org/zh/", "description": "Free Download Manager能加速下載所有類型的資料、影片、種子。它在 Windows、macOS作業系統上是一款聰明且快速的網路下載管理器。" },
+            { "title": "小众软件", "url": "https://faxian.appinn.com/", "description": "在这里发现更多有趣的应用" },
+            { "title": "423Down", "url": "https://www.423down.com/", "description": "更新快、专注去广告类软件输出10年、个人IP品牌软件分享站" },
+            { "title": "老殁", "url": "https://www.mpyit.com/", "description": "分享好软件" },
+            { "title": "Confluence", "url": "https://www.atlassian.com/software/confluence?bundle=confluence&edition=free", "description": "团队工作软件" },
+            { "title": "Teambition", "url": "https://www.teambition.com/", "description": "Teambition · 阿里巴巴工作学习套件" },
+            { "title": "OBS", "url": "https://obsproject.com/", "description": "免费视频录制和直播软件" },
+            { "title": "handbrake", "url": "https://handbrake.fr/", "description": "开源视频转码器" },
+            { "title": "PDFgear", "url": "https://www.pdfgear.com/zh/", "description": "阅读、编辑、转换、合并和跨设备签署PDF文件，且无需注册。" }
+          ]
+        },
+        {
+          "title": "浏览器插件",
+          "items": [
+            { "title": "极简插件", "url": "https://chrome.zzzmh.cn/", "description": "极简插件是一个优质Chrome插件扩展收录下载网站，收录热门好用的Chrome插件扩展，国内最方便的插件下载网站。" },
+            { "title": "Chrome 网上应用店 - 扩展程序", "url": "https://chrome.google.com/webstore/", "description": "查找适用于 Google Chrome 浏览器的超酷应用、游戏、扩展程序和主题背景。" },
+            { "title": "微软edge扩展商店", "url": "https://microsoftedge.microsoft.com/", "description": "使用可帮助你个性化定制浏览器和提高工作效率的扩展和主题来定制 Microsoft Edge。" },
+            { "title": "Userscript.Zone", "url": "https://www.userscript.zone/", "description": "Userscript是油猴脚本的新网站，允许通过输入合适的URL或域来搜索用户脚本。" },
+            { "title": "Greasy Fork", "url": "https://greasyfork.org/", "description": "油猴脚本常用脚本站" },
+            { "title": "OpenUserJS", "url": "https://openuserjs.org/", "description": "继 GreasyFork 之后开始创办。它由 Sizzle McTwizzle 创建,同样地,在其储存库中也拥有大量的脚本资源。" }
+          ]
+        },
+        {
+          "title": "虚拟信息",
+          "items": [
+            { "title": "虚拟手机号", "url": "https://bestsms.xyz/", "description": "可接短信" },
+            { "title": "虚拟手机号", "url": "http://www.shejiinn.com/", "description": "可接短信" },
+            { "title": "虚拟手机号", "url": "https://yunduanxin.net/", "description": "可接短信" },
+            { "title": "虚拟手机号", "url": "https://www.rvso.com/", "description": "可接短信" },
+            { "title": "收费虚拟手机号", "url": "https://sms-activate.org/", "description": "收费接短信" },
+            { "title": "虚拟地址生成器", "url": "http://www.haoweichi.com/", "description": "美日英多国虚拟地址生成" },
+            { "title": "虚拟地址生成器", "url": "https://www.meiguodizhi.com/tw-address", "description": "台湾美日英多国虚拟地址生成" },
+            { "title": "临时邮箱", "url": "https://smailpro.com/", "description": "临时邮箱生成器" },
+            { "title": "临时邮箱", "url": "http://24mail.chacuo.net/", "description": "临时邮箱生成器" },
+            { "title": "查邮编", "url": "https://www.ip138.com/post/", "description": "邮政编码、长途电话区号专业在线查询" },
+            { "title": "虚拟地址生成器", "url": "https://shenfendaquan.com/", "description": "美日加英多国虚拟地址生成" },
+            { "title": "虚拟个人信息", "url": "https://www.fakepersongenerator.com/", "description": "虚拟信息生成器" },
+            { "title": "fakemail", "url": "http://www.fakemailgenerator.com/", "description": "临时邮箱生成器" },
+            { "title": "AddressGen", "url": "https://addressgen.top/", "description": "在线地址生成器" }
+          ]
+        }
       ]
     },
     {
-      "categoryName": "直播聚合",
-      "items": [
-        { "title": "斗鱼", "url": "https://www.douyu.com/", "description": "每个人的直播平台" },
-        { "title": "虎牙", "url": "https://www.huya.com/", "description": "技术驱动娱乐-弹幕式互动直播平台" },
-        { "title": "央视官方直播", "url": "https://tv.cctv.com/live/", "description": "直播大全_CCTV节目官网_央视网" },
-        { "title": "爱看tv", "url": "http://www.aikantv.org/", "description": "网络电视直播_卫星电视直播在线观看" },
-        { "title": "好趣网", "url": "http://tv.haoqu99.com/", "description": "2000套高清网络电视直播在线观看" },
-        { "title": "看全球", "url": "http://www.zyz98.com/", "description": "CGTN、CCTV、世界各国电视台直播在线观看" },
-        { "title": "iTVer电视吧在线直播平台", "url": "http://cn.itver.cc/", "description": "精选海量网络电视在线直播线上收看园地" },
-        { "title": "eja TV", "url": "https://eja.tv/", "description": "全球直播在线观看网站" }
+      "title": "素材资源",
+      "icon": "ti ti-book",
+      "children": [
+        {
+          "title": "壁纸下载",
+          "items": [
+            { "title": "Awesome Wallpapers（需翻墙）", "url": "https://wallhaven.cc/", "description": "高清壁纸站，访问慢的话上加速器" },
+            { "title": "Wallpaper Abyss", "url": "https://wall.alphacoders.com/", "description": "一家壁纸社区。浏览和下载高清桌面背景、手机壁纸，留下赞和评论。" },
+            { "title": "二次元壁纸", "url": "https://konachan.net/", "description": "免费二次元壁纸下载" },
+            { "title": "P站——非P站", "url": "https://www.pixiv.net/", "description": "提供插画等作品的投稿、阅览服务的「插画交流网站」" },
+            { "title": "Unsplash", "url": "https://unsplash.com/", "description": "摄影壁纸分享" },
+            { "title": "星空壁纸", "url": "https://www.eso.org/public/images/", "description": "关于宇宙星空的壁纸站" },
+            { "title": "pixabay", "url": "https://pixabay.com/zh/", "description": "免费正版高清图片素材库" }
+          ]
+        },
+        {
+          "title": "PNG免扣",
+          "items": [
+            { "title": "觅元素", "url": "http://www.51yuansu.com/", "description": "下载免抠素材,位图,透明背景素材,透明背景图片,免抠png,高清png" },
+            { "title": "菜鸟图库", "url": "http://www.sucai999.com/", "description": "专注于为广大设计师尤其是是新手设计师提供免费的素材模版下载，让下载素材没有门槛，让设计师更容易设计。" },
+            { "title": "图精灵", "url": "http://616pic.com/", "description": "免费PNG图片下载_高清背景图片素材" },
+            { "title": "免费在线一键抠图网站", "url": "https://pixian.ai/", "description": "上传或粘贴图片到网站，即可实现一键抠图，免费无限制，支持 api 调用。" }
+          ]
+        },
+        {
+          "title": "PPT资源",
+          "items": [
+            { "title": "OfficePLUS", "url": "http://www.officeplus.cn/Template/Home.shtml", "description": "OfficePLUS，微软Office官方在线模板网站！" },
+            { "title": "优品PPT", "url": "http://www.ypppt.com/", "description": "高质量的模版，而且还有PPT图表，PPT背景图等资源" },
+            { "title": "吾道", "url": "https://www.woodo.cn/", "description": "吾道幻灯片-官方网站-专业的PPT在线协作工具，提供海量精美模板素材" },
+            { "title": "PPT超级市场", "url": "https://pptsupermarket.com/", "description": "免费PPT模板" },
+            { "title": "逼格PPT", "url": "http://www.tretars.com/ppt-templates", "description": "The best free Mockups from the Web" },
+            { "title": "第一PPT", "url": "http://www.1ppt.com/", "description": "PPT模板,PPT模板下载,PPT模板免费下载,PPT背景图" },
+            { "title": "PPT宝藏", "url": "http://www.pptbz.com/", "description": "PPT模板下载_免费PPT模板下载_PPT宝藏" }
+          ]
+        },
+        {
+          "title": "字体资源",
+          "items": [
+            { "title": "Google Font", "url": "https://fonts.google.com/", "description": "Making the web more beautiful, fast, and open through great typography" },
+            { "title": "方正字库", "url": "http://www.foundertype.com/", "description": "方正字库官方网站" },
+            { "title": "字体传奇网", "url": "http://ziticq.com/", "description": "中国首个字体品牌设计师交流网" },
+            { "title": "100font", "url": "https://www.100font.com/", "description": "一个专门收集整理“免费商用字体”的网站" },
+            { "title": "字体天下", "url": "https://www.fonts.net.cn/", "description": "提供各类字体的免费下载和在线预览服务" }
+          ]
+        },
+        {
+          "title": "其他资源",
+          "items": [
+            { "title": "站长素材", "url": "https://sc.chinaz.com/", "description": "是一家大型综合设计类素材网站" },
+            { "title": "斗图啦", "url": "https://www.doutula.com/", "description": "斗图啦，收集了成千上万的撕逼斗图表情包，在这里你可以快速找到想要的表情，通过在线表情制作可以快速生成自定义表情。" },
+            { "title": "阿里图标库", "url": "https://www.iconfont.cn/", "description": "iconfont-国内功能很强大且图标内容很丰富的矢量图标库，提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造，设计和前端开发的便捷工具" },
+            { "title": "一个有趣的网址", "url": "http://madebyevan.com/", "description": "进来看看吧~" },
+            { "title": "逗比拯救世界", "url": "https://www.dbbqb.com/", "description": "专业的表情包搜索网站" },
+            { "title": "fontawesome", "url": "https://fontawesome.com/", "description": "图标库" },
+            { "title": "tabler-icons", "url": "https://tabler-icons.io/", "description": "图标库" },
+            { "title": "IconPark", "url": "https://iconpark.oceanengine.com/", "description": "图标库" },
+            { "title": "ColorGG", "url": "https://www.colorgg.com/", "description": "提供有关颜色信息，颜色搭配，颜色代码查询以及各种颜色空间转换" }
+          ]
+        },
+        {
+          "title": "设计灵感",
+          "items": [
+            { "title": "Pinterest", "url": "https://www.pinterest.com/", "description": "寻找点子，需要特殊网络方式访问" },
+            { "title": "LOFTCN", "url": "http://loftcn.com/", "description": "全球设计风向-探知全球最新设计风向，为中国新设计力量，中国创意赋能" },
+            { "title": "国外设计", "url": "https://www.aestate.co/", "description": "需要特殊网络方式访问" },
+            { "title": "中国色", "url": "https://www.zhongguose.com/", "description": "提供各种中国的传统颜色的名称，CMYK值，RGB值，16进制表示。AI制作中国色图片和视频" },
+            { "title": "裝潢裝修、室內設計", "url": "https://decomyplace.com/", "description": "每日更新全世界精選室內設計個案，是裝潢設計、裝修設計、室內設計" }
+          ]
+        },
+        {
+          "title": "API资源",
+          "items": [
+            { "title": "和风天气API", "url": "https://dev.qweather.com/", "description": "和风天气 全球气象数据开发服务" },
+            { "title": "ROLL API", "url": "https://www.mxnzp.com/doc/list", "description": "ROLL免费API" },
+            { "title": "搏天API", "url": "https://api.btstu.cn/", "description": "高速稳定免费APi接口调用平台" },
+            { "title": "图样跑酷", "url": "https://bing.img.run/api.html", "description": "bing图片 API" },
+            { "title": "镜心 API", "url": "https://api2.wer.plus/", "description": "安全高效免费的API调用服务" },
+            { "title": "点滴API", "url": "https://api.ddkjt.com/index.php", "description": "一款简洁而不简单的免费API网站" },
+            { "title": "新逸Cary API", "url": "https://api.xinac.net/", "description": "免费提供API接口服务" },
+            { "title": "今日诗词API", "url": "https://www.jinrishici.com/", "description": "今日诗词API 每次返回一句诗词" },
+            { "title": "Uomg API", "url": "https://api.uomg.com/", "description": "稳定、快速、免费的 API 接口服务" },
+            { "title": "Hitokoto 一言", "url": "https://hitokoto.cn/", "description": "一言API" },
+            { "title": "魅影随机图片API", "url": "https://tuapi.eees.cc/", "description": "随机图片API，PPT背景切换特效" },
+            { "title": "姬长信API", "url": "https://api.isoyu.com/", "description": "一个基于多种编程语言开源免费不限制提供生活常用,出行服务,开发工具,金融服务,通讯服务和公益大数据的平台" },
+            { "title": "nuoxian's API", "url": "https://api.nxvav.cn/", "description": "免费为用户提供网络数据接口调用的服务平台" },
+            { "title": "樱花随机二次元图片 API", "url": "https://www.dmoe.cc/", "description": "图片均为https，采用新浪图片，高速访问" },
+            { "title": "韩小韩 WebAPI 接口站", "url": "https://api.vvhan.com/", "description": "免费Web API数据接口调用服务平台" },
+            { "title": "与末API", "url": "https://img-api.ymz.icu/", "description": "高清互联网壁纸聚合地" },
+            { "title": "教书先生API", "url": "https://api.oioweb.cn/", "description": "提供免费接口调用平台" }
+          ]
+        }
       ]
     },
     {
-      "categoryName": "在线综合",
-      "items": [
-        { "title": "大师兄影视", "url": "https://dsxys.com/", "description": "在线观看,蓝光电影,搞笑视频,美剧,韩剧,超前点播,免费视频" },
-        { "title": "555电影", "url": "https://55p8l4.com/", "description": "免费VIP资源在线观看，每天专业更新热火电影电视剧" },
-        { "title": "低端影视", "url": "https://ddys.site/", "description": "超清在线视频" },
-        { "title": "NO视频", "url": "https://www.novipnoad.com/", "description": "为用户提供及时的海外热门剧集在线观看，友好无广告，致力于最轻松的追剧体验" },
-        { "title": "Auete影视", "url": "https://auete.com/", "description": "超清精品影视在线" },
-        { "title": "去看吧", "url": "https://www.qkan8.com/", "description": "看吧动漫,无删减,bl动漫,耽美吧,耽美在线,k8動漫_好看的耽美動漫" },
-        { "title": "bangumi", "url": "https://bangumi.online/", "description": "アニメ新番組 - 次世代新番站" },
-        { "title": "奈菲影视", "url": "https://www.nfyingshi.com/", "description": "专为中国用户提供全球流媒体播放网站" },
-        { "title": "遇见小馒头", "url": "https://mov.5ixmt.com/", "description": "免费短视频分享大全 - 大中国" },
-        { "title": "Radiocast", "url": "https://radiocast.co/", "description": "世界电台网站。该网站以三维地球为核心交互界面，用户可以通过旋转地球来探索世界各地的电台。Radiocast 整合了超过 7000 个第三方公共广播流，覆盖全球各地电台。" }
+      "title": "开发生产",
+      "icon": "ti ti-database",
+      "children": [
+        {
+          "title": "域名申请",
+          "items": [
+            { "title": "spaceship", "url": "https://www.spaceship.com/", "description": "国外域名申请网站，支持支付宝付款。" },
+            { "title": "namecheap", "url": "https://www.namecheap.com/", "description": "国外域名申请网站" },
+            { "title": "西部数码", "url": "https://www.west.cn/", "description": "云服务器-虚拟主机-域名注册,20年知名云服务商！" },
+            { "title": "新网", "url": "https://www.xinnet.com/", "description": "云服务器_网站建站_域名注册_虚拟主机_企业邮箱_新网知名的互联网基础应用服务提供商" }
+          ]
+        },
+        {
+          "title": "云端服务",
+          "items": [
+            { "title": "腾讯云", "url": "https://cloud.tencent.com/", "description": "腾讯云 - 产业智变 云启未来" },
+            { "title": "阿里云", "url": "https://www.aliyun.com/", "description": "阿里云-上云就上阿里云" },
+            { "title": "又拍云", "url": "https://www.upyun.com/", "description": "静态文件存储与CDN加速" },
+            { "title": "LeanCloud", "url": "https://www.leancloud.cn/", "description": "云存储, 一站式后端服务, 无服务器应用后端, 云引擎, 云函数, 云端代码, 即时通讯, 即时通讯" },
+            { "title": "npm", "url": "https://www.npmjs.com/", "description": "npm是世界上最大的软件注册表" },
+            { "title": "阿里云盘", "url": "https://www.aliyundrive.com/", "description": "阿里云盘是一款速度快、不打扰、够安全、易于分享的个人网盘" },
+            { "title": "蓝奏云", "url": "https://www.lanzou.com/", "description": "小文件云存储" },
+            { "title": "百度网盘", "url": "https://pan.baidu.com/", "description": "百度网盘为您提供文件的网络备份、同步和分享服务" },
+            { "title": "腾讯微云", "url": "https://www.weiyun.com/", "description": "微云是腾讯公司为用户精心打造的一项智能云服务, 您可以通过微云方便地在手机和电脑之间同步文件、推送照片和传输数据。" },
+            { "title": "华为云空间", "url": "https://cloud.huawei.com/", "description": "存于云间，尽享精彩" },
+            { "title": "小米云服务", "url": "https://i.mi.com/", "description": "在线管理和存储手机数据" },
+            { "title": "infinityfree", "url": "https://infinityfree.net/", "description": "相对较好的免费虚拟主机" },
+            { "title": "awardspace", "url": "https://www.awardspace.com/", "description": "免费虚拟主机" },
+            { "title": "Vercel", "url": "https://vercel.com/", "description": "类似Github Pages免费托管项目" },
+            { "title": "Railway", "url": "https://railway.app/", "description": "Railway是一个基础架构平台，您可以在其中配置基础架构，在本地使用该基础架构进行开发，然后部署到云端。" },
+            { "title": "heroku", "url": "https://www.heroku.com/", "description": "一个支持多种编程语言的云平台" },
+            { "title": "netlify", "url": "https://www.netlify.com/", "description": "类似Github Pages免费托管项目" },
+            { "title": "Koyeb", "url": "https://www.koyeb.com/", "description": "Koyeb是一个开发人员友好的无服务器平台，可在全球范围内部署应用程序。无操作、服务器和基础架构管理。" },
+            { "title": "4everland", "url": "https://4everland.org/", "description": "类似Github Pages免费托管项目" },
+            { "title": "MongoDB", "url": "https://www.mongodb.com/", "description": "一个基于分布式文件存储的数据库" },
+            { "title": "SM.MS", "url": "https://sm.ms/", "description": "SM.MS图床" },
+            { "title": "Replit", "url": "https://replit.com/", "description": "免费的协作式在线IDE" },
+            { "title": "Claw Cloud Run", "url": "https://console.run.claw.cloud/", "description": "Claw Cloud Run 是阿里云青春版 Claw Cloud 旗下，类似于 Vercel、Netlify 的在线开发平台。" }
+          ]
+        },
+        {
+          "title": "开发文档",
+          "items": [
+            { "title": "Valine", "url": "https://valine.js.org/", "description": "一款快速、简洁且高效的无后端评论系统。" },
+            { "title": "DPlayer", "url": "https://dplayer.diygod.dev/", "description": "网站视频播放插件" },
+            { "title": "Aplayer", "url": "https://aplayer.js.org/", "description": "网站音乐播放器" },
+            { "title": "Fancybox", "url": "https://fancyapps.com/", "description": "网站灯箱" },
+            { "title": "Gitee", "url": "https://gitee.com/", "description": "Gitee 是一个云端软件开发协作平台" },
+            { "title": "GitCode", "url": "https://gitcode.com/", "description": "GitCode - 全球开发者的开源社区,开源代码托管平台" },
+            { "title": "Moe-counter", "url": "https://count.getloli.com/", "description": "多种风格可选的萌萌计数器" },
+            { "title": "依米花播放器", "url": "https://music.piphp.com/", "description": "免费、稳定、安全、无广告的HTML音乐播放器" },
+            { "title": "TYPECHO", "url": "http://typecho.org/", "description": "网站博客系统" },
+            { "title": "HUGO", "url": "https://themes.gohugo.io/", "description": "Hugo主题模板" },
+            { "title": "Html5 UP", "url": "https://html5up.net/", "description": "html5模板" }
+          ]
+        },
+        {
+          "title": "网站管理",
+          "items": [
+            { "title": "Google AD", "url": "https://www.google.com/adsense", "description": "谷歌广告平台" },
+            { "title": "Google Analytics", "url": "https://analytics.google.com/", "description": "谷歌网站分析平台" },
+            { "title": "百度资源", "url": "https://ziyuan.baidu.com/", "description": "百度搜索资源平台" },
+            { "title": "腾讯安全-网址安全中心", "url": "https://urlsec.qq.com/check.html", "description": "腾讯安全-网址安全中心" },
+            { "title": "PageSpeed Insights", "url": "https://pagespeed.web.dev/", "description": "使您的网页在所有设备上都能快速加载" },
+            { "title": "百度统计", "url": "https://tongji.baidu.com/", "description": "百度统计——领先的中文网站分析平台" },
+            { "title": "cloudflare", "url": "https://www.cloudflare.com/", "description": "网站安全管理、性能优化及相关的技术支持" }
+          ]
+        }
       ]
     },
     {
-      "categoryName": "影视搜索",
-      "items": [
-        { "title": "茶杯狐", "url": "https://cupfox.app/", "description": "影视资源聚合搜索引擎" },
-        { "title": "7080影视搜", "url": "https://7080.wang/", "description": "影视资源聚合搜索引擎" },
-        { "title": "电影狗", "url": "https://www.dianyinggou.com/", "description": "专业电影搜索引擎看" },
-        { "title": "影猫", "url": "https://www.mvcat.com/", "description": "人生如戏，你是主角。" },
-        { "title": "豌豆PRO", "url": "https://www.wandou.pro/", "description": "实时聚合全网优质影视资源，同时支持在线、下载和字幕。" },
-        { "title": "电影淘淘", "url": "https://www.dianyingtaotao.com/", "description": "电影搜索引擎" },
-        { "title": "盘友圈", "url": "https://panyq.com/", "description": "在线网盘搜索引擎，支持百度网盘、阿里云盘、夸克网盘资源搜索" }
+      "title": "系统相关",
+      "icon": "ti ti-device-desktop",
+      "children": [
+        {
+          "title": "系统下载",
+          "items": [
+            { "title": "我告诉你msdn", "url": "https://msdn.itellyou.cn/", "description": "系统下载" },
+            { "title": "系统下载", "url": "https://tb.rg-adguard.net/public.php", "description": "无需下载器直接下载系统" },
+            { "title": "MSDN - 山己几子木", "url": "https://msdn.sjjzm.com/", "description": "系统下载" },
+            { "title": "吻妻纯净系统", "url": "https://www.newxitong.com/", "description": "专注于win7,吻妻,win7,windows7,win7系统,win7纯净版,Win7纯净版下载,专注于win8,专注于win10" },
+            { "title": "装个机", "url": "https://zhuangit.ababtools.com/", "description": "不求人，自己装" }
+          ]
+        },
+        {
+          "title": "系统美化",
+          "items": [
+            { "title": "致美化", "url": "https://zhutix.com/", "description": "致美化是国内最专业的桌面美化研究平台" },
+            { "title": "Fliqlo", "url": "https://fliqlo.com/", "description": "桌面时钟屏保" },
+            { "title": "主题之家", "url": "https://zhuti.ithome.com/", "description": "主题美化下载" },
+            { "title": "系统启动器美化", "url": "https://www.gnome-look.org/browse/cat/", "description": "各种启动器美化主题" }
+          ]
+        },
+        {
+          "title": "系统工具",
+          "items": [
+            { "title": "桌面显卡性能天梯图", "url": "https://www.mydrivers.com/zhuanti/tianti/gpu/", "description": "桌面显卡性能天梯图" },
+            { "title": "桌面CPU性能天梯图", "url": "https://www.mydrivers.com/zhuanti/tianti/cpu/", "description": "桌面CPU性能天梯图" },
+            { "title": "IT天空", "url": "https://www.itsk.com/", "description": "以系统封装技术与驱动技术为主的综合性IT站点，提供完善的系统批量部署解决方案、易用的离线万能驱动和适合装机技术员的U盘PE。" },
+            { "title": "小鱼儿yr系统", "url": "https://www.yrxitong.com/", "description": "小鱼儿yr系统,封装系统,重装系统,系统教程,系统下载,资源分享" }
+          ]
+        }
       ]
     },
     {
-      "categoryName": "字幕仓库",
-      "items": [
-        { "title": "字幕库", "url": "http://zimuku.org/", "description": "字幕,字幕下载,电影字幕下载,美剧字幕下载,韩剧字幕下载,中文字幕下载" },
-        { "title": "SubHD", "url": "https://subhd.tv/", "description": "Sub HD为影视爱好者们提供交流字幕的平台，你可以在这里找到并下载字幕，对字幕打分和评论，也可以上传字幕与大家分享" },
-        { "title": "R3字幕", "url": "https://r3sub.com/", "description": "R3字幕網提供最方便的字幕搜尋、電影簡介、電影劇照、電影評分" }
-      ]
-    },
-    {
-      "categoryName": "资源仓库",
-      "items": [
-        { "title": "ZY Player 资源播放器", "url": "http://zyplayer.fun/", "description": "跨平台视频资源播放器, 简洁免费无广告" },
-        { "title": "人人影视资源站", "url": "https://yyets.click/", "description": "人人影视资源站，免费下载" },
-        { "title": "BT之家1LOU站发布页", "url": "https://www.1lou.cc/", "description": "影视bt下载站" },
-        { "title": "终点站emby公益服（需Telegram账号）", "url": "https://embywiki.911997.xyz/", "description": "Emby公益服是一个免费影视媒体库" },
-        { "title": "蜜柑计划", "url": "https://mikanani.me/", "description": "新一代的动漫下载站" }
-      ]
-    },
-    {
-      "categoryName": "休闲娱乐",
-      "items": [
-        { "title": "游戏合集", "url": "https://poki.com/", "description": "大多来自手机移植" },
-        { "title": "自由钢琴 - AutoPiano", "url": "https://www.autopiano.cn/", "description": "自由钢琴(AutoPiano)是利用HTML5技术开发的在线钢琴应用，致力于为钢琴爱好者、音乐爱好者提供一个优雅、简洁的平台，在学习工作之余可以在线弹钢琴，享受音乐、生活的美好。自由钢琴支持自动演奏和手动演奏，简单易学，快来试试吧~" },
-        { "title": "Epic游戏商城", "url": "https://www.epicgames.com/", "description": "每周白嫖一款免费游戏" },
-        { "title": "香蕉网 - Game模型库", "url": "https://gamebanana.com/", "description": "DIY游戏必备网址论坛" },
-        { "title": "怀旧系列 - 红色警戒", "url": "https://game.chronodivide.com/", "description": "在线玩红色警戒" },
-        { "title": "小霸王游戏机", "url": "https://www.yikm.net/", "description": "魂斗罗，超级玛丽，热血足球，三国志，合金弹头，拳皇。这些小时候的回忆，黑白电视机前玩着小霸王游戏机的那种感觉令人怀念，希望大家可以找回童年的快乐" },
-        { "title": "在线经典游戏", "url": "https://nes.hocgin.top/", "description": "在线玩经典游戏，可联机，创建房间" },
-        { "title": "在线dos游戏", "url": "https://dos.zczc.cz/", "description": "dos游戏合集" },
-        { "title": "flash保存计划", "url": "https://flash.zczc.cz/", "description": "在线玩flash游戏" },
-        { "title": "国外怀旧游戏", "url": "https://www.lexaloffle.com/", "description": "在线国外怀旧游戏" },
-        { "title": "在线贪吃蛇", "url": "http://slither.io/", "description": "类似球球大作战，大乱斗" },
-        { "title": "在线坦克大战", "url": "https://diep.io/", "description": "超难操作的坦克大战，挑战下吧" },
-        { "title": "COLOR连线消消乐", "url": "https://lines.frvr.com/", "description": "在线COLOR消消游戏" },
-        { "title": "COLOR消消", "url": "https://hex.frvr.com/", "description": "在线COLOR消消游戏" },
-        { "title": "人声模拟器", "url": "https://dood.al/pinktrombone/", "description": "人声模拟器" },
-        { "title": "回归大自然", "url": "https://rainyscope.com/", "description": "回归大自然" },
-        { "title": "AutoDraw", "url": "https://www.autodraw.com/", "description": "自动涂鸦" },
-        { "title": "从未出现过的人", "url": "https://thispersondoesnotexist.com/", "description": "AI脸谱" },
-        { "title": "迷宫生成器", "url": "https://www.mazegenerator.net/", "description": "迷宫生成器" },
-        { "title": "流体模拟器", "url": "https://david.li/fluid/", "description": "流体模拟器" },
-        { "title": "六十秒冥想", "url": "https://pixelthoughts.co/", "description": "六十秒冥想" },
-        { "title": "经典益智游戏合集", "url": "https://puzzles-game.com/zh/", "description": "包含40款在线益智游戏网站" }
-      ]
-    },
-    {
-      "categoryName": "人工智能",
-      "items": [
-        { "title": "ChatGPT", "url": "https://chatgpt.com/", "description": "ChatGPT 是由 OpenAI 开发的一种人工智能语言模型，能够根据上下文和过去的对话生成类似人类的文本。" },
-        { "title": "DeepSeek", "url": "https://www.deepseek.com/", "description": "DeepSeek | 深度求索  探索未至之境" },
-        { "title": "Gemini", "url": "https://gemini.google.com/", "description": "Gemini Pro是谷歌最新推出的高性能AI模型，专为编程和复杂任务处理优化。它具备强大的代码生成能力，能够处理复杂指令，并支持最高200万Token的上下文窗口。此外，Gemini Pro可调用Google搜索和代码执行，以增强推理能力和信息获取能力。" },
-        { "title": "Grok 3", "url": "https://x.com/i/grok/", "description": "马斯克旗下重磅AI，人工智能初创公司xAI团队研发的第三代大语言模型。2025年2月18日正式发布，同步发布的还有名为Deepsearch的Grok 3智能搜索引擎。" },
-        { "title": "文心一言", "url": "https://yiyan.baidu.com/", "description": "文心一言是百度研发的知识增强大语言模型，它采用了深度学习算法和大规模语料库训练，具备强大的语义理解和生成能力。文心一言能够与用户进行流畅的对话交流，理解用户的意图和需求，并提供精准、有价值的回答和建议。" },
-        { "title": "通义千问", "url": "https://www.tongyi.com/", "description": "通义千问是阿里巴巴推出的一个AI预训练模型，它主要基于阿里巴巴达摩院在自然语言处理领域的先进技术，采用深度学习和大规模语言模型的方法。通义千问旨在为用户提供高效、准确的信息检索和问题解答服务，同时支持多种自然语言处理任务，如语音识别、机器翻译等。" },
-        { "title": "智谱清言", "url": "https://chatglm.cn/", "description": "智谱清言是由北京智谱华章科技有限公司开发的生成式AI聊天助手，基于智谱AI自主研发的中英双语对话模型ChatGLM2。它具有千亿级别的参数和一系列强大的功能，旨在提供高效、精准的语音交互体验。" },
-        { "title": "豆包", "url": "https://www.doubao.com/chat/", "description": "豆包，一款由字节跳动精心打造的AI助手，它不仅是你的私人问答专家，更是写作、翻译、情感陪伴、编程等多面手。无论是Web端还是iOS/安卓，一键登录（手机号、抖音号、Apple ID任选），即刻开启智能生活新篇章！" },
-        { "title": "天工AI", "url": "https://www.tiangong.cn/", "description": "天工是一款支持搜索、写作、对话、文档分析、画画、做PPT的全能型AI助手。你可以借助AI技术，检索信息、多语言翻译、写论文、写代码、写方案、写汇报、做PPT、归纳总结文档和音频视频，还可以智能编辑彩页和宝典，让AI生成高质量彩页内容，收获点赞关注。" },
-        { "title": "Google AI Studio", "url": "https://aistudio.google.com/", "description": "基于浏览器的轻量级AI平台" }
-      ]
-    },
-    {
-      "categoryName": "在线工具",
-      "items": [
-        { "title": "帮小忙", "url": "https://tool.browser.qq.com/", "description": "腾讯QQ浏览器在线工具箱平台" },
-        { "title": "一个工具箱", "url": "http://www.atoolbox.net/", "description": "在线工具大合集" },
-        { "title": "太美工具网", "url": "https://tiomg.org/", "description": "上班族常用的在线工具网站，免费在线软件工具包" },
-        { "title": "Canva可画在线平面设计", "url": "https://www.canva.cn/", "description": "在线设计网站,平面设计软件,免费在线设计软件,免费设计素材模板,Canva" },
-        { "title": "站长工具", "url": "https://tool.chinaz.com/", "description": "站长工具是站长的必备工具。经常上站长工具可以了解SEO数据变化。还可以检测网站死链接、蜘蛛访问、HTML格式检测、网站速度测试、友情链接检查、网站域名IP查询、PR、权重查询、alexa、whois查询等等。" },
-        { "title": "ITDOG", "url": "https://www.itdog.cn/", "description": "在线ping_在线tcping_网站测速_HTTP测速_API测速_路由追踪_在线MTR_DNS查询_ITDOG-云邦畅想" },
-        { "title": "开发工具箱", "url": "https://tool.lu/", "description": "在线工具,开发人员工具,代码格式化、压缩、加密、解密,下载链接转换,sql工具,正则测试工具,favicon在线制作,字帖工具,中文简繁体转换,迅雷下载链接转换,进制转换,二维码" },
-        { "title": "贝贝工具站", "url": "https://xbeibeix.com/", "description": "贝贝工具站，免费，高效，免登录，无限制" },
-        { "title": "万能兔", "url": "https://www.wntool.com/", "description": "万能兔在线工具箱(www.wntool.com)提供各种在线工具，为站长和互联网从业者提供免费的工具，我们的工具有在线JSON工具,在线加密工具,在线解密工具,代码格式化工具,正则工具等" },
-        { "title": "TOOLFK在线工具人", "url": "https://www.toolfk.com/", "description": "在线工具大全" },
-        { "title": "DOCstrong", "url": "https://docstrong.com/", "description": "docstrong - 免费在线图片压缩、GIF压缩工具、PDF压缩工具、PDF合并工具、PDF分割工具" }
-      ]
-    },
-    {
-      "categoryName": "在线改图",
-      "items": [
-        { "title": "PNG压缩", "url": "https://compressjpeg.com/zh/", "description": "png压缩中文版" },
-        { "title": "PNG压缩", "url": "https://tinypng.com/", "description": "Smart PNG and JPEG compression More than 1 billion PNG and JPEG images optimized and still counting!" },
-        { "title": "Compress JPG", "url": "https://compressjpg.io/", "description": "一个免费在线的图片压缩工具" },
-        { "title": "在线图片放大", "url": "http://waifu2x.udp.jp/", "description": "使用卷积神经网络对动漫风格的图片进行放大操作（支持照片）" },
-        { "title": "AI人工智能图片放大", "url": "https://bigjpg.com/", "description": "使用最新人工智能深度学习技术——深度卷积神经网络。它会将噪点和锯齿的部分进行补充，实现图片的无损放大" },
-        { "title": "改图宝", "url": "https://www.gaitubao.com/", "description": "在线修改照片大小,在线修改图片大小,在线修改照片尺寸" },
-        { "title": "在线修改图片", "url": "https://www.sojson.com/image/change.html", "description": "图片大小修改器在线，在线修改图片大小，图片大小转换器，图片尺寸修改，图片大小修改器" },
-        { "title": "图片背景消除", "url": "https://www.remove.bg/zh", "description": "图片背景消除，100% 全自动且免费" },
-        { "title": "在线抠图换背景", "url": "https://www.fococlipping.com/", "description": "国外在线抠图换背景，纯英文界面" },
-        { "title": "在线替换图片背景", "url": "https://koutu.gaoding.com/", "description": "在线替换图片背景,稿定抠图" },
-        { "title": "在线去除元素", "url": "https://www.magiceraser.io/", "description": "在线修改图片指定元素" },
-        { "title": "改图鸭", "url": "https://www.gaituya.com/", "description": "综合改图工具" },
-        { "title": "iLoveIMG | 图像文件在线编辑工具", "url": "https://www.iloveimg.com/", "description": "可批量编辑图片" },
-        { "title": "电子包浆", "url": "https://magiconch.com/patina/", "description": "图片做旧工具，赛博包浆虚拟器" },
-        { "title": "搞笑图片合成", "url": "http://www.pichacks.com/", "description": "在线搞笑图片合成" },
-        { "title": "Raphael AI", "url": "https://raphael.app/", "description": "无限制免费AI图片生成器" }
-      ]
-    },
-    {
-      "categoryName": "以图搜图",
-      "items": [
-        { "title": "Yandex搜图", "url": "https://yandex.com/images", "description": "目前最靠谱的以图找图，比Google准" },
-        { "title": "动漫以图搜图", "url": "https://trace.moe/", "description": "搜索动漫图片，可精确到番剧" },
-        { "title": "Google搜图", "url": "https://www.google.com.hk/imghp", "description": "以图找图" }
-      ]
-    },
-    {
-      "categoryName": "在线转格",
-      "items": [
-        { "title": "online ocr", "url": "https://www.onlineocr.net/", "description": "在线文字识别，格式转换服务" },
-        { "title": "白描", "url": "https://web.baimiaoapp.com/", "description": "图片转文字在线 - 图片文字提取 - 网页OCR文字识别 - 白描网页版" },
-        { "title": "BSE64", "url": "https://www.webdesignrankings.com/resources/bse64/", "description": "Base64 Image Convertor" },
-        { "title": "语音转文字", "url": "https://app.xunjiepdf.com/voice2text/", "description": "一键搞定语音识别成文字" },
-        { "title": "PDF转Word", "url": "https://www.hipdf.cn/pdf-to-word", "description": "免费将PDF转换为Word文档" },
-        { "title": "迅捷PDF", "url": "https://app.xunjiepdf.com/", "description": "在线版PDF转换器转换文件仅限于2M以内文件" },
-        { "title": "格式转换", "url": "https://www.alltoall.net/", "description": "在线版PDF转换器转换，其他格式转换" },
-        { "title": "PDF转其他格式", "url": "https://easypdf.com/", "description": "From PDF to Easy The Online PDF Converter Made for Everyone" },
-        { "title": "格式转换", "url": "https://www.aconvert.com/cn/", "description": "文档音频格式转换" },
-        { "title": "Convertio", "url": "https://convertio.co/zh/mp4-ogv/", "description": "视频格式转换" },
-        { "title": "视频格式转换", "url": "https://convert-video-online.com/cn/", "description": "视频格式转换" },
-        { "title": "多功能PDF转换器", "url": "http://www.pdfdo.com/", "description": "集成数十种PDF操作， PDF转换/解密/页面处理/内容编辑" },
-        { "title": "TinyWow", "url": "https://tinywow.com/", "description": "免费格式转换网站，支持视频、文档、图片等的格式转换。" }
-      ]
-    },
-    {
-      "categoryName": "在线生成",
-      "items": [
-        { "title": "U钙网", "url": "http://www.uugai.com/", "description": "免费的LOGO在线设计制作工具" },
-        { "title": "比特虫-ICO", "url": "https://www.bitbug.net/", "description": "在线制作ico图标ico图标转换工具" },
-        { "title": "ICO图标制作", "url": "http://www.ico51.cn/", "description": "在线生成透明ICO图标" },
-        { "title": "在线小米风格ICO", "url": "https://mi-logo.lvwzhen.com/", "description": "在线制作ICO，徽章" },
-        { "title": "虚拟头像（需翻墙）", "url": "https://getavataaars.com/", "description": "在线制作虚拟头像" },
-        { "title": "Notion风格头像", "url": "https://notion-avatar.vercel.app/", "description": "在线制作Notion风格头像" },
-        { "title": "城通网盘解析器", "url": "https://ctfile.qinlili.bid/", "description": "城通网盘在线解析器，获取直连" },
-        { "title": "小马短连接生成器", "url": "https://xiaomark.com/", "description": "小码短链接生成器,短连接生成,永久短链接生成,转换短链接工具,短网址压缩生成" },
-        { "title": "草料二维码", "url": "https://cli.im/", "description": "二维码生成器" },
-        { "title": "智能证件照", "url": "https://id.zhengzhaopai.com/", "description": "免费提供证件照一站式服务" }
-      ]
-    },
-    {
-      "categoryName": "其他在线",
-      "items": [
-        { "title": "微软商店应用提取", "url": "https://store.rg-adguard.net/", "description": "在线微软商店应用提取" },
-        { "title": "在线流程图思维导图", "url": "https://www.processon.com/", "description": "需注册，专业强大的作图工具，支持多人实时在线协作，可用于原型图、UML、BPMN、网络拓扑图等多种图形绘制" },
-        { "title": "ZhiMap", "url": "https://zhimap.com/", "description": "在线思维导图、电脑与手机微信里都能作图" },
-        { "title": "GitMind在线思维导图", "url": "https://gitmind.cn/", "description": "免费在线思维导图软件，简化逻辑梳理，集思广益，释放创造力在线脑图、思维导图、流程图、组织架构图、工业设计、工程管理，一图涵千面" },
-        { "title": "VirSCAN", "url": "https://www.virscan.org/", "description": "一个非盈利性的免费病毒检测引擎" },
-        { "title": "VirusTotal", "url": "https://www.virustotal.com/gui/", "description": "国外文件在线检测程序" },
-        { "title": "Firefox Monitor", "url": "https://monitor.firefox.com/", "description": "看看您的账号是否也在数据外泄事件当中" },
-        { "title": "秘塔写作猫", "url": "https://xiezuocat.com/", "description": "写作猫是新一代AI写作伴侣，帮你推敲用语、斟酌文法、改写文风，还能实时同步翻译。" },
-        { "title": "稿定设计", "url": "https://www.gaoding.com", "description": "做图做视频必备_在线设计神器_海量版权素材模板" },
-        { "title": "IP查询", "url": "https://whoer.net/", "description": "查询代理后IP隐匿性" },
-        { "title": "IP查询", "url": "https://ip8.com/", "description": "ip8 - IP查询工具" },
-        { "title": "Deep翻译", "url": "https://www.deepl.com/translator", "description": "快速、准确和安全的即时文本翻译和完整的文档翻译" },
-        { "title": "youcompress", "url": "https://www.youcompress.com/videos/", "description": "免费在线压缩视频" },
-        { "title": "soshoulu", "url": "http://ip.soshoulu.com/", "description": "ip地址批量查询" },
-        { "title": "东北大学网络测速", "url": "http://speed.neu6.edu.cn/", "description": "东北大学网络测速ipv6" },
-        { "title": "IPv6 连接测试", "url": "http://test-ipv6.com/", "description": "IPv6 连接测试" },
-        { "title": "ACL4SSR", "url": "https://acl4ssr-sub.github.io/", "description": "ACL4SSR在线订阅转换" },
-        { "title": "OpenWrt固件下载与定制", "url": "https://supes.top/", "description": "OpenWrt固件下载与定制,一分钟在线定制编译专属OpenWrt固件,支持X86,小米,红米,Nanopi,斐讯,华硕等主流软硬路由器" },
-        { "title": "IP查询", "url": "https://ipw.cn/", "description": "致力于普及 IPv6 ,推进 IPv6 规模部署和应用" }
-      ]
-    },
-    {
-      "categoryName": "上传下载",
-      "items": [
-        { "title": "虫洞", "url": "https://wormhole.app/", "description": "Wormhole 让你能以端到端加密和自动过期链接的方式分享文件。" },
-        { "title": "文叔叔", "url": "https://www.wenshushu.cn/", "description": "文叔叔是一款永不限速的网盘（云盘）产品，免费提供网络硬盘空间 40GB。支持：传文件（发文件）、收文件（收集文件）等功能，还支持查看历史记录等高级功能" },
-        { "title": "APKPure（需翻墙）", "url": "https://apkpure.com/", "description": "使用APKPure APK下载器下载官方正版应用.无需绑定账户，海量历史版本应用，极速下载更新。" },
-        { "title": "Uptodown（需翻墙）", "url": "https://cn.uptodown.com/", "description": "下载Android应用程序，Windows应用，Mac应用" },
-        { "title": "FOSSHUB", "url": "https://www.fosshub.com/", "description": "安全、快速、免费软件下载中心,无恶意软件，无捆绑软件" },
-        { "title": "软件替代", "url": "https://alternativeto.net/", "description": "AlternativeTo 是一项免费服务，可帮助您找到您喜欢和讨厌的产品的更好替代品。" },
-        { "title": "YouTube高清视频下载", "url": "https://youtube.iiilab.com/", "description": "已支持解析下载YouTube、等其他视频下载" }
-      ]
-    },
-    {
-      "categoryName": "软件精选",
-      "items": [
-        { "title": "Snipaste", "url": "https://zh.snipaste.com/", "description": "截图 + 贴图，提高您的工作效率，免费. 免安装. 可个性定制" },
-        { "title": "Honeyview", "url": "https://www.bandisoft.com/honeyview/", "description": "免费的图像查看器，打开速度很快" },
-        { "title": "uTools", "url": "https://u.tools/", "description": "uTools 自由集成丰富插件，快速匹配「场景功能」，用完即走" },
-        { "title": "远程桌面软件", "url": "https://anydesk.com/zhs", "description": "远程连接到您的计算机，无论是从办公室的另一层还是世界的另一端。 AnyDesk为IT专业人员和移动用户提供安全可靠的远程桌面连接。" },
-        { "title": "GotoHTTP", "url": "http://www.gotohttp.com/", "description": "远程控制,远程桌面,桌面共享" },
-        { "title": "Free Download Manager", "url": "https://www.freedownloadmanager.org/zh/", "description": "Free Download Manager能加速下載所有類型的資料、影片、種子。它在 Windows、macOS作業系統上是一款聰明且快速的網路下載管理器。" },
-        { "title": "小众软件", "url": "https://faxian.appinn.com/", "description": "在这里发现更多有趣的应用" },
-        { "title": "423Down", "url": "https://www.423down.com/", "description": "更新快、专注去广告类软件输出10年、个人IP品牌软件分享站" },
-        { "title": "老殁", "url": "https://www.mpyit.com/", "description": "分享好软件" },
-        { "title": "Confluence", "url": "https://www.atlassian.com/software/confluence?bundle=confluence&edition=free", "description": "团队工作软件" },
-        { "title": "Teambition", "url": "https://www.teambition.com/", "description": "Teambition · 阿里巴巴工作学习套件" },
-        { "title": "OBS", "url": "https://obsproject.com/", "description": "免费视频录制和直播软件" },
-        { "title": "handbrake", "url": "https://handbrake.fr/", "description": "开源视频转码器" },
-        { "title": "PDFgear", "url": "https://www.pdfgear.com/zh/", "description": "阅读、编辑、转换、合并和跨设备签署PDF文件，且无需注册。" }
-      ]
-    },
-    {
-      "categoryName": "浏览器插件",
-      "items": [
-        { "title": "极简插件", "url": "https://chrome.zzzmh.cn/", "description": "极简插件是一个优质Chrome插件扩展收录下载网站，收录热门好用的Chrome插件扩展，国内最方便的插件下载网站。" },
-        { "title": "Chrome 网上应用店 - 扩展程序", "url": "https://chrome.google.com/webstore/", "description": "查找适用于 Google Chrome 浏览器的超酷应用、游戏、扩展程序和主题背景。" },
-        { "title": "微软edge扩展商店", "url": "https://microsoftedge.microsoft.com/", "description": "使用可帮助你个性化定制浏览器和提高工作效率的扩展和主题来定制 Microsoft Edge。" },
-        { "title": "Userscript.Zone", "url": "https://www.userscript.zone/", "description": "Userscript是油猴脚本的新网站，允许通过输入合适的URL或域来搜索用户脚本。" },
-        { "title": "Greasy Fork", "url": "https://greasyfork.org/", "description": "油猴脚本常用脚本站" },
-        { "title": "OpenUserJS", "url": "https://openuserjs.org/", "description": "继 GreasyFork 之后开始创办。它由 Sizzle McTwizzle 创建,同样地,在其储存库中也拥有大量的脚本资源。" }
-      ]
-    },
-    {
-      "categoryName": "虚拟信息",
-      "items": [
-        { "title": "虚拟手机号", "url": "https://bestsms.xyz/", "description": "可接短信" },
-        { "title": "虚拟手机号", "url": "http://www.shejiinn.com/", "description": "可接短信" },
-        { "title": "虚拟手机号", "url": "https://yunduanxin.net/", "description": "可接短信" },
-        { "title": "虚拟手机号", "url": "https://www.rvso.com/", "description": "可接短信" },
-        { "title": "收费虚拟手机号", "url": "https://sms-activate.org/", "description": "收费接短信" },
-        { "title": "虚拟地址生成器", "url": "http://www.haoweichi.com/", "description": "美日英多国虚拟地址生成" },
-        { "title": "虚拟地址生成器", "url": "https://www.meiguodizhi.com/tw-address", "description": "台湾美日英多国虚拟地址生成" },
-        { "title": "临时邮箱", "url": "https://smailpro.com/", "description": "临时邮箱生成器" },
-        { "title": "临时邮箱", "url": "http://24mail.chacuo.net/", "description": "临时邮箱生成器" },
-        { "title": "查邮编", "url": "https://www.ip138.com/post/", "description": "邮政编码、长途电话区号专业在线查询" },
-        { "title": "虚拟地址生成器", "url": "https://shenfendaquan.com/", "description": "美日加英多国虚拟地址生成" },
-        { "title": "虚拟个人信息", "url": "https://www.fakepersongenerator.com/", "description": "虚拟信息生成器" },
-        { "title": "fakemail", "url": "http://www.fakemailgenerator.com/", "description": "临时邮箱生成器" },
-        { "title": "AddressGen", "url": "https://addressgen.top/", "description": "在线地址生成器" }
-      ]
-    },
-    {
-      "categoryName": "壁纸下载",
-      "items": [
-        { "title": "Awesome Wallpapers（需翻墙）", "url": "https://wallhaven.cc/", "description": "高清壁纸站，访问慢的话上加速器" },
-        { "title": "Wallpaper Abyss", "url": "https://wall.alphacoders.com/", "description": "一家壁纸社区。浏览和下载高清桌面背景、手机壁纸，留下赞和评论。" },
-        { "title": "二次元壁纸", "url": "https://konachan.net/", "description": "免费二次元壁纸下载" },
-        { "title": "P站——非P站", "url": "https://www.pixiv.net/", "description": "提供插画等作品的投稿、阅览服务的「插画交流网站」" },
-        { "title": "Unsplash", "url": "https://unsplash.com/", "description": "摄影壁纸分享" },
-        { "title": "星空壁纸", "url": "https://www.eso.org/public/images/", "description": "关于宇宙星空的壁纸站" },
-        { "title": "pixabay", "url": "https://pixabay.com/zh/", "description": "免费正版高清图片素材库" }
-      ]
-    },
-    {
-      "categoryName": "PNG免扣",
-      "items": [
-        { "title": "觅元素", "url": "http://www.51yuansu.com/", "description": "下载免抠素材,位图,透明背景素材,透明背景图片,免抠png,高清png" },
-        { "title": "菜鸟图库", "url": "http://www.sucai999.com/", "description": "专注于为广大设计师尤其是是新手设计师提供免费的素材模版下载，让下载素材没有门槛，让设计师更容易设计。" },
-        { "title": "图精灵", "url": "http://616pic.com/", "description": "免费PNG图片下载_高清背景图片素材" },
-        { "title": "免费在线一键抠图网站", "url": "https://pixian.ai/", "description": "上传或粘贴图片到网站，即可实现一键抠图，免费无限制，支持 api 调用。" }
-      ]
-    },
-    {
-      "categoryName": "PPT资源",
-      "items": [
-        { "title": "OfficePLUS", "url": "http://www.officeplus.cn/Template/Home.shtml", "description": "OfficePLUS，微软Office官方在线模板网站！" },
-        { "title": "优品PPT", "url": "http://www.ypppt.com/", "description": "高质量的模版，而且还有PPT图表，PPT背景图等资源" },
-        { "title": "吾道", "url": "https://www.woodo.cn/", "description": "吾道幻灯片-官方网站-专业的PPT在线协作工具，提供海量精美模板素材" },
-        { "title": "PPT超级市场", "url": "https://pptsupermarket.com/", "description": "免费PPT模板" },
-        { "title": "逼格PPT", "url": "http://www.tretars.com/ppt-templates", "description": "The best free Mockups from the Web" },
-        { "title": "第一PPT", "url": "http://www.1ppt.com/", "description": "PPT模板,PPT模板下载,PPT模板免费下载,PPT背景图" },
-        { "title": "PPT宝藏", "url": "http://www.pptbz.com/", "description": "PPT模板下载_免费PPT模板下载_PPT宝藏" }
-      ]
-    },
-    {
-      "categoryName": "字体资源",
-      "items": [
-        { "title": "Google Font", "url": "https://fonts.google.com/", "description": "Making the web more beautiful, fast, and open through great typography" },
-        { "title": "方正字库", "url": "http://www.foundertype.com/", "description": "方正字库官方网站" },
-        { "title": "字体传奇网", "url": "http://ziticq.com/", "description": "中国首个字体品牌设计师交流网" },
-        { "title": "100font", "url": "https://www.100font.com/", "description": "一个专门收集整理“免费商用字体”的网站" },
-        { "title": "字体天下", "url": "https://www.fonts.net.cn/", "description": "提供各类字体的免费下载和在线预览服务" }
-      ]
-    },
-    {
-      "categoryName": "其他资源",
-      "items": [
-        { "title": "站长素材", "url": "https://sc.chinaz.com/", "description": "是一家大型综合设计类素材网站" },
-        { "title": "斗图啦", "url": "https://www.doutula.com/", "description": "斗图啦，收集了成千上万的撕逼斗图表情包，在这里你可以快速找到想要的表情，通过在线表情制作可以快速生成自定义表情。" },
-        { "title": "阿里图标库", "url": "https://www.iconfont.cn/", "description": "iconfont-国内功能很强大且图标内容很丰富的矢量图标库，提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造，设计和前端开发的便捷工具" },
-        { "title": "一个有趣的网址", "url": "http://madebyevan.com/", "description": "进来看看吧~" },
-        { "title": "逗比拯救世界", "url": "https://www.dbbqb.com/", "description": "专业的表情包搜索网站" },
-        { "title": "fontawesome", "url": "https://fontawesome.com/", "description": "图标库" },
-        { "title": "tabler-icons", "url": "https://tabler-icons.io/", "description": "图标库" },
-        { "title": "IconPark", "url": "https://iconpark.oceanengine.com/", "description": "图标库" },
-        { "title": "ColorGG", "url": "https://www.colorgg.com/", "description": "提供有关颜色信息，颜色搭配，颜色代码查询以及各种颜色空间转换" }
-      ]
-    },
-    {
-      "categoryName": "设计灵感",
-      "items": [
-        { "title": "Pinterest", "url": "https://www.pinterest.com/", "description": "寻找点子，需要特殊网络方式访问" },
-        { "title": "LOFTCN", "url": "http://loftcn.com/", "description": "全球设计风向-探知全球最新设计风向，为中国新设计力量，中国创意赋能" },
-        { "title": "国外设计", "url": "https://www.aestate.co/", "description": "需要特殊网络方式访问" },
-        { "title": "中国色", "url": "https://www.zhongguose.com/", "description": "提供各种中国的传统颜色的名称，CMYK值，RGB值，16进制表示。AI制作中国色图片和视频" },
-        { "title": "裝潢裝修、室內設計", "url": "https://decomyplace.com/", "description": "每日更新全世界精選室內設計個案，是裝潢設計、裝修設計、室內設計" }
-      ]
-    },
-    {
-      "categoryName": "API资源",
-      "items": [
-        { "title": "和风天气API", "url": "https://dev.qweather.com/", "description": "和风天气 全球气象数据开发服务" },
-        { "title": "ROLL API", "url": "https://www.mxnzp.com/doc/list", "description": "ROLL免费API" },
-        { "title": "搏天API", "url": "https://api.btstu.cn/", "description": "高速稳定免费APi接口调用平台" },
-        { "title": "图样跑酷", "url": "https://bing.img.run/api.html", "description": "bing图片 API" },
-        { "title": "镜心 API", "url": "https://api2.wer.plus/", "description": "安全高效免费的API调用服务" },
-        { "title": "点滴API", "url": "https://api.ddkjt.com/index.php", "description": "一款简洁而不简单的免费API网站" },
-        { "title": "新逸Cary API", "url": "https://api.xinac.net/", "description": "免费提供API接口服务" },
-        { "title": "今日诗词API", "url": "https://www.jinrishici.com/", "description": "今日诗词API 每次返回一句诗词" },
-        { "title": "Uomg API", "url": "https://api.uomg.com/", "description": "稳定、快速、免费的 API 接口服务" },
-        { "title": "Hitokoto 一言", "url": "https://hitokoto.cn/", "description": "一言API" },
-        { "title": "魅影随机图片API", "url": "https://tuapi.eees.cc/", "description": "随机图片API，PPT背景切换特效" },
-        { "title": "姬长信API", "url": "https://api.isoyu.com/", "description": "一个基于多种编程语言开源免费不限制提供生活常用,出行服务,开发工具,金融服务,通讯服务和公益大数据的平台" },
-        { "title": "nuoxian's API", "url": "https://api.nxvav.cn/", "description": "免费为用户提供网络数据接口调用的服务平台" },
-        { "title": "樱花随机二次元图片 API", "url": "https://www.dmoe.cc/", "description": "图片均为https，采用新浪图片，高速访问" },
-        { "title": "韩小韩 WebAPI 接口站", "url": "https://api.vvhan.com/", "description": "免费Web API数据接口调用服务平台" },
-        { "title": "与末API", "url": "https://img-api.ymz.icu/", "description": "高清互联网壁纸聚合地" },
-        { "title": "教书先生API", "url": "https://api.oioweb.cn/", "description": "提供免费接口调用平台" }
-      ]
-    },
-    {
-      "categoryName": "域名申请",
-      "items": [
-        { "title": "spaceship", "url": "https://www.spaceship.com/", "description": "国外域名申请网站，支持支付宝付款。" },
-        { "title": "namecheap", "url": "https://www.namecheap.com/", "description": "国外域名申请网站" },
-        { "title": "西部数码", "url": "https://www.west.cn/", "description": "云服务器-虚拟主机-域名注册,20年知名云服务商！" },
-        { "title": "新网", "url": "https://www.xinnet.com/", "description": "云服务器_网站建站_域名注册_虚拟主机_企业邮箱_新网知名的互联网基础应用服务提供商" }
-      ]
-    },
-    {
-      "categoryName": "云端服务",
-      "items": [
-        { "title": "腾讯云", "url": "https://cloud.tencent.com/", "description": "腾讯云 - 产业智变 云启未来" },
-        { "title": "阿里云", "url": "https://www.aliyun.com/", "description": "阿里云-上云就上阿里云" },
-        { "title": "又拍云", "url": "https://www.upyun.com/", "description": "静态文件存储与CDN加速" },
-        { "title": "LeanCloud", "url": "https://www.leancloud.cn/", "description": "云存储, 一站式后端服务, 无服务器应用后端, 云引擎, 云函数, 云端代码, 即时通讯, 即时通讯" },
-        { "title": "npm", "url": "https://www.npmjs.com/", "description": "npm是世界上最大的软件注册表" },
-        { "title": "阿里云盘", "url": "https://www.aliyundrive.com/", "description": "阿里云盘是一款速度快、不打扰、够安全、易于分享的个人网盘" },
-        { "title": "蓝奏云", "url": "https://www.lanzou.com/", "description": "小文件云存储" },
-        { "title": "百度网盘", "url": "https://pan.baidu.com/", "description": "百度网盘为您提供文件的网络备份、同步和分享服务" },
-        { "title": "腾讯微云", "url": "https://www.weiyun.com/", "description": "微云是腾讯公司为用户精心打造的一项智能云服务, 您可以通过微云方便地在手机和电脑之间同步文件、推送照片和传输数据。" },
-        { "title": "华为云空间", "url": "https://cloud.huawei.com/", "description": "存于云间，尽享精彩" },
-        { "title": "小米云服务", "url": "https://i.mi.com/", "description": "在线管理和存储手机数据" },
-        { "title": "infinityfree", "url": "https://infinityfree.net/", "description": "相对较好的免费虚拟主机" },
-        { "title": "awardspace", "url": "https://www.awardspace.com/", "description": "免费虚拟主机" },
-        { "title": "Vercel", "url": "https://vercel.com/", "description": "类似Github Pages免费托管项目" },
-        { "title": "Railway", "url": "https://railway.app/", "description": "Railway是一个基础架构平台，您可以在其中配置基础架构，在本地使用该基础架构进行开发，然后部署到云端。" },
-        { "title": "heroku", "url": "https://www.heroku.com/", "description": "一个支持多种编程语言的云平台" },
-        { "title": "netlify", "url": "https://www.netlify.com/", "description": "类似Github Pages免费托管项目" },
-        { "title": "Koyeb", "url": "https://www.koyeb.com/", "description": "Koyeb是一个开发人员友好的无服务器平台，可在全球范围内部署应用程序。无操作、服务器和基础架构管理。" },
-        { "title": "4everland", "url": "https://4everland.org/", "description": "类似Github Pages免费托管项目" },
-        { "title": "MongoDB", "url": "https://www.mongodb.com/", "description": "一个基于分布式文件存储的数据库" },
-        { "title": "SM.MS", "url": "https://sm.ms/", "description": "SM.MS图床" },
-        { "title": "Replit", "url": "https://replit.com/", "description": "免费的协作式在线IDE" },
-        { "title": "Claw Cloud Run", "url": "https://console.run.claw.cloud/", "description": "Claw Cloud Run 是阿里云青春版 Claw Cloud 旗下，类似于 Vercel、Netlify 的在线开发平台。" }
-      ]
-    },
-    {
-      "categoryName": "开发文档",
-      "items": [
-        { "title": "Valine", "url": "https://valine.js.org/", "description": "一款快速、简洁且高效的无后端评论系统。" },
-        { "title": "DPlayer", "url": "https://dplayer.diygod.dev/", "description": "网站视频播放插件" },
-        { "title": "Aplayer", "url": "https://aplayer.js.org/", "description": "网站音乐播放器" },
-        { "title": "Fancybox", "url": "https://fancyapps.com/", "description": "网站灯箱" },
-        { "title": "Gitee", "url": "https://gitee.com/", "description": "Gitee 是一个云端软件开发协作平台" },
-        { "title": "GitCode", "url": "https://gitcode.com/", "description": "GitCode - 全球开发者的开源社区,开源代码托管平台" },
-        { "title": "Moe-counter", "url": "https://count.getloli.com/", "description": "多种风格可选的萌萌计数器" },
-        { "title": "依米花播放器", "url": "https://music.piphp.com/", "description": "免费、稳定、安全、无广告的HTML音乐播放器" },
-        { "title": "TYPECHO", "url": "http://typecho.org/", "description": "网站博客系统" },
-        { "title": "HUGO", "url": "https://themes.gohugo.io/", "description": "Hugo主题模板" },
-        { "title": "Html5 UP", "url": "https://html5up.net/", "description": "html5模板" }
-      ]
-    },
-    {
-      "categoryName": "网站管理",
-      "items": [
-        { "title": "Google AD", "url": "https://www.google.com/adsense", "description": "谷歌广告平台" },
-        { "title": "Google Analytics", "url": "https://analytics.google.com/", "description": "谷歌网站分析平台" },
-        { "title": "百度资源", "url": "https://ziyuan.baidu.com/", "description": "百度搜索资源平台" },
-        { "title": "腾讯安全-网址安全中心", "url": "https://urlsec.qq.com/check.html", "description": "腾讯安全-网址安全中心" },
-        { "title": "PageSpeed Insights", "url": "https://pagespeed.web.dev/", "description": "使您的网页在所有设备上都能快速加载" },
-        { "title": "百度统计", "url": "https://tongji.baidu.com/", "description": "百度统计——领先的中文网站分析平台" },
-        { "title": "cloudflare", "url": "https://www.cloudflare.com/", "description": "网站安全管理、性能优化及相关的技术支持" }
-      ]
-    },
-    {
-      "categoryName": "系统下载",
-      "items": [
-        { "title": "我告诉你msdn", "url": "https://msdn.itellyou.cn/", "description": "系统下载" },
-        { "title": "系统下载", "url": "https://tb.rg-adguard.net/public.php", "description": "无需下载器直接下载系统" },
-        { "title": "MSDN - 山己几子木", "url": "https://msdn.sjjzm.com/", "description": "系统下载" },
-        { "title": "吻妻纯净系统", "url": "https://www.newxitong.com/", "description": "专注于win7,吻妻,win7,windows7,win7系统,win7纯净版,Win7纯净版下载,专注于win8,专注于win10" },
-        { "title": "装个机", "url": "https://zhuangit.ababtools.com/", "description": "不求人，自己装" }
-      ]
-    },
-    {
-      "categoryName": "系统美化",
-      "items": [
-        { "title": "致美化", "url": "https://zhutix.com/", "description": "致美化是国内最专业的桌面美化研究平台" },
-        { "title": "Fliqlo", "url": "https://fliqlo.com/", "description": "桌面时钟屏保" },
-        { "title": "主题之家", "url": "https://zhuti.ithome.com/", "description": "主题美化下载" },
-        { "title": "系统启动器美化", "url": "https://www.gnome-look.org/browse/cat/", "description": "各种启动器美化主题" }
-      ]
-    },
-    {
-      "categoryName": "系统工具",
-      "items": [
-        { "title": "桌面显卡性能天梯图", "url": "https://www.mydrivers.com/zhuanti/tianti/gpu/", "description": "桌面显卡性能天梯图" },
-        { "title": "桌面CPU性能天梯图", "url": "https://www.mydrivers.com/zhuanti/tianti/cpu/", "description": "桌面CPU性能天梯图" },
-        { "title": "IT天空", "url": "https://www.itsk.com/", "description": "以系统封装技术与驱动技术为主的综合性IT站点，提供完善的系统批量部署解决方案、易用的离线万能驱动和适合装机技术员的U盘PE。" },
-        { "title": "小鱼儿yr系统", "url": "https://www.yrxitong.com/", "description": "小鱼儿yr系统,封装系统,重装系统,系统教程,系统下载,资源分享" }
-      ]
-    },
-    {
-      "categoryName": "学无止境",
+      "title": "学无止境",
+      "icon": "ti ti-school",
       "items": [
         { "title": "廖雪峰的官方网站", "url": "https://www.liaoxuefeng.com/", "description": "自学编程大牛站" },
         { "title": "Python - 100天从新手到大师", "url": "https://github.com/jackfrued/Python-100-Days", "description": "自学编程案例" },
@@ -629,7 +596,8 @@
       ]
     },
     {
-      "categoryName": "社区资讯",
+      "title": "社区资讯",
+      "icon": "ti ti-news",
       "items": [
         { "title": "吾爱破解", "url": "https://www.52pojie.cn/", "description": "致力于软件安全与病毒分析的前沿，丰富的技术版块交相辉映，由无数热衷于软件加密解密及反病毒爱好者共同维护" },
         { "title": "IT之家", "url": "https://www.ithome.com/", "description": "百度指数排名第一的前沿科技门户网站" },
@@ -650,6 +618,11 @@
         { "title": "瓦斯阅读", "url": "https://qnmlgb.tech/", "description": "聚合优质的商业科技资讯" },
         { "title": "时光网新闻", "url": "http://news.mtime.com/", "description": "影视资讯" }
       ]
+    },
+    {
+      "id": "about",
+      "title": "关于本站",
+      "icon": "ti ti-id"
     }
   ]
 }

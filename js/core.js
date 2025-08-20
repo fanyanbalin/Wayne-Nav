@@ -43,19 +43,16 @@ function renderContent() {
             return response.json();
         })
         .then(data => {
-            if (!data || !data.searchConfig || !data.categories) {
+            if (!data || !data.searchConfig || !data.pageData) {
                 throw new Error("JSON 数据格式不正确或缺少必要的配置部分。");
             }
 
-            // 步骤 1: 渲染所有静态HTML部分
-            renderMainMenu(data.menuConfig);
+            renderMainMenu(data.pageData);
+            renderBookmarkCategories(data.pageData);
             renderSearchSection(data.searchConfig);
-            renderBookmarkCategories(data.categories);
-
-            // 步骤 2: 绑定搜索框的交互事件
             attachSearchEventListeners(data.searchConfig);
 
-            // 步骤 3: 初始化第三方插件(lozad, bootstrap tooltips)以及侧边栏动画
+            // 初始化第三方插件(lozad, bootstrap tooltips)以及侧边栏动画
             initializePlugins();
             setupSidebarMenu(); 
             setupSidebarToggles();
@@ -68,28 +65,23 @@ function renderContent() {
             }
         });
 
-    function renderMainMenu(menuData) {
+    function renderMainMenu(pageData) {
         const menuContainer = document.getElementById('main-menu');
         if (!menuContainer) return;
-        const menuHTML = menuData.map(item => {
-            // 检查是否有子菜单
-            if (item.children && item.children.length > 0) {
-                const childrenHTML = item.children.map(child =>
-                    `<li><a href="${child.href}" class="smooth"><span class="title">${child.title}</span></a></li>`
-                ).join('');
-                return `
-                    <li>
-                        <a><i class="${item.icon}"></i> <span class="title">${item.title}</span></a>
-                        <ul>${childrenHTML}</ul>
-                    </li>
-                `;
-            } else {
-                // 没有子菜单的顶级项
-                return `
-                    <li>
-                        <a href="${item.href}" class="smooth"><i class="${item.icon}"></i> <span class="title">${item.title}</span></a>
-                    </li>
-                `;
+        const menuHTML = pageData.map(item => {
+            const href = item.id ? '#' + item.id : '#' + item.title;
+            
+            // 如果有子菜单
+            if (item.children) {
+                const childrenHTML = item.children.map(child => {
+                    const childHref = child.id ? '#' + child.id : '#' + child.title;
+                    return `<li><a href="${childHref}" class="smooth"><span class="title">${child.title}</span></a></li>`;
+                }).join('');
+                return `<li><a><i class="${item.icon}"></i> <span class="title">${item.title}</span></a><ul>${childrenHTML}</ul></li>`;
+            } 
+            // 如果是普通菜单项
+            else {
+                return `<li><a href="${href}" class="smooth"><i class="${item.icon}"></i> <span class="title">${item.title}</span></a></li>`;
             }
         }).join('');
         menuContainer.innerHTML = menuHTML;
@@ -137,36 +129,46 @@ function renderContent() {
         searchContainer.innerHTML = fullSearchHTML;
     }
 
-    function renderBookmarkCategories(categories) {
+    function renderBookmarkCategories(pageData) {
         const contentContainer = document.getElementById('dynamic-content-container');
-        if (!categories || !contentContainer) return;
-
-        const allContentHTML = categories.map(category => {
-            const itemsHTML = category.items.map(item => {
-                let faviconUrl = 'images/browser.svg'; // 默认图标
-                try {
-                    const hostname = new URL(item.url).hostname;
-                    faviconUrl = `https://api.xinac.net/icon/?url=${hostname}`;
-                } catch (e) {
-                    console.warn(`无效的URL，无法生成图标: ${item.url}`);
-                }
-
-                return `
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
-                        <div class="w-widget box2" onclick="window.open('${item.url}', '_blank')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${item.url}">
-                            <div class="w-comment-entry">
-                                <a><img data-src="${faviconUrl}" class="lozad img-circle" onerror="this.onerror=null;this.src='images/browser.svg';"></a>
-                                <div class="w-comment">
-                                    <a class="overflowClip_1"><strong>${item.title}</strong></a>
-                                    <p class="overflowClip_2">${item.description}</p>
+        if (!contentContainer) return;
+        let allContentHTML = '';
+        pageData.forEach(item => {
+            // 渲染顶层分类的函数
+            const renderCategory = (category) => {
+                if (!category.items) return ''; // 如果没有items，则不生成内容
+                const itemsHTML = category.items.map(item => {
+                    let faviconUrl = 'images/browser.svg';
+                    try {
+                        const hostname = new URL(item.url).hostname;
+                        faviconUrl = `https://api.xinac.net/icon/?url=${hostname}`;
+                    } catch (e) { /* 忽略无效URL */ }
+                    return `
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
+                            <div class="w-widget box2" onclick="window.open('${item.url}', '_blank')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${item.url}">
+                                <div class="w-comment-entry">
+                                    <a><img data-src="${faviconUrl}" class="lozad img-circle" onerror="this.onerror=null;this.src='images/browser.svg';"></a>
+                                    <div class="w-comment">
+                                        <a class="overflowClip_1"><strong>${item.title}</strong></a>
+                                        <p class="overflowClip_2">${item.description}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            return `<h6 class="tag"><i class="ti ti-tag" id="${category.categoryName}"></i>${category.categoryName}</h6><div class="row">${itemsHTML}</div><br />`;
-        }).join('');
+                        </div>`;
+                }).join('');
+                return `<h6 class="tag" id="${category.title}"><i class="ti ti-tag"></i>${category.title}</h6><div class="row">${itemsHTML}</div><br />`;
+            };
+            // 如果是带子菜单的项，则遍历其子项来渲染内容
+            if (item.children) {
+                item.children.forEach(childCategory => {
+                    allContentHTML += renderCategory(childCategory);
+                });
+            } 
+            // 否则，直接渲染该项
+            else {
+                allContentHTML += renderCategory(item);
+            }
+        });
         contentContainer.innerHTML = allContentHTML;
     }
 
