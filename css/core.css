@@ -210,7 +210,6 @@ ul {
     background-color: var(--module-bg-color);
     border: 1px solid var(--module-border-color);
     backdrop-filter: blur(var(--module-blur-value));
-    -webkit-backdrop-filter: blur(var(--module-blur-value));
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -397,7 +396,6 @@ span.time-text {
     border-radius: 12px;
     background: var(--collapsed-submenu-bg);
     backdrop-filter: blur(var(--module-blur-value));
-    -webkit-backdrop-filter: blur(var(--module-blur-value));
     border: 1px solid var(--module-border-color);
     padding: 10px 0;
     box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
@@ -550,7 +548,6 @@ footer.main-footer.fixed {
   .night .page-container .sidebar-menu.mobile-is-visible,
   .night .page-container .main-content .navbar.user-info-navbar.mobile-is-visible {
     backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
   }
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;
@@ -559,7 +556,6 @@ footer.main-footer.fixed {
     background-color: transparent !important;
     border: 1px solid transparent !important;
     backdrop-filter: blur(0) !important;
-    -webkit-backdrop-filter: blur(0) !important;
   }
   .page-container .sidebar-menu .sidebar-menu-inner .logo-env,
   .page-container .sidebar-menu .sidebar-menu-inner .main-menu {
@@ -776,7 +772,6 @@ footer.main-footer.fixed {
   --bs-tooltip-color: var(--text-color-primary) !important;
   --bs-tooltip-bg: var(--module-bg-color) !important;
   backdrop-filter: blur(var(--module-blur-value));
-  -webkit-backdrop-filter: blur(var(--module-blur-value));
 }
 .label.label-info {
   background-color: var(--label-info-bg);
@@ -1166,7 +1161,6 @@ input[type="range"].control-slider::-moz-range-thumb {
     background-color: var(--module-bg-color) !important;
     border: 1px solid var(--module-border-color) !important;
     backdrop-filter: blur(var(--module-blur-value)) !important;
-    -webkit-backdrop-filter: blur(var(--module-blur-value)) !important;
  }
 .iziToast-texts {
   max-width: 300px !important;
