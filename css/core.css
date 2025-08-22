@@ -285,46 +285,6 @@ ul {
 .sidebar-menu .main-menu ul li {
   position: relative;
 }
-@media (min-width: 768px) {
-  .sidebar-menu .main-menu ul li.is-hidden {
-    left: -20px;
-    opacity: 0;
-  }
-}
-.sidebar-menu .main-menu ul li.is-shown {
-  left: 0;
-  opacity: 1;
-  transition: all 200ms ease-in-out;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown {
-  transition-delay: 80ms;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown + .is-shown {
-  transition-delay: 120ms;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown + .is-shown + .is-shown {
-  transition-delay: 160ms;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown + .is-shown + .is-shown + .is-shown {
-  transition-delay: 200ms;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown {
-  transition-delay: 240ms;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown {
-  transition-delay: 280ms;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown {
-  transition-delay: 320ms;
-}
-.sidebar-menu .main-menu ul li.is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown + .is-shown {
-  transition-delay: 360ms;
-}
-.sidebar-menu .main-menu ul li.hidden-item {
-  visibility: hidden;
-  opacity: 0;
-  transition: all 250ms ease-in-out;
-}
 .sidebar-menu .main-menu ul li a {
   padding-left: 35px;
 }
@@ -424,6 +384,12 @@ span.time-text {
   }
   .sidebar-menu.collapsed .main-menu > li > ul {
     position: absolute;
+    display: block !important;
+    visibility: hidden; /* 默认隐藏 */
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: all 0.25s ease-out;
+    pointer-events: none; /* 隐藏时不可交互 */
     width: 100px;
     top: 0;
     left: 100%;
@@ -443,7 +409,10 @@ span.time-text {
     margin-right: 10px;
   }
   .sidebar-menu.collapsed .main-menu > li:hover > ul {
-    display: block !important;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
   }
   .sidebar-menu.collapsed .timeshow {
     display: none;

@@ -486,119 +486,97 @@ function setupSidebarMenu() {
     const { $sidebarMenu } = public_vars;
     if (!$sidebarMenu) return;
 
-    const sm_d = 0.2; // 动画持续时间 (秒)
-    const sm_t_d = 150; // 动画延迟 (毫秒)
     const toggleOthers = $sidebarMenu.classList.contains('toggle-others');
-
-    // 找到所有包含子菜单的 `li` 元素
     const itemsWithSubmenu = Array.from($sidebarMenu.querySelectorAll('li')).filter(li => li.querySelector(':scope > ul'));
 
-    itemsWithSubmenu.forEach(li => {
-        li.classList.add('has-sub');
-        if (li.classList.contains('active')) {
-            li.classList.add('expanded');
-        }
-
-        const anchor = li.querySelector(':scope > a');
-        const submenu = li.querySelector(':scope > ul');
-
-        if (anchor && submenu) {
-            anchor.addEventListener('click', e => {
-                e.preventDefault();
-                if (toggleOthers) {
-                    // 关闭同级的其他已打开菜单
-                    const siblings = Array.from(li.parentElement.children).filter(child => child !== li && child.classList.contains('has-sub'));
-                    siblings.forEach(siblingLi => {
-                        if (siblingLi.classList.contains('expanded') || siblingLi.classList.contains('opened')) {
-                            const siblingSubmenu = siblingLi.querySelector(':scope > ul');
-                            if (siblingSubmenu) sidebar_menu_item_collapse(siblingLi, siblingSubmenu);
-                        }
-                    });
-                }
-                // 切换当前点击的菜单
-                if (li.classList.contains('expanded') || li.classList.contains('opened')) {
-                    sidebar_menu_item_collapse(li, submenu);
-                } else {
-                    sidebar_menu_item_expand(li, submenu);
-                }
-            });
-        }
-    });
-
-    function sidebar_menu_item_expand(li, s) {
-        if (li.dataset.isBusy === 'true' || (li.parentElement.classList.contains('main-menu') && $sidebarMenu.classList.contains('collapsed'))) return;
-        
-        li.classList.add('expanded');
+    //  GSAP 动画函数
+    function sidebar_menu_item_expand(li, submenu) {
+        if (li.dataset.isBusy === 'true') return;
         li.dataset.isBusy = 'true';
-        s.style.display = 'block';
+        li.classList.add('expanded');
 
-        const submenuItems = Array.from(s.children);
-        const height = s.scrollHeight;
+        // 动画开始前，强制用 JS 设置 display: block，覆盖 CSS 的 display: none
+        submenu.style.display = 'block';
 
-        submenuItems.forEach(item => item.classList.add('is-hidden'));
-        s.style.height = '0px';
-
-        gsap.to(s, {
-            duration: sm_d,
-            height: height,
+        const submenuItems = Array.from(submenu.children);
+        const tl = gsap.timeline({
             onComplete: () => {
-                s.style.height = ''; // 移除固定高度
+                gsap.set(submenu, { height: 'auto', overflow: 'visible' });
+                li.dataset.isBusy = 'false';
+            }
+        });
+        
+        const height = submenu.scrollHeight;
+
+        tl.from(submenu, { height: 0, autoAlpha: 1, duration: 0.3, ease: 'power2.out' });
+        tl.from(submenuItems, {
+            autoAlpha: 0,
+            x: -15,
+            duration: 0.2,
+            ease: 'power2.out',
+            stagger: 0.05
+        }, "-=0.25");
+    }
+
+    function sidebar_menu_item_collapse(li, submenu) {
+        if (li.dataset.isBusy === 'true') return;
+        li.dataset.isBusy = 'true';
+        li.classList.remove('expanded');
+
+        const submenuItems = Array.from(submenu.children);
+        const tl = gsap.timeline({
+            onComplete: () => {
+                // 动画结束后, 彻底清除所有 GSAP 添加的行内样式
+                gsap.set([submenu, ...submenuItems], { clearProps: "all" });
+                
+                // 同时移除旧 class 和 busy 状态
+                li.classList.remove('opened'); 
+                li.dataset.isBusy = 'false';
             }
         });
 
-        clearTimeout(li.dataset.s1);
-        clearTimeout(li.dataset.s2);
-
-        const timer1 = setTimeout(() => {
-            submenuItems.forEach(el => el.classList.add('is-shown'));
-            
-            const firstItem = submenuItems[0];
-            const lastItem = submenuItems[submenuItems.length - 1];
-            
-            const transitionDuration = firstItem ? parseFloat(window.getComputedStyle(firstItem).transitionDuration) || 0 : 0;
-            const transitionDelay = lastItem ? parseFloat(window.getComputedStyle(lastItem).transitionDelay) || 0 : 0;
-            const totalTime = (transitionDuration + transitionDelay) * 1000 || sm_t_d * submenuItems.length;
-
-            const timer2 = setTimeout(() => {
-                submenuItems.forEach(el => el.classList.remove('is-hidden', 'is-shown'));
-                li.dataset.isBusy = 'false';
-            }, totalTime);
-            
-            li.dataset.s2 = timer2;
-        }, 0);
-        li.dataset.s1 = timer1;
+        tl.to(submenuItems, {
+            autoAlpha: 0,
+            x: -10,
+            duration: 0.15,
+            ease: 'power2.in',
+            stagger: 0.03
+        });
+        tl.to(submenu, {
+            height: 0,
+            autoAlpha: 1, // 保持 alpha 为 1，只折叠高度
+            duration: 0.25,
+            ease: 'power2.in'
+        }, "-=0.2");
     }
 
-    function sidebar_menu_item_collapse(li, s) {
-        if (li.dataset.isBusy === 'true') return;
+    //  初始化和事件绑定
+    itemsWithSubmenu.forEach(li => {
+        const link = li.querySelector(':scope > a');
+        const submenu = li.querySelector(':scope > ul');
         
-        const submenuItems = Array.from(s.children);
-        li.classList.remove('expanded');
-        li.dataset.isBusy = 'true';
-        submenuItems.forEach(item => item.classList.add('hidden-item'));
+        li.classList.add('has-sub');
 
-        gsap.to(s, {
-            duration: sm_d,
-            height: 0,
-            onComplete: () => {
-                li.dataset.isBusy = 'false';
-                li.classList.remove('opened');
-                s.removeAttribute('style');
-                s.style.display = 'none';
-                submenuItems.forEach(item => item.classList.remove('hidden-item'));
-                
-                // 折叠所有子孙菜单
-                li.querySelectorAll('li.expanded').forEach(expandedLi => {
-                    const innerSubmenu = expandedLi.querySelector(':scope > ul');
-                    if(innerSubmenu) {
-                        innerSubmenu.removeAttribute('style');
-                        innerSubmenu.style.display = 'none';
-                        expandedLi.classList.remove('expanded');
-                    }
+        link.addEventListener('click', e => {
+            if ($sidebarMenu.classList.contains('collapsed')) return;
+            
+            e.preventDefault();
+
+            if (toggleOthers) {
+                const siblings = Array.from(li.parentElement.children).filter(child => child !== li && child.classList.contains('expanded'));
+                siblings.forEach(sibling => {
+                    const siblingSubmenu = sibling.querySelector(':scope > ul');
+                    if (siblingSubmenu) sidebar_menu_item_collapse(sibling, siblingSubmenu);
                 });
             }
+
+            if (li.classList.contains('expanded')) {
+                sidebar_menu_item_collapse(li, submenu);
+            } else {
+                sidebar_menu_item_expand(li, submenu);
+            }
         });
-    }
+    });
 }
 
 // --- 侧边栏各种切换按钮 ---
