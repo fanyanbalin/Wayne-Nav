@@ -151,7 +151,7 @@ function renderContent() {
                     } catch (e) { /* 忽略无效URL */ }
                     return `
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
-                            <div class="w-widget box2" onclick="window.open('${item.url}', '_blank')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${item.url}">
+                            <div class="w-widget box2" data-url="${item.url}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${item.url}">
                                 <div class="w-comment-entry">
                                     <a><img data-src="${faviconUrl}" class="lozad img-circle" onerror="this.onerror=null;this.src='images/browser.svg';"></a>
                                     <div class="w-comment">
@@ -314,6 +314,19 @@ function initializePageFunctions() {
     setupBgImageFallback();
     setupAppearanceSettings();
     setupFooterInfo();
+
+    const contentContainer = document.getElementById('dynamic-content-container');
+    if (contentContainer) {
+        contentContainer.addEventListener('click', function(e) {
+            // 使用.closest()方法来查找被点击元素或其父元素是否匹配.w-widget.box2
+            const widget = e.target.closest('.w-widget.box2');
+            
+            // 如果找到了匹配的 widget 并且它有 data-url 属性，就打开这个 URL
+            if (widget && widget.dataset.url) {
+                window.open(widget.dataset.url, '_blank');
+            }
+        });
+    }
 }
 
 // --- 返回顶部 ---
