@@ -1,8 +1,7 @@
-// 全局变量，用于侧边栏等功能
+// 全局变量
 const public_vars = {
     // 将在 DOM 加载后填充
     $body: null,
-    $pageContainer: null,
     $sidebarMenu: null,
     $mainMenu: null,
     $mainContent: null,
@@ -17,9 +16,7 @@ const public_vars = {
     lastBreakpoint: null
 };
 
-// ===================================================================
 // 主执行函数：等待 DOM 加载完毕后运行所有逻辑
-// ===================================================================
 document.addEventListener('DOMContentLoaded', function () {
 
     // --- 1. 动态内容渲染 ---
@@ -30,10 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-// ===================================================================
 // 模块一: 内容渲染函数
-// ===================================================================
 function renderContent() {
     fetch('js/data.json')
         .then(response => {
@@ -290,16 +284,12 @@ function renderContent() {
     }
 }
 
-
-// ===================================================================
 // 模块二: 页面交互功能
-// ===================================================================
 function initializePageFunctions() {
 
     // --- 缓存常用 DOM 元素到 public_vars ---
     Object.assign(public_vars, {
         $body: document.body,
-        $pageContainer: document.querySelector(".page-container"),
         $sidebarMenu: document.querySelector('.sidebar-menu'),
         $mainMenu: document.querySelector('.main-menu'),
         $mainContent: document.querySelector('.main-content'),
@@ -594,7 +584,7 @@ function setupSidebarMenu() {
 
 // --- 侧边栏各种切换按钮 ---
 function setupSidebarToggles() {
-    const { $sidebarMenu, $mainMenu, $pageContainer, $userInfoMenu } = public_vars;
+    const { $body, $sidebarMenu, $mainMenu, $userInfoMenu } = public_vars;
 
     document.querySelectorAll('a[data-toggle="sidebar"]').forEach(el => {
         el.addEventListener('click', e => {
@@ -608,7 +598,7 @@ function setupSidebarToggles() {
             e.preventDefault();
             if ($mainMenu) $mainMenu.classList.toggle('mobile-is-visible');
             if ($sidebarMenu) $sidebarMenu.classList.toggle('mobile-is-visible');
-            if ($pageContainer) $pageContainer.classList.toggle('mobile-is-visible');
+            if ($body) $body.classList.toggle('mobile-is-visible');
         });
     });
 
@@ -671,7 +661,7 @@ function setupSidebarToggles() {
 
             if ($mainMenu) $mainMenu.classList.remove("mobile-is-visible");
             if ($sidebarMenu) $sidebarMenu.classList.remove("mobile-is-visible");
-            if ($pageContainer) $pageContainer.classList.remove("mobile-is-visible");
+            if ($body) $body.classList.remove("mobile-is-visible");
 
             window.scrollTo({ top: offsetTop, behavior: "smooth" });
         });

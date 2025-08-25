@@ -123,6 +123,9 @@ body::before {
   z-index: -1;
   transition: background-color 0.3s ease;
 }
+body.mobile-is-visible {
+  overflow: hidden;
+}
 @media (max-width: 767.98px) {
   body {
     background-image: url(https://api.dujin.org/bing/m.php);
@@ -525,9 +528,6 @@ footer.main-footer.fixed {
   .page-container {
     display: block;
     position: relative;
-  }
-  .page-container.mobile-is-visible {
-    overflow: hidden;
   }
   .page-container .sidebar-menu,
   .page-container .main-content {
