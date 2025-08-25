@@ -855,5 +855,5 @@ function setupFooterInfo() {
 
     // 控制台输出
     console.clear();
-    console.log(`%cWayneのNav %c\n==============================\n#   #    #   #   # #   # #####\n#   #   # #   # #  ##  # #\n# # #  #####   #   # # # #####\n## ##  #   #   #   #  ## #\n#   #  #   #   #   #   # #####\n==============================\n %c\n版 本 号：v7.0.0\n更新日期：2025-08-11\n\nWayneのNav: https://nav.3301.qzz.io/\nGithub:  https://github.com/Waynenet/Wayne-Nav\n`, `font-size: 20px; font-weight: 600; color: rgb(244,167,89);`, `font-size: 16px; color: rgb(244,167,89);`, `color: rgb(30,152,255);`);
+    console.log(`%cWayneのNav %c\n==============================\n#   #    #   #   # #   # #####\n#   #   # #   # #  ##  # #\n# # #  #####   #   # # # #####\n## ##  #   #   #   #  ## #\n#   #  #   #   #   #   # #####\n==============================\n %c\n版 本 号：v7.1.0\n更新日期：2025-08-25\n\nWayneのNav: https://nav.3301.qzz.io/\nGithub:  https://github.com/Waynenet/Wayne-Nav\n`, `font-size: 20px; font-weight: 600; color: rgb(244,167,89);`, `font-size: 16px; color: rgb(244,167,89);`, `color: rgb(30,152,255);`);
 }
