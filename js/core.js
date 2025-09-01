@@ -115,12 +115,12 @@ function renderContent() {
         );
     
         const fullSearchHTML = `
-            <div class="search-bar" id="search-bar">
+            <div class="search-bar glass-effect bcorder" id="search-bar">
                 <div class="selected-engine" id="selected-engine"></div>
                 <input type="text" id="search-text" autocomplete="off">
                 <button type="submit"><i class="ti ti-search"></i></button>
             </div>
-            <div class="search-options-panel" id="search-options-panel">
+            <div class="search-options-panel glass-effect bcorder" id="search-options-panel">
                 <div class="search-categories">${categoriesHTML}</div>
                 <div class="search-providers">${providersHTML}</div>
             </div>
@@ -145,7 +145,7 @@ function renderContent() {
                     } catch (e) { /* 忽略无效URL */ }
                     return `
                         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2w col-xxl-2">
-                            <div class="w-widget box2" data-url="${item.url}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${item.url}">
+                            <div class="w-widget box2 glass-effect bcorder" data-url="${item.url}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${item.url}">
                                 <div class="w-comment-entry">
                                     <a><img data-src="${faviconUrl}" class="lozad img-circle" onerror="this.onerror=null;this.src='images/browser.svg';"></a>
                                     <div class="w-comment">

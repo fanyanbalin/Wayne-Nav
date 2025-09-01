@@ -203,17 +203,14 @@ ul {
 }
 
 /* --- 通用玻璃模块样式 --- */
-.box2, .panel, .suspension_box,
-.control-slider-panel, .suspension-panel,
-.post-reward .reward-main .reward-all,
-.sidebar-menu .sidebar-menu-inner,
-.search-bar, .search-options-panel,
-.page-container .sidebar-menu.mobile-is-visible,
-.page-container .main-content .navbar.user-info-navbar.mobile-is-visible {
+.glass-effect {
     background-color: var(--module-bg-color);
-    border: 1px solid var(--module-border-color);
     backdrop-filter: blur(var(--module-blur-value));
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+.bcorder {
+    border: 1px solid var(--module-border-color);
+    transition: border-color 0.3s ease;
 }
 
 .box2:hover {
@@ -543,6 +540,9 @@ footer.main-footer.fixed {
   .page-container .sidebar-menu.mobile-is-visible {
     height: 100%;
     overflow-y: auto;
+    background-color: var(--module-bg-color);
+    backdrop-filter: blur(var(--module-blur-value));
+    transition: background-color 0.3s ease;
   }
   .night .page-container .sidebar-menu .sidebar-menu-inner,
   .night .page-container .sidebar-menu.mobile-is-visible,
@@ -554,7 +554,6 @@ footer.main-footer.fixed {
   }
   .page-container .sidebar-menu .sidebar-menu-inner.bgchange {
     background-color: transparent !important;
-    border: 1px solid transparent !important;
     backdrop-filter: blur(0) !important;
   }
   .page-container .sidebar-menu .sidebar-menu-inner .logo-env,
@@ -628,6 +627,9 @@ footer.main-footer.fixed {
     margin-top: 27px;
     width: 100%;
     z-index: 99;
+    background-color: var(--module-bg-color);
+    backdrop-filter: blur(var(--module-blur-value));
+    transition: background-color 0.3s ease;
   }
   .page-container .main-content .navbar.user-info-navbar .user-info-menu > li {
     min-height: 0 !important;
