@@ -128,12 +128,14 @@
             { "title": "大师兄影视", "url": "https://dsxys.com/", "description": "在线观看,蓝光电影,搞笑视频,美剧,韩剧,超前点播,免费视频" },
             { "title": "555电影", "url": "https://55p8l4.com/", "description": "免费VIP资源在线观看，每天专业更新热火电影电视剧" },
             { "title": "低端影视", "url": "https://ddys.site/", "description": "超清在线视频" },
+            { "title": "3Q影视", "url": "https://qqqys.com/", "description": "专注于影视、综艺、动漫内容的在线资源平台，无需登录即可观看" },
             { "title": "NO视频", "url": "https://www.novipnoad.com/", "description": "为用户提供及时的海外热门剧集在线观看，友好无广告，致力于最轻松的追剧体验" },
             { "title": "Auete影视", "url": "https://auete.com/", "description": "超清精品影视在线" },
             { "title": "去看吧", "url": "https://www.qkan8.com/", "description": "看吧动漫,无删减,bl动漫,耽美吧,耽美在线,k8動漫_好看的耽美動漫" },
             { "title": "bangumi", "url": "https://bangumi.online/", "description": "アニメ新番組 - 次世代新番站" },
             { "title": "奈菲影视", "url": "https://www.nfyingshi.com/", "description": "专为中国用户提供全球流媒体播放网站" },
             { "title": "遇见小馒头", "url": "https://mov.5ixmt.com/", "description": "免费短视频分享大全 - 大中国" },
+            { "title": "相声随身听", "url": "https://www.xsmp3.com/", "description": "在线听相声，可下载mp3格式" },
             { "title": "Radiocast", "url": "https://radiocast.co/", "description": "世界电台网站。该网站以三维地球为核心交互界面，用户可以通过旋转地球来探索世界各地的电台。Radiocast 整合了超过 7000 个第三方公共广播流，覆盖全球各地电台。" }
           ]
         },
@@ -272,6 +274,7 @@
             { "title": "格式转换", "url": "https://www.alltoall.net/", "description": "在线版PDF转换器转换，其他格式转换" },
             { "title": "PDF转其他格式", "url": "https://easypdf.com/", "description": "From PDF to Easy The Online PDF Converter Made for Everyone" },
             { "title": "格式转换", "url": "https://www.aconvert.com/cn/", "description": "文档音频格式转换" },
+            { "title": "Speedpdf", "url": "https://www.speedpdf.cn/", "description": "提供免费PDF转换器、编辑器、阅读器、下载、分享的服务平台！" },
             { "title": "Convertio", "url": "https://convertio.co/zh/mp4-ogv/", "description": "视频格式转换" },
             { "title": "视频格式转换", "url": "https://convert-video-online.com/cn/", "description": "视频格式转换" },
             { "title": "多功能PDF转换器", "url": "http://www.pdfdo.com/", "description": "集成数十种PDF操作， PDF转换/解密/页面处理/内容编辑" },
@@ -290,6 +293,7 @@
             { "title": "城通网盘解析器", "url": "https://ctfile.qinlili.bid/", "description": "城通网盘在线解析器，获取直连" },
             { "title": "小马短连接生成器", "url": "https://xiaomark.com/", "description": "小码短链接生成器,短连接生成,永久短链接生成,转换短链接工具,短网址压缩生成" },
             { "title": "草料二维码", "url": "https://cli.im/", "description": "二维码生成器" },
+            { "title": "纸由我", "url": "https://paperme.toolooz.com/", "description": "一个纸张模板网站" },
             { "title": "智能证件照", "url": "https://id.zhengzhaopai.com/", "description": "免费提供证件照一站式服务" }
           ]
         },
@@ -438,7 +442,8 @@
             { "title": "fontawesome", "url": "https://fontawesome.com/", "description": "图标库" },
             { "title": "tabler-icons", "url": "https://tabler-icons.io/", "description": "图标库" },
             { "title": "IconPark", "url": "https://iconpark.oceanengine.com/", "description": "图标库" },
-            { "title": "ColorGG", "url": "https://www.colorgg.com/", "description": "提供有关颜色信息，颜色搭配，颜色代码查询以及各种颜色空间转换" }
+            { "title": "ColorGG", "url": "https://www.colorgg.com/", "description": "提供有关颜色信息，颜色搭配，颜色代码查询以及各种颜色空间转换" },
+            { "title": "儿童睡前故事", "url": "https://beddystories.com/", "description": "收录十几个国家的睡前故事" }
           ]
         },
         {
