@@ -441,7 +441,7 @@ function setupStarfield() {
                 this.x = randomRange(0, width); this.y = randomRange(0, height); this.size = randomRange(1.1, 2.6);
                 this.dx = randomRange(0.05, 0.3) + (this.isComet ? randomRange(2.5, 6) : 0.05);
                 this.dy = -randomRange(0.05, 0.3) - (this.isComet ? randomRange(2.5, 6) : 0.05);
-                this.opacity = 0; this.opacityTarget = randomRange(0.6, this.isComet ? 0.8 : 1);
+                this.opacity = 0; this.opacityTarget = randomRange(0.2, this.isComet ? 0.6 : 1);
                 this.fadeSpeed = randomRange(0.0005, 0.002) + (this.isComet ? 0.001 : 0);
                 this.fadingIn = true; this.fadingOut = false;
             }
@@ -450,18 +450,41 @@ function setupStarfield() {
             move() { this.x += this.dx; this.y += this.dy; if (!this.fadingOut && (this.x > width - width / 4 || this.y < 0)) this.fadingOut = true; }
             draw() {
                 ctx.beginPath();
-                if (this.isGiant) { ctx.fillStyle = `rgba(${COLORS.giant},${this.opacity})`; ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI); }
+                if (this.isGiant) {
+                    ctx.fillStyle = `rgba(${COLORS.giant},${this.opacity})`;
+                    ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+                } 
                 else if (this.isComet) {
-                    ctx.fillStyle = `rgba(${COLORS.comet},${this.opacity})`; ctx.arc(this.x, this.y, 1.5, 0, 2 * Math.PI);
-                    for (let i = 0; i < 30; i++) { ctx.fillStyle = `rgba(${COLORS.comet},${this.opacity - this.opacity / 20 * i})`; ctx.fillRect(this.x - this.dx / 4 * i, this.y - this.dy / 4 * i - 2, 2, 2); }
-                } else { ctx.fillStyle = `rgba(${COLORS.star},${this.opacity})`; ctx.fillRect(this.x, this.y, this.size, this.size); }
-                ctx.closePath(); ctx.fill();
+                    ctx.fillStyle = `rgba(${COLORS.comet},${this.opacity})`;
+                    ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+                
+                    for (let i = 0; i < 30; i++) {
+                        const trailOpacity = this.opacity - (this.opacity / 20 * i);
+                        if (trailOpacity <= 0) { break; }
+
+                        ctx.fillStyle = `rgba(${COLORS.comet},${trailOpacity})`;
+                    
+                        const x = this.x - this.dx / 4 * i;
+                        const y = this.y - this.dy / 4 * i;
+                    
+                        ctx.rect(x, y - 2, 2, 2);
+                    
+                        ctx.fill();
+                    }
+                    return;
+                }
+                else {
+                    ctx.fillStyle = `rgba(${COLORS.star},${this.opacity})`;
+                    ctx.fillRect(this.x, this.y, this.size, this.size);
+                }
+                ctx.closePath();
+                ctx.fill();
             }
         }
         function randomChance(p) { return Math.random() * 1000 < p * 10; }
         function randomRange(min, max) { return Math.random() * (max - min) + min; }
         function resizeCanvas() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
-        function update() { ctx.clearRect(0, 0, width, height); for (let s of starsArr) { s.move(); s.fadeIn(); s.fadeOut(); s.draw(); } requestAnimationFrame(update); }
+        function update() { ctx.clearRect(0, 0, width, height); ctx.globalCompositeOperation = "lighter"; for (let s of starsArr) { s.move(); s.fadeIn(); s.fadeOut(); s.draw(); } requestAnimationFrame(update); }
         function init() { resizeCanvas(); starsArr = Array.from({ length: STAR_COUNT }, () => new Star()); update(); setTimeout(() => initialBurst = false, 50); }
         window.addEventListener("resize", resizeCanvas);
         init();
