@@ -2,11 +2,11 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - master
 
 jobs:
-  release:
+  check_and_release:
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -17,8 +17,63 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 获取最新提交信息
+        id: last_commit
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          echo "commit_message=$(echo "$COMMIT_MESSAGE" | sed 's/"/\\"/g')" >> $GITHUB_OUTPUT # 确保多行或特殊字符处理
+
+      - name: 检查是否为发布提交并提取版本号
+        id: version_check
+        run: |
+          COMMIT_MESSAGE="${{ steps.last_commit.outputs.commit_message }}"
+          
+          if [[ "$COMMIT_MESSAGE" =~ [Rr]elease[[:space:]]+v([0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z-]+)*) ]]; then
+            VERSION="${BASH_REMATCH[1]}"
+            TAG_NAME="v$VERSION"
+            echo "Found release commit. Version: $VERSION, Tag: $TAG_NAME"
+            echo "is_release=true" >> $GITHUB_OUTPUT
+            echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+          else
+            echo "Not a release commit. Skipping release process."
+            echo "is_release=false" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
+
+      - name: 如果不是发布提交，则停止工作流
+        if: steps.version_check.outputs.is_release == 'false'
+        run: |
+          echo "当前提交不符合发布条件，工作流终止。"
+          exit 0 # 终止后续步骤
+
+      - name: 创建新的Git Tag
+        id: create_tag
+        if: steps.version_check.outputs.is_release == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tag_name = process.env.TAG_NAME;
+            try {
+              await github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `refs/tags/${tag_name}`,
+                sha: context.sha
+              });
+              console.log(`Tag ${tag_name} created successfully.`);
+            } catch (error) {
+              if (error.status === 422 && error.message.includes('Reference already exists')) {
+                console.log(`Tag ${tag_name} already exists, skipping creation.`);
+              } else {
+                throw error;
+              }
+            }
+        env:
+          TAG_NAME: ${{ steps.version_check.outputs.tag_name }}
+
       - name: 获取上一个tag
         id: previous_tag
+        if: steps.version_check.outputs.is_release == 'true'
         run: |
           # 获取所有tag并按时间排序(从旧到新)
           ALL_TAGS=$(git tag --sort=creatordate)
@@ -27,9 +82,7 @@ jobs:
           if [ $(echo "$ALL_TAGS" | wc -l) -le 1 ]; then
             echo "previous_tag=" >> $GITHUB_OUTPUT
           else
-            # 获取当前正在创建的tag
-            CURRENT_TAG=${GITHUB_REF##*/}
-            
+            CURRENT_TAG=${{ steps.version_check.outputs.tag_name }}
             # 找出当前tag在列表中的位置
             TAG_LIST=($ALL_TAGS)
             for i in "${!TAG_LIST[@]}"; do
@@ -49,12 +102,14 @@ jobs:
 
       - name: 生成分组更新日志
         id: changelog
+        if: steps.version_check.outputs.is_release == 'true'
         env:
           PREVIOUS_TAG: ${{ steps.previous_tag.outputs.previous_tag }}
+          CURRENT_TAG_FOR_CHANGELOG: ${{ steps.version_check.outputs.tag_name }}
         run: |
           set -e
           
-          CURRENT_TAG=${GITHUB_REF##*/}
+          CURRENT_TAG=${{ env.CURRENT_TAG_FOR_CHANGELOG }}
           DATE=$(date '+%Y-%m-%d')
           
           CHANGELOG="## 📜 更新日志 $CURRENT_TAG ($DATE)\n\n"
@@ -121,8 +176,9 @@ jobs:
 
       - name: 创建GitHub发布
         uses: softprops/action-gh-release@v2
+        if: steps.version_check.outputs.is_release == 'true'
         with:
-          tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
+          tag_name: ${{ steps.version_check.outputs.tag_name }}
+          name: Release ${{ steps.version_check.outputs.tag_name }}
           body: ${{ env.CHANGELOG }}
           make_latest: true
