@@ -112,8 +112,11 @@ jobs:
             COMMIT_RANGE="$PREVIOUS_TAG..HEAD"
           fi
           
-          # 获取提交列表，并排除掉包含 'release v' 的提交，--no-merges 也可以排除合并提交
-          COMMITS=$(git log --pretty=format:"%s (%h)" $COMMIT_RANGE --grep-invert="^release[[:space:]]*v" --no-merges || echo "")
+          # 先获取原始提交列表（不包含合并提交）
+          RAW_COMMITS=$(git log --pretty=format:"%s (%h)" $COMMIT_RANGE --no-merges || echo "")
+          
+          # 然后使用 grep -v 过滤掉 release 提交
+          COMMITS=$(echo "$RAW_COMMITS" | grep -viE "release[[:space:]]+v" || echo "")
           
           if [ -z "$COMMITS" ]; then
             CHANGELOG+="### 🎯 无显著变更\n\n"
