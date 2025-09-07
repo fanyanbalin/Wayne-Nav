@@ -103,13 +103,17 @@ jobs:
           
           CHANGELOG="## 📜 更新日志 $CURRENT_TAG ($DATE)\n\n"
           
+          COMMIT_RANGE=""
           if [ -z "$PREVIOUS_TAG" ]; then
             echo "首次发布，包含所有提交"
-            COMMITS=$(git log --pretty=format:"%s (%h)")
+            COMMIT_RANGE="HEAD"
           else
             echo "比较范围: $PREVIOUS_TAG..HEAD"
-            COMMITS=$(git log --pretty=format:"%s (%h)" "$PREVIOUS_TAG..HEAD" || echo "")
+            COMMIT_RANGE="$PREVIOUS_TAG..HEAD"
           fi
+          
+          # 获取提交列表，并排除掉包含 'release v' 的提交，--no-merges 也可以排除合并提交
+          COMMITS=$(git log --pretty=format:"%s (%h)" $COMMIT_RANGE --grep-invert="^release[[:space:]]*v" --no-merges || echo "")
           
           if [ -z "$COMMITS" ]; then
             CHANGELOG+="### 🎯 无显著变更\n\n"
