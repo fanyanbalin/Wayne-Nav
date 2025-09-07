@@ -46,7 +46,25 @@ jobs:
           echo "当前提交不符合发布条件，工作流终止。"
           exit 0
 
-      - name: 创建新的Git Tag
+      - name: 获取上一个Tag
+        id: previous_tag
+        if: steps.version_check.outputs.is_release == 'true'
+        run: |
+          ALL_TAGS=$(git tag --sort=creatordate)
+          
+          # 如果 ALL_TAGS 为空，表示没有历史标签
+          if [ -z "$ALL_TAGS" ]; then
+            echo "previous_tag=" >> $GITHUB_OUTPUT
+            echo "没有找到任何历史标签。"
+          else
+            # 获取 ALL_TAGS 列表中的最后一个标签作为上一个标签
+            PREV_TAG=$(echo "$ALL_TAGS" | tail -n 1)
+            echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
+            echo "找到上一个标签: $PREV_TAG"
+          fi
+        shell: bash
+
+      - name: 创建新的Tag
         id: create_tag
         if: steps.version_check.outputs.is_release == 'true'
         uses: actions/github-script@v7
@@ -70,42 +88,6 @@ jobs:
             }
         env:
           TAG_NAME: ${{ steps.version_check.outputs.tag_name }}
-
-      - name: 获取上一个tag
-        id: previous_tag
-        if: steps.version_check.outputs.is_release == 'true'
-        run: |
-          # 获取所有tag并按时间排序(从旧到新)
-          ALL_TAGS=$(git tag --sort=creatordate)
-          
-          # 输出调试信息，查看获取到的所有tag
-          echo "所有本地标签:"
-          echo "$ALL_TAGS"
-          
-          # 获取当前正在创建的tag
-          CURRENT_TAG=${{ steps.version_check.outputs.tag_name }}
-          echo "当前标签: $CURRENT_TAG"
-          
-          # 如果没有tag或只有一个tag则设为空
-          if [ $(echo "$ALL_TAGS" | wc -l) -le 1 ]; then
-            echo "previous_tag=" >> $GITHUB_OUTPUT
-          else
-            # 找出当前tag在列表中的位置
-            TAG_LIST=($ALL_TAGS)
-            for i in "${!TAG_LIST[@]}"; do
-              if [[ "${TAG_LIST[$i]}" == "$CURRENT_TAG" ]]; then
-                # 如果是第一个tag则没有上一个tag
-                if [ $i -eq 0 ]; then
-                  echo "previous_tag=" >> $GITHUB_OUTPUT
-                else
-                  # 否则取前一个tag
-                  PREV_TAG="${TAG_LIST[$i-1]}"
-                  echo "previous_tag=$PREV_TAG" >> $GITHUB_OUTPUT
-                fi
-                break
-              fi
-            done
-          fi
 
       - name: 生成分组更新日志
         id: changelog
