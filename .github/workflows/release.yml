@@ -12,22 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 检出代码
+      - name: 检出代码并拉取所有标签
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: true
 
       - name: 获取最新提交信息
         id: last_commit
         run: |
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-          echo "commit_message=$(echo "$COMMIT_MESSAGE" | sed 's/"/\\"/g')" >> $GITHUB_OUTPUT # 确保多行或特殊字符处理
+          echo "commit_message=$(echo "$COMMIT_MESSAGE" | sed 's/"/\\"/g')" >> $GITHUB_OUTPUT
 
       - name: 检查是否为发布提交并提取版本号
         id: version_check
         run: |
           COMMIT_MESSAGE="${{ steps.last_commit.outputs.commit_message }}"
-          
           if [[ "$COMMIT_MESSAGE" =~ [Rr]elease[[:space:]]+v([0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z-]+)*) ]]; then
             VERSION="${BASH_REMATCH[1]}"
             TAG_NAME="v$VERSION"
@@ -44,7 +44,7 @@ jobs:
         if: steps.version_check.outputs.is_release == 'false'
         run: |
           echo "当前提交不符合发布条件，工作流终止。"
-          exit 0 # 终止后续步骤
+          exit 0
 
       - name: 创建新的Git Tag
         id: create_tag
@@ -78,11 +78,18 @@ jobs:
           # 获取所有tag并按时间排序(从旧到新)
           ALL_TAGS=$(git tag --sort=creatordate)
           
+          # 输出调试信息，查看获取到的所有tag
+          echo "所有本地标签:"
+          echo "$ALL_TAGS"
+          
+          # 获取当前正在创建的tag
+          CURRENT_TAG=${{ steps.version_check.outputs.tag_name }}
+          echo "当前标签: $CURRENT_TAG"
+          
           # 如果没有tag或只有一个tag则设为空
           if [ $(echo "$ALL_TAGS" | wc -l) -le 1 ]; then
             echo "previous_tag=" >> $GITHUB_OUTPUT
           else
-            CURRENT_TAG=${{ steps.version_check.outputs.tag_name }}
             # 找出当前tag在列表中的位置
             TAG_LIST=($ALL_TAGS)
             for i in "${!TAG_LIST[@]}"; do
