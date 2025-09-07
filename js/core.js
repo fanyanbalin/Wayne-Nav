@@ -740,30 +740,97 @@ function setupAppearanceSettings() {
     const controls = {
         'overlay-slider': { variable: '--overlay-opacity', defaults: { light: 0.4, night: 0 }, unit: '' },
         'blur-slider': { variable: '--module-blur-value', defaults: { light: 12, night: 0 }, unit: 'px' },
-        'alpha-slider': { variable: '--module-bg-alpha', defaults: { light: 0.1, night: 0.15 }, unit: '' }
+        'alpha-slider': { variable: '--module-bg-alpha', defaults: { light: 0.1, night: 0.15 }, unit: '' },
+        'palette-main-color-picker': { 
+            variable: '--palette-main-rgb', 
+            defaults: { light: '255, 255, 255', night: '255, 255, 255' }, 
+            type: 'color' 
+        }
     };
+
+    // 辅助函数：将 HEX 颜色转换为 RGB 字符串
+    function hexToRgb(hex) {
+        let r = 0, g = 0, b = 0;
+        // 3 digits
+        if (hex.length == 4) {
+            r = parseInt(hex[1] + hex[1], 16);
+            g = parseInt(hex[2] + hex[2], 16);
+            b = parseInt(hex[3] + hex[3], 16);
+        }
+        // 6 digits
+        else if (hex.length == 7) {
+            r = parseInt(hex.substring(1, 3), 16);
+            g = parseInt(hex.substring(3, 5), 16);
+            b = parseInt(hex.substring(5, 7), 16);
+        }
+        return `${r}, ${g}, ${b}`;
+    }
+
+    // 辅助函数：将RGB字符串（例如 "255, 255, 255"）转换为HEX颜色
+    function rgbToHex(rgb) {
+        if (!rgb || typeof rgb !== 'string') return '#ffffff'; // 备用值改为白色
+        const parts = rgb.split(',').map(s => parseInt(s.trim(), 10));
+        if (parts.length !== 3 || parts.some(isNaN)) return '#ffffff'; // 备用值改为白色
+        return "#" + parts.map(x => {
+            const hex = x.toString(16);
+            return hex.length === 1 ? "0" + hex : hex;
+        }).join("");
+    }
 
     const getCurrentTheme = () => document.body.classList.contains('night') ? 'night' : 'light';
 
     const loadSettingsForTheme = () => {
         const theme = getCurrentTheme();
 
-        Object.values(controls).forEach(config => {
-            const slider = document.querySelector(`.control-slider[data-variable="${config.variable}"]`);
-            if (!slider) return;
+        Object.keys(controls).forEach(controlId => {
+            const config = controls[controlId];
+            const element = document.getElementById(controlId);
+            if (!element) return;
 
             const storageKey = `${config.variable}-${theme}`;
             const savedValue = localStorage.getItem(storageKey);
-            const defaultValue = config.defaults[theme];
+            
+            // 获取当前主题的默认值，如果没有则取light模式的默认值
+            const defaultValue = config.defaults.hasOwnProperty(theme) ? config.defaults[theme] : config.defaults.light;
 
-            const finalValue = savedValue !== null ? savedValue : defaultValue;
+            let finalValue = savedValue !== null ? savedValue : defaultValue;
+            
+            if (config.type === 'color') {
+                let rgbValue;
+                let hexForPicker;
 
-            docElem.style.setProperty(config.variable, finalValue + config.unit);
+                if (savedValue) {
+                    // 如果localStorage中保存了值
+                    if (savedValue.startsWith('#')) { // 保存的是HEX格式
+                        hexForPicker = savedValue;
+                        rgbValue = hexToRgb(savedValue);
+                    } else { // 保存的是RGB字符串格式（可能是旧格式或直接设置的）
+                        hexForPicker = rgbToHex(savedValue); // 将RGB字符串转换为HEX供颜色选择器使用
+                        rgbValue = savedValue; // RGB值直接使用
+                    }
+                } else { // 没有保存的值，使用默认值
+                    // 检查默认值是HEX还是RGB字符串
+                    if (defaultValue.startsWith('#')) { // 默认值是HEX格式
+                        hexForPicker = defaultValue;
+                        rgbValue = hexToRgb(defaultValue);
+                    } else { // 默认值是RGB字符串格式
+                        hexForPicker = rgbToHex(defaultValue); // 将RGB字符串转换为HEX供颜色选择器使用
+                        rgbValue = defaultValue; // RGB值直接使用
+                    }
+                }
+                
+                // 使用RGB值更新CSS变量
+                docElem.style.setProperty(config.variable, rgbValue);
+                // 使用HEX值更新颜色选择器的值
+                element.value = hexForPicker;
 
-            slider.value = finalValue;
-            if (slider.nextElementSibling) {
-                const precision = decimalSliders.includes(slider.id) ? 2 : 0;
-                slider.nextElementSibling.textContent = parseFloat(finalValue).toFixed(precision);
+            } else {
+                docElem.style.setProperty(config.variable, finalValue + (config.unit || ''));
+                element.value = finalValue;
+                if (element.nextElementSibling) {
+                    const precision = decimalSliders.includes(element.id) ? 2 : 0;
+                    element.nextElementSibling.textContent = parseFloat(finalValue).toFixed(precision);
+                }
             }
         });
     };
@@ -796,7 +863,7 @@ function setupAppearanceSettings() {
     document.querySelectorAll('.control-slider').forEach(slider => {
         slider.addEventListener('input', function () {
             const variable = this.dataset.variable;
-            const unit = this.dataset.unit;
+            const unit = this.dataset.unit || '';
             const value = this.value;
 
             docElem.style.setProperty(variable, value + unit);
@@ -811,6 +878,23 @@ function setupAppearanceSettings() {
         });
         slider.closest('.control-slider-panel').addEventListener('click', e => e.stopPropagation());
     });
+
+    // 处理调色盘输入事件
+    document.querySelectorAll('.color-picker').forEach(picker => {
+        picker.addEventListener('input', function() {
+            const variable = this.dataset.variable; // CSS 变量名
+            const hexValue = this.value; // 获取 HEX 格式的颜色值
+
+            const rgbValue = hexToRgb(hexValue); // 转换为 RGB 格式
+
+            docElem.style.setProperty(variable, rgbValue); // 更新 CSS 变量
+
+            const storageKey = `${variable}-${getCurrentTheme()}`;
+            localStorage.setItem(storageKey, hexValue); // 保存 HEX 值到 localStorage
+        });
+        picker.closest('.control-slider-panel').addEventListener('click', e => e.stopPropagation());
+    });
+
 
     document.addEventListener('click', function () {
         if (settingsContainer.classList.contains('open')) {
@@ -878,5 +962,28 @@ function setupFooterInfo() {
 
     // 控制台输出
     console.clear();
-    console.log(`%cWayneのNav %c\n==============================\n#   #    #   #   # #   # #####\n#   #   # #   # #  ##  # #\n# # #  #####   #   # # # #####\n## ##  #   #   #   #  ## #\n#   #  #   #   #   #   # #####\n==============================\n %c\n版 本 号：v7.1.3\n更新日期：2025-09-07\n\nWayneのNav: https://nav.3301.qzz.io/\nGithub:  https://github.com/Waynenet/Wayne-Nav\n`, `font-size: 20px; font-weight: 600; color: rgb(244,167,89);`, `font-size: 16px; color: rgb(244,167,89);`, `color: rgb(30,152,255);`);
+
+    const titleStyle = 'font-size: 20px; font-weight: 600; color: rgb(244, 167, 89);';
+    const logoStyle = 'font-size: 16px; color: rgb(244, 167, 89);';
+    const infoStyle = 'color: rgb(30, 152, 255);';
+
+    const logoText = `
+==============================
+#   #    #   #   # #   # #####
+#   #   # #   # #  ##  # #
+# # #  #####   #   # # # #####
+## ##  #   #   #   #  ## #
+#   #  #   #   #   #   # #####
+==============================
+`;
+
+    const infoText = `
+版 本 号：v7.1.3
+更新日期：2025-09-07
+
+WayneのNav: https://nav.3301.qzz.io/
+Github:  https://github.com/Waynenet/Wayne-Nav
+`;
+
+    console.log(`%cWayneのNav %c${logoText} %c${infoText}`, titleStyle, logoStyle, infoStyle);
 }

@@ -12,8 +12,6 @@
   --palette-accent-secondary: #a27fff;
   --palette-accent-interactive: #4f7cfc;
   --palette-brand-red: #e92843;
-  --palette-white-rgb: 255, 255, 255;
-  --palette-dark-rgb: 50, 50, 50;
   --palette-gray-1: #f0f0f0;
   --palette-gray-2: #d8d8d8;
   --palette-gray-3: #acacac;
@@ -21,14 +19,19 @@
   --palette-gray-dark: #5a5a5a;
   --palette-gradient: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
   --palette-transparent: transparent;
+  /* 变量默认值 日间模式 */
+  --palette-main-rgb: 255, 255, 255;
+  --module-bg-alpha: 0.1;
+  --overlay-opacity: 0.4;
+  --module-blur-value: 12px;
 
   /* --- 第二层: 语义化别名 (Semantic Aliases - 日间模式) --- */
   
   /* 玻璃效果与模块 */
-  --module-bg-rgb: var(--palette-white-rgb);
+  --module-bg-rgb: var(--palette-main-rgb);
   --module-bg-color: rgba(var(--module-bg-rgb), var(--module-bg-alpha));
   --module-bg-hover-color: rgba(var(--module-bg-rgb), calc(var(--module-bg-alpha) + 0.15));
-  --module-border-color: rgba(var(--palette-white-rgb), 0.2);
+  --module-border-color: rgba(var(--palette-main-rgb), 0.2);
   --collapsed-submenu-bg: rgba(20, 20, 20, 0.7);
 
   /* 文本与链接 */
@@ -37,8 +40,8 @@
   --text-color-secondary: var(--palette-gray-3);
   --text-color-footer: var(--palette-transparent); /* 日间模式页脚使用渐变，文字需透明 */
   --link-hover-color: #FF0500; /* 特殊高亮红色，保持独立 */
-  --search-placeholder-color: rgba(var(--palette-white-rgb), 0.6);
-  --search-text-color: rgb(var(--palette-white-rgb));
+  --search-placeholder-color: rgba(var(--palette-main-rgb), 0.6);
+  --search-text-color: rgb(var(--palette-main-rgb));
 
   /* 强调色与渐变 */
   --accent-color: var(--palette-accent-primary);
@@ -48,12 +51,12 @@
   /* 特定组件与状态 */
   --label-info-bg: var(--palette-gray-dark);
   --reward-button-bg: color-mix(in srgb, var(--palette-brand-red), transparent 22%); /* #e92843c7 */
-  --reward-button-hover-bg: rgba(var(--palette-white-rgb), 0.12); /* #ffffff1f */
+  --reward-button-hover-bg: rgba(var(--palette-main-rgb), 0.12); /* #ffffff1f */
   --reward-button-hover-color: var(--palette-brand-red);
   --reward-qr-text-color: var(--palette-brand-red);
   --menu-toggle-color: var(--palette-accent-interactive);
   --search-shadow-color: rgba(0, 0, 0, 0.1);
-  --search-tab-inactive-color: rgba(var(--palette-white-rgb), 0.5);
+  --search-tab-inactive-color: rgba(var(--palette-main-rgb), 0.5);
   --search-tab-active-bg: rgba(0, 0, 0, 0.2);
 }
 
@@ -61,12 +64,11 @@
   /* --- 第三层: 主题覆盖 (Theme Overrides - 夜间模式) --- */
 
   /* 玻璃效果与模块 */
-  --module-bg-rgb: var(--palette-dark-rgb);
-  --module-border-color: rgba(var(--palette-white-rgb), 0.1);
+  --module-border-color: rgba(var(--palette-main-rgb), 0.1);
   --collapsed-submenu-bg: rgba(35, 35, 35, 0.75);
 
   /* 文本与链接 */
-  --search-placeholder-color: rgba(var(--palette-white-rgb), 0.4);
+  --search-placeholder-color: rgba(var(--palette-main-rgb), 0.4);
   --search-text-color: #e0e0e0;
   --text-color-footer: var(--palette-gray-4); /* 夜间模式页脚使用纯色 */
   --reward-qr-text-color: var(--text-color-primary); /* 与链接颜色保持一致 */
@@ -82,7 +84,7 @@
   --reward-button-hover-bg: #464646a6;
   --reward-button-hover-color: var(--palette-brand-red);
   --search-shadow-color: rgba(0, 0, 0, 0.3);
-  --search-tab-inactive-color: rgba(var(--palette-white-rgb), 0.4);
+  --search-tab-inactive-color: rgba(var(--palette-main-rgb), 0.4);
   --search-tab-active-bg: rgba(0, 0, 0, 0.4);
 }
 
@@ -154,6 +156,10 @@ body.night #starfield {
   height: 100%;
   pointer-events: none;
   z-index: -1;
+}
+
+.night .overlay-main {
+    display: none;
 }
 
 a,
@@ -1154,12 +1160,46 @@ input[type="range"].control-slider::-moz-range-thumb {
   border: 2px solid white;
 }
 .slider-value {
-  min-width: 35px;
-  text-align: center;
-  margin-left: 10px;
+  min-width: 80px;
+  text-align: left;
+  margin-left: 5px;
   font-size: 14px;
   font-weight: bold;
   color: var(--text-color-primary);
+}
+
+/* 调色盘输入框样式 */
+input[type="color"].color-picker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40px; /* 调整宽度以适应布局 */
+  height: 25px; /* 调整高度 */
+  border: 1px solid var(--module-border-color); /* 边框与模块风格一致 */
+  border-radius: 5px; /* 圆角 */
+  background-color: transparent; /* 背景透明，显示其颜色值 */
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px; /* 与滑块值显示区保持距离 */
+  box-sizing: border-box; /* 边框和内边距包含在宽度内 */
+}
+
+input[type="color"].color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"].color-picker::-webkit-color-swatch {
+  border: none; /* 移除默认的边框 */
+  border-radius: 4px; /* 使内部色块略小于边框圆角 */
+}
+
+input[type="color"].color-picker::-moz-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"].color-picker::-moz-color-swatch {
+  border: none; /* 移除默认的边框 */
+  border-radius: 4px;
 }
 
 /* 暗色模式按钮 */

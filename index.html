@@ -204,7 +204,7 @@
                     <!-- 外观设置 -->
                     <li class="suspension-item" id="settings-container">
                         <ul class="settings-controls" id="settings-controls">
-                            <li class="suspension-item control-item">
+                            <li class="suspension-item control-item overlay-main">
                                 <div class="suspension_box glass-effect bcorder suspension_control" data-control="overlay">
                                     <i class="ti ti-droplet"></i>
                                 </div>
@@ -234,8 +234,16 @@
                                     <span class="slider-value">0.1</span>
                                 </div>
                             </li>
+                            <li class="suspension-item control-item">
+                                <div class="suspension_box glass-effect bcorder suspension_control" data-control="palette-main">
+                                    <i class="ti ti-palette"></i>
+                                </div>
+                                <div class="suspension-panel suspension-tooltip glass-effect bcorder">主题基色</div>
+                                <div class="suspension-panel control-slider-panel glass-effect bcorder" id="palette-main-panel">
+                                    <input type="color" id="palette-main-color-picker" class="color-picker" data-variable="--palette-main-rgb">
+                                </div>
+                            </li>
                         </ul>
-                        <!-- 主设置按钮 -->
                         <div class="suspension_box glass-effect bcorder suspension_settings_toggle" id="settings-toggle">
                             <i class="ti ti-settings"></i>
                         </div>
