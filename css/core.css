@@ -1160,9 +1160,9 @@ input[type="range"].control-slider::-moz-range-thumb {
   border: 2px solid white;
 }
 .slider-value {
-  min-width: 80px;
-  text-align: left;
-  margin-left: 5px;
+  min-width: 40px;
+  text-align: center;
+  margin-left: 10px;
   font-size: 14px;
   font-weight: bold;
   color: var(--text-color-primary);
@@ -1173,15 +1173,14 @@ input[type="color"].color-picker {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 40px; /* 调整宽度以适应布局 */
-  height: 25px; /* 调整高度 */
-  border: 1px solid var(--module-border-color); /* 边框与模块风格一致 */
-  border-radius: 5px; /* 圆角 */
-  background-color: transparent; /* 背景透明，显示其颜色值 */
+  width: 40px;
+  height: 25px;
+  border: 1px solid var(--module-border-color);
+  border-radius: 5px;
+  background-color: transparent;
   cursor: pointer;
   padding: 0;
-  margin-right: 10px; /* 与滑块值显示区保持距离 */
-  box-sizing: border-box; /* 边框和内边距包含在宽度内 */
+  box-sizing: border-box;
 }
 
 input[type="color"].color-picker::-webkit-color-swatch-wrapper {
@@ -1189,8 +1188,8 @@ input[type="color"].color-picker::-webkit-color-swatch-wrapper {
 }
 
 input[type="color"].color-picker::-webkit-color-swatch {
-  border: none; /* 移除默认的边框 */
-  border-radius: 4px; /* 使内部色块略小于边框圆角 */
+  border: none;
+  border-radius: 4px;
 }
 
 input[type="color"].color-picker::-moz-color-swatch-wrapper {
@@ -1198,7 +1197,7 @@ input[type="color"].color-picker::-moz-color-swatch-wrapper {
 }
 
 input[type="color"].color-picker::-moz-color-swatch {
-  border: none; /* 移除默认的边框 */
+  border: none;
   border-radius: 4px;
 }
 
