@@ -28,13 +28,18 @@
 ✅ 日月轮转     
 ✅ 星空背景        
 
+## 关于天气
+
+天气获取需要 `高德开放平台` 相关 API
+
+- 请前往 [高德开放平台](https://lbs.amap.com/) 创建一个 Web 服务 类型的 Key，并将 Key 填入 core.js 中的 A_MAP_KEY 中，每月有5000次的免费额度。
+
 ## 特别鸣谢
 
 - [WebStackPage](https://github.com/WebStackPage/WebStackPage.github.io)
 - [ChatGPT](https://chat.openai.com/)
 - [Google AI Studio](https://aistudio.google.com/)
 - [DeepSeek](https://www.deepseek.com/)
-- [韩小韩 WebAPI 接口站](https://api.vvhan.com/)
 - [今日诗词 API](https://www.jinrishici.com/)
 - [新逸Cary API](https://api.xinac.net/)
 - [缙哥哥博客 API](https://www.dujin.org/3618.html)

@@ -920,23 +920,59 @@ function setupAppearanceSettings() {
 
 // --- 天气、时间、脚注、控制台输出 ---
 function setupFooterInfo() {
-    // 天气
-    fetch('https://api.vvhan.com/api/weather')
-        .then(r => r.json())
-        .then(d => {
-            const wea_text = document.getElementById('wea_text');
-            const city_text = document.getElementById('city_text');
-            const tem_low = document.getElementById('tem_low');
-            const tem_high = document.getElementById('tem_high');
-            const win_text = document.getElementById('win_text');
-            const win_speed = document.getElementById('win_speed');
-            if (wea_text) wea_text.innerHTML = d.data.type;
-            if (city_text) city_text.innerHTML = d.city;
-            if (tem_low) tem_low.innerHTML = d.data.low;
-            if (tem_high) tem_high.innerHTML = d.data.high;
-            if (win_text) win_text.innerHTML = d.data.fengxiang;
-            if (win_speed) win_speed.innerHTML = d.data.fengli;
-        }).catch(console.error);
+    // --- 高德天气模块 ---
+    const A_MAP_KEY = 'b77924d833a905c383b440640c44f8a8'; // 请将这里替换为您自己的高德 API Key
+
+    // 获取所有需要操作的DOM元素
+    const weatherWidget = document.getElementById('weather-widget');
+    const cityText = document.getElementById('city_text');
+    const weaText = document.getElementById('wea_text');
+    const tempText = document.getElementById('temp_text');
+    const windText = document.getElementById('wind_text');
+
+    fetch(`https://restapi.amap.com/v3/ip?key=${A_MAP_KEY}`)
+        .then(response => {
+            if (!response.ok) throw new Error(`IP定位API网络错误: ${response.status}`);
+            return response.json();
+        })
+        .then(ipData => {
+            if (ipData.status !== '1') throw new Error(`IP定位API返回错误: ${ipData.info}`);
+            
+            const adcode = ipData.adcode;
+            if (!adcode) throw new Error('无法获取有效城市编码。');
+            
+            // 将城市信息和 adcode 一起传递给下一个 then
+            return fetch(`https://restapi.amap.com/v3/weather/weatherInfo?key=${A_MAP_KEY}&city=${adcode}&extensions=all`)
+                   .then(weatherResponse => weatherResponse.json())
+                   .then(weatherData => ({ ipData, weatherData })); // 将两个API的结果合并传递
+        })
+        .then(({ ipData, weatherData }) => { // 解构出两个结果
+            if (weatherData.status !== '1' || !weatherData.forecasts || weatherData.forecasts.length === 0) {
+                throw new Error(`天气API返回错误或无数据: ${weatherData.info}`);
+            }
+            
+            const todayForecast = weatherData.forecasts[0].casts[0];
+
+            if (cityText) cityText.textContent = ipData.city;
+            if (weaText) weaText.textContent = todayForecast.dayweather;
+            if (tempText) tempText.innerHTML = `${todayForecast.nighttemp}&deg;C~${todayForecast.daytemp}&deg;C`;
+            if (windText) windText.textContent = `${todayForecast.daywind}风 ${todayForecast.daypower}级`;
+
+            // 内容填充完毕后，触发淡入动画
+            if (weatherWidget) weatherWidget.classList.add('loaded');
+        })
+        .catch(error => {
+            console.error('获取高德天气失败:', error);
+            
+            if (weaText) weaText.textContent = '天气加载失败';
+            // 清空其他可能存在的占位符
+            if (cityText) cityText.textContent = '';
+            if (tempText) tempText.textContent = '';
+            if (windText) windText.textContent = '';
+            
+            // 触发淡入动画以显示错误信息
+            if (weatherWidget) weatherWidget.classList.add('loaded');
+        });
 
     // 时间
     let t = null;

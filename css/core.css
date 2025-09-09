@@ -744,6 +744,29 @@ footer.main-footer.fixed {
   background: var(--tag-bg);
 }
 
+/* 天气 */
+#weather-widget {
+    opacity: 0;
+    min-width: 220px;
+    text-align: right; /* 确保内容从右侧开始填充 */
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* 当JS加载完数据，模块平滑地淡入显示 */
+#weather-widget.loaded {
+    opacity: 1;
+}
+
+#city_text {
+    margin-right: 8px;
+}
+#weather-info-container > span {
+    margin-right: 6px;
+}
+#weather-info-container > span:last-child {
+    margin-right: 0;
+}
+
 .weather,
 .myinfo p {
   text-align: center;
