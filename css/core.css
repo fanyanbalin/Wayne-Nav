@@ -32,7 +32,6 @@
   --module-bg-color: rgba(var(--module-bg-rgb), var(--module-bg-alpha));
   --module-bg-hover-color: rgba(var(--module-bg-rgb), calc(var(--module-bg-alpha) + 0.15));
   --module-border-color: rgba(var(--palette-main-rgb), 0.2);
-  --collapsed-submenu-bg: rgba(20, 20, 20, 0.7);
 
   /* 文本与链接 */
   --text-primary: var(--palette-gray-1);
@@ -65,7 +64,6 @@
 
   /* 玻璃效果与模块 */
   --module-border-color: rgba(var(--palette-main-rgb), 0.1);
-  --collapsed-submenu-bg: rgba(35, 35, 35, 0.75);
 
   /* 文本与链接 */
   --search-placeholder-color: rgba(var(--palette-main-rgb), 0.4);
@@ -230,14 +228,13 @@ ul {
   width: 160px;
   z-index: 1;
   background: transparent;
-  border-right: 1px solid var(--module-border-color);
 }
 
 /* --- 通用玻璃模块样式 --- */
 .glass-effect {
     background-color: var(--module-bg-color);
     backdrop-filter: blur(var(--module-blur-value));
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 .bcorder {
     border: 1px solid var(--module-border-color);
@@ -251,11 +248,23 @@ ul {
 }
 
 .sidebar-menu .sidebar-menu-inner {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-
+.sidebar-menu .sidebar-menu-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+  background-color: var(--module-bg-color);
+  backdrop-filter: blur(var(--module-blur-value));
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
 .sidebar-menu .logo-env {
   padding: 18px 15px;
   border-bottom: 1px solid transparent;
@@ -414,22 +423,25 @@ span.time-text {
   }
   .sidebar-menu.collapsed .main-menu > li > ul {
     position: absolute;
-    display: block !important;
+    display: block;
     visibility: hidden; /* 默认隐藏 */
     opacity: 0;
     transform: translateX(-15px);
-    transition: all 0.25s ease-out;
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out, background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
     pointer-events: none; /* 隐藏时不可交互 */
     width: 100px;
     top: 0;
     left: 100%;
     text-align: center;
     border-radius: 12px;
-    background: var(--collapsed-submenu-bg);
+    background: var(--module-bg-color);
     backdrop-filter: blur(var(--module-blur-value));
     border: 1px solid var(--module-border-color);
     padding: 10px 0;
     box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
+  }
+  .night .sidebar-menu.collapsed .main-menu > li > ul {
+    backdrop-filter: blur(12px) !important;
   }
   .sidebar-menu.collapsed .main-menu > li > ul a {
     padding: 10px 0;
@@ -573,7 +585,7 @@ footer.main-footer.fixed {
     overflow-y: auto;
     background-color: var(--module-bg-color);
     backdrop-filter: blur(var(--module-blur-value));
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
   }
   .night .page-container .sidebar-menu .sidebar-menu-inner,
   .night .page-container .sidebar-menu.mobile-is-visible,
@@ -583,7 +595,7 @@ footer.main-footer.fixed {
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;
   }
-  .page-container .sidebar-menu .sidebar-menu-inner.bgchange {
+  .page-container .sidebar-menu .sidebar-menu-inner.bgchange::before {
     background-color: transparent !important;
     backdrop-filter: blur(0) !important;
   }
@@ -660,7 +672,7 @@ footer.main-footer.fixed {
     z-index: 99;
     background-color: var(--module-bg-color);
     backdrop-filter: blur(var(--module-blur-value));
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
   }
   .page-container .main-content .navbar.user-info-navbar .user-info-menu > li {
     min-height: 0 !important;
@@ -802,6 +814,7 @@ footer.main-footer.fixed {
   --bs-tooltip-color: var(--text-color-primary) !important;
   --bs-tooltip-bg: var(--module-bg-color) !important;
   backdrop-filter: blur(var(--module-blur-value));
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 .label.label-info {
   background-color: var(--label-info-bg);
@@ -936,6 +949,10 @@ footer.main-footer.fixed {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.night .search-options-panel {
+  backdrop-filter: blur(12px) !important;
+}
+
 .search-options-panel.active {
   opacity: 1;
   transform: translateY(0);
@@ -950,6 +967,7 @@ footer.main-footer.fixed {
   padding-bottom: 15px;
   border-bottom: 1px solid var(--module-border-color);
   margin-bottom: 15px;
+  transition: border-color 0.3s ease;
 }
 .search-categories .category-tab {
   padding: 6px 14px;
@@ -1176,6 +1194,7 @@ input[type="color"].color-picker {
   width: 40px;
   height: 25px;
   border: 1px solid var(--module-border-color);
+  transition: border-color 0.3s ease;
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
@@ -1220,11 +1239,12 @@ input[type="color"].color-picker::-moz-color-swatch {
   width: 0;
 }
 /*弹窗*/
- .iziToast {
-    background-color: var(--module-bg-color) !important;
-    border: 1px solid var(--module-border-color) !important;
-    backdrop-filter: blur(var(--module-blur-value)) !important;
- }
+.iziToast {
+   background-color: var(--module-bg-color) !important;
+   border: 1px solid var(--module-border-color) !important;
+   backdrop-filter: blur(var(--module-blur-value)) !important;
+   transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+}
 .iziToast-texts {
   max-width: 300px !important;
   min-width: 200px !important;
