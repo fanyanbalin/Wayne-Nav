@@ -823,6 +823,10 @@ function setupAppearanceSettings() {
                 docElem.style.setProperty(config.variable, rgbValue);
                 // 使用HEX值更新颜色选择器的值
                 element.value = hexForPicker;
+                // 同时更新旁边的文本显示
+                if (element.nextElementSibling) {
+                    element.nextElementSibling.textContent = hexForPicker.toUpperCase();
+                }
 
             } else {
                 docElem.style.setProperty(config.variable, finalValue + (config.unit || ''));
@@ -891,6 +895,10 @@ function setupAppearanceSettings() {
 
             const storageKey = `${variable}-${getCurrentTheme()}`;
             localStorage.setItem(storageKey, hexValue); // 保存 HEX 值到 localStorage
+            // 文本显示
+            if (this.nextElementSibling) {
+                this.nextElementSibling.textContent = hexValue.toUpperCase();
+            }
         });
         picker.closest('.control-slider-panel').addEventListener('click', e => e.stopPropagation());
     });
