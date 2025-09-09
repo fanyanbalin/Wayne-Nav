@@ -875,13 +875,14 @@ footer.main-footer.fixed {
   min-width: 32px;
   padding: 0 10px;
   border-radius: 16px;
-  background: rgba(0,0,0,0.1);
+  background-color: var(--module-bg-color);
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 120px;
   box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
 
 .selected-engine .icon-wrapper span {
@@ -909,6 +910,7 @@ footer.main-footer.fixed {
 }
 
 #search button {
+  position: relative;
   width: 48px;
   height: 48px;
   margin: 2px;
@@ -985,7 +987,8 @@ footer.main-footer.fixed {
 .search-categories .category-tab.active {
   color: var(--search-text-color);
   background-color: var(--accent-color);
-  font-weight: bold;
+  font-weight: 500;
+  box-shadow: 0 0 10px -2px var(--accent-color);
 }
 
 /* 服务提供商列表 */
@@ -1013,6 +1016,34 @@ footer.main-footer.fixed {
 }
 .search-providers .provider-item span {
   line-height: 1.2;
+}
+/* 当搜索框聚焦且面板展开时，实现与面板的无缝连接 */
+.search-bar.focused {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: transparent;
+}
+
+/* 同时，让“选中引擎”的图标也出现激活边框，与整体状态同步 */
+.search-bar.focused .selected-engine .icon-wrapper {
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+}
+/* 同步改变搜索按钮的样式，使其融入整体 */
+#search .search-bar.focused button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-17%, 17%);
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+/* 同步缩小按钮内的图标 */
+#search .search-bar.focused button i {
+    font-size: 18px;
+    transition: font-size 0.3s ease;
 }
 
 .night .dark-text {
