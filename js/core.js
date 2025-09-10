@@ -1022,8 +1022,8 @@ function setupFooterInfo() {
 `;
 
     const infoText = `
-版 本 号：v8.1.0
-更新日期：2025-09-09
+版 本 号：v8.1.1
+更新日期：2025-09-10
 
 WayneのNav: https://nav.3301.qzz.io/
 Github:  https://github.com/Waynenet/Wayne-Nav
