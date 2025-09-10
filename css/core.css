@@ -39,8 +39,6 @@
   --text-color-secondary: var(--palette-gray-3);
   --text-color-footer: var(--palette-transparent); /* 日间模式页脚使用渐变，文字需透明 */
   --link-hover-color: #FF0500; /* 特殊高亮红色，保持独立 */
-  --search-placeholder-color: rgba(var(--palette-main-rgb), 0.6);
-  --search-text-color: rgb(var(--palette-main-rgb));
 
   /* 强调色与渐变 */
   --accent-color: var(--palette-accent-primary);
@@ -55,7 +53,6 @@
   --reward-qr-text-color: var(--palette-brand-red);
   --menu-toggle-color: var(--palette-accent-interactive);
   --search-shadow-color: rgba(0, 0, 0, 0.1);
-  --search-tab-inactive-color: rgba(var(--palette-main-rgb), 0.5);
   --search-tab-active-bg: rgba(0, 0, 0, 0.2);
 }
 
@@ -66,8 +63,6 @@
   --module-border-color: rgba(var(--palette-main-rgb), 0.1);
 
   /* 文本与链接 */
-  --search-placeholder-color: rgba(var(--palette-main-rgb), 0.4);
-  --search-text-color: #e0e0e0;
   --text-color-footer: var(--palette-gray-4); /* 夜间模式页脚使用纯色 */
   --reward-qr-text-color: var(--text-color-primary); /* 与链接颜色保持一致 */
 
@@ -82,7 +77,6 @@
   --reward-button-hover-bg: #464646a6;
   --reward-button-hover-color: var(--palette-brand-red);
   --search-shadow-color: rgba(0, 0, 0, 0.3);
-  --search-tab-inactive-color: rgba(var(--palette-main-rgb), 0.4);
   --search-tab-active-bg: rgba(0, 0, 0, 0.4);
 }
 
@@ -924,11 +918,11 @@ footer.main-footer.fixed {
   border: none;
   background: transparent;
   outline: none;
-  color: var(--search-text-color);
+  color: var(--text-primary);
 }
 
 #search-text::placeholder {
-  color: var(--search-placeholder-color);
+  color: var(--text-color-primary);
   transition: color 0.3s ease;
 }
 
@@ -940,7 +934,7 @@ footer.main-footer.fixed {
   border: none;
   border-radius: 50%;
   background-color: var(--accent-color);
-  color: white;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -998,17 +992,17 @@ footer.main-footer.fixed {
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 14px;
-  color: var(--search-tab-inactive-color);
+  color: var(--text-color-primary);
   cursor: pointer;
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
 .search-categories .category-tab:hover {
-  color: var(--search-text-color);
+  color: var(--text-primary);
   background-color: var(--search-tab-active-bg);
 }
 .search-categories .category-tab.active {
-  color: var(--search-text-color);
+  color: var(--text-primary);
   background-color: var(--accent-color);
   font-weight: 500;
   box-shadow: 0 0 10px -2px var(--accent-color);
@@ -1060,6 +1054,7 @@ footer.main-footer.fixed {
     transform: translate(-17%, 17%);
     width: 42px;
     height: 42px;
+    background-color: transparent;
     border: 1.5px solid var(--accent-color);
     transition: all 0.3s ease;
 }
