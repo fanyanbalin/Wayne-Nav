@@ -502,6 +502,7 @@
             { "title": "LeanCloud", "url": "https://www.leancloud.cn/", "description": "云存储, 一站式后端服务, 无服务器应用后端, 云引擎, 云函数, 云端代码, 即时通讯, 即时通讯" },
             { "title": "npm", "url": "https://www.npmjs.com/", "description": "npm是世界上最大的软件注册表" },
             { "title": "阿里云盘", "url": "https://www.aliyundrive.com/", "description": "阿里云盘是一款速度快、不打扰、够安全、易于分享的个人网盘" },
+            { "title": "夸克云盘", "url": "https://pan.quark.cn/", "description": "夸克网盘是夸克推出的一款云服务产品，功能包括云存储、高清看剧、文件在线解压、PDF一键转换等。通过夸克网盘可随时随地管理和使用照片、文档、手机资料" },
             { "title": "蓝奏云", "url": "https://www.lanzou.com/", "description": "小文件云存储" },
             { "title": "百度网盘", "url": "https://pan.baidu.com/", "description": "百度网盘为您提供文件的网络备份、同步和分享服务" },
             { "title": "腾讯微云", "url": "https://www.weiyun.com/", "description": "微云是腾讯公司为用户精心打造的一项智能云服务, 您可以通过微云方便地在手机和电脑之间同步文件、推送照片和传输数据。" },
