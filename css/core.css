@@ -873,10 +873,19 @@ footer.main-footer.fixed {
   box-shadow: 0 4px 20px var(--search-shadow-color);
   transition: all 0.3s ease, border-radius 0.3s ease;
 }
-.search-bar:hover,
-.search-bar.focused {
+.search-bar:hover {
   background-color: var(--module-bg-hover-color);
   box-shadow: 0 8px 30px var(--search-shadow-color);
+}
+/* 当搜索框聚焦且面板展开时，实现与面板的无缝连接 */
+.search-bar.focused {
+  background-color: var(--module-bg-color);
+  box-shadow: none;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: transparent;
 }
 /* 当前所选搜索引擎的图标 */
 .selected-engine {
@@ -900,6 +909,11 @@ footer.main-footer.fixed {
   max-width: 120px;
   box-sizing: border-box;
   transition: background-color 0.3s ease;
+}
+
+.search-bar.focused .selected-engine .icon-wrapper {
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
 }
 
 .selected-engine .icon-wrapper span {
@@ -952,13 +966,19 @@ footer.main-footer.fixed {
   font-size: 22px;
 }
 
+#search .search-bar.focused button {
+    background-color: transparent;
+    border: 1.5px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+
 /* --- 搜索选项面板 --- */
 .search-options-panel {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 25px;
   box-shadow: 0 8px 30px var(--search-shadow-color);
   padding: 15px;
   z-index: 100;
@@ -1035,24 +1055,6 @@ footer.main-footer.fixed {
 }
 .search-providers .provider-item span {
   line-height: 1.2;
-}
-/* 当搜索框聚焦且面板展开时，实现与面板的无缝连接 */
-.search-bar.focused {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-color: transparent;
-  box-shadow: none;
-}
-.search-bar.focused .selected-engine .icon-wrapper {
-  background-color: transparent;
-  border: 1px solid var(--accent-color);
-}
-#search .search-bar.focused button {
-    background-color: transparent;
-    border: 1.5px solid var(--accent-color);
-    transition: all 0.3s ease;
 }
 
 .night .dark-text {
