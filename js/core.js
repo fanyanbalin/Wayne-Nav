@@ -509,100 +509,97 @@ function setupBgImageFallback() {
 
 // --- 侧边栏菜单主逻辑 ---
 function setupSidebarMenu() {
-    const { $sidebarMenu } = public_vars;
+    const $sidebarMenu = public_vars.$sidebarMenu;
     if (!$sidebarMenu) return;
 
     const toggleOthers = $sidebarMenu.classList.contains('toggle-others');
-    const itemsWithSubmenu = Array.from($sidebarMenu.querySelectorAll('li')).filter(li => li.querySelector(':scope > ul'));
+    // 使用 Map 来存储每个菜单项正在运行的动画
+    const activeAnimations = new Map();
 
-    //  GSAP 动画函数
-    function sidebar_menu_item_expand(li, submenu) {
-        if (li.dataset.isBusy === 'true') return;
-        li.dataset.isBusy = 'true';
-        li.classList.add('expanded');
+    const menuItemsWithSubmenus = Array.from($sidebarMenu.querySelectorAll("li")).filter(li => li.querySelector(":scope > ul"));
 
-        // 动画开始前，强制用 JS 设置 display: block，覆盖 CSS 的 display: none
-        submenu.style.display = 'block';
+    menuItemsWithSubmenus.forEach(li => {
+        const link = li.querySelector(":scope > a");
+        const sublist = li.querySelector(":scope > ul");
+        li.classList.add("has-sub");
 
-        const submenuItems = Array.from(submenu.children);
-        const tl = gsap.timeline({
-            onComplete: () => {
-                gsap.set(submenu, { height: 'auto', overflow: 'visible' });
-                li.dataset.isBusy = 'false';
+        link.addEventListener("click", event => {
+            if ($sidebarMenu.classList.contains("collapsed")) {
+                return; // 在折叠模式下，此处的点击逻辑不生效
             }
-        });
-        
-        const height = submenu.scrollHeight;
+            event.preventDefault();
 
-        tl.from(submenu, { height: 0, autoAlpha: 1, duration: 0.3, ease: 'power2.out' });
-        tl.from(submenuItems, {
-            autoAlpha: 0,
-            x: -15,
-            duration: 0.2,
-            ease: 'power2.out',
-            stagger: 0.05
-        }, "-=0.25");
-    }
-
-    function sidebar_menu_item_collapse(li, submenu) {
-        if (li.dataset.isBusy === 'true') return;
-        li.dataset.isBusy = 'true';
-        li.classList.remove('expanded');
-
-        const submenuItems = Array.from(submenu.children);
-        const tl = gsap.timeline({
-            onComplete: () => {
-                // 动画结束后, 彻底清除所有 GSAP 添加的行内样式
-                gsap.set([submenu, ...submenuItems], { clearProps: "all" });
-                
-                // 同时移除旧 class 和 busy 状态
-                li.classList.remove('opened'); 
-                li.dataset.isBusy = 'false';
+            // 检查并立即停止当前菜单项上任何正在进行的动画
+            if (activeAnimations.has(li)) {
+                const existingAnimation = activeAnimations.get(li);
+                existingAnimation.kill(); // GSAP 的 kill() 方法可以彻底停止动画
+                activeAnimations.delete(li);
             }
-        });
 
-        tl.to(submenuItems, {
-            autoAlpha: 0,
-            x: -10,
-            duration: 0.15,
-            ease: 'power2.in',
-            stagger: 0.03
-        });
-        tl.to(submenu, {
-            height: 0,
-            autoAlpha: 1, // 保持 alpha 为 1，只折叠高度
-            duration: 0.25,
-            ease: 'power2.in'
-        }, "-=0.2");
-    }
-
-    //  初始化和事件绑定
-    itemsWithSubmenu.forEach(li => {
-        const link = li.querySelector(':scope > a');
-        const submenu = li.querySelector(':scope > ul');
-        
-        li.classList.add('has-sub');
-
-        link.addEventListener('click', e => {
-            if ($sidebarMenu.classList.contains('collapsed')) return;
-            
-            e.preventDefault();
-
+            // 如果设置了 toggle-others，则收起其他已展开的菜单
             if (toggleOthers) {
-                const siblings = Array.from(li.parentElement.children).filter(child => child !== li && child.classList.contains('expanded'));
-                siblings.forEach(sibling => {
-                    const siblingSubmenu = sibling.querySelector(':scope > ul');
-                    if (siblingSubmenu) sidebar_menu_item_collapse(sibling, siblingSubmenu);
+                menuItemsWithSubmenus.forEach(otherLi => {
+                    if (otherLi !== li && otherLi.classList.contains("expanded")) {
+                        const otherSublist = otherLi.querySelector(':scope > ul');
+                        if (otherSublist) {
+                            // 同样，先停止可能存在的动画
+                            if (activeAnimations.has(otherLi)) {
+                                activeAnimations.get(otherLi).kill();
+                                activeAnimations.delete(otherLi);
+                            }
+                            collapseMenu(otherLi, otherSublist);
+                        }
+                    }
                 });
             }
 
-            if (li.classList.contains('expanded')) {
-                sidebar_menu_item_collapse(li, submenu);
+            // 决定是展开还是收起
+            if (li.classList.contains("expanded")) {
+                collapseMenu(li, sublist);
             } else {
-                sidebar_menu_item_expand(li, submenu);
+                expandMenu(li, sublist);
             }
         });
     });
+
+    function expandMenu(li, sublist) {
+        li.classList.add("expanded");
+        sublist.style.display = "block";
+        const children = Array.from(sublist.children);
+        
+        // 创建一个新的 GSAP 时间线动画
+        const timeline = gsap.timeline({
+            onComplete: () => {
+                gsap.set(sublist, { height: "auto", overflow: "visible" });
+                activeAnimations.delete(li); // 动画完成后，从 Map 中移除
+            }
+        });
+
+        timeline.from(sublist, { height: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" });
+        timeline.from(children, { autoAlpha: 0, x: -15, duration: 0.2, ease: "power2.out", stagger: 0.05 }, "-=0.25");
+
+        // 存储当前动画
+        activeAnimations.set(li, timeline);
+    }
+
+    function collapseMenu(li, sublist) {
+        li.classList.remove("expanded");
+        const children = Array.from(sublist.children);
+
+        const timeline = gsap.timeline({
+            onComplete: () => {
+                gsap.set([sublist, ...children], { clearProps: "all" });
+                li.classList.remove("opened");
+                activeAnimations.delete(li); // 动画完成后，从 Map 中移除
+            }
+        });
+
+        timeline.to(children, { autoAlpha: 0, x: -10, duration: 0.15, ease: "power2.in", stagger: 0.03 });
+        timeline.to(sublist, { height: 0, autoAlpha: 1, duration: 0.25, ease: "power2.in" }, "-=0.2");
+
+        // 存储当前动画
+        activeAnimations.set(li, timeline);
+    }
 }
 
 // --- 侧边栏各种切换按钮 ---
