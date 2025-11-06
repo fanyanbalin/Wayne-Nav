@@ -259,6 +259,14 @@ ul {
   backdrop-filter: blur(var(--module-blur-value));
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
+.sidebar-menu:not(.collapsed) .sidebar-menu-inner::before {
+  display: none;
+}
+.sidebar-menu:not(.collapsed) .sidebar-menu-inner {
+  background-color: var(--module-bg-color);
+  backdrop-filter: blur(var(--module-blur-value));
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
 .sidebar-menu .logo-env {
   padding: 18px 15px;
   border-bottom: 1px solid transparent;
@@ -589,7 +597,7 @@ footer.main-footer.fixed {
   .page-container .sidebar-menu .sidebar-menu-inner {
     position: relative;
   }
-  .page-container .sidebar-menu .sidebar-menu-inner.bgchange::before {
+  .page-container .sidebar-menu .sidebar-menu-inner.bgchange {
     background-color: transparent !important;
     backdrop-filter: blur(0) !important;
   }
