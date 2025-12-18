@@ -370,59 +370,58 @@ function setupMousePointer() {
     }
 }
 
-// --- 暗黑模式 ---
+// --- 日月轮转 ---
 function setupDarkMode() {
-    const getStorage = (key) => localStorage.getItem(key);
-    const setStorage = (key, value) => localStorage.setItem(key, value);
-
-    const setNightMode = (enable) => {
-        const nightModeTooltip = document.getElementById('night-mode-tooltip');
-        const toastMessage = enable ? '已切换为夜间模式' : '已切换为日间模式';
-        const toastIcon = enable ? 'ti ti-moon-filled' : 'ti ti-sun-filled';
-        const toastTitle = enable ? '夜间模式切换' : '日间模式切换';
-
-        if (enable) {
-            document.body.classList.add('night');
-            setStorage('night', '1');
-            if (nightModeTooltip) nightModeTooltip.innerText = '切换日间模式';
-        } else {
-            document.body.classList.remove('night');
-            setStorage('night', '0');
-            if (nightModeTooltip) nightModeTooltip.innerText = '切换夜间模式';
-        }
-
+    const STORAGE_KEY = 'night';
+    const switchBtn = document.getElementById('dark-mode-switch');
+    const body = document.body;
+    
+    // 切换函数
+    const toggleDarkMode = (enable) => {
+        body.classList.toggle('night', enable);
+        localStorage.setItem(STORAGE_KEY, enable ? '1' : '0');
+        
         if (typeof iziToast !== 'undefined') {
+            const isNight = enable;
             iziToast.info({
-                timeout: 2000, closeOnEscape: true, transitionOut: 'fadeOutRight',
-                displayMode: 'replace', layout: 2, transitionIn: 'bounceInLeft',
-                position: 'topRight', icon: toastIcon, backgroundColor: '#fff',
-                title: toastTitle, message: toastMessage
+                timeout: 2000,
+                closeOnEscape: true,
+                transitionOut: 'fadeOutRight',
+                displayMode: 'replace',
+                layout: 2,
+                transitionIn: 'bounceInLeft',
+                position: 'topRight',
+                icon: isNight ? 'ti ti-moon-filled' : 'ti ti-sun-filled',
+                backgroundColor: '#fff',
+                title: '日月轮转',
+                message: isNight ? '已切换为月间模式' : '已切换为日间模式'
             });
         }
     };
-
-    // 1. 定义一个用于切换的函数
-    const switchNightMode = () => {
-        const isCurrentlyDay = getStorage('night') === '0';
-        setNightMode(isCurrentlyDay);
-    };
-
-    // 2. 找到切换按钮并为其绑定点击事件
-    const switchButton = document.getElementById('dark-mode-switch');
-    if (switchButton) {
-        switchButton.addEventListener('click', (e) => {
-            e.preventDefault(); // 防止链接跳转
-            switchNightMode();
+    
+    // 点击切换
+    if (switchBtn) {
+        switchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isCurrentlyDay = localStorage.getItem(STORAGE_KEY) === '0';
+            toggleDarkMode(isCurrentlyDay);
         });
     }
     
-    // 自动判断和系统主题跟随逻辑保持不变
-    const isNightTime = () => { const hour = new Date().getHours(); return hour > 18 || hour < 7; };
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => setNightMode(e.matches));
+    // 系统主题跟随
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    systemPrefersDark.addEventListener('change', (e) => toggleDarkMode(e.matches));
     
     // 初始化
-    const night = getStorage('night');
-    setNightMode(night === null ? isNightTime() : night === '1');
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const hour = new Date().getHours();
+    const isNightTime = hour > 18 || hour < 7;
+    
+    if (saved !== null) {
+        toggleDarkMode(saved === '1');
+    } else {
+        toggleDarkMode(systemPrefersDark.matches || isNightTime);
+    }
 }
 
 // --- 星空背景 ---

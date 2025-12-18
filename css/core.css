@@ -25,7 +25,7 @@
   --overlay-opacity: 0.4;
   --module-blur-value: 12px;
 
-  /* --- 第二层: 语义化别名 (Semantic Aliases - 日间模式) --- */
+  /* --- 第二层: 语义化别名 (日间模式) --- */
   
   /* 玻璃效果与模块 */
   --module-bg-rgb: var(--palette-main-rgb);
@@ -57,17 +57,17 @@
 }
 
 .night {
-  /* --- 第三层: 主题覆盖 (Theme Overrides - 夜间模式) --- */
+  /* --- 第三层: 主题覆盖 (月间模式) --- */
 
   /* 玻璃效果与模块 */
   --module-border-color: rgba(var(--palette-main-rgb), 0.1);
 
   /* 文本与链接 */
-  --text-color-footer: var(--palette-gray-4); /* 夜间模式页脚使用纯色 */
+  --text-color-footer: var(--palette-gray-4); /* 月间模式页脚使用纯色 */
   --reward-qr-text-color: var(--text-color-primary); /* 与链接颜色保持一致 */
 
   /* 强调色与渐变 */
-  --accent-color: #7d9aff; /* 夜间模式的强调色不同，直接覆盖 */
+  --accent-color: #7d9aff; /* 月间模式的强调色不同，直接覆盖 */
   --gradient-text: none;
   --tag-bg: var(--palette-transparent);
   
@@ -1270,7 +1270,7 @@ input[type="color"].color-picker::-moz-color-swatch {
   border-radius: 4px;
 }
 
-/* 暗色模式按钮 */
+/* 日月轮转按钮 */
 .suspension_ax .ti-sun {
   display: none;
 }
